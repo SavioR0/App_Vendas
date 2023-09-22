@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
-using Vendas.Service.Controllers;
 
-namespace Vendas.View
+namespace vendas
 {
     static class Program
     {
@@ -14,7 +13,7 @@ namespace Vendas.View
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginUser());
+            Application.Run(new FormRegisterUser());
             //AppManager.Start<LoginController>();
         }
     }
