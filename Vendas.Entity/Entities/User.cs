@@ -17,5 +17,6 @@ namespace Vendas.Entity.Entities
         public string UserName { get; set; }
         public char Flag { get; set; }
         public int EditLogin { get; set; }
+        int teste;
     }
 }

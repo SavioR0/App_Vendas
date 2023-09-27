@@ -28,11 +28,11 @@ namespace Vendas.View
                 if ((TypeUser)user.TypeUser == TypeUser.Admin)
             {
                 AppManager.Instance.Load<LoaderController, User>(new FormHomePageAdminUser());
-                AppManager.Instance.CloseForm(1);
+                AppManager.Instance.CloseForm(view: this);
             }
             else { 
                 AppManager.Instance.Load<LoaderController, User>(new FormHomePageDefaultUser());
-                AppManager.Instance.CloseForm(1);
+                AppManager.Instance.CloseForm(view:this);
             }
         }
 
@@ -47,6 +47,7 @@ namespace Vendas.View
         private void lbResgisterUser_Click(object sender, EventArgs e)
         {
             AppManager.Instance.Load<LoaderController, User>(new FormRegisterUser());
+            
         }
 
         private void checkEdit1_CheckedChanged(object sender, EventArgs e)

@@ -90,6 +90,7 @@ namespace Vendas.View
                         EditLogin = 1,
                     });
                     AppManager.Instance.CloseForm(view:this);
+                    MessageBox.Show("Usuário cadastrado com sucesso! Verifique em seu e-mail sua senha para realizar o login a primeira vez", "Usuário cadastrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (NullReferenceException x) { MessageBox.Show(x.Message); }
