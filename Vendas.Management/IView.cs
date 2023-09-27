@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace Vendas.View
+namespace Vendas.Management
 {
     public interface IView
     {

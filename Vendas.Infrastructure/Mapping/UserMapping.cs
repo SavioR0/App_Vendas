@@ -9,16 +9,13 @@ namespace vendas.model.mapping
             ToTable("Usuários");
             HasKey(p => p.Id);
             Property(p => p.Name).IsRequired().HasMaxLength(100);
+            Property(p => p.Email).IsRequired().HasMaxLength(100);
+            Property(p => p.Password).IsRequired().HasMaxLength(50);
+            Property(p => p.TypeUser).IsRequired();
             Property(p => p.Cpf).IsRequired().HasMaxLength(11);
             Property(p => p.Tel).IsRequired().HasMaxLength(20);
             Property(p => p.DateOfBirth).IsRequired();
-            //OwnsOne(p => p.Adress, address =>
-            //{
-            //    address.Property(a => a.Street).IsRequired().HasMaxLength(100);
-            //    address.Property(a => a.City).IsRequired().HasMaxLength(100);
-            //    address.Property(a => a.State).IsRequired().HasMaxLength(50);
-            //    address.Property(a => a.ZipCode).IsRequired().HasMaxLength(10);
-            //});
+            Property(p => p.EditLogin).IsRequired();
         }
     }
 }

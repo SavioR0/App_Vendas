@@ -38,10 +38,14 @@
   <ItemGroup>
     <Reference Include="DevExpress.Data.Desktop.v20.2, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Data.v20.2, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Images.v20.2, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Printing.v20.2.Core, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Sparkline.v20.2.Core, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v20.2, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v20.2, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v20.2, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v20.2, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v20.2, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -51,12 +55,21 @@
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Mvc, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.9\lib\net45\System.Web.Mvc.dll</HintPath>
@@ -84,23 +97,51 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppManager.cs" />
-    <Compile Include="LoginUser.cs">
+    <Compile Include="FormEditLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginUser.Designer.cs">
-      <DependentUpon>LoginUser.cs</DependentUpon>
+    <Compile Include="FormEditLogin.Designer.cs">
+      <DependentUpon>FormEditLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormHomePageDefaultUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormHomePageDefaultUser.Designer.cs">
+      <DependentUpon>FormHomePageDefaultUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormHomePageAdiminUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormHomePageAdiminUser.Designer.cs">
+      <DependentUpon>FormHomePageAdiminUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoaderController.cs" />
+    <Compile Include="LoginUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginUsers.Designer.cs">
+      <DependentUpon>LoginUsers.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="FormRegisterUser.cs">
+    <Compile Include="FormRegisterUsers.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormRegisterUser.Designer.cs">
-      <DependentUpon>FormRegisterUser.cs</DependentUpon>
+    <Compile Include="FormRegisterUsers.Designer.cs">
+      <DependentUpon>FormRegisterUsers.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="LoginUser.resx">
-      <DependentUpon>LoginUser.cs</DependentUpon>
+    <Compile Include="Validations.cs" />
+    <EmbeddedResource Include="FormEditLogin.resx">
+      <DependentUpon>FormEditLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormHomePageAdiminUser.resx">
+      <DependentUpon>FormHomePageAdiminUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormHomePageDefaultUser.resx">
+      <DependentUpon>FormHomePageDefaultUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginUsers.resx">
+      <DependentUpon>LoginUsers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -112,8 +153,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="FormRegisterUser.resx">
-      <DependentUpon>FormRegisterUser.cs</DependentUpon>
+    <EmbeddedResource Include="FormRegisterUsers.resx">
+      <DependentUpon>FormRegisterUsers.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -131,13 +172,29 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\Vendas.Controller\Vendas.Controller.csproj">
-      <Project>{7700b5d6-3e98-4fcd-a1a5-e9c1274e3287}</Project>
-      <Name>Vendas.Controller</Name>
+    <ProjectReference Include="..\Vendas.Communication\Vendas.Communication.csproj">
+      <Project>{331C1344-7252-4418-B572-56217FA9EC26}</Project>
+      <Name>Vendas.Communication</Name>
     </ProjectReference>
     <ProjectReference Include="..\Vendas.Entity\Vendas.Entity.csproj">
       <Project>{CF6270D3-DFA5-4AB3-8860-6FDB53948373}</Project>
       <Name>Vendas.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Vendas.Infrastructure\Vendas.Infrastructure.csproj">
+      <Project>{c4bea73e-2747-4b0e-a43a-5417c4ac1c4b}</Project>
+      <Name>Vendas.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Vendas.Library\Vendas.Library.csproj">
+      <Project>{6FF38654-2341-44BC-9F60-98B979A780C2}</Project>
+      <Name>Vendas.Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Vendas.Management\Vendas.Management.csproj">
+      <Project>{ca3734aa-4ff9-4991-9b85-01492e883f2e}</Project>
+      <Name>Vendas.Management</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Vendas.Repository\Vendas.Repository.csproj">
+      <Project>{775B6021-0B0B-4912-8859-809BED3712C3}</Project>
+      <Name>Vendas.Repository</Name>
     </ProjectReference>
     <ProjectReference Include="..\Vendas.Service\Vendas.Service.csproj">
       <Project>{2e4331fd-93f4-49f7-8062-4bc5cb4ed459}</Project>

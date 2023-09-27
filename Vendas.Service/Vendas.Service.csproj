@@ -54,6 +54,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
@@ -155,12 +156,13 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="Controllers\IBaseController.cs" />
+    <Compile Include="Controllers\Interfaces\IBaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\IUserController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -255,6 +257,10 @@
     <ProjectReference Include="..\Vendas.Infrastructure\Vendas.Infrastructure.csproj">
       <Project>{C4BEA73E-2747-4B0E-A43A-5417C4AC1C4B}</Project>
       <Name>Vendas.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Vendas.Library\Vendas.Library.csproj">
+      <Project>{6FF38654-2341-44BC-9F60-98B979A780C2}</Project>
+      <Name>Vendas.Library</Name>
     </ProjectReference>
     <ProjectReference Include="..\Vendas.Repository\Vendas.Repository.csproj">
       <Project>{775B6021-0B0B-4912-8859-809BED3712C3}</Project>

@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using Vendas.Management;
-using Vendas.View.Loader;
 
-namespace Vendas.View
+namespace Vendas.Manager
 {
     static class Program
     {
@@ -15,8 +16,7 @@ namespace Vendas.View
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new LoginUser());
-            AppManager.Start<LoaderController>(new LoginUser());
+            Application.Run(new Form1());
         }
     }
 }

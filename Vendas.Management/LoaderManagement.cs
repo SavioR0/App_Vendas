@@ -1,20 +1,17 @@
 ﻿using System;
 using System.Windows.Forms;
-using Vendas.View;
 
-namespace Vendas.Controller.controller
+namespace Vendas.Management
 {
-    public abstract class Controller<T> where T : class
+    public abstract class LoaderManagement//<T> where T : class
     {
 
         public abstract IView View { get; }
-
-        //public abstract IModel<T> Model { get; }
-
+        public abstract bool CloseLastView { get; }
 
         public event EventHandler LoadSuccess, LoadFailed;
 
-        public Controller()
+        public LoaderManagement()
         {
             LoadSuccess += OnLoadSucceededHandler;
             LoadFailed += OnLoadFailedHandler;
@@ -24,7 +21,7 @@ namespace Vendas.Controller.controller
 
         protected virtual void OnLoadSucceededHandler(Object sender, EventArgs e)
         {
-            //AppManager.Instance.Show(this);
+            AppManager.Instance.Show(this, CloseLastView);
         }
 
         protected virtual void OnLoadFailedHandler(Object sender, EventArgs e)

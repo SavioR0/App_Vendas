@@ -1,43 +1,44 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Windows.Forms;
-using Vendas.Controller.controller;
 using Vendas.Entity.Entities;
+using Vendas.Entity.Enums;
 
-namespace Vendas.View
+namespace Vendas.Management
 {
-    class AppManager
+    public class AppManager
     {
+
         public AppManager() { }
         private static bool _started;
-        private IView _currentView;
+        private List<IView> _currentViews = new List<IView>();
         private static AppManager _instance;
-        private User user;
+        //private User user;
         public static AppManager Instance
         {
             get
             {
                 if (!_started)
                     throw new Exception("Tried to call the singleton instance of the AppManager before the AppManager started.");
-
                 return _instance;
             }
         }
-        public void Show<T>(Controller<T> controller) where T: class
+        public void Show(LoaderManagement controller, bool closeLast)
         {
-            if (_currentView != null)
+            if (closeLast)
             {
-                _currentView.Close();
-                _currentView.Form.Dispose();
+                _currentViews[_currentViews.Count-1].Close();
+                _currentViews[_currentViews.Count - 1].Form.Dispose();
             }
-            _currentView = controller.View;
+            _currentViews.Add(controller.View);
 
-            Thread th = new Thread(openForm);
+            Thread th = new Thread(OpenForm);
             th.SetApartmentState(ApartmentState.STA);
             th.Start();
         }
-        public static void Start<T>()
-            where T : Controller<User>
+        public static void Start<T>(IView view)
+            where T : LoaderManagement
         {
             if (_started) return;
 
@@ -47,22 +48,19 @@ namespace Vendas.View
 
             if (controller != null)
             {
-                _instance = new AppManager()
-                {
-                    _currentView = controller.View
-                };
+                _instance = new AppManager() { };
+                _instance._currentViews.Add(view);
 
-                _instance.openForm();
+                _instance.OpenForm();
             }
             else
                 Application.Exit();
         }
 
-        public void Load<T, Y>()
-            where T : Controller<Y> where Y : class
+        public void Load<T, Y>(IView view)
+            where T : LoaderManagement
         {
-            T controller = Activator.CreateInstance<T>();
-
+            T controller = Activator.CreateInstance(typeof(T), view) as T;
             if (controller != null)
             {
                 if (controller.Loadable())
@@ -73,9 +71,15 @@ namespace Vendas.View
             else
                 Application.Exit();
         }
-        private void openForm()
+        private void OpenForm()
         {
-            Application.Run(_currentView.Form);
+            Application.Run(_currentViews[_currentViews.Count-1].Form);
+        }
+
+        public void CloseForm(int form = 0, IView view = null) {
+            var closeForm = view ?? _currentViews[_currentViews.Count - 1 - form];
+            _currentViews.Remove(closeForm);
+            closeForm.Close();
         }
     }
 }

@@ -21,12 +21,7 @@ namespace Vendas.Repository
 
         public string Add(User entity)
         {
-            string message = ValidateData(entity);
-
-            if (message == "")
-            {
-                message = _repository.Insert(entity);
-            }
+            string message = _repository.Insert(entity);
 
             return message;
         }
@@ -48,20 +43,13 @@ namespace Vendas.Repository
 
         public string Update(User entity)
         {
-            throw new NotImplementedException();
+            string message = _repository.Update(entity);
+            return message;
         }
 
         List<User> IDefaultRepository<User>.GetAll()
         {
             throw new NotImplementedException();
-        }
-
-        private string ValidateData(User entity)
-        {
-            if (string.IsNullOrEmpty(entity.Cpf))
-                return "CPF Inválido!";
-
-            return "";
         }
     }
 }
