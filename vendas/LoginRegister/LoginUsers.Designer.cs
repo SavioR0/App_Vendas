@@ -78,6 +78,7 @@ namespace Vendas.View
             // 
             this.PasswordValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.PasswordValue.EditValue = "123456";
             this.PasswordValue.Location = new System.Drawing.Point(136, 232);
             this.PasswordValue.MaximumSize = new System.Drawing.Size(1000, 0);
             this.PasswordValue.Name = "PasswordValue";
@@ -101,6 +102,7 @@ namespace Vendas.View
             // 
             this.UserNameValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.UserNameValue.EditValue = "saviorodrigues14";
             this.UserNameValue.Location = new System.Drawing.Point(136, 205);
             this.UserNameValue.MaximumSize = new System.Drawing.Size(1000, 0);
             this.UserNameValue.Name = "UserNameValue";

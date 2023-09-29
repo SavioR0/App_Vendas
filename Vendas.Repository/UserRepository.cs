@@ -1,9 +1,9 @@
-﻿using app2.data;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using Vendas.Entity.Entities;
+using Vendas.Infrastructure;
 using Vendas.Repository.Intefaces;
 using Vendas.Repository.Interfaces;
 
@@ -28,7 +28,7 @@ namespace Vendas.Repository
 
         public List<User> Filter(Expression<Func<User, bool>> condition)
         {
-            return _repository.Filter(condition).ToList();
+            return _repository.Filter(condition, u=> u.Address).ToList();
         }
 
         public User GetById(int id)
@@ -47,9 +47,9 @@ namespace Vendas.Repository
             return message;
         }
 
-        List<User> IDefaultRepository<User>.GetAll()
+        public List<User> GetAll()
         {
-            throw new NotImplementedException();
+            return _repository.GetAll().ToList();
         }
     }
 }

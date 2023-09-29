@@ -1,4 +1,6 @@
-﻿namespace Vendas.Entity.Entities
+﻿using System.Runtime.Serialization;
+
+namespace Vendas.Entity.Entities
 {
     public class Sale
     {
@@ -7,13 +9,15 @@
         public int SellerId { get; set; }
         public int ClientId { get; set; }
 
-        //[IgnoreDataMember]
-        //public virtual Produto Produto { get; set; }
+        public char Flag { get; set; }
 
-        //[IgnoreDataMember]
-        //public virtual Cliente Cliente { get; set; }
+        [IgnoreDataMember]
+        public virtual Product Product { get; set; }
 
-        //[IgnoreDataMember]
-        //public virtual Vendedor Vendedor { get; set; }
+        [IgnoreDataMember]
+        public virtual User Client { get; set; }
+
+        [IgnoreDataMember]
+        public virtual User Seller { get; set; }
     }
 }

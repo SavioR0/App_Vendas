@@ -46,6 +46,9 @@
     <Reference Include="DevExpress.XtraEditors.v20.2, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v20.2, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v20.2, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="EASendMail, Version=7.9.1.9, Culture=neutral, PublicKeyToken=88adb80ecd66540b, processorArchitecture=MSIL">
+      <HintPath>..\packages\EASendMail.7.9.1.9\lib\net472\EASendMail.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -64,6 +67,10 @@
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.Cryptography.Pkcs, Version=6.0.0.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Pkcs.6.0.1\lib\net461\System.Security.Cryptography.Pkcs.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.Helpers.dll</HintPath>
@@ -97,50 +104,59 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormEditLogin.cs">
+    <Compile Include="LoginRegister\FormEditLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormEditLogin.Designer.cs">
+    <Compile Include="LoginRegister\FormEditLogin.Designer.cs">
       <DependentUpon>FormEditLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormHomePageDefaultUser.cs">
+    <Compile Include="ClientUser\FormHomePageDefaultUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormHomePageDefaultUser.Designer.cs">
+    <Compile Include="ClientUser\FormHomePageDefaultUser.Designer.cs">
       <DependentUpon>FormHomePageDefaultUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormHomePageAdiminUser.cs">
+    <Compile Include="AdiminUser\FormHomePageAdiminUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormHomePageAdiminUser.Designer.cs">
+    <Compile Include="AdiminUser\FormHomePageAdiminUser.Designer.cs">
       <DependentUpon>FormHomePageAdiminUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoaderController.cs" />
-    <Compile Include="LoginUsers.cs">
+    <Compile Include="AdiminUser\FormRegisterProduct.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginUsers.Designer.cs">
+    <Compile Include="AdiminUser\FormRegisterProduct.Designer.cs">
+      <DependentUpon>FormRegisterProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoaderController.cs" />
+    <Compile Include="LoginRegister\LoginUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginRegister\LoginUsers.Designer.cs">
       <DependentUpon>LoginUsers.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="FormRegisterUsers.cs">
+    <Compile Include="LoginRegister\FormRegisterUsers.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormRegisterUsers.Designer.cs">
+    <Compile Include="LoginRegister\FormRegisterUsers.Designer.cs">
       <DependentUpon>FormRegisterUsers.cs</DependentUpon>
     </Compile>
     <Compile Include="Validations.cs" />
-    <EmbeddedResource Include="FormEditLogin.resx">
+    <EmbeddedResource Include="AdiminUser\FormRegisterProduct.resx">
+      <DependentUpon>FormRegisterProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginRegister\FormEditLogin.resx">
       <DependentUpon>FormEditLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormHomePageAdiminUser.resx">
+    <EmbeddedResource Include="AdiminUser\FormHomePageAdiminUser.resx">
       <DependentUpon>FormHomePageAdiminUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormHomePageDefaultUser.resx">
+    <EmbeddedResource Include="ClientUser\FormHomePageDefaultUser.resx">
       <DependentUpon>FormHomePageDefaultUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginUsers.resx">
+    <EmbeddedResource Include="LoginRegister\LoginUsers.resx">
       <DependentUpon>LoginUsers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
@@ -153,7 +169,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="FormRegisterUsers.resx">
+    <EmbeddedResource Include="LoginRegister\FormRegisterUsers.resx">
       <DependentUpon>FormRegisterUsers.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />

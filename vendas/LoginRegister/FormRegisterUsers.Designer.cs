@@ -83,6 +83,7 @@ namespace Vendas.View
             // 
             this.nameValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.nameValue.EditValue = "Savio";
             this.nameValue.Location = new System.Drawing.Point(139, 21);
             this.nameValue.MaximumSize = new System.Drawing.Size(1000, 0);
             this.nameValue.Name = "nameValue";
@@ -93,6 +94,7 @@ namespace Vendas.View
             // 
             this.cpfValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cpfValue.EditValue = "14691240683";
             this.cpfValue.Location = new System.Drawing.Point(139, 73);
             this.cpfValue.MaximumSize = new System.Drawing.Size(1000, 0);
             this.cpfValue.Name = "cpfValue";
@@ -109,6 +111,7 @@ namespace Vendas.View
             // 
             this.telValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.telValue.EditValue = "37988328345";
             this.telValue.Location = new System.Drawing.Point(139, 99);
             this.telValue.MaximumSize = new System.Drawing.Size(1000, 0);
             this.telValue.Name = "telValue";
@@ -152,7 +155,7 @@ namespace Vendas.View
             // 
             // dateValue
             // 
-            this.dateValue.EditValue = null;
+            this.dateValue.EditValue = new System.DateTime(1989, 1, 1, 0, 0, 0, 0);
             this.dateValue.Location = new System.Drawing.Point(139, 125);
             this.dateValue.MaximumSize = new System.Drawing.Size(1000, 0);
             this.dateValue.Name = "dateValue";
@@ -175,6 +178,7 @@ namespace Vendas.View
             // 
             this.EmailValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.EmailValue.EditValue = "saviorodrigues012@gmail.com";
             this.EmailValue.Location = new System.Drawing.Point(139, 310);
             this.EmailValue.MaximumSize = new System.Drawing.Size(1000, 0);
             this.EmailValue.Name = "EmailValue";
@@ -197,6 +201,7 @@ namespace Vendas.View
             // 
             this.CityValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.CityValue.EditValue = "Pitangui";
             this.CityValue.Location = new System.Drawing.Point(139, 189);
             this.CityValue.MaximumSize = new System.Drawing.Size(1000, 0);
             this.CityValue.Name = "CityValue";
@@ -229,6 +234,7 @@ namespace Vendas.View
             // 
             this.CEPValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.CEPValue.EditValue = "35650000";
             this.CEPValue.Location = new System.Drawing.Point(139, 163);
             this.CEPValue.MaximumSize = new System.Drawing.Size(1000, 0);
             this.CEPValue.Name = "CEPValue";
@@ -264,6 +270,7 @@ namespace Vendas.View
             // 
             this.NeighborhoodValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.NeighborhoodValue.EditValue = "Centro";
             this.NeighborhoodValue.Location = new System.Drawing.Point(139, 215);
             this.NeighborhoodValue.MaximumSize = new System.Drawing.Size(1000, 0);
             this.NeighborhoodValue.Name = "NeighborhoodValue";
@@ -276,6 +283,7 @@ namespace Vendas.View
             // 
             this.StreetValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.StreetValue.EditValue = "Praça Getúlio Vargas";
             this.StreetValue.Location = new System.Drawing.Point(139, 243);
             this.StreetValue.MaximumSize = new System.Drawing.Size(1000, 0);
             this.StreetValue.Name = "StreetValue";
@@ -317,6 +325,7 @@ namespace Vendas.View
             // 
             this.numberValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.numberValue.EditValue = "154";
             this.numberValue.Location = new System.Drawing.Point(139, 269);
             this.numberValue.MaximumSize = new System.Drawing.Size(1000, 0);
             this.numberValue.Name = "numberValue";
@@ -329,6 +338,7 @@ namespace Vendas.View
             // 
             this.LastNameValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.LastNameValue.EditValue = "Rodrigues";
             this.LastNameValue.Location = new System.Drawing.Point(139, 47);
             this.LastNameValue.MaximumSize = new System.Drawing.Size(1000, 0);
             this.LastNameValue.Name = "LastNameValue";

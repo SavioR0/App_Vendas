@@ -5,7 +5,7 @@ using System.Reflection;
 using Vendas.Entity;
 using Vendas.Entity.Entities;
 
-namespace app2.data
+namespace Vendas.Infrastructure
 {
     public class SalesContext : DbContext
     {

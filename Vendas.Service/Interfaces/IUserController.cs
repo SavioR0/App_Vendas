@@ -10,6 +10,8 @@ namespace Vendas.Service.Interfaces
         string Save(User entity);
         string Exclude(User entity);
         List<User> Filter(Expression<Func<User, bool>> condition);
+        List<User> GetAll();
+
         bool Login(string userName, string password);
     }
 }

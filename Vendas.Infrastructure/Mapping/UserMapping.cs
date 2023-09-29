@@ -16,6 +16,15 @@ namespace vendas.model.mapping
             Property(p => p.Tel).IsRequired().HasMaxLength(20);
             Property(p => p.DateOfBirth).IsRequired();
             Property(p => p.EditLogin).IsRequired();
+ 
+            // Configuração do relacionamento entre User e Address (um usuário tem um endereço).
+            //HasRequired(p => p.Address).WithMany(p=>p.Users).HasForeignKey(v => v.AddressId);
+
+            // Configuração do relacionamento entre User e Sale (um usuário tem muitas vendas).
+            //HasMany(p => p.Sales).WithRequired(s => s.Seller).HasForeignKey(s => s.SellerId);
+            //HasMany(p => p.Sales).WithRequired(s => s.Client).HasForeignKey(s => s.ClientId);
+
+
         }
     }
 }

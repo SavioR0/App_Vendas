@@ -1,14 +1,16 @@
-﻿using app2.data;
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Linq.Expressions;
+using Vendas.Entity.Entities;
+using Vendas.Infrastructure;
 using Vendas.Repository.Intefaces;
 
 namespace Vendas.Repository
 {
-    public class Repository<T> : IRepository<T> where T : class
+    public class Repository<T> : IRepository<T> where T : BaseEntity
     {
         private DbContext _dbContext;
         private DbSet<T> _dbSet {
@@ -28,24 +30,39 @@ namespace Vendas.Repository
             throw new System.NotImplementedException();
         }
 
-        public IQueryable<T> Filter(Expression<System.Func<T, bool>> condition)
+        public IQueryable<T> Filter(Expression<System.Func<T, bool>> condition, params Expression<Func<T, object>>[] includes)
         {
-            return _dbSet.Where(condition);
+            var query = _dbContext.Set<T>().Where(condition);
+            foreach (var include in includes)
+            {
+                query = query.Include(include);
+            }
+            return query;
         }
 
-        public IQueryable<T> GetAll()
+        public List<T> GetAll()
         {
             throw new System.NotImplementedException();
         }
 
         public T GetById(int id)
         {
-            throw new System.NotImplementedException();
+            return _dbSet.Where(c => id == c.Id).FirstOrDefault();
         }
 
-        public SalesContext GetContext()
+        private void MarkModified(T entity)
         {
-            throw new System.NotImplementedException();
+            _dbContext.Entry(entity).State = EntityState.Modified;
+        }
+        public string Update(T entity)
+        {
+            MarkModified(entity);
+            return SaveChanges();
+        }
+
+        DbContext IRepository<T>.GetContext()
+        {
+            return _dbContext;
         }
 
         public string Insert(T entity)
@@ -79,21 +96,6 @@ namespace Vendas.Repository
                 }
                 return erro.Message;
             }
-        }
-
-        private void MarkModified(T entity) 
-        {
-            _dbContext.Entry(entity).State = EntityState.Modified;
-        }
-        public string Update(T entity)
-        {
-            MarkModified(entity);
-            return SaveChanges();
-        }
-
-        DbContext IRepository<T>.GetContext()
-        {
-            return _dbContext;
         }
     }
 }

@@ -24,15 +24,17 @@ namespace Vendas.View
         {
             //MessageBox.Show(((TypeUser)user.TypeUser == TypeUser.Admin).ToString() + "  " + user.TypeUser + " " + TypeUser.Admin);
             if (user.EditLogin == 1) { AppManager.Instance.Load<LoaderController, User>(new FormEditLogin()); AppManager.Instance.CloseForm(1); }
-            else
+            else {
                 if ((TypeUser)user.TypeUser == TypeUser.Admin)
-            {
-                AppManager.Instance.Load<LoaderController, User>(new FormHomePageAdminUser());
-                AppManager.Instance.CloseForm(view: this);
-            }
-            else { 
-                AppManager.Instance.Load<LoaderController, User>(new FormHomePageDefaultUser());
-                AppManager.Instance.CloseForm(view:this);
+                {
+                    AppManager.Instance.Load<LoaderController, User>(new FormHomePageAdminUser());
+                    AppManager.Instance.CloseForm(view: this);
+                }
+                else
+                {
+                    AppManager.Instance.Load<LoaderController, User>(new FormHomePageDefaultUser());
+                    AppManager.Instance.CloseForm(view: this);
+                }
             }
         }
 

@@ -84,13 +84,13 @@ namespace Vendas.View
                         },
                         Email = EmailValue.Text.Trim(),
                         Password = password,
-                        TypeUser = IsAdminValue.Enabled ? (int)TypeUser.Admin : (int)TypeUser.Client,
+                        TypeUser = IsAdminValue.Checked ? (int)TypeUser.Admin : (int)TypeUser.Client,
                         UserName = nameValue.Text.Trim().ToLower() + LastNameValue.Text.Trim().ToLower() + cpfValue.Text.Substring(0, 2),
                         Flag = 'I',
                         EditLogin = 1,
                     });
+                    MessageBox.Show("Usuário cadastrado com sucesso! Para realizar o login a primeira vez verifique em seu e-mail seu username e senha", "Usuário cadastrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     AppManager.Instance.CloseForm(view:this);
-                    MessageBox.Show("Usuário cadastrado com sucesso! Verifique em seu e-mail sua senha para realizar o login a primeira vez", "Usuário cadastrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (NullReferenceException x) { MessageBox.Show(x.Message); }
