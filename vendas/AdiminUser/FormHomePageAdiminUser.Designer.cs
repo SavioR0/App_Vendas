@@ -78,6 +78,9 @@ namespace Vendas.View
             // 
             // TabControlHomePage
             // 
+            this.TabControlHomePage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TabControlHomePage.Appearance.BackColor = System.Drawing.Color.Gainsboro;
             this.TabControlHomePage.Appearance.Options.UseBackColor = true;
             this.TabControlHomePage.Location = new System.Drawing.Point(12, 39);
@@ -100,6 +103,9 @@ namespace Vendas.View
             // 
             // gridProduct
             // 
+            this.gridProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gridProduct.DataSource = typeof(Vendas.Entity.Entities.Product);
             this.gridProduct.Location = new System.Drawing.Point(0, 0);
             this.gridProduct.MainView = this.gridView2;
@@ -120,6 +126,7 @@ namespace Vendas.View
             this.Vendedor});
             this.gridView2.GridControl = this.gridProduct;
             this.gridView2.Name = "gridView2";
+            this.gridView2.OptionsBehavior.ReadOnly = true;
             this.gridView2.OptionsView.ShowGroupPanel = false;
             // 
             // IdP
@@ -206,6 +213,8 @@ namespace Vendas.View
             this.UserName});
             this.gridView1.GridControl = this.gridClient;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.OptionsBehavior.ReadOnly = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // Id
@@ -375,11 +384,12 @@ namespace Vendas.View
             // 
             this.btnUpdate.AccessibleName = "btnUpdate";
             this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUpdate.Location = new System.Drawing.Point(768, 527);
+            this.btnUpdate.Location = new System.Drawing.Point(767, 529);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(135, 23);
+            this.btnUpdate.Size = new System.Drawing.Size(135, 24);
             this.btnUpdate.TabIndex = 46;
             this.btnUpdate.Text = "Atualizar";
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnExclude
             // 
@@ -394,6 +404,9 @@ namespace Vendas.View
             // 
             // FormHomePageAdminUser
             // 
+            this.AutoScroll = true;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(915, 562);
             this.Controls.Add(this.btnExclude);
             this.Controls.Add(this.btnEdit);
@@ -405,6 +418,7 @@ namespace Vendas.View
             this.Controls.Add(this.comboBoxFilterProd);
             this.Controls.Add(this.textEditSearch);
             this.Controls.Add(this.TabControlHomePage);
+            this.MinimumSize = new System.Drawing.Size(600, 400);
             this.Name = "FormHomePageAdminUser";
             this.Text = "Página do vendedor";
             ((System.ComponentModel.ISupportInitialize)(this.TabControlHomePage)).EndInit();

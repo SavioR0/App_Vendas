@@ -104,6 +104,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientUser\FormRegisterSale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientUser\FormRegisterSale.Designer.cs">
+      <DependentUpon>FormRegisterSale.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginRegister\FormEditLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,6 +152,9 @@
     <Compile Include="Validations.cs" />
     <EmbeddedResource Include="AdiminUser\FormRegisterProduct.resx">
       <DependentUpon>FormRegisterProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientUser\FormRegisterSale.resx">
+      <DependentUpon>FormRegisterSale.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginRegister\FormEditLogin.resx">
       <DependentUpon>FormEditLogin.cs</DependentUpon>

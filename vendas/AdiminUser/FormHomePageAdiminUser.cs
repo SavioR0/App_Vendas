@@ -14,10 +14,12 @@ namespace Vendas.View
         public FormHomePageAdminUser()
         {
             InitializeComponent();
-
+            gridClient.DataSource = null;
             gridClient.DataSource = Communication.Service.UserController.Filter(c => c.TypeUser == (int)TypeUser.Client);
+            gridProduct.DataSource = null;
             gridProduct.DataSource = Communication.Service.ProductController.Filter(c => c.Seller.Id == Global.Instance.User.Id);
-
+            gridSale.DataSource = null;
+            //gridSale.DataSource = Communication.Service.SaleController.Filter(c => c.Sale.ClientId == Global.Instance.User.Id)
 
         }
         public Form Form {get{return this;}}
@@ -84,7 +86,10 @@ namespace Vendas.View
                 if (string.IsNullOrWhiteSpace(textEditSearch.Text)) { gridProduct.DataSource = Communication.Service.ProductController.GetAll(); return; }
 
                 if (comboBoxFilterProd.Text == "Id")
-                    gridProduct.DataSource = Communication.Service.ProductController.Filter(c => c.Id == int.Parse(textEditSearch.Text.Trim()));
+                {
+                    int id = int.Parse(textEditSearch.Text);
+                    gridProduct.DataSource = Communication.Service.ProductController.Filter(c => c.Id == id);
+                }
                 if (comboBoxFilterProd.Text == "Nome")
                     gridProduct.DataSource = Communication.Service.ProductController.Filter(c => c.Name == textEditSearch.Text.Trim());
                 return;
@@ -94,7 +99,10 @@ namespace Vendas.View
                 if (string.IsNullOrWhiteSpace(textEditSearch.Text)) { gridClient.DataSource = Communication.Service.UserController.GetAll(); return; }
 
                 if (comboBoxFilterProd.Text == "Id")
-                    gridClient.DataSource = Communication.Service.UserController.Filter(c => c.Id == int.Parse(textEditSearch.Text.Trim()));
+                {
+                    int id = int.Parse(textEditSearch.Text.Trim());
+                    gridClient.DataSource = Communication.Service.UserController.Filter(c => c.Id == id);
+                }
                 if (comboBoxFilterProd.Text == "Nome")
                     gridClient.DataSource = Communication.Service.UserController.Filter(c => c.Name == textEditSearch.Text.Trim() && c.TypeUser == (int)TypeUser.Client);
                 return;
@@ -109,6 +117,16 @@ namespace Vendas.View
                 //    gridSale.DataSource = Communication.Service.SaleController.Filter(c => c.IdClient == textEditSearch.Text.Trim());
                 return;
             }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            gridClient.DataSource = null;
+            gridClient.DataSource = Communication.Service.UserController.Filter(c => c.TypeUser == (int)TypeUser.Client);
+            gridProduct.DataSource = null;
+            gridProduct.DataSource = Communication.Service.ProductController.Filter(c => c.Seller.Id == Global.Instance.User.Id);
+            gridSale.DataSource = null;
+            //gridSale.DataSource = Communication.Service.SaleController.Filter(c => c.Sale.ClientId == Global.Instance.User.Id)
         }
     }
 }

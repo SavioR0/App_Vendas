@@ -30,14 +30,18 @@ namespace Vendas.Repository
             throw new System.NotImplementedException();
         }
 
-        public IQueryable<T> Filter(Expression<System.Func<T, bool>> condition, params Expression<Func<T, object>>[] includes)
+        //public IQueryable<T> Filter(Expression<System.Func<T, bool>> condition, params Expression<Func<T, object>>[] includes)
+        //{
+        //    var query = _dbContext.Set<T>().Where(condition);
+        //    foreach (var include in includes)
+        //    {
+        //        query = query.Include(include);
+        //    }
+        //    return query;
+        //}
+        public IQueryable<T> Filter(Expression<System.Func<T, bool>> condition)
         {
-            var query = _dbContext.Set<T>().Where(condition);
-            foreach (var include in includes)
-            {
-                query = query.Include(include);
-            }
-            return query;
+            return _dbSet.Where(condition);
         }
 
         public List<T> GetAll()

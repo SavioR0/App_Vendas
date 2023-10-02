@@ -28,7 +28,7 @@ namespace Vendas.Repository
 
         public List<User> Filter(Expression<Func<User, bool>> condition)
         {
-            return _repository.Filter(condition, u=> u.Address).ToList();
+            return _repository.Filter(condition).ToList();
         }
 
         public User GetById(int id)
