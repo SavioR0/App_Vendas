@@ -9,45 +9,40 @@ using Vendas.Repository.Interfaces;
 
 namespace Vendas.Repository
 {
-    public class ProductRepository : IDefaultRepository<Product>
+    public class AddressRepository : IDefaultRepository<Address>
     {
-        private IRepository<Product> _repository;
+        private IRepository<Address> _repository;
 
-        public ProductRepository(SalesContext context = null)
+        public AddressRepository(SalesContext context = null)
         {
-            _repository = new Repository<Product>(context ?? new SalesContext());
+            _repository = new Repository<Address>(context ?? new SalesContext());
         }
-        public string Add(Product entity)
+        public string Add(Address entity)
         {
             return _repository.Insert(entity);
         }
 
-        public List<Product> Filter(Expression<Func<Product, bool>> condition)
+        public List<Address> Filter(Expression<Func<Address, bool>> condition)
         {
             return _repository.Filter(condition).ToList();
         }
 
-        public List<Product> GetAll()
+        public List<Address> GetAll()
         {
             return _repository.GetAll();
         }
 
-        public Product GetById(int id)
+        public Address GetById(int id)
         {
             return _repository.GetById(id);
         }
 
-        public string Remove(Product entity)
+        public string Remove(Address entity)
         {
             return _repository.Delete(entity);
         }
 
-        public string Remove(int id)
-        {
-            return _repository.Delete(id);
-        }
-
-        public string Update(Product entity)
+        public string Update(Address entity)
         {
             return _repository.Update(entity);
         }

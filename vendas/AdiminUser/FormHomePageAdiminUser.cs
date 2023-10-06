@@ -1,6 +1,8 @@
-﻿using System;
+﻿using DevExpress.XtraGrid.Views.Grid;
+using System;
 using System.Windows.Forms;
 using vendas;
+using vendas.MenuForms;
 using Vendas.Entity.Entities;
 using Vendas.Entity.Enums;
 using Vendas.Library;
@@ -11,59 +13,68 @@ namespace Vendas.View
 {
     public partial class FormHomePageAdminUser : Form, IView
     {
+
+        public Form Form { get { return this; } }
         public FormHomePageAdminUser()
         {
             InitializeComponent();
-            gridClient.DataSource = null;
-            gridClient.DataSource = Communication.Service.UserController.Filter(c => c.TypeUser == (int)TypeUser.Client);
-            gridProduct.DataSource = null;
-            gridProduct.DataSource = Communication.Service.ProductController.Filter(c => c.Seller.Id == Global.Instance.User.Id);
+            RefreshGridClient();
+            RefreshGridProduct();
+            
             gridSale.DataSource = null;
             //gridSale.DataSource = Communication.Service.SaleController.Filter(c => c.Sale.ClientId == Global.Instance.User.Id)
 
         }
-        public Form Form {get{return this;}}
+        public void RefreshGridProduct() {
+            gridProduct.DataSource = null;
+            gridProduct.DataSource = Communication.Service.ProductController.Filter(c => c.Seller.Id == Global.Instance.User.Id);
+            if (gridProduct.DataSource != null && TabControlHomePage.SelectedTabPage == ProdutosTab) ChangeEnableButtons(true);
+        }
+        public void RefreshGridClient()
+        {
+            gridClient.DataSource = null;
+            gridClient.DataSource = Communication.Service.UserController.Filter(c => c.TypeUser == (int)TypeUser.Client);
+            if (gridProduct.DataSource != null && TabControlHomePage.SelectedTabPage == ClienteTab) ChangeEnableButtons(true);
+
+        }
         public void ChangeVisibleButtons(bool bolean) {
             btnEdit.Visible = bolean;
             btnRegister.Visible = bolean;
             btnUpdate.Visible = bolean;
             btnExclude.Visible = bolean;
         }
+        public void ChangeEnableButtons(bool bolean)
+        {
+            btnEdit.Enabled = bolean;
+            btnExclude.Enabled = bolean;
+        }
         private void TabControlHomePage_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
         {
-            if (TabControlHomePage.SelectedTabPage == ClienteTab) 
-            {
-                ChangeVisibleButtons(false);
-                comboBoxFilterProd.Text = "";
-                textEditSearch.Enabled = false;
+            comboBoxFilterProd.Properties.Items.Clear();
+            comboBoxFilterProd.Properties.Items.Add("Id");
 
-                comboBoxFilterProd.Properties.Items.Clear();
-                comboBoxFilterProd.Properties.Items.Add("Id");
-                comboBoxFilterProd.Properties.Items.Add("Nome");
-                return;
-            }
+            comboBoxFilterProd.Text = "";
+            textEditSearch.Enabled = false;
             if (TabControlHomePage.SelectedTabPage == ProdutosTab)
             {
                 ChangeVisibleButtons(true);
-                comboBoxFilterProd.Text = "";
-                textEditSearch.Enabled = false;
-
-                comboBoxFilterProd.Properties.Items.Clear();
-                comboBoxFilterProd.Properties.Items.Add("Id");
                 comboBoxFilterProd.Properties.Items.Add("Nome");
                 return;
             }
-            if (TabControlHomePage.SelectedTabPage == VendaTab)
+            ChangeVisibleButtons(false);
+            if (TabControlHomePage.SelectedTabPage == ClienteTab) 
             {
-                comboBoxFilterProd.Text = "";
-                textEditSearch.Enabled = false;
-                comboBoxFilterProd.Properties.Items.Clear();
-                comboBoxFilterProd.Properties.Items.Add("Id");
-                comboBoxFilterProd.Properties.Items.Add("Produto");
-                comboBoxFilterProd.Properties.Items.Add("Cliente");
-
+                comboBoxFilterProd.Properties.Items.Add("Nome");
                 return;
             }
+            
+            if (TabControlHomePage.SelectedTabPage == VendaTab)
+            {
+                comboBoxFilterProd.Properties.Items.Add("Produto");
+                comboBoxFilterProd.Properties.Items.Add("Cliente");
+                return;
+            }
+            textEditSearch.Text = "";
         }
         private void ComboBoxFilterProd_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -73,10 +84,17 @@ namespace Vendas.View
             }
         }
 
-        private void BtnRegister_Click(object sender, EventArgs e)
-        {
-            AppManager.Instance.Load<LoaderController, Product>(new FormRegisterProduct());
-        }
+        //private void BtnRegister_Click(object sender, EventArgs e)
+        //{
+        //    AppManager.Instance.Load<LoaderController, Product>(new FormRegisterProduct());
+        //}
+
+        //private void btnEdit_Click(object sender, EventArgs e)
+        //{
+        //    GridView gridView = gridProduct.FocusedView as GridView;
+        //    AppManager.Instance.Load<LoaderController, Product>(
+        //        new FormRegisterProduct(editedProduct: true, product: gridView.GetRow(gridView.FocusedRowHandle) as Product));
+        //}
 
         private void BtnSearchProd_Click(object sender, EventArgs e)
         {
@@ -127,6 +145,11 @@ namespace Vendas.View
             gridProduct.DataSource = Communication.Service.ProductController.Filter(c => c.Seller.Id == Global.Instance.User.Id);
             gridSale.DataSource = null;
             //gridSale.DataSource = Communication.Service.SaleController.Filter(c => c.Sale.ClientId == Global.Instance.User.Id)
+        }
+
+        private void btnExclude_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

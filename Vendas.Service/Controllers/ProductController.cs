@@ -35,6 +35,12 @@ namespace Vendas.Service.Controllers.Interfaces
             return _message;
         }
 
+        public string Exclude(int id)
+        {
+            _message = new ProductRepository().Remove(id);
+            return _message;
+        }
+
         [HttpPost]
         [Route("filtrar")]
         public List<Product> Filter(Expression<Func<Product, bool>> condition)

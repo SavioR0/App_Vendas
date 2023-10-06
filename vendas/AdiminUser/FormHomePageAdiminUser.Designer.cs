@@ -38,7 +38,6 @@ namespace Vendas.View
             this.descricao = new DevExpress.XtraGrid.Columns.GridColumn();
             this.estoque = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Valor = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Vendedor = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ClienteTab = new DevExpress.XtraTab.XtraTabPage();
             this.gridClient = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -122,8 +121,7 @@ namespace Vendas.View
             this.NameP,
             this.descricao,
             this.estoque,
-            this.Valor,
-            this.Vendedor});
+            this.Valor});
             this.gridView2.GridControl = this.gridProduct;
             this.gridView2.Name = "gridView2";
             this.gridView2.OptionsBehavior.ReadOnly = true;
@@ -173,15 +171,6 @@ namespace Vendas.View
             this.Valor.Visible = true;
             this.Valor.VisibleIndex = 4;
             this.Valor.Width = 102;
-            // 
-            // Vendedor
-            // 
-            this.Vendedor.Caption = "Vendedor";
-            this.Vendedor.FieldName = "Seller.Name";
-            this.Vendedor.Name = "Vendedor";
-            this.Vendedor.Visible = true;
-            this.Vendedor.VisibleIndex = 5;
-            this.Vendedor.Width = 226;
             // 
             // ClienteTab
             // 
@@ -368,6 +357,7 @@ namespace Vendas.View
             this.btnEdit.Size = new System.Drawing.Size(135, 23);
             this.btnEdit.TabIndex = 48;
             this.btnEdit.Text = "Editar";
+            //this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnRegister
             // 
@@ -378,7 +368,7 @@ namespace Vendas.View
             this.btnRegister.Size = new System.Drawing.Size(151, 23);
             this.btnRegister.TabIndex = 45;
             this.btnRegister.Text = "Cadastrar";
-            this.btnRegister.Click += new System.EventHandler(this.BtnRegister_Click);
+            //this.btnRegister.Click += new System.EventHandler(this.BtnRegister_Click);
             // 
             // btnUpdate
             // 
@@ -401,6 +391,7 @@ namespace Vendas.View
             this.btnExclude.Size = new System.Drawing.Size(135, 23);
             this.btnExclude.TabIndex = 49;
             this.btnExclude.Text = "Excluir";
+            this.btnExclude.Click += new System.EventHandler(this.btnExclude_Click);
             // 
             // FormHomePageAdminUser
             // 
@@ -470,7 +461,6 @@ namespace Vendas.View
         private DevExpress.XtraGrid.Columns.GridColumn descricao;
         private DevExpress.XtraGrid.Columns.GridColumn estoque;
         private DevExpress.XtraGrid.Columns.GridColumn Valor;
-        private DevExpress.XtraGrid.Columns.GridColumn Vendedor;
         private DevExpress.XtraGrid.GridControl gridSale;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
     }

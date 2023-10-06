@@ -27,5 +27,16 @@ namespace Vendas.Communication
                     return new ProductController();
             }
         }
+
+        public static IAddressController AddressController
+        {
+            get
+            {
+                if (Global.Instance.Distribuida)
+                    return null;
+                else
+                    return new AddressController();
+            }
+        }
     }
 }

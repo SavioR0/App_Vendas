@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using vendas;
 using Vendas.Entity.Entities;
 using Vendas.Entity.Enums;
 using Vendas.Library;
@@ -25,16 +26,20 @@ namespace Vendas.View
             //MessageBox.Show(((TypeUser)user.TypeUser == TypeUser.Admin).ToString() + "  " + user.TypeUser + " " + TypeUser.Admin);
             if (user.EditLogin == 1) { AppManager.Instance.Load<LoaderController, User>(new FormEditLogin()); AppManager.Instance.CloseForm(1); }
             else {
-                if ((TypeUser)user.TypeUser == TypeUser.Admin)
-                {
-                    AppManager.Instance.Load<LoaderController, User>(new FormHomePageAdminUser());
-                    AppManager.Instance.CloseForm(view: this);
-                }
-                else
-                {
-                    AppManager.Instance.Load<LoaderController, User>(new FormHomePageDefaultUser());
-                    AppManager.Instance.CloseForm(view: this);
-                }
+                //if ((TypeUser)user.TypeUser == TypeUser.Admin)
+                //{
+                //    AppManager.Instance.Load<LoaderController, User>(new FormHomePageAdminUser());
+                //    AppManager.Instance.CloseForm(view: this);
+                //    return;
+                //}
+                //if((TypeUser)user.TypeUser == TypeUser.Seller) 
+                //{
+                //    AppManager.Instance.Load<LoaderController, User>(new FormHomePageDefaultUser());
+                //    AppManager.Instance.CloseForm(view: this);
+                //}
+
+                AppManager.Instance.Load<LoaderController, User>(new FormHomePage());
+                AppManager.Instance.CloseForm(view: this);
             }
         }
 
@@ -46,11 +51,11 @@ namespace Vendas.View
 
         }
 
-        private void lbResgisterUser_Click(object sender, EventArgs e)
-        {
-            AppManager.Instance.Load<LoaderController, User>(new FormRegisterUser());
+        //private void lbResgisterUser_Click(object sender, EventArgs e)
+        //{
+        //    AppManager.Instance.Load<LoaderController, User>(new FormRegisterUser());
             
-        }
+        //}
 
         private void checkEdit1_CheckedChanged(object sender, EventArgs e)
         {

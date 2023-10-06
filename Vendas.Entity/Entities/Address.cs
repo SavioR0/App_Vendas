@@ -11,7 +11,7 @@ namespace Vendas.Entity.Entities
         public string Street { get; set; }
         public int Number { get; set; }
 
-        //[IgnoreDataMember]
-        //public virtual ICollection<User> Users { get; set; }
+        [IgnoreDataMember]
+        public virtual ICollection<User> Users { get; set; }
     }
 }

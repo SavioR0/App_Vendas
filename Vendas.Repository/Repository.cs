@@ -22,12 +22,17 @@ namespace Vendas.Repository
 
         public string Delete(T entity)
         {
-            throw new System.NotImplementedException();
+            _dbSet.Remove(Filter(c => c.Id == entity.Id).FirstOrDefault());
+            //_dbSet.Remove(entity);
+            return SaveChanges();
         }
 
         public string Delete(int id)
         {
-            throw new System.NotImplementedException();
+            // TODO
+            var teste = Filter(c => c.Id == id).FirstOrDefault();
+            _dbSet.Remove(teste);
+            return SaveChanges();
         }
 
         //public IQueryable<T> Filter(Expression<System.Func<T, bool>> condition, params Expression<Func<T, object>>[] includes)
@@ -46,7 +51,7 @@ namespace Vendas.Repository
 
         public List<T> GetAll()
         {
-            throw new System.NotImplementedException();
+            return _dbSet.ToList<T>();
         }
 
         public T GetById(int id)

@@ -33,12 +33,17 @@ namespace Vendas.Repository
 
         public User GetById(int id)
         {
-            throw new NotImplementedException();
+            return _repository.Filter(c=> c.Id == id).FirstOrDefault();
         }
 
         public string Remove(User entity)
         {
-            throw new NotImplementedException();
+            return _repository.Delete(entity);
+        }
+
+        public string Remove(int id)
+        {
+            return _repository.Delete(id);
         }
 
         public string Update(User entity)

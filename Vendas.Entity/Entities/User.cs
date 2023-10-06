@@ -13,7 +13,7 @@ namespace Vendas.Entity.Entities
         public string Cpf { get; set; }
         public string Tel { get; set; }
         public DateTime DateOfBirth { get; set; }
-        public Address Address { get; set; }
+        public int AddressId{ get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
 
@@ -22,8 +22,8 @@ namespace Vendas.Entity.Entities
         public char Flag { get; set; }
         public int EditLogin { get; set; }
 
-        //[IgnoreDataMember]
-        //public virtual Address Address { get; set; }
+        [IgnoreDataMember]
+        public virtual Address Address { get; set; }
 
         [IgnoreDataMember]
         public virtual ICollection<Sale> Sales { get; set; }

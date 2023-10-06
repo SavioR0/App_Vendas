@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using vendas;
 using Vendas.Communication;
 using Vendas.Entity.Entities;
 using Vendas.Entity.Enums;
@@ -30,10 +31,8 @@ namespace Vendas.View
 
         public void ChooseOpenForm(TypeUser typeUser)
         {
-            if (typeUser == TypeUser.Admin)
-                AppManager.Instance.Load<LoaderController, User>(new FormHomePageAdminUser());
-            else
-                AppManager.Instance.Load<LoaderController, User>(new FormHomePageDefaultUser());
+            AppManager.Instance.Load<LoaderController, User>(new FormHomePage());
+            AppManager.Instance.CloseForm(view: this);
         }
 
         private void Btn_register_user_Click(object sender, EventArgs e)
@@ -52,7 +51,7 @@ namespace Vendas.View
                         Cpf = user.Cpf,
                         Tel = user.Tel,
                         DateOfBirth = user.DateOfBirth,
-                        Address = user.Address,
+                        AddressId = user.AddressId,
                         Email = user.Email,
                         Password = password,
                         TypeUser = user.TypeUser,
@@ -60,14 +59,15 @@ namespace Vendas.View
                         Flag = 'U',
                         EditLogin = 0,
                     };
-                    Communication.Service.UserController.Save(newUser);
+                    var _message = Communication.Service.UserController.Save(newUser);
+                    if (!string.IsNullOrWhiteSpace(_message)) throw new Exception(_message);
                     Global.Instance.User = newUser;
                     ChooseOpenForm((TypeUser)newUser.TypeUser);
                     AppManager.Instance.CloseForm(view: this);
                 }
             }
             catch (Exception x) {
-                MessageBox.Show(x.Message);
+                MessageBox.Show(x.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

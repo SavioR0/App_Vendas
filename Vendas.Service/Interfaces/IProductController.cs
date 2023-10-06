@@ -9,6 +9,7 @@ namespace Vendas.Service.Interfaces
     {
         string Save(Product entity);
         string Exclude(Product entity);
+        string Exclude(int id);
         List<Product> Filter(Expression<Func<Product, bool>> condition);
 
         List<Product> GetAll();

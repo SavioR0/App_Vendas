@@ -9,18 +9,12 @@ using Vendas.Management;
 
 namespace Vendas.View
 {
-    public partial class FormRegisterUser : Form, IView
+    public partial class FormRegisterUser : Form
     {
 
         public FormRegisterUser() {
             InitializeComponent();
-        }
-        public Form Form
-        {
-            get
-            {
-                return this;
-            }
+            
         }
         private bool ValidateFields()
         {
@@ -55,10 +49,35 @@ namespace Vendas.View
                 MessageBox.Show(message, EmailValue.Text);
                 return false;
             }
-            
+
             return true;
         }
-        private void Btn_register_user_Click(object sender, EventArgs e)
+
+        private void ClearFields(){
+            nameValue.Text = null;
+            LastNameValue.Text = null;
+            cpfValue.Text = null;
+            telValue.Text = null;
+            dateValue.Text = null;
+            CEPValue.Text = null;
+            CityValue.Text = null;
+            NeighborhoodValue.Text = null;
+            StreetValue.Text = null;
+            numberValue.Text = null;
+            EmailValue.Text = null;
+            comboBoxEditTypeUser.Text = null;
+        }
+
+        private int ReturnTypeUser(string value) {
+            if (value == "Administrador")
+                return (int)TypeUser.Admin;
+            if (value == "Vendedor")
+                return (int)TypeUser.Seller;
+            else
+                return (int)TypeUser.Client;
+        }
+
+        private void Btn_register_user_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -66,31 +85,43 @@ namespace Vendas.View
                     var password = Security.Encrypt("TEXTO", Validations.DbFormatCPF(cpfValue.Text));
                     if (Communication.Service.UserController.Filter((User c) => c.Email == EmailValue.Text.Trim() || c.Cpf == cpfValue.Text.Trim()).Count != 0)
                         throw new Exception("Usuário já cadastrado no sistema. Certifique-se que seus dados estão certos e tente novamente.");
-                    
-                    Communication.Service.UserController.Save(new User
+                    var user = new User
                     {
                         Name = nameValue.Text.Trim(),
                         LastName = LastNameValue.Text.Trim(),
                         Cpf = Validations.DbFormatCPF(cpfValue.Text),
                         Tel = Validations.DbFormatTel(telValue.Text),
                         DateOfBirth = DateTime.Parse(dateValue.Text),
-                        Address = new Address
-                        {
-                            CEP = CEPValue.Text,
-                            City = CityValue.Text.Trim(),
-                            Neighborhood = NeighborhoodValue.Text.Trim(),
-                            Street = StreetValue.Text.Trim(),
-                            Number = int.Parse(numberValue.Text),
-                        },
                         Email = EmailValue.Text.Trim(),
                         Password = password,
-                        TypeUser = IsAdminValue.Checked ? (int)TypeUser.Admin : (int)TypeUser.Client,
+                        TypeUser = ReturnTypeUser(comboBoxEditTypeUser.Text),
                         UserName = nameValue.Text.Trim().ToLower() + LastNameValue.Text.Trim().ToLower() + cpfValue.Text.Substring(0, 2),
                         Flag = 'I',
                         EditLogin = 1,
-                    });
+                    };
+
+                    var address = new Address
+                    {
+                        CEP = CEPValue.Text,
+                        City = CityValue.Text.Trim(),
+                        Neighborhood = NeighborhoodValue.Text.Trim(),
+                        Street = StreetValue.Text.Trim(),
+                        Number = int.Parse(numberValue.Text),
+                    };
+                    var adressRegistered = Communication.Service.AddressController.Filter(
+                        c => c.CEP == address.CEP &&
+                        c.City == address.City &&
+                        c.Neighborhood == address.Neighborhood &&
+                        c.Number == address.Number &&
+                        c.Street == address.Street
+                    );
+
+                    if (adressRegistered.Count == 1) user.AddressId = adressRegistered[0].Id;
+                    else user.Address = address;
+
+                    Communication.Service.UserController.Save(user);
                     MessageBox.Show("Usuário cadastrado com sucesso! Para realizar o login a primeira vez verifique em seu e-mail seu username e senha", "Usuário cadastrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    AppManager.Instance.CloseForm(view:this);
+                    ClearFields();
                 }
             }
             catch (NullReferenceException x) { MessageBox.Show(x.Message); }

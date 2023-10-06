@@ -41,6 +41,11 @@ namespace Vendas.Service.Controllers
 
             return _message;
         }
+        public string Exclude(int id)
+        {
+            _message = new ProductRepository().Remove(id);
+            return _message;
+        }
 
         [HttpPost]
         [Route("filtrar")]

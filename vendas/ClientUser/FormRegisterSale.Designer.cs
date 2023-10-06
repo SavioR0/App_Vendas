@@ -251,7 +251,7 @@ namespace vendas.ClientUser
             this.Controls.Add(this.textEdit1);
             this.Controls.Add(this.ProductValue);
             this.Name = "FormRegisterSale";
-            this.Text = "FormREgisterSale";
+            this.Text = "Carrinho de compras";
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridProduct)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();

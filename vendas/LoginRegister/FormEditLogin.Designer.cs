@@ -40,7 +40,7 @@ namespace Vendas.View
             // 
             // ConfirmPasswordValue
             // 
-            this.ConfirmPasswordValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.ConfirmPasswordValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ConfirmPasswordValue.Location = new System.Drawing.Point(128, 96);
             this.ConfirmPasswordValue.MaximumSize = new System.Drawing.Size(1000, 0);
@@ -53,7 +53,7 @@ namespace Vendas.View
             // 
             // PasswordValue
             // 
-            this.PasswordValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.PasswordValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PasswordValue.Location = new System.Drawing.Point(128, 70);
             this.PasswordValue.MaximumSize = new System.Drawing.Size(1000, 0);
@@ -66,7 +66,7 @@ namespace Vendas.View
             // 
             // labelControl5
             // 
-            this.labelControl5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.labelControl5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelControl5.Location = new System.Drawing.Point(47, 99);
             this.labelControl5.Name = "labelControl5";
@@ -76,7 +76,7 @@ namespace Vendas.View
             // 
             // labelControl4
             // 
-            this.labelControl4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.labelControl4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelControl4.Location = new System.Drawing.Point(54, 73);
             this.labelControl4.Name = "labelControl4";
@@ -86,7 +86,7 @@ namespace Vendas.View
             // 
             // Btn_register_user
             // 
-            this.Btn_register_user.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.Btn_register_user.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Btn_register_user.Location = new System.Drawing.Point(109, 144);
             this.Btn_register_user.Name = "Btn_register_user";
@@ -106,7 +106,7 @@ namespace Vendas.View
             this.Controls.Add(this.labelControl5);
             this.Controls.Add(this.labelControl4);
             this.Name = "FormEditLogin";
-            this.Text = "FormEditLogin";
+            this.Text = "Editar Senha";
             ((System.ComponentModel.ISupportInitialize)(this.ConfirmPasswordValue.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PasswordValue.Properties)).EndInit();
             this.ResumeLayout(false);
