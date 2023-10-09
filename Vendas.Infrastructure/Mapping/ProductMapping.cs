@@ -19,6 +19,7 @@ namespace Vendas.Infrastructure.Mapping
             Property(p => p.Stock).IsRequired();
             Property(p => p.Value).IsRequired();
 
+
             HasRequired(p => p.Seller).WithMany().HasForeignKey(v => v.SellerId);
         }
     }

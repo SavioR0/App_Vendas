@@ -23,14 +23,13 @@ namespace Vendas.Service.Controllers
         [Route("filtrar")]
         public List<Address> Filter(Expression<Func<Address, bool>> condition)
         {
-            return new AddressRepository().Filter(condition
-                );
+            return new AddressRepository().Filter(condition) as List<Address>;
         }
         [HttpPost]
         [Route("filtrarTodos")]
         public List<Address> GetAll()
         {
-            return new AddressRepository().GetAll();
+            return new AddressRepository().GetAll() as List<Address>; ;
         }
         [HttpPost]
         [Route("salvar")]

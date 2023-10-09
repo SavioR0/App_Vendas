@@ -214,7 +214,7 @@ namespace vendas.MenuForms
             this.btnEdit.Size = new System.Drawing.Size(117, 30);
             this.btnEdit.TabIndex = 109;
             this.btnEdit.Text = "Editar";
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            this.btnEdit.Click += new System.EventHandler(this.BtnEdit_Click);
             // 
             // btnExclude
             // 
@@ -223,7 +223,7 @@ namespace vendas.MenuForms
             this.btnExclude.Size = new System.Drawing.Size(117, 30);
             this.btnExclude.TabIndex = 110;
             this.btnExclude.Text = "Excluir";
-            this.btnExclude.Click += new System.EventHandler(this.btnExclude_Click);
+            this.btnExclude.Click += new System.EventHandler(this.BtnExclude_Click);
             // 
             // simpleButton1
             // 
@@ -232,7 +232,7 @@ namespace vendas.MenuForms
             this.simpleButton1.Size = new System.Drawing.Size(117, 30);
             this.simpleButton1.TabIndex = 111;
             this.simpleButton1.Text = "Cadastrar";
-            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            this.simpleButton1.Click += new System.EventHandler(this.SimpleButton1_Click);
             // 
             // FormProducts
             // 

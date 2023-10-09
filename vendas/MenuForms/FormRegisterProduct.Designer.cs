@@ -49,7 +49,7 @@ namespace vendas.MenuForms
             // 
             // nameValue
             // 
-            this.nameValue.EditValue = "Produto 1";
+            this.nameValue.EditValue = "";
             this.nameValue.Location = new System.Drawing.Point(143, 90);
             this.nameValue.Name = "nameValue";
             this.nameValue.Size = new System.Drawing.Size(670, 20);
@@ -57,7 +57,7 @@ namespace vendas.MenuForms
             // 
             // stockValue
             // 
-            this.stockValue.EditValue = "50";
+            this.stockValue.EditValue = "";
             this.stockValue.Location = new System.Drawing.Point(366, 142);
             this.stockValue.Name = "stockValue";
             this.stockValue.Properties.BeepOnError = false;
@@ -78,7 +78,7 @@ namespace vendas.MenuForms
             // 
             // descriptionValue
             // 
-            this.descriptionValue.EditValue = "Esse produto é bom";
+            this.descriptionValue.EditValue = "";
             this.descriptionValue.Location = new System.Drawing.Point(143, 116);
             this.descriptionValue.Name = "descriptionValue";
             this.descriptionValue.Size = new System.Drawing.Size(670, 20);
@@ -97,17 +97,14 @@ namespace vendas.MenuForms
             // 
             // valueValue
             // 
-            this.valueValue.EditValue = "200";
+            this.valueValue.EditValue = "";
             this.valueValue.Location = new System.Drawing.Point(143, 142);
             this.valueValue.Name = "valueValue";
             this.valueValue.Properties.BeepOnError = false;
-            this.valueValue.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
-            this.valueValue.Properties.MaskSettings.Set("MaskManagerSignature", "allowNull=False");
             this.valueValue.Properties.MaskSettings.Set("mask", "c");
-            this.valueValue.Properties.MaskSettings.Set("culture", "pt-BR");
-            this.valueValue.Properties.MaskSettings.Set("autoHideDecimalSeparator", true);
+            this.valueValue.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
             this.valueValue.Properties.UseMaskAsDisplayFormat = true;
-            this.valueValue.Size = new System.Drawing.Size(60, 20);
+            this.valueValue.Size = new System.Drawing.Size(162, 20);
             this.valueValue.TabIndex = 23;
             // 
             // nameLabel

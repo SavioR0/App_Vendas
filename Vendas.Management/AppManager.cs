@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Windows.Forms;
-using Vendas.Entity.Entities;
-using Vendas.Entity.Enums;
 
 namespace Vendas.Management
 {

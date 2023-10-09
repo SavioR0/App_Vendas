@@ -9,34 +9,36 @@ using Vendas.Repository.Interfaces;
 
 namespace Vendas.Repository
 {
-    public class UserRepository : IDefaultRepository<User>
+    public class SaleRepository : IDefaultRepository<Sale>
     {
-        private readonly IRepository<User> _repository;
+        private readonly IRepository<Sale> _repository;
 
-
-        public UserRepository(SalesContext context = null)
+        public SaleRepository(SalesContext context = null)
         {
-            _repository = new Repository<User>(context ?? new SalesContext());
+            _repository = new Repository<Sale>(context ?? new SalesContext());
         }
-
-        public string Add(User entity)
+        public string Add(Sale entity)
         {
             string message = _repository.Insert(entity);
-
             return message;
         }
 
-        public List<User> Filter(Expression<Func<User, bool>> condition)
+        public List<Sale> Filter(Expression<Func<Sale, bool>> condition)
         {
             return _repository.Filter(condition).ToList();
         }
 
-        public User GetById(int id)
+        public List<Sale> GetAll()
         {
-            return _repository.Filter(c=> c.Id == id).FirstOrDefault();
+            return _repository.GetAll().ToList();
         }
 
-        public string Remove(User entity)
+        public Sale GetById(int id)
+        {
+            return _repository.Filter(c => c.Id == id).FirstOrDefault();
+        }
+
+        public string Remove(Sale entity)
         {
             return _repository.Delete(entity);
         }
@@ -46,15 +48,10 @@ namespace Vendas.Repository
             return _repository.Delete(id);
         }
 
-        public string Update(User entity)
+        public string Update(Sale entity)
         {
             string message = _repository.Update(entity);
             return message;
-        }
-
-        public List<User> GetAll()
-        {
-            return _repository.GetAll().ToList();
         }
     }
 }

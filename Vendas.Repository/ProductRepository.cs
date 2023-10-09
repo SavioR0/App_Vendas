@@ -11,7 +11,7 @@ namespace Vendas.Repository
 {
     public class ProductRepository : IDefaultRepository<Product>
     {
-        private IRepository<Product> _repository;
+        private readonly IRepository<Product> _repository;
 
         public ProductRepository(SalesContext context = null)
         {

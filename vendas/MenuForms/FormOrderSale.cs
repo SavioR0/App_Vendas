@@ -16,5 +16,20 @@ namespace vendas.MenuForms
         {
             InitializeComponent();
         }
+
+        private void SimpleButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnExclude_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnEdit_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

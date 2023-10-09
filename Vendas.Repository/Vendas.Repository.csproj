@@ -55,6 +55,7 @@
     <Compile Include="Intefaces\IDefaultRepository.cs" />
     <Compile Include="Intefaces\IRepository.cs" />
     <Compile Include="ProductRepository.cs" />
+    <Compile Include="SaleRepository.cs" />
     <Compile Include="UserRepository.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

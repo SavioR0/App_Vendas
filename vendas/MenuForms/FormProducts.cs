@@ -11,7 +11,7 @@ namespace vendas.MenuForms
 {
     public partial class FormProducts : Form
     {
-        private FormHomePage _formHomePage;
+        private readonly FormHomePage _formHomePage;
         public FormProducts(FormHomePage formHomePage)
         {
             InitializeComponent();
@@ -31,24 +31,28 @@ namespace vendas.MenuForms
             }
         }
 
-        private void btnExclude_Click(object sender, System.EventArgs e)
+        private void BtnExclude_Click(object sender, System.EventArgs e)
         {
-            GridView gridView = gridProduct.FocusedView as GridView;
-            var prod = (gridView.GetRow(gridView.FocusedRowHandle) as Product);
-            Service.ProductController.Exclude(prod.Id);
-            LoadGridProduct((TypeUser)Global.Instance.User.TypeUser);
+            if (MessageBox.Show("Tem certeza que deseja remover o usuário do sistema?", "Remover Usuário!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                GridView gridView = gridProduct.FocusedView as GridView;
+                var prod = (gridView.GetRow(gridView.FocusedRowHandle) as Product);
+                var message = Service.ProductController.Exclude(prod.Id);
+                if (message != "") MessageBox.Show(message, "Ocorreu um erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LoadGridProduct((TypeUser)Global.Instance.User.TypeUser);
+            }
         }
 
-        public void btnEdit_Click(object sender, EventArgs e)
+        public void BtnEdit_Click(object sender, EventArgs e)
         {
             GridView gridView = gridProduct.FocusedView as GridView;
             var prod = (gridView.GetRow(gridView.FocusedRowHandle) as Product);
             _formHomePage.EditProductButtonClicked(prod);
         }
 
-        private void simpleButton1_Click(object sender, EventArgs e)
+        private void SimpleButton1_Click(object sender, EventArgs e)
         {
-            _formHomePage.OpenForm();
+            _formHomePage.OpenFormProduct();
         }
     }
 }

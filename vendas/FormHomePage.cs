@@ -16,7 +16,7 @@ namespace vendas
         private Form frmActive;
         public Form Form { get { return this; } }
 
-        Dictionary<TypeUser, Action> _loadPermissions;
+        readonly Dictionary<TypeUser, Action> _loadPermissions;
         public FormHomePage()
         {
             InitializeComponent();
@@ -66,55 +66,99 @@ namespace vendas
             if (frmActive != null && closeForm)
                 frmActive.Close();
         }
-        private void btnRegisterUserMenu_Click(object sender, System.EventArgs e)
+        private void BtnRegisterUserMenu_Click(object sender, System.EventArgs e)
         {
             ActiveFormClose();
         }
-        private void btnUsersMenu_Click(object sender, System.EventArgs e)
+        private void BtnUsersMenu_Click(object sender, System.EventArgs e)
         {
-            FormShow(new FormUsers());
+            FormShow(new FormUsers(this));
         }
-        private void bntRegisterUsersMenu_Click(object sender, System.EventArgs e)
+
+        public void OpenFormUser(User user = null)
+        {
+            FormShow(new FormRegisterUser(user));
+        }
+
+        public void EditUserButtonClicked(User user)
+        {
+            OpenFormUser(user: user);
+        }
+
+        private void BntRegisterUsersMenu_Click(object sender, System.EventArgs e)
         {
             FormShow(new FormRegisterUser());
         }
 
-        private void btnPurchasesSalesMenu_Click(object sender, System.EventArgs e)
+        private void BtnPurchasesSalesMenu_Click(object sender, System.EventArgs e)
         {
             FormShow(new FormOrderSale());
         }
 
-        private void btnRegisterPurchases_Click(object sender, System.EventArgs e)
+        private void BtnRegisterPurchases_Click(object sender, System.EventArgs e)
         {
             FormShow(new FormRegisterOrder());
         }
 
-        public void btnProductMenu_Click(object sender, System.EventArgs e)
+        public void BtnProductMenu_Click(object sender, System.EventArgs e)
         {
             FormShow(new FormProducts(this));
         }
-        public void OpenForm( Product prod = null)
+        public void OpenFormProduct( Product prod = null)
         {
             FormShow(new FormRegisterProduct(prod));
         }
 
         public void EditProductButtonClicked(Product prod)
         {
-            OpenForm(prod: prod);
+            OpenFormProduct(prod: prod);
         }
-        private void btnRegisterProductMenu_Click(object sender, EventArgs e)
+        private void BtnRegisterProductMenu_Click(object sender, EventArgs e)
         {
-            OpenForm();
+            OpenFormProduct();
         }
 
-
-        private void btnExit_Click(object sender, System.EventArgs e)
+        private void BtnExit_Click(object sender, System.EventArgs e)
         {
             AppManager.Instance.Load<LoaderController, User>(new LoginUser());
             Global.Instance.User = null;
             AppManager.Instance.CloseForm(view: this);
         }
 
-        
+        private void homeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ActiveFormClose();
+        }
+
+
+        private void cadasroDeUsuáriosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void produtosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cadastroDeProdutosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pedidosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void realizarPedidosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void sairToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

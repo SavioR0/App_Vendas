@@ -43,7 +43,7 @@ namespace Vendas.Service.Controllers
         }
         public string Exclude(int id)
         {
-            _message = new ProductRepository().Remove(id);
+            _message = new UserRepository().Remove(id);
             return _message;
         }
 
@@ -51,14 +51,14 @@ namespace Vendas.Service.Controllers
         [Route("filtrar")]
         public List<User> Filter(Expression<Func<User, bool>> condition)
         {
-            return new UserRepository().Filter(condition);
+            return new UserRepository().Filter(condition) as List<User>;
         }
 
         [HttpPost]
         [Route("filtrarTodos")]
         public List<User> GetAll()
         {
-            return new UserRepository().GetAll();
+            return new UserRepository().GetAll() as List<User>;
         }
 
         [HttpPost]
@@ -66,7 +66,7 @@ namespace Vendas.Service.Controllers
         public bool Login(string userName, string senha)
         {
             var password = Security.Decrypt("TEXTO", senha);
-            var users = new UserRepository().Filter((User c) => c.UserName == userName.Trim() &&  c.Password == password);
+            var users = new UserRepository().Filter((User c) => c.UserName == userName.Trim() &&  c.Password == password) as List<User>;
             if (users.Count == 0) return false;
 
             Global.Instance.User = users[0];

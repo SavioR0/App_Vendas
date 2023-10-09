@@ -44,9 +44,20 @@ namespace vendas
             this.ola = new System.Windows.Forms.Label();
             this.pictureBoxPerfile = new System.Windows.Forms.PictureBox();
             this.panelFormSelected = new System.Windows.Forms.Panel();
+            this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.homeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.usuáriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cadasroDeUsuáriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.produtosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cadastroDeProdutosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pedidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.realizarPedidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.headerMenu.SuspendLayout();
             this.menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPerfile)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // headerMenu
@@ -62,9 +73,9 @@ namespace vendas
             this.headerMenu.Controls.Add(this.btnHome);
             this.headerMenu.Controls.Add(this.menu);
             this.headerMenu.Dock = System.Windows.Forms.DockStyle.Left;
-            this.headerMenu.Location = new System.Drawing.Point(0, 0);
+            this.headerMenu.Location = new System.Drawing.Point(0, 24);
             this.headerMenu.Name = "headerMenu";
-            this.headerMenu.Size = new System.Drawing.Size(185, 588);
+            this.headerMenu.Size = new System.Drawing.Size(185, 564);
             this.headerMenu.TabIndex = 0;
             // 
             // btnRegisterOrders
@@ -81,7 +92,7 @@ namespace vendas
             this.btnRegisterOrders.Size = new System.Drawing.Size(185, 31);
             this.btnRegisterOrders.TabIndex = 9;
             this.btnRegisterOrders.Text = "Realizar Pedidos";
-            this.btnRegisterOrders.Click += new System.EventHandler(this.btnRegisterPurchases_Click);
+            this.btnRegisterOrders.Click += new System.EventHandler(this.BtnRegisterPurchases_Click);
             // 
             // btnOrdersMenu
             // 
@@ -97,7 +108,7 @@ namespace vendas
             this.btnOrdersMenu.Size = new System.Drawing.Size(185, 31);
             this.btnOrdersMenu.TabIndex = 8;
             this.btnOrdersMenu.Text = "Pedidos";
-            this.btnOrdersMenu.Click += new System.EventHandler(this.btnPurchasesSalesMenu_Click);
+            this.btnOrdersMenu.Click += new System.EventHandler(this.BtnPurchasesSalesMenu_Click);
             // 
             // btnRegisterProductMenu
             // 
@@ -113,7 +124,7 @@ namespace vendas
             this.btnRegisterProductMenu.Size = new System.Drawing.Size(185, 31);
             this.btnRegisterProductMenu.TabIndex = 4;
             this.btnRegisterProductMenu.Text = "Cadastro de Produtos";
-            this.btnRegisterProductMenu.Click += new System.EventHandler(this.btnRegisterProductMenu_Click);
+            this.btnRegisterProductMenu.Click += new System.EventHandler(this.BtnRegisterProductMenu_Click);
             // 
             // btnProductMenu
             // 
@@ -129,7 +140,7 @@ namespace vendas
             this.btnProductMenu.Size = new System.Drawing.Size(185, 31);
             this.btnProductMenu.TabIndex = 3;
             this.btnProductMenu.Text = "Produtos";
-            this.btnProductMenu.Click += new System.EventHandler(this.btnProductMenu_Click);
+            this.btnProductMenu.Click += new System.EventHandler(this.BtnProductMenu_Click);
             // 
             // btnRegisterUsersMenu
             // 
@@ -145,7 +156,7 @@ namespace vendas
             this.btnRegisterUsersMenu.Size = new System.Drawing.Size(185, 31);
             this.btnRegisterUsersMenu.TabIndex = 2;
             this.btnRegisterUsersMenu.Text = "Cadastro de Usuários";
-            this.btnRegisterUsersMenu.Click += new System.EventHandler(this.bntRegisterUsersMenu_Click);
+            this.btnRegisterUsersMenu.Click += new System.EventHandler(this.BntRegisterUsersMenu_Click);
             // 
             // btnUsersMenu
             // 
@@ -161,7 +172,7 @@ namespace vendas
             this.btnUsersMenu.Size = new System.Drawing.Size(185, 31);
             this.btnUsersMenu.TabIndex = 1;
             this.btnUsersMenu.Text = "Usuários";
-            this.btnUsersMenu.Click += new System.EventHandler(this.btnUsersMenu_Click);
+            this.btnUsersMenu.Click += new System.EventHandler(this.BtnUsersMenu_Click);
             // 
             // btnExit
             // 
@@ -170,14 +181,14 @@ namespace vendas
             this.btnExit.Appearance.Options.UseTextOptions = true;
             this.btnExit.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.btnExit.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnExit.Location = new System.Drawing.Point(0, 557);
+            this.btnExit.Location = new System.Drawing.Point(0, 533);
             this.btnExit.Margin = new System.Windows.Forms.Padding(0);
             this.btnExit.Name = "btnExit";
             this.btnExit.Padding = new System.Windows.Forms.Padding(5);
             this.btnExit.Size = new System.Drawing.Size(185, 31);
             this.btnExit.TabIndex = 2;
             this.btnExit.Text = "Sair";
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            this.btnExit.Click += new System.EventHandler(this.BtnExit_Click);
             // 
             // btnHome
             // 
@@ -193,7 +204,7 @@ namespace vendas
             this.btnHome.Size = new System.Drawing.Size(185, 31);
             this.btnHome.TabIndex = 0;
             this.btnHome.Text = "Home";
-            this.btnHome.Click += new System.EventHandler(this.btnRegisterUserMenu_Click);
+            this.btnHome.Click += new System.EventHandler(this.BtnRegisterUserMenu_Click);
             // 
             // menu
             // 
@@ -243,11 +254,95 @@ namespace vendas
             // 
             // panelFormSelected
             // 
-            this.panelFormSelected.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelFormSelected.Location = new System.Drawing.Point(185, 0);
+            this.panelFormSelected.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelFormSelected.Location = new System.Drawing.Point(185, 24);
             this.panelFormSelected.Name = "panelFormSelected";
-            this.panelFormSelected.Size = new System.Drawing.Size(881, 588);
+            this.panelFormSelected.Size = new System.Drawing.Size(881, 564);
             this.panelFormSelected.TabIndex = 1;
+            // 
+            // menuToolStripMenuItem
+            // 
+            this.menuToolStripMenuItem.AutoSize = false;
+            this.menuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.homeToolStripMenuItem,
+            this.usuáriosToolStripMenuItem,
+            this.cadasroDeUsuáriosToolStripMenuItem,
+            this.produtosToolStripMenuItem,
+            this.cadastroDeProdutosToolStripMenuItem,
+            this.pedidosToolStripMenuItem,
+            this.realizarPedidosToolStripMenuItem,
+            this.sairToolStripMenuItem});
+            this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
+            this.menuToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.menuToolStripMenuItem.Text = "Menu";
+            // 
+            // homeToolStripMenuItem
+            // 
+            this.homeToolStripMenuItem.Name = "homeToolStripMenuItem";
+            this.homeToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.homeToolStripMenuItem.Text = "Home";
+            this.homeToolStripMenuItem.Click += new System.EventHandler(this.homeToolStripMenuItem_Click);
+            // 
+            // usuáriosToolStripMenuItem
+            // 
+            this.usuáriosToolStripMenuItem.Name = "usuáriosToolStripMenuItem";
+            this.usuáriosToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.usuáriosToolStripMenuItem.Text = "Usuários";
+            this.usuáriosToolStripMenuItem.Click += new System.EventHandler(this.BtnUsersMenu_Click);
+            // 
+            // cadasroDeUsuáriosToolStripMenuItem
+            // 
+            this.cadasroDeUsuáriosToolStripMenuItem.Name = "cadasroDeUsuáriosToolStripMenuItem";
+            this.cadasroDeUsuáriosToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.cadasroDeUsuáriosToolStripMenuItem.Text = "Cadastro de Usuários";
+            this.cadasroDeUsuáriosToolStripMenuItem.Click += new System.EventHandler(this.BntRegisterUsersMenu_Click);
+            // 
+            // produtosToolStripMenuItem
+            // 
+            this.produtosToolStripMenuItem.Name = "produtosToolStripMenuItem";
+            this.produtosToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.produtosToolStripMenuItem.Text = "Produtos";
+            this.produtosToolStripMenuItem.Click += new System.EventHandler(this.BtnProductMenu_Click);
+            // 
+            // cadastroDeProdutosToolStripMenuItem
+            // 
+            this.cadastroDeProdutosToolStripMenuItem.Name = "cadastroDeProdutosToolStripMenuItem";
+            this.cadastroDeProdutosToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.cadastroDeProdutosToolStripMenuItem.Text = "Cadastro de Produtos";
+            this.cadastroDeProdutosToolStripMenuItem.Click += new System.EventHandler(this.BtnRegisterProductMenu_Click);
+            // 
+            // pedidosToolStripMenuItem
+            // 
+            this.pedidosToolStripMenuItem.Name = "pedidosToolStripMenuItem";
+            this.pedidosToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.pedidosToolStripMenuItem.Text = "Pedidos";
+            this.pedidosToolStripMenuItem.Click += new System.EventHandler(this.BtnPurchasesSalesMenu_Click);
+            // 
+            // realizarPedidosToolStripMenuItem
+            // 
+            this.realizarPedidosToolStripMenuItem.Name = "realizarPedidosToolStripMenuItem";
+            this.realizarPedidosToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.realizarPedidosToolStripMenuItem.Text = "Realizar Pedidos";
+            this.realizarPedidosToolStripMenuItem.Click += new System.EventHandler(this.BtnRegisterPurchases_Click);
+            // 
+            // sairToolStripMenuItem
+            // 
+            this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.sairToolStripMenuItem.Text = "Sair";
+            this.sairToolStripMenuItem.Click += new System.EventHandler(this.BtnExit_Click);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1066, 24);
+            this.menuStrip1.TabIndex = 11;
+            this.menuStrip1.Text = "menuStrip1";
             // 
             // FormHomePage
             // 
@@ -256,13 +351,18 @@ namespace vendas
             this.ClientSize = new System.Drawing.Size(1066, 588);
             this.Controls.Add(this.panelFormSelected);
             this.Controls.Add(this.headerMenu);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormHomePage";
             this.Text = "Tela Principal";
             this.headerMenu.ResumeLayout(false);
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPerfile)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -282,5 +382,15 @@ namespace vendas
         private DevExpress.XtraEditors.SimpleButton btnRegisterUsersMenu;
         private DevExpress.XtraEditors.SimpleButton btnUsersMenu;
         private System.Windows.Forms.Panel panelFormSelected;
+        private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cadastroDeProdutosToolStripMenuItem;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem homeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem usuáriosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cadasroDeUsuáriosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem produtosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pedidosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem realizarPedidosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem;
     }
 }

@@ -15,7 +15,6 @@ namespace Vendas.Infrastructure.Mapping
             Property(p => p.Neighborhood).IsRequired().HasMaxLength(100);
             Property(p => p.Street).IsRequired().HasMaxLength(100);
             Property(p => p.Number).IsRequired();
-            
         }
     }
 }

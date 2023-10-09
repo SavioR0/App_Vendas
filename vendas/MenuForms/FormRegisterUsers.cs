@@ -5,20 +5,62 @@ using System.Windows.Forms;
 using Vendas.Entity.Entities;
 using Vendas.Entity.Enums;
 using Vendas.Library;
-using Vendas.Management;
+using Vendas.Communication;
 
 namespace Vendas.View
 {
     public partial class FormRegisterUser : Form
     {
-
-        public FormRegisterUser() {
+        private readonly User _userEdited;
+        public FormRegisterUser(User user=null) {
             InitializeComponent();
+            _userEdited = user;
+            LoadEdit();
             
         }
+
+        private void LoadEdit()
+        {
+            if (_userEdited == null) return;
+            LoadFieldsValues();
+            LoadPermissionsEdited();
+            
+        }
+
+        private void LoadPermissionsEdited()
+        {
+            EmailValue.ReadOnly = true;
+            cpfValue.ReadOnly = true;
+
+        }
+
+        private void LoadFieldsValues()
+        {
+            nameValue.Text = _userEdited.Name;
+            LastNameValue.Text = _userEdited.LastName;
+            cpfValue.Text = _userEdited.Cpf;
+            telValue.Text = _userEdited.Tel;
+            dateValue.Text = _userEdited.DateOfBirth.ToString("d");
+            CEPValue.Text = _userEdited.Address.CEP;
+            CityValue.Text = _userEdited.Address.City;
+            NeighborhoodValue.Text = _userEdited.Address.Neighborhood;
+            numberValue.Text = _userEdited.Address.Number.ToString();
+            EmailValue.Text = _userEdited.Email;
+            comboBoxEditTypeUser.Text = ReturnTextTypeUser((TypeUser)_userEdited.TypeUser);
+        }
+
+        private string ReturnTextTypeUser(TypeUser typeUser)
+        {
+            var selectedText = new Dictionary<TypeUser, string>
+            { { TypeUser.Admin, "Administrador"},
+              { TypeUser.Client, "Cliente" },
+              { TypeUser.Seller, "Vendedor"}
+            };
+            return selectedText[typeUser];
+        }
+
         private bool ValidateFields()
         {
-            string message = "";
             Dictionary<TextEdit, string> fields = new Dictionary<TextEdit, string> {
                 { nameValue, "Campo nome está vazio"},
                 { cpfValue, "Campo cpf está vazio"},
@@ -44,7 +86,7 @@ namespace Vendas.View
                 MessageBox.Show(" CPF " + cpfValue.Text + " inválido", "CPF inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            if (Validations.ValidateEmail(out message, EmailValue.Text))
+            if (Validations.ValidateEmail(out string message, EmailValue.Text))
             {
                 MessageBox.Show(message, EmailValue.Text);
                 return false;
@@ -83,8 +125,9 @@ namespace Vendas.View
             {
                 if (ValidateFields()) {
                     var password = Security.Encrypt("TEXTO", Validations.DbFormatCPF(cpfValue.Text));
-                    if (Communication.Service.UserController.Filter((User c) => c.Email == EmailValue.Text.Trim() || c.Cpf == cpfValue.Text.Trim()).Count != 0)
+                    if ( _userEdited == null && (Communication.Service.UserController.Filter((User c) => c.Email == EmailValue.Text.Trim() || c.Cpf == cpfValue.Text.Trim()).Count != 0))
                         throw new Exception("Usuário já cadastrado no sistema. Certifique-se que seus dados estão certos e tente novamente.");
+
                     var user = new User
                     {
                         Name = nameValue.Text.Trim(),
@@ -95,9 +138,9 @@ namespace Vendas.View
                         Email = EmailValue.Text.Trim(),
                         Password = password,
                         TypeUser = ReturnTypeUser(comboBoxEditTypeUser.Text),
-                        UserName = nameValue.Text.Trim().ToLower() + LastNameValue.Text.Trim().ToLower() + cpfValue.Text.Substring(0, 2),
-                        Flag = 'I',
-                        EditLogin = 1,
+                        UserName = _userEdited == null ? nameValue.Text.Trim().ToLower() + LastNameValue.Text.Trim().ToLower() + cpfValue.Text.Substring(0, 2) : _userEdited.UserName,
+                        Flag = _userEdited == null ? 'I' : 'U',
+                        EditLogin = _userEdited == null ? 1 : 0,
                     };
 
                     var address = new Address
@@ -115,17 +158,36 @@ namespace Vendas.View
                         c.Number == address.Number &&
                         c.Street == address.Street
                     );
+                    if (_userEdited != null  && !(_userEdited.Address.CEP == address.CEP &&
+                        _userEdited.Address.City == address.City &&
+                        _userEdited.Address.Neighborhood == address.Neighborhood &&
+                        _userEdited.Address.Number == address.Number &&
+                        _userEdited.Address.Street == address.Street)) 
+                    {
+                        var message = Communication.Service.AddressController.Save(address);
+                        if (message != "") throw new Exception(message);
 
-                    if (adressRegistered.Count == 1) user.AddressId = adressRegistered[0].Id;
+                        user.AddressId = Communication.Service.AddressController.Filter(c => c.Id == address.Id)[0].Id;
+                    }
+
+                    if (adressRegistered.Count == 1) 
+                    {
+                        user.AddressId = adressRegistered[0].Id;
+                        user.Address = adressRegistered[0];
+                    }
                     else user.Address = address;
 
-                    Communication.Service.UserController.Save(user);
-                    MessageBox.Show("Usuário cadastrado com sucesso! Para realizar o login a primeira vez verifique em seu e-mail seu username e senha", "Usuário cadastrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    var messageSave = Communication.Service.UserController.Save(user);
+                    if (messageSave != "") throw new Exception("Certifique que os dados do usuário foram editados e tente novamente.\n ERRO: " + messageSave);
+
+                    var messageBox = _userEdited == null ? "Usuário cadastrado com sucesso! Para realizar o login a primeira vez verifique em seu e-mail seu username e senha" :
+                        "Usuário Atualizado com sucesso!";
+                    MessageBox.Show(messageBox, "Usuário cadastrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ClearFields();
                 }
             }
-            catch (NullReferenceException x) { MessageBox.Show(x.Message); }
-            catch (Exception x) { MessageBox.Show(x.Message); }
+            catch (NullReferenceException x) { MessageBox.Show(x.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (Exception x) { MessageBox.Show(x.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
 
     }

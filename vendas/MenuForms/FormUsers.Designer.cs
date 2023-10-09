@@ -47,6 +47,8 @@ namespace vendas.MenuForms
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnExclude = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnEdit = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.gridUsers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxFilterProd.Properties)).BeginInit();
@@ -56,6 +58,9 @@ namespace vendas.MenuForms
             // 
             // gridUsers
             // 
+            this.gridUsers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gridUsers.DataSource = typeof(Vendas.Entity.Entities.User);
             this.gridUsers.Location = new System.Drawing.Point(12, 75);
             this.gridUsers.MainView = this.gridView1;
@@ -228,18 +233,41 @@ namespace vendas.MenuForms
             // 
             // btnExclude
             // 
-            this.btnExclude.Location = new System.Drawing.Point(752, 546);
+            this.btnExclude.Location = new System.Drawing.Point(629, 546);
             this.btnExclude.Name = "btnExclude";
             this.btnExclude.Size = new System.Drawing.Size(117, 30);
             this.btnExclude.TabIndex = 111;
             this.btnExclude.Text = "Excluir";
-            this.btnExclude.Click += new System.EventHandler(this.btnExclude_Click);
+            this.btnExclude.Click += new System.EventHandler(this.BtnExclude_Click);
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton1.Location = new System.Drawing.Point(752, 546);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(117, 30);
+            this.simpleButton1.TabIndex = 113;
+            this.simpleButton1.Text = "Cadastrar";
+            this.simpleButton1.Click += new System.EventHandler(this.SimpleButton1_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEdit.Location = new System.Drawing.Point(506, 546);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(117, 30);
+            this.btnEdit.TabIndex = 112;
+            this.btnEdit.Text = "Editar";
+            this.btnEdit.Visible = false;
+            this.btnEdit.Click += new System.EventHandler(this.BtnEdit_Click);
             // 
             // FormUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(881, 588);
+            this.Controls.Add(this.simpleButton1);
+            this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnExclude);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label6);
@@ -282,5 +310,7 @@ namespace vendas.MenuForms
         private System.Windows.Forms.Panel panel1;
         private DevExpress.XtraGrid.Columns.GridColumn Tipo;
         private DevExpress.XtraEditors.SimpleButton btnExclude;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton btnEdit;
     }
 }

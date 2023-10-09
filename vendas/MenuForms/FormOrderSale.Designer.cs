@@ -38,6 +38,9 @@ namespace vendas.MenuForms
             this.btnSearchProd = new DevExpress.XtraEditors.SimpleButton();
             this.comboBoxFilterProd = new DevExpress.XtraEditors.ComboBoxEdit();
             this.textEditSearch = new DevExpress.XtraEditors.TextEdit();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnExclude = new DevExpress.XtraEditors.SimpleButton();
+            this.btnEdit = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.gridSale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             this.panel1.SuspendLayout();
@@ -134,11 +137,41 @@ namespace vendas.MenuForms
             this.textEditSearch.Size = new System.Drawing.Size(191, 20);
             this.textEditSearch.TabIndex = 110;
             // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Location = new System.Drawing.Point(752, 546);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(117, 30);
+            this.simpleButton1.TabIndex = 116;
+            this.simpleButton1.Text = "Cadastrar";
+            this.simpleButton1.Click += new System.EventHandler(this.SimpleButton1_Click);
+            // 
+            // btnExclude
+            // 
+            this.btnExclude.Location = new System.Drawing.Point(506, 546);
+            this.btnExclude.Name = "btnExclude";
+            this.btnExclude.Size = new System.Drawing.Size(117, 30);
+            this.btnExclude.TabIndex = 115;
+            this.btnExclude.Text = "Excluir";
+            this.btnExclude.Click += new System.EventHandler(this.BtnExclude_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Location = new System.Drawing.Point(629, 546);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(117, 30);
+            this.btnEdit.TabIndex = 114;
+            this.btnEdit.Text = "Editar";
+            this.btnEdit.Click += new System.EventHandler(this.BtnEdit_Click);
+            // 
             // FormOrderSale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(881, 588);
+            this.Controls.Add(this.simpleButton1);
+            this.Controls.Add(this.btnExclude);
+            this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.labelTExt4);
@@ -171,5 +204,8 @@ namespace vendas.MenuForms
         private DevExpress.XtraEditors.SimpleButton btnSearchProd;
         private DevExpress.XtraEditors.ComboBoxEdit comboBoxFilterProd;
         private DevExpress.XtraEditors.TextEdit textEditSearch;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton btnExclude;
+        private DevExpress.XtraEditors.SimpleButton btnEdit;
     }
 }

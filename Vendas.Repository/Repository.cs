@@ -12,8 +12,9 @@ namespace Vendas.Repository
 {
     public class Repository<T> : IRepository<T> where T : BaseEntity
     {
-        private DbContext _dbContext;
-        private DbSet<T> _dbSet {
+        private readonly DbContext _dbContext;
+        private DbSet<T> DbSet
+        {
             get { return _dbContext.Set<T>(); }}
         public Repository(DbContext context)
         {
@@ -22,16 +23,14 @@ namespace Vendas.Repository
 
         public string Delete(T entity)
         {
-            _dbSet.Remove(Filter(c => c.Id == entity.Id).FirstOrDefault());
+            DbSet.Remove(Filter(c => c.Id == entity.Id).FirstOrDefault());
             //_dbSet.Remove(entity);
             return SaveChanges();
         }
 
         public string Delete(int id)
         {
-            // TODO
-            var teste = Filter(c => c.Id == id).FirstOrDefault();
-            _dbSet.Remove(teste);
+            DbSet.Remove(Filter(c => c.Id == id).FirstOrDefault());
             return SaveChanges();
         }
 
@@ -46,17 +45,17 @@ namespace Vendas.Repository
         //}
         public IQueryable<T> Filter(Expression<System.Func<T, bool>> condition)
         {
-            return _dbSet.Where(condition);
+            return DbSet.Where(condition);
         }
 
         public List<T> GetAll()
         {
-            return _dbSet.ToList<T>();
+            return DbSet.ToList<T>();
         }
 
         public T GetById(int id)
         {
-            return _dbSet.Where(c => id == c.Id).FirstOrDefault();
+            return DbSet.Where(c => id == c.Id).FirstOrDefault();
         }
 
         private void MarkModified(T entity)
@@ -76,7 +75,7 @@ namespace Vendas.Repository
 
         public string Insert(T entity)
         {
-            _dbSet.Add(entity);
+            DbSet.Add(entity);
             return SaveChanges();
         }
 

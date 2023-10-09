@@ -45,14 +45,14 @@ namespace Vendas.Service.Controllers.Interfaces
         [Route("filtrar")]
         public List<Product> Filter(Expression<Func<Product, bool>> condition)
         {
-            return new ProductRepository().Filter(condition);
+            return new ProductRepository().Filter(condition) as List<Product>;
         }
 
         [HttpPost]
         [Route("filtrarTodos")]
         public List<Product> GetAll()
         {
-            return new ProductRepository().GetAll();
+            return new ProductRepository().GetAll() as List<Product>;
         }
     }
 }
