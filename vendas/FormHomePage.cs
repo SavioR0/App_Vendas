@@ -27,7 +27,7 @@ namespace vendas
             };
 
             LoadPermissions((TypeUser)Global.Instance.User.TypeUser);
-            labelUserName.Text = Global.Instance.User.Name;
+            //labelUserName.Text = Global.Instance.User.Name;
         }
 
         private void LoadPermissions(TypeUser typeUser)
@@ -38,19 +38,28 @@ namespace vendas
 
         private void LoadSellerPermissions()
         {
-            btnUsersMenu.Text = "Clientes";
-            btnProductMenu.Text = "Meus Produtos";
-            btnRegisterUsersMenu.Visible = false;
-            btnRegisterOrders.Visible = false;
-            btnOrdersMenu.Text = "Minhas Vendas";
+            menuToolStripMenuItem.DropDownItems[1].Text = "Clientes";
+            menuToolStripMenuItem.DropDownItems[3].Text = "Meus Produtos";
+            menuToolStripMenuItem.DropDownItems[5].Text = "Minhas Vendas";
+            menuToolStripMenuItem.DropDownItems[2].Visible = false;
+            menuToolStripMenuItem.DropDownItems[6].Visible = false;
+            //btnUsersMenu.Text = "Clientes";
+            // btnProductMenu.Text = "Meus Produtos";
+            //btnRegisterUsersMenu.Visible = false;
+            //btnRegisterOrders.Visible = false;
+            //btnOrdersMenu.Text = "Minhas Vendas";
         }
         private void LoadClientPermissions()
         {
-            btnProductMenu.Text = "Produtos";
-            btnUsersMenu.Visible = false;
-            btnRegisterUsersMenu.Visible = false;
-            btnOrdersMenu.Text = "Minhas Compras";
-            btnRegisterProductMenu.Visible = false;
+            menuToolStripMenuItem.DropDownItems[1].Visible = false;
+            menuToolStripMenuItem.DropDownItems[2].Visible = false;
+            menuToolStripMenuItem.DropDownItems[5].Text = "Minhas Compras";
+            menuToolStripMenuItem.DropDownItems[4].Visible = false;
+            //btnProductMenu.Text = "Produtos";
+            //btnUsersMenu.Visible = false;
+            //btnRegisterUsersMenu.Visible = false;
+            //btnOrdersMenu.Text = "Minhas Compras";
+            //btnRegisterProductMenu.Visible = false;
         }
 
         private void FormShow(Form frm,bool closeForm = true) {
@@ -123,42 +132,6 @@ namespace vendas
             AppManager.Instance.Load<LoaderController, User>(new LoginUser());
             Global.Instance.User = null;
             AppManager.Instance.CloseForm(view: this);
-        }
-
-        private void homeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ActiveFormClose();
-        }
-
-
-        private void cadasroDeUsuáriosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void produtosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cadastroDeProdutosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pedidosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void realizarPedidosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void sairToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

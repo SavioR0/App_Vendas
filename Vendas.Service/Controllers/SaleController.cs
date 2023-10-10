@@ -16,11 +16,14 @@ namespace Vendas.Service.Controllers
             [Route("salvar")]
             public string Save(Sale entity)
             {
-                if (entity.Flag == 'U') _message = new SaleRepository().Update(entity);
-                else if (entity.Flag == 'I')
-                {
-                    _message = new SaleRepository().Add(entity);
-                }
+            if (entity.Flag == 'U') _message = new SaleRepository().Update(entity);
+            else if (entity.Flag == 'I')
+            {
+                _message = new SaleRepository().Add(entity);
+            }
+            else {
+                _message = "Flag necessária";
+            }
                 return _message;
             }
 

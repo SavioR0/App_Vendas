@@ -41,6 +41,10 @@ namespace vendas.MenuForms
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.btnExclude = new DevExpress.XtraEditors.SimpleButton();
             this.btnEdit = new DevExpress.XtraEditors.SimpleButton();
+            this.Produto = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Cliente = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Vendedor = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Value = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridSale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             this.panel1.SuspendLayout();
@@ -50,17 +54,25 @@ namespace vendas.MenuForms
             // 
             // gridSale
             // 
+            this.gridSale.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gridSale.DataSource = typeof(Vendas.Entity.Entities.Sale);
             this.gridSale.Location = new System.Drawing.Point(12, 75);
             this.gridSale.MainView = this.gridView3;
             this.gridSale.Name = "gridSale";
-            this.gridSale.Size = new System.Drawing.Size(857, 442);
+            this.gridSale.Size = new System.Drawing.Size(1042, 418);
             this.gridSale.TabIndex = 2;
             this.gridSale.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
             // 
             // gridView3
             // 
+            this.gridView3.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.Produto,
+            this.Cliente,
+            this.Vendedor,
+            this.Value});
             this.gridView3.GridControl = this.gridSale;
             this.gridView3.Name = "gridView3";
             this.gridView3.OptionsView.ShowGroupPanel = false;
@@ -73,14 +85,15 @@ namespace vendas.MenuForms
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(881, 38);
+            this.panel1.Size = new System.Drawing.Size(1066, 38);
             this.panel1.TabIndex = 113;
             // 
             // labelControl4
             // 
+            this.labelControl4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl4.Appearance.Options.UseFont = true;
-            this.labelControl4.Location = new System.Drawing.Point(388, 6);
+            this.labelControl4.Location = new System.Drawing.Point(472, 6);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(82, 25);
             this.labelControl4.TabIndex = 0;
@@ -107,7 +120,7 @@ namespace vendas.MenuForms
             // btnSearchProd
             // 
             this.btnSearchProd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSearchProd.Location = new System.Drawing.Point(678, 47);
+            this.btnSearchProd.Location = new System.Drawing.Point(863, 47);
             this.btnSearchProd.Name = "btnSearchProd";
             this.btnSearchProd.Size = new System.Drawing.Size(191, 23);
             this.btnSearchProd.TabIndex = 109;
@@ -139,7 +152,8 @@ namespace vendas.MenuForms
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(752, 546);
+            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton1.Location = new System.Drawing.Point(937, 522);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(117, 30);
             this.simpleButton1.TabIndex = 116;
@@ -148,7 +162,8 @@ namespace vendas.MenuForms
             // 
             // btnExclude
             // 
-            this.btnExclude.Location = new System.Drawing.Point(506, 546);
+            this.btnExclude.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExclude.Location = new System.Drawing.Point(691, 522);
             this.btnExclude.Name = "btnExclude";
             this.btnExclude.Size = new System.Drawing.Size(117, 30);
             this.btnExclude.TabIndex = 115;
@@ -157,18 +172,51 @@ namespace vendas.MenuForms
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(629, 546);
+            this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEdit.Location = new System.Drawing.Point(814, 522);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(117, 30);
             this.btnEdit.TabIndex = 114;
             this.btnEdit.Text = "Editar";
             this.btnEdit.Click += new System.EventHandler(this.BtnEdit_Click);
             // 
+            // Produto
+            // 
+            this.Produto.Caption = "Produto";
+            this.Produto.FieldName = "Product.Name";
+            this.Produto.Name = "Produto";
+            this.Produto.Visible = true;
+            this.Produto.VisibleIndex = 0;
+            // 
+            // Cliente
+            // 
+            this.Cliente.Caption = "Cliente";
+            this.Cliente.FieldName = "Client.Name";
+            this.Cliente.Name = "Cliente";
+            this.Cliente.Visible = true;
+            this.Cliente.VisibleIndex = 1;
+            // 
+            // Vendedor
+            // 
+            this.Vendedor.Caption = "Vendedor";
+            this.Vendedor.FieldName = "Seller.Name";
+            this.Vendedor.Name = "Vendedor";
+            this.Vendedor.Visible = true;
+            this.Vendedor.VisibleIndex = 2;
+            // 
+            // Value
+            // 
+            this.Value.Caption = "Valor";
+            this.Value.FieldName = "Product.Value";
+            this.Value.Name = "Value";
+            this.Value.Visible = true;
+            this.Value.VisibleIndex = 3;
+            // 
             // FormOrderSale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(881, 588);
+            this.ClientSize = new System.Drawing.Size(1066, 564);
             this.Controls.Add(this.simpleButton1);
             this.Controls.Add(this.btnExclude);
             this.Controls.Add(this.btnEdit);
@@ -207,5 +255,9 @@ namespace vendas.MenuForms
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.SimpleButton btnExclude;
         private DevExpress.XtraEditors.SimpleButton btnEdit;
+        private DevExpress.XtraGrid.Columns.GridColumn Produto;
+        private DevExpress.XtraGrid.Columns.GridColumn Cliente;
+        private DevExpress.XtraGrid.Columns.GridColumn Vendedor;
+        private DevExpress.XtraGrid.Columns.GridColumn Value;
     }
 }

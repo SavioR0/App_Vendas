@@ -80,7 +80,7 @@ namespace Vendas.View
             this.LastNameValue.Location = new System.Drawing.Point(146, 116);
             this.LastNameValue.MaximumSize = new System.Drawing.Size(1000, 0);
             this.LastNameValue.Name = "LastNameValue";
-            this.LastNameValue.Size = new System.Drawing.Size(667, 20);
+            this.LastNameValue.Size = new System.Drawing.Size(852, 20);
             this.LastNameValue.TabIndex = 82;
             // 
             // labelControl10
@@ -103,7 +103,7 @@ namespace Vendas.View
             this.numberValue.Name = "numberValue";
             this.numberValue.Properties.BeepOnError = false;
             this.numberValue.Properties.UseMaskAsDisplayFormat = true;
-            this.numberValue.Size = new System.Drawing.Size(535, 20);
+            this.numberValue.Size = new System.Drawing.Size(720, 20);
             this.numberValue.TabIndex = 90;
             // 
             // Numero
@@ -136,7 +136,7 @@ namespace Vendas.View
             this.StreetValue.Name = "StreetValue";
             this.StreetValue.Properties.BeepOnError = false;
             this.StreetValue.Properties.UseMaskAsDisplayFormat = true;
-            this.StreetValue.Size = new System.Drawing.Size(667, 20);
+            this.StreetValue.Size = new System.Drawing.Size(852, 20);
             this.StreetValue.TabIndex = 89;
             // 
             // NeighborhoodValue
@@ -149,7 +149,7 @@ namespace Vendas.View
             this.NeighborhoodValue.Name = "NeighborhoodValue";
             this.NeighborhoodValue.Properties.BeepOnError = false;
             this.NeighborhoodValue.Properties.UseMaskAsDisplayFormat = true;
-            this.NeighborhoodValue.Size = new System.Drawing.Size(667, 20);
+            this.NeighborhoodValue.Size = new System.Drawing.Size(852, 20);
             this.NeighborhoodValue.TabIndex = 88;
             // 
             // labelControl9
@@ -185,7 +185,7 @@ namespace Vendas.View
             this.CEPValue.Properties.MaskSettings.Set("MaskManagerSignature", "allowNull=False");
             this.CEPValue.Properties.MaskSettings.Set("mask", "#####-###");
             this.CEPValue.Properties.UseMaskAsDisplayFormat = true;
-            this.CEPValue.Size = new System.Drawing.Size(667, 20);
+            this.CEPValue.Size = new System.Drawing.Size(852, 20);
             this.CEPValue.TabIndex = 86;
             // 
             // labelControl7
@@ -218,7 +218,7 @@ namespace Vendas.View
             this.CityValue.Name = "CityValue";
             this.CityValue.Properties.BeepOnError = false;
             this.CityValue.Properties.UseMaskAsDisplayFormat = true;
-            this.CityValue.Size = new System.Drawing.Size(667, 20);
+            this.CityValue.Size = new System.Drawing.Size(852, 20);
             this.CityValue.TabIndex = 87;
             // 
             // EmailValue
@@ -231,7 +231,7 @@ namespace Vendas.View
             this.EmailValue.Name = "EmailValue";
             this.EmailValue.Properties.BeepOnError = false;
             this.EmailValue.Properties.UseMaskAsDisplayFormat = true;
-            this.EmailValue.Size = new System.Drawing.Size(667, 20);
+            this.EmailValue.Size = new System.Drawing.Size(852, 20);
             this.EmailValue.TabIndex = 91;
             // 
             // labelControl3
@@ -273,7 +273,7 @@ namespace Vendas.View
             this.nameValue.Location = new System.Drawing.Point(146, 90);
             this.nameValue.MaximumSize = new System.Drawing.Size(1000, 0);
             this.nameValue.Name = "nameValue";
-            this.nameValue.Size = new System.Drawing.Size(667, 20);
+            this.nameValue.Size = new System.Drawing.Size(852, 20);
             this.nameValue.TabIndex = 81;
             // 
             // cpfValue
@@ -290,7 +290,7 @@ namespace Vendas.View
             this.cpfValue.Properties.MaskSettings.Set("mask", "000\\.000\\.000-00");
             this.cpfValue.Properties.MaskSettings.Set("hideInsignificantZeros", false);
             this.cpfValue.Properties.UseMaskAsDisplayFormat = true;
-            this.cpfValue.Size = new System.Drawing.Size(667, 20);
+            this.cpfValue.Size = new System.Drawing.Size(852, 20);
             this.cpfValue.TabIndex = 83;
             // 
             // telValue
@@ -306,7 +306,7 @@ namespace Vendas.View
             this.telValue.Properties.MaskSettings.Set("MaskManagerSignature", "allowNull=False");
             this.telValue.Properties.MaskSettings.Set("mask", "(##) # ########");
             this.telValue.Properties.UseMaskAsDisplayFormat = true;
-            this.telValue.Size = new System.Drawing.Size(667, 20);
+            this.telValue.Size = new System.Drawing.Size(852, 20);
             this.telValue.TabIndex = 84;
             // 
             // nameLabel
@@ -343,9 +343,9 @@ namespace Vendas.View
             // 
             this.Btn_register_user.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Btn_register_user.Location = new System.Drawing.Point(527, 521);
+            this.Btn_register_user.Location = new System.Drawing.Point(773, 521);
             this.Btn_register_user.Name = "Btn_register_user";
-            this.Btn_register_user.Size = new System.Drawing.Size(286, 33);
+            this.Btn_register_user.Size = new System.Drawing.Size(225, 33);
             this.Btn_register_user.TabIndex = 92;
             this.Btn_register_user.Text = "Cadastrar";
             this.Btn_register_user.Click += new System.EventHandler(this.Btn_register_user_Click_1);
@@ -358,14 +358,15 @@ namespace Vendas.View
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(881, 38);
+            this.panel1.Size = new System.Drawing.Size(1066, 38);
             this.panel1.TabIndex = 106;
             // 
             // labelControl4
             // 
+            this.labelControl4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl4.Appearance.Options.UseFont = true;
-            this.labelControl4.Location = new System.Drawing.Point(320, 6);
+            this.labelControl4.Location = new System.Drawing.Point(406, 6);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(213, 25);
             this.labelControl4.TabIndex = 0;
@@ -389,7 +390,7 @@ namespace Vendas.View
             this.AccessibleName = "Cadastro de usuário";
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(881, 588);
+            this.ClientSize = new System.Drawing.Size(1066, 588);
             this.Controls.Add(this.comboBoxEditTypeUser);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.LastNameValue);
@@ -417,7 +418,7 @@ namespace Vendas.View
             this.Controls.Add(this.descricaoLabel);
             this.Controls.Add(this.Btn_register_user);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MinimumSize = new System.Drawing.Size(881, 588);
+            this.MinimumSize = new System.Drawing.Size(1066, 564);
             this.Name = "FormRegisterUser";
             this.Text = "Cadastro de usuário";
             ((System.ComponentModel.ISupportInitialize)(this.LastNameValue.Properties)).EndInit();

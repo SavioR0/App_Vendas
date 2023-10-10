@@ -11,12 +11,13 @@ namespace vendas.MenuForms
 {
     public partial class FormUsers : Form
     {
-        private readonly FormHomePage _form;
+        private readonly FormHomePage _formHomePage;
+
         public FormUsers(FormHomePage form = null)
         {
             InitializeComponent();
             ExecuteLoadFunction((TypeUser)Global.Instance.User.TypeUser);
-            _form = form;
+            _formHomePage = form;
         }
 
         private void ExecuteLoadFunction(TypeUser typeUser)
@@ -54,7 +55,7 @@ namespace vendas.MenuForms
 
         private void SimpleButton1_Click(object sender, EventArgs e)
         {
-            //_form.
+            _formHomePage.OpenFormUser();
         }
 
         private void BtnEdit_Click(object sender, EventArgs e)
@@ -62,7 +63,7 @@ namespace vendas.MenuForms
             GridView gridView = gridUsers.FocusedView as GridView;
             var user = (gridView.GetRow(gridView.FocusedRowHandle) as User);
             user.Address = Service.AddressController.Filter(c => c.Id == user.AddressId)[0];
-            _form.EditUserButtonClicked(user);
+            _formHomePage.EditUserButtonClicked(user);
         }
     }
 }

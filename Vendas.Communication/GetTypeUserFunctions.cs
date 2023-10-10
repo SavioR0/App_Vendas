@@ -21,6 +21,8 @@ namespace vendas
                 return Service.UserController.GetAll() as List<T>;
             if (typeof(T) == typeof(Product))
                 return Service.ProductController.GetAll() as List<T>;
+            if (typeof(T) == typeof(Sale))
+                return Service.SaleController.GetAll() as List<T>;
             return null;
         }
 
@@ -30,12 +32,16 @@ namespace vendas
                 return Service.UserController.Filter(c => (TypeUser)c.TypeUser == TypeUser.Client) as List<T>;
             if (typeof(T) == typeof(Product))
                 return Service.ProductController.Filter(c => c.SellerId == Global.Instance.User.Id) as List<T>;
+            if (typeof(T) == typeof(Sale))
+                return Service.SaleController.Filter(c => c.SellerId == Global.Instance.User.Id) as List<T>;
             return null;
         }
         private static List<T> LoadGridClient()
         {
             if (typeof(T) == typeof(Product))
                 return Service.ProductController.GetAll() as List<T>;
+            if (typeof(T) == typeof(Sale))
+                return Service.SaleController.Filter(c=> c.ClientId == Global.Instance.User.Id) as List<T>;
             return null;
         }
     }

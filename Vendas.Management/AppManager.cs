@@ -10,7 +10,7 @@ namespace Vendas.Management
 
         public AppManager() { }
         private static bool _started;
-        private List<IView> _currentViews = new List<IView>();
+        private readonly List<IView> _currentViews = new List<IView>();
         private static AppManager _instance;
         //private User user;
         public static AppManager Instance
@@ -58,8 +58,7 @@ namespace Vendas.Management
         public void Load<T, Y>(IView view)
             where T : LoaderManagement
         {
-            T controller = Activator.CreateInstance(typeof(T), view) as T;
-            if (controller != null)
+            if (Activator.CreateInstance(typeof(T), view) is T controller)
             {
                 if (controller.Loadable())
                     controller.OnLoadSuccess(EventArgs.Empty);

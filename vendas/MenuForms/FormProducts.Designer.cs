@@ -63,7 +63,7 @@ namespace vendas.MenuForms
             this.gridProduct.Location = new System.Drawing.Point(12, 75);
             this.gridProduct.MainView = this.gridView2;
             this.gridProduct.Name = "gridProduct";
-            this.gridProduct.Size = new System.Drawing.Size(857, 442);
+            this.gridProduct.Size = new System.Drawing.Size(1042, 418);
             this.gridProduct.TabIndex = 2;
             this.gridProduct.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -156,7 +156,7 @@ namespace vendas.MenuForms
             // btnSearchProd
             // 
             this.btnSearchProd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSearchProd.Location = new System.Drawing.Point(679, 47);
+            this.btnSearchProd.Location = new System.Drawing.Point(864, 47);
             this.btnSearchProd.Name = "btnSearchProd";
             this.btnSearchProd.Size = new System.Drawing.Size(191, 23);
             this.btnSearchProd.TabIndex = 42;
@@ -188,9 +188,11 @@ namespace vendas.MenuForms
             // 
             // labelControl4
             // 
+            this.labelControl4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl4.Appearance.Options.UseFont = true;
-            this.labelControl4.Location = new System.Drawing.Point(388, 6);
+            this.labelControl4.LineLocation = DevExpress.XtraEditors.LineLocation.Center;
+            this.labelControl4.Location = new System.Drawing.Point(456, 3);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(95, 25);
             this.labelControl4.TabIndex = 0;
@@ -204,12 +206,13 @@ namespace vendas.MenuForms
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(881, 38);
+            this.panel1.Size = new System.Drawing.Size(1066, 38);
             this.panel1.TabIndex = 108;
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(629, 546);
+            this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEdit.Location = new System.Drawing.Point(814, 522);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(117, 30);
             this.btnEdit.TabIndex = 109;
@@ -218,7 +221,8 @@ namespace vendas.MenuForms
             // 
             // btnExclude
             // 
-            this.btnExclude.Location = new System.Drawing.Point(506, 546);
+            this.btnExclude.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExclude.Location = new System.Drawing.Point(691, 522);
             this.btnExclude.Name = "btnExclude";
             this.btnExclude.Size = new System.Drawing.Size(117, 30);
             this.btnExclude.TabIndex = 110;
@@ -227,7 +231,8 @@ namespace vendas.MenuForms
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(752, 546);
+            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton1.Location = new System.Drawing.Point(937, 522);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(117, 30);
             this.simpleButton1.TabIndex = 111;
@@ -238,7 +243,7 @@ namespace vendas.MenuForms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(881, 588);
+            this.ClientSize = new System.Drawing.Size(1066, 564);
             this.Controls.Add(this.simpleButton1);
             this.Controls.Add(this.btnExclude);
             this.Controls.Add(this.btnEdit);

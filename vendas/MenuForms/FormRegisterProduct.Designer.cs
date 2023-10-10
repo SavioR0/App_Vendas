@@ -49,14 +49,18 @@ namespace vendas.MenuForms
             // 
             // nameValue
             // 
+            this.nameValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.nameValue.EditValue = "";
             this.nameValue.Location = new System.Drawing.Point(143, 90);
             this.nameValue.Name = "nameValue";
-            this.nameValue.Size = new System.Drawing.Size(670, 20);
+            this.nameValue.Size = new System.Drawing.Size(855, 20);
             this.nameValue.TabIndex = 21;
             // 
             // stockValue
             // 
+            this.stockValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.stockValue.EditValue = "";
             this.stockValue.Location = new System.Drawing.Point(366, 142);
             this.stockValue.Name = "stockValue";
@@ -64,12 +68,13 @@ namespace vendas.MenuForms
             this.stockValue.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
             this.stockValue.Properties.MaskSettings.Set("MaskManagerSignature", "allowNull=False");
             this.stockValue.Properties.MaskSettings.Set("mask", "d");
-            this.stockValue.Size = new System.Drawing.Size(447, 20);
+            this.stockValue.Size = new System.Drawing.Size(632, 20);
             this.stockValue.TabIndex = 24;
             // 
             // btnRegisterEditProduct
             // 
-            this.btnRegisterEditProduct.Location = new System.Drawing.Point(526, 521);
+            this.btnRegisterEditProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRegisterEditProduct.Location = new System.Drawing.Point(711, 497);
             this.btnRegisterEditProduct.Name = "btnRegisterEditProduct";
             this.btnRegisterEditProduct.Size = new System.Drawing.Size(288, 33);
             this.btnRegisterEditProduct.TabIndex = 25;
@@ -78,10 +83,12 @@ namespace vendas.MenuForms
             // 
             // descriptionValue
             // 
+            this.descriptionValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.descriptionValue.EditValue = "";
             this.descriptionValue.Location = new System.Drawing.Point(143, 116);
             this.descriptionValue.Name = "descriptionValue";
-            this.descriptionValue.Size = new System.Drawing.Size(670, 20);
+            this.descriptionValue.Size = new System.Drawing.Size(855, 20);
             this.descriptionValue.TabIndex = 22;
             // 
             // labelControl4
@@ -142,9 +149,11 @@ namespace vendas.MenuForms
             // 
             // titlePage
             // 
+            this.titlePage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.titlePage.Appearance.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.titlePage.Appearance.Options.UseFont = true;
-            this.titlePage.Location = new System.Drawing.Point(320, 6);
+            this.titlePage.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Horizontal;
+            this.titlePage.Location = new System.Drawing.Point(419, 6);
             this.titlePage.Name = "titlePage";
             this.titlePage.Size = new System.Drawing.Size(216, 25);
             this.titlePage.TabIndex = 0;
@@ -158,14 +167,14 @@ namespace vendas.MenuForms
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(881, 38);
+            this.panel1.Size = new System.Drawing.Size(1066, 38);
             this.panel1.TabIndex = 107;
             // 
             // FormRegisterProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(881, 588);
+            this.ClientSize = new System.Drawing.Size(1066, 564);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.nameValue);
             this.Controls.Add(this.stockValue);

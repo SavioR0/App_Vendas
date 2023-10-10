@@ -188,12 +188,6 @@
     <Compile Include="MenuForms\FormRegisterUsers.Designer.cs">
       <DependentUpon>FormRegisterUsers.cs</DependentUpon>
     </Compile>
-    <Compile Include="teste.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="teste.Designer.cs">
-      <DependentUpon>teste.cs</DependentUpon>
-    </Compile>
     <Compile Include="Validations.cs" />
     <EmbeddedResource Include="ClientUser\FormRegisterSale.resx">
       <DependentUpon>FormRegisterSale.cs</DependentUpon>
@@ -243,9 +237,6 @@
     </Compile>
     <EmbeddedResource Include="MenuForms\FormRegisterUsers.resx">
       <DependentUpon>FormRegisterUsers.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="teste.resx">
-      <DependentUpon>teste.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
