@@ -6,6 +6,8 @@ using Vendas.Entity.Entities;
 using Vendas.Entity.Enums;
 using Vendas.Library;
 using Vendas.Communication;
+using Vendas.Management;
+using Vendas.View.Loader;
 
 namespace Vendas.View
 {
@@ -190,5 +192,9 @@ namespace Vendas.View
             catch (Exception x) { MessageBox.Show(x.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
 
+        private void BtnRegisterBiometricPrint_Click(object sender, EventArgs e)
+        {
+            //AppManager.Instance.Load<LoaderController, User>(new formRegisterBiometricFinger());
+        }
     }
 }

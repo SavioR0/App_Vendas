@@ -56,6 +56,7 @@ namespace Vendas.View
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.comboBoxEditTypeUser = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.btnRegisterBiometricPrint = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.LastNameValue.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numberValue.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StreetValue.Properties)).BeginInit();
@@ -120,7 +121,7 @@ namespace Vendas.View
             // 
             this.labelControl2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelControl2.Location = new System.Drawing.Point(57, 417);
+            this.labelControl2.Location = new System.Drawing.Point(57, 404);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(84, 13);
             this.labelControl2.TabIndex = 103;
@@ -226,7 +227,7 @@ namespace Vendas.View
             this.EmailValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.EmailValue.EditValue = "saviorodrigues012@gmail.com";
-            this.EmailValue.Location = new System.Drawing.Point(146, 379);
+            this.EmailValue.Location = new System.Drawing.Point(146, 375);
             this.EmailValue.MaximumSize = new System.Drawing.Size(1000, 0);
             this.EmailValue.Name = "EmailValue";
             this.EmailValue.Properties.BeepOnError = false;
@@ -238,7 +239,7 @@ namespace Vendas.View
             // 
             this.labelControl3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelControl3.Location = new System.Drawing.Point(107, 382);
+            this.labelControl3.Location = new System.Drawing.Point(107, 378);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(34, 13);
             this.labelControl3.TabIndex = 98;
@@ -374,7 +375,7 @@ namespace Vendas.View
             // 
             // comboBoxEditTypeUser
             // 
-            this.comboBoxEditTypeUser.Location = new System.Drawing.Point(146, 414);
+            this.comboBoxEditTypeUser.Location = new System.Drawing.Point(146, 401);
             this.comboBoxEditTypeUser.Name = "comboBoxEditTypeUser";
             this.comboBoxEditTypeUser.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -385,12 +386,24 @@ namespace Vendas.View
             this.comboBoxEditTypeUser.Size = new System.Drawing.Size(136, 20);
             this.comboBoxEditTypeUser.TabIndex = 107;
             // 
+            // btnRegisterBiometricPrint
+            // 
+            this.btnRegisterBiometricPrint.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRegisterBiometricPrint.Location = new System.Drawing.Point(146, 427);
+            this.btnRegisterBiometricPrint.Name = "btnRegisterBiometricPrint";
+            this.btnRegisterBiometricPrint.Size = new System.Drawing.Size(190, 17);
+            this.btnRegisterBiometricPrint.TabIndex = 108;
+            this.btnRegisterBiometricPrint.Text = "Cadastrar impressão Digital";
+            this.btnRegisterBiometricPrint.Click += new System.EventHandler(this.BtnRegisterBiometricPrint_Click);
+            // 
             // FormRegisterUser
             // 
             this.AccessibleName = "Cadastro de usuário";
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1066, 588);
+            this.Controls.Add(this.btnRegisterBiometricPrint);
             this.Controls.Add(this.comboBoxEditTypeUser);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.LastNameValue);
@@ -470,5 +483,6 @@ namespace Vendas.View
         private System.Windows.Forms.Panel panel1;
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.ComboBoxEdit comboBoxEditTypeUser;
+        private DevExpress.XtraEditors.SimpleButton btnRegisterBiometricPrint;
     }
 }
