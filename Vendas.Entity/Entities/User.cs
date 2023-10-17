@@ -16,11 +16,11 @@ namespace Vendas.Entity.Entities
         public int AddressId{ get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-
         public int TypeUser { get; set; }
         public string UserName { get; set; }
         public char Flag { get; set; }
         public int EditLogin { get; set; }
+        public byte[] BiometricData { get; set; }
 
         [IgnoreDataMember]
         public virtual Address Address { get; set; }

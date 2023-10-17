@@ -54,5 +54,32 @@ namespace vendas.MenuForms
         {
             _formHomePage.OpenFormProduct();
         }
+
+        private void comboBoxFilterProd_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxFilterProd.Text != "") textEditSearch.Enabled = true;
+            else textEditSearch.Enabled = false;
+        }
+
+        private void BtnSearchProd_Click(object sender, EventArgs e)
+        {
+            LoadGridProduct((TypeUser)Global.Instance.User.TypeUser);
+            if (string.IsNullOrWhiteSpace(textEditSearch.Text)) return;
+
+            if (comboBoxFilterProd.Text == "Id")
+            {
+                if (int.TryParse(textEditSearch.Text, out int id))
+                    gridProduct.DataSource = Service.ProductController.Filter(c => c.Id == id);
+                else
+                    MessageBox.Show("Insira um id Válido", "Id inválido", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else if (comboBoxFilterProd.Text == "Nome")
+            {
+                var prod = gridProduct.DataSource as List<Product>;
+                List<Product> teste = prod.FindAll(c => c.Name.IndexOf(textEditSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+                gridProduct.DataSource = teste;
+            }
+            textEditSearch.Text = "";
+        }
     }
 }

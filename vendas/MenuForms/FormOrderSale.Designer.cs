@@ -31,24 +31,25 @@ namespace vendas.MenuForms
         {
             this.gridSale = new DevExpress.XtraGrid.GridControl();
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.Id = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Produto = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Cliente = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Vendedor = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Value = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.label6 = new System.Windows.Forms.Label();
             this.labelTExt4 = new System.Windows.Forms.Label();
             this.btnSearchProd = new DevExpress.XtraEditors.SimpleButton();
-            this.comboBoxFilterProd = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.comboBoxFilterSale = new DevExpress.XtraEditors.ComboBoxEdit();
             this.textEditSearch = new DevExpress.XtraEditors.TextEdit();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.btnExclude = new DevExpress.XtraEditors.SimpleButton();
             this.btnEdit = new DevExpress.XtraEditors.SimpleButton();
-            this.Produto = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Cliente = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Vendedor = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Value = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridSale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxFilterProd.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxFilterSale.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditSearch.Properties)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,6 +70,7 @@ namespace vendas.MenuForms
             // gridView3
             // 
             this.gridView3.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.Id,
             this.Produto,
             this.Cliente,
             this.Vendedor,
@@ -76,6 +78,51 @@ namespace vendas.MenuForms
             this.gridView3.GridControl = this.gridSale;
             this.gridView3.Name = "gridView3";
             this.gridView3.OptionsView.ShowGroupPanel = false;
+            // 
+            // Id
+            // 
+            this.Id.Caption = "Id";
+            this.Id.FieldName = "Id";
+            this.Id.Name = "Id";
+            this.Id.Visible = true;
+            this.Id.VisibleIndex = 0;
+            this.Id.Width = 64;
+            // 
+            // Produto
+            // 
+            this.Produto.Caption = "Produto";
+            this.Produto.FieldName = "Product.Name";
+            this.Produto.Name = "Produto";
+            this.Produto.Visible = true;
+            this.Produto.VisibleIndex = 1;
+            this.Produto.Width = 237;
+            // 
+            // Cliente
+            // 
+            this.Cliente.Caption = "Cliente";
+            this.Cliente.FieldName = "Client.Name";
+            this.Cliente.Name = "Cliente";
+            this.Cliente.Visible = true;
+            this.Cliente.VisibleIndex = 2;
+            this.Cliente.Width = 357;
+            // 
+            // Vendedor
+            // 
+            this.Vendedor.Caption = "Vendedor";
+            this.Vendedor.FieldName = "Seller.Name";
+            this.Vendedor.Name = "Vendedor";
+            this.Vendedor.Visible = true;
+            this.Vendedor.VisibleIndex = 3;
+            this.Vendedor.Width = 272;
+            // 
+            // Value
+            // 
+            this.Value.Caption = "Valor";
+            this.Value.FieldName = "Product.Value";
+            this.Value.Name = "Value";
+            this.Value.Visible = true;
+            this.Value.VisibleIndex = 4;
+            this.Value.Width = 87;
             // 
             // panel1
             // 
@@ -125,20 +172,23 @@ namespace vendas.MenuForms
             this.btnSearchProd.Size = new System.Drawing.Size(191, 23);
             this.btnSearchProd.TabIndex = 109;
             this.btnSearchProd.Text = "Filtrar";
+            this.btnSearchProd.Click += new System.EventHandler(this.BtnSearchProd_Click);
             // 
-            // comboBoxFilterProd
+            // comboBoxFilterSale
             // 
-            this.comboBoxFilterProd.EditValue = "";
-            this.comboBoxFilterProd.Location = new System.Drawing.Point(55, 49);
-            this.comboBoxFilterProd.Name = "comboBoxFilterProd";
-            this.comboBoxFilterProd.Properties.BeepOnError = false;
-            this.comboBoxFilterProd.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.comboBoxFilterSale.EditValue = "";
+            this.comboBoxFilterSale.Location = new System.Drawing.Point(55, 49);
+            this.comboBoxFilterSale.Name = "comboBoxFilterSale";
+            this.comboBoxFilterSale.Properties.BeepOnError = false;
+            this.comboBoxFilterSale.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxFilterProd.Properties.Items.AddRange(new object[] {
+            this.comboBoxFilterSale.Properties.Items.AddRange(new object[] {
             "Id",
-            "Nome"});
-            this.comboBoxFilterProd.Size = new System.Drawing.Size(75, 20);
-            this.comboBoxFilterProd.TabIndex = 108;
+            "Vendedor",
+            "Produto"});
+            this.comboBoxFilterSale.Size = new System.Drawing.Size(75, 20);
+            this.comboBoxFilterSale.TabIndex = 108;
+            this.comboBoxFilterSale.SelectedIndexChanged += new System.EventHandler(this.ComboBoxFilterSale_SelectedIndexChanged);
             // 
             // textEditSearch
             // 
@@ -158,12 +208,12 @@ namespace vendas.MenuForms
             this.simpleButton1.Size = new System.Drawing.Size(117, 30);
             this.simpleButton1.TabIndex = 116;
             this.simpleButton1.Text = "Cadastrar";
-            this.simpleButton1.Click += new System.EventHandler(this.SimpleButton1_Click);
+            this.simpleButton1.Click += new System.EventHandler(this.Register_Click_1);
             // 
             // btnExclude
             // 
             this.btnExclude.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExclude.Location = new System.Drawing.Point(691, 522);
+            this.btnExclude.Location = new System.Drawing.Point(814, 522);
             this.btnExclude.Name = "btnExclude";
             this.btnExclude.Size = new System.Drawing.Size(117, 30);
             this.btnExclude.TabIndex = 115;
@@ -173,44 +223,12 @@ namespace vendas.MenuForms
             // btnEdit
             // 
             this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEdit.Location = new System.Drawing.Point(814, 522);
+            this.btnEdit.Location = new System.Drawing.Point(691, 522);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(117, 30);
             this.btnEdit.TabIndex = 114;
             this.btnEdit.Text = "Editar";
-            this.btnEdit.Click += new System.EventHandler(this.BtnEdit_Click);
-            // 
-            // Produto
-            // 
-            this.Produto.Caption = "Produto";
-            this.Produto.FieldName = "Product.Name";
-            this.Produto.Name = "Produto";
-            this.Produto.Visible = true;
-            this.Produto.VisibleIndex = 0;
-            // 
-            // Cliente
-            // 
-            this.Cliente.Caption = "Cliente";
-            this.Cliente.FieldName = "Client.Name";
-            this.Cliente.Name = "Cliente";
-            this.Cliente.Visible = true;
-            this.Cliente.VisibleIndex = 1;
-            // 
-            // Vendedor
-            // 
-            this.Vendedor.Caption = "Vendedor";
-            this.Vendedor.FieldName = "Seller.Name";
-            this.Vendedor.Name = "Vendedor";
-            this.Vendedor.Visible = true;
-            this.Vendedor.VisibleIndex = 2;
-            // 
-            // Value
-            // 
-            this.Value.Caption = "Valor";
-            this.Value.FieldName = "Product.Value";
-            this.Value.Name = "Value";
-            this.Value.Visible = true;
-            this.Value.VisibleIndex = 3;
+            this.btnEdit.Visible = false;
             // 
             // FormOrderSale
             // 
@@ -224,7 +242,7 @@ namespace vendas.MenuForms
             this.Controls.Add(this.label6);
             this.Controls.Add(this.labelTExt4);
             this.Controls.Add(this.btnSearchProd);
-            this.Controls.Add(this.comboBoxFilterProd);
+            this.Controls.Add(this.comboBoxFilterSale);
             this.Controls.Add(this.textEditSearch);
             this.Controls.Add(this.gridSale);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -234,7 +252,7 @@ namespace vendas.MenuForms
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxFilterProd.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxFilterSale.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditSearch.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -250,7 +268,7 @@ namespace vendas.MenuForms
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label labelTExt4;
         private DevExpress.XtraEditors.SimpleButton btnSearchProd;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxFilterProd;
+        private DevExpress.XtraEditors.ComboBoxEdit comboBoxFilterSale;
         private DevExpress.XtraEditors.TextEdit textEditSearch;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.SimpleButton btnExclude;
@@ -259,5 +277,6 @@ namespace vendas.MenuForms
         private DevExpress.XtraGrid.Columns.GridColumn Cliente;
         private DevExpress.XtraGrid.Columns.GridColumn Vendedor;
         private DevExpress.XtraGrid.Columns.GridColumn Value;
+        private DevExpress.XtraGrid.Columns.GridColumn Id;
     }
 }

@@ -17,13 +17,10 @@ namespace vendas.model.mapping
             Property(p => p.DateOfBirth).IsRequired();
             Property(p => p.EditLogin).IsRequired();
             Property(p => p.AddressId).IsRequired();
- 
-            // Configuração do relacionamento entre User e Address (um usuário tem um endereço).
-            HasRequired(p => p.Address).WithMany(p=>p.Users).HasForeignKey(v => v.AddressId);
+            Property(p => p.BiometricData).IsRequired().HasColumnType("varbinary(max)");
 
-            // Configuração do relacionamento entre User e Sale (um usuário tem muitas vendas).
-            //HasMany(p => p.Sales).WithRequired(s => s.Seller).HasForeignKey(s => s.SellerId);
-            //HasMany(p => p.Sales).WithRequired(s => s.Client).HasForeignKey(s => s.ClientId);
+
+            HasRequired(p => p.Address).WithMany(p=>p.Users).HasForeignKey(v => v.AddressId);
 
 
         }

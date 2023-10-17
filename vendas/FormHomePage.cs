@@ -28,12 +28,14 @@ namespace vendas
 
             LoadPermissions((TypeUser)Global.Instance.User.TypeUser);
             //labelUserName.Text = Global.Instance.User.Name;
+            
         }
 
         private void LoadPermissions(TypeUser typeUser)
         {
             if(_loadPermissions.TryGetValue(typeUser, out Action loadPermissions))
                 loadPermissions();
+            
         }
 
         private void LoadSellerPermissions()
@@ -53,7 +55,6 @@ namespace vendas
         {
             menuToolStripMenuItem.DropDownItems[1].Visible = false;
             menuToolStripMenuItem.DropDownItems[2].Visible = false;
-            menuToolStripMenuItem.DropDownItems[5].Text = "Minhas Compras";
             menuToolStripMenuItem.DropDownItems[4].Visible = false;
             //btnProductMenu.Text = "Produtos";
             //btnUsersMenu.Visible = false;
@@ -62,7 +63,7 @@ namespace vendas
             //btnRegisterProductMenu.Visible = false;
         }
 
-        private void FormShow(Form frm,bool closeForm = true) {
+        public void FormShow(Form frm,bool closeForm = true) {
             ActiveFormClose(closeForm);
             frmActive = frm;
             frm.TopLevel = false;
@@ -75,11 +76,11 @@ namespace vendas
             if (frmActive != null && closeForm)
                 frmActive.Close();
         }
-        private void BtnRegisterUserMenu_Click(object sender, System.EventArgs e)
+        private void BtnRegisterUserMenu_Click(object sender= null, System.EventArgs e= null)
         {
-            ActiveFormClose();
+            FormShow(new FormHome(this));
         }
-        private void BtnUsersMenu_Click(object sender, System.EventArgs e)
+        public void BtnUsersMenu_Click(object sender=null, System.EventArgs e= null)
         {
             FormShow(new FormUsers(this));
         }
@@ -94,22 +95,22 @@ namespace vendas
             OpenFormUser(user: user);
         }
 
-        private void BntRegisterUsersMenu_Click(object sender, System.EventArgs e)
+        public void BntRegisterUsersMenu_Click(object sender= null, System.EventArgs e= null)
         {
             FormShow(new FormRegisterUser());
         }
 
-        private void BtnPurchasesSalesMenu_Click(object sender, System.EventArgs e)
+        public void BtnPurchasesSalesMenu_Click(object sender= null, System.EventArgs e = null)
         {
-            FormShow(new FormOrderSale());
+            FormShow(new FormOrderSale(this));
         }
 
-        private void BtnRegisterPurchases_Click(object sender, System.EventArgs e)
+        public void BtnRegisterPurchases_Click(object sender= null, System.EventArgs e = null)
         {
             FormShow(new FormRegisterOrder());
         }
 
-        public void BtnProductMenu_Click(object sender, System.EventArgs e)
+        public void BtnProductMenu_Click(object sender= null, System.EventArgs e= null)
         {
             FormShow(new FormProducts(this));
         }
@@ -122,7 +123,7 @@ namespace vendas
         {
             OpenFormProduct(prod: prod);
         }
-        private void BtnRegisterProductMenu_Click(object sender, EventArgs e)
+        public void BtnRegisterProductMenu_Click(object sender= null, EventArgs e= null)
         {
             OpenFormProduct();
         }
@@ -132,6 +133,11 @@ namespace vendas
             AppManager.Instance.Load<LoaderController, User>(new LoginUser());
             Global.Instance.User = null;
             AppManager.Instance.CloseForm(view: this);
+        }
+
+        private void FormHomePage_Load(object sender, EventArgs e)
+        {
+            FormShow(new FormHome(this), closeForm: false);
         }
     }
 }

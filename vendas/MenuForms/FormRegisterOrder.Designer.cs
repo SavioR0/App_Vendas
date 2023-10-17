@@ -63,9 +63,9 @@ namespace vendas.MenuForms
             this.labelControl4.Appearance.Options.UseFont = true;
             this.labelControl4.Location = new System.Drawing.Point(406, 6);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(214, 25);
+            this.labelControl4.Size = new System.Drawing.Size(173, 25);
             this.labelControl4.TabIndex = 0;
-            this.labelControl4.Text = "Cadastro de Pedidos";
+            this.labelControl4.Text = "Realizar Pedidos";
             // 
             // panel1
             // 

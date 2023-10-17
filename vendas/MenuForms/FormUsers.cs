@@ -45,11 +45,24 @@ namespace vendas.MenuForms
         {
             if (MessageBox.Show("Tem certeza que deseja remover o usuário do sistema?", "Remover Usuário!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                GridView gridView = gridUsers.FocusedView as GridView;
-                var user = (gridView.GetRow(gridView.FocusedRowHandle) as User);
-                var message = Service.UserController.Exclude(user.Id);
-                if (message != "") MessageBox.Show(message, "Ocorreu um erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                LoadGridUsers((TypeUser)Global.Instance.User.TypeUser);
+                try
+                {
+                    GridView gridView = gridUsers.FocusedView as GridView;
+                    var user = (gridView.GetRow(gridView.FocusedRowHandle) as User);
+                    var message = Service.UserController.Exclude(user.Id);
+                    if (message != "") throw new InvalidOperationException(message);
+                        LoadGridUsers((TypeUser)Global.Instance.User.TypeUser);
+                }
+                catch (InvalidOperationException ex) 
+                {
+                    MessageBox.Show("Ocorreu uma exceção! \nCertiique-se de que o Usuário não está vinculado em algum relacionamento. Não é possível a exclusão caso o usuário tenha algum produto ou alguma venda vinculada ao seu nome. ", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("ERRO : " + ex.Message, "Ocorreu um erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
             }
         }
 
@@ -64,6 +77,32 @@ namespace vendas.MenuForms
             var user = (gridView.GetRow(gridView.FocusedRowHandle) as User);
             user.Address = Service.AddressController.Filter(c => c.Id == user.AddressId)[0];
             _formHomePage.EditUserButtonClicked(user);
+        }
+
+        private void ComboBoxFilterProd_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(comboBoxFilterProd.Text != "") textEditSearch.Enabled = true;
+            else textEditSearch.Enabled = false;
+        }
+
+        private void BtnSearchProd_Click(object sender, EventArgs e)
+        {
+            LoadGridUsers((TypeUser)Global.Instance.User.TypeUser);
+            if (string.IsNullOrWhiteSpace(textEditSearch.Text)) return;
+
+            if (comboBoxFilterProd.Text == "Id")
+            {
+                if (int.TryParse(textEditSearch.Text, out int id))
+                    gridUsers.DataSource = Service.UserController.Filter(c => c.Id == id);
+                else
+                    MessageBox.Show("Insira um id Válido", "Id inválido", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            } else if (comboBoxFilterProd.Text == "Nome")
+            {
+                var users = gridUsers.DataSource as List<User>;
+                List<User> teste = users.FindAll(c => c.Name.IndexOf(textEditSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+                gridUsers.DataSource = teste;
+            }
+            textEditSearch.Text = "";
         }
     }
 }

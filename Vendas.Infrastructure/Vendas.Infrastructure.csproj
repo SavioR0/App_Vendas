@@ -55,19 +55,6 @@
     <Compile Include="Mapping\ProductMapping.cs" />
     <Compile Include="Mapping\SaleMapping.cs" />
     <Compile Include="Mapping\UserMapping.cs" />
-    <Compile Include="Migrations\202310021433254_InitialCreate.cs" />
-    <Compile Include="Migrations\202310021433254_InitialCreate.designer.cs">
-      <DependentUpon>202310021433254_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202310021452175_Address_User_Mappings_Modified.cs" />
-    <Compile Include="Migrations\202310021452175_Address_User_Mappings_Modified.designer.cs">
-      <DependentUpon>202310021452175_Address_User_Mappings_Modified.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202310061748367_table_sales.cs" />
-    <Compile Include="Migrations\202310061748367_table_sales.designer.cs">
-      <DependentUpon>202310061748367_table_sales.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SalesContext.cs" />
   </ItemGroup>
@@ -80,17 +67,6 @@
       <Project>{CF6270D3-DFA5-4AB3-8860-6FDB53948373}</Project>
       <Name>Vendas.Entity</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202310021433254_InitialCreate.resx">
-      <DependentUpon>202310021433254_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202310021452175_Address_User_Mappings_Modified.resx">
-      <DependentUpon>202310021452175_Address_User_Mappings_Modified.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202310061748367_table_sales.resx">
-      <DependentUpon>202310061748367_table_sales.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

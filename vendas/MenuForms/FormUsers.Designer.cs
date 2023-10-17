@@ -185,6 +185,7 @@ namespace vendas.MenuForms
             this.btnSearchProd.Size = new System.Drawing.Size(191, 23);
             this.btnSearchProd.TabIndex = 42;
             this.btnSearchProd.Text = "Filtrar";
+            this.btnSearchProd.Click += new System.EventHandler(this.BtnSearchProd_Click);
             // 
             // comboBoxFilterProd
             // 
@@ -199,6 +200,7 @@ namespace vendas.MenuForms
             "Nome"});
             this.comboBoxFilterProd.Size = new System.Drawing.Size(75, 20);
             this.comboBoxFilterProd.TabIndex = 41;
+            this.comboBoxFilterProd.SelectedIndexChanged += new System.EventHandler(this.ComboBoxFilterProd_SelectedIndexChanged);
             // 
             // textEditSearch
             // 

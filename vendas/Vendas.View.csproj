@@ -25,6 +25,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -61,6 +62,11 @@
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="NITGEN.SDK.NBioBSP, Version=1.2.4.0, Culture=neutral, PublicKeyToken=96eee45103d523d1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\SDK\dotNET\NITGEN.SDK.NBioBSP.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -113,11 +119,8 @@
     <Compile Include="ClientUser\FormRegisterSale.Designer.cs">
       <DependentUpon>FormRegisterSale.cs</DependentUpon>
     </Compile>
-    <Compile Include="FluentDesignForm1.cs">
+    <Compile Include="Biometric.cs">
       <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FluentDesignForm1.Designer.cs">
-      <DependentUpon>FluentDesignForm1.cs</DependentUpon>
     </Compile>
     <Compile Include="FormHomePage.cs">
       <SubType>Form</SubType>
@@ -149,6 +152,12 @@
     </Compile>
     <Compile Include="LoginRegister\LoginUsers.Designer.cs">
       <DependentUpon>LoginUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuForms\FormHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuForms\FormHome.Designer.cs">
+      <DependentUpon>FormHome.cs</DependentUpon>
     </Compile>
     <Compile Include="MenuForms\FormProducts.cs">
       <SubType>Form</SubType>
@@ -192,9 +201,6 @@
     <EmbeddedResource Include="ClientUser\FormRegisterSale.resx">
       <DependentUpon>FormRegisterSale.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FluentDesignForm1.resx">
-      <DependentUpon>FluentDesignForm1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormHomePage.resx">
       <DependentUpon>FormHomePage.cs</DependentUpon>
     </EmbeddedResource>
@@ -209,6 +215,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LoginRegister\LoginUsers.resx">
       <DependentUpon>LoginUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuForms\FormHome.resx">
+      <DependentUpon>FormHome.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuForms\FormProducts.resx">
       <DependentUpon>FormProducts.cs</DependentUpon>

@@ -51,15 +51,15 @@ namespace vendas.MenuForms
             }
             gridOrders.RefreshDataSource();
 
-            ValueTextEdit.Text = "R$ " + UpdateValueText();
+            UpdateValueText();
         }
 
-        private string UpdateValueText()
+        private void UpdateValueText()
         {
-            double valueOrder = 0;
+            double valueOrder = 0.0;
             foreach (var prod in _listProduct)
                 valueOrder += prod.Value;
-            return valueOrder.ToString("0.00");
+            ValueTextEdit.Text = "R$ " + valueOrder.ToString("0.00");
         }
 
         private void ComboBoxProduct_SelectedIndexChanged(object sender, EventArgs e)
@@ -73,6 +73,7 @@ namespace vendas.MenuForms
             var prod = (gridView.GetRow(gridView.FocusedRowHandle) as Product);
             _listProduct.Remove(_listProduct.Find(c => c.Id == prod.Id));
             gridOrders.RefreshDataSource();
+            UpdateValueText();
         }
 
         private void RegisterOrders(object sender, EventArgs e)
@@ -85,12 +86,25 @@ namespace vendas.MenuForms
             {
                 foreach (var prod in _listProduct)
                 {
+                    // Cadastro da Venda
                     string message = Service.SaleController.Save(new Sale
                     {
                         ProductId = prod.Id,
                         ClientId = Global.Instance.User.Id,
                         SellerId = prod.SellerId,
                         Flag = 'I',
+                    });
+                    if (message != "") throw new Exception(message);
+                    // Cadastro da Venda
+                    message = Service.ProductController.Save(new Product
+                    {
+                        Id = prod.Id,
+                        Name = prod.Name,
+                        Value = prod.Value,
+                        Description = prod.Description,
+                        Stock = prod.Stock--,
+                        Flag = 'U',
+                        SellerId = prod.SellerId,
                     });
                     if (message != "") throw new Exception(message);
                 }

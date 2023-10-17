@@ -8,12 +8,15 @@ using Vendas.Library;
 using Vendas.Communication;
 using Vendas.Management;
 using Vendas.View.Loader;
+using vendas;
 
 namespace Vendas.View
 {
     public partial class FormRegisterUser : Form
     {
         private readonly User _userEdited;
+        public byte[] BiometryData;
+
         public FormRegisterUser(User user=null) {
             InitializeComponent();
             _userEdited = user;
@@ -127,7 +130,7 @@ namespace Vendas.View
             {
                 if (ValidateFields()) {
                     var password = Security.Encrypt("TEXTO", Validations.DbFormatCPF(cpfValue.Text));
-                    if ( _userEdited == null && (Communication.Service.UserController.Filter((User c) => c.Email == EmailValue.Text.Trim() || c.Cpf == cpfValue.Text.Trim()).Count != 0))
+                    if ( _userEdited == null && (Communication.Service.UserController.Filter((User c) =>  c.BiometricData == BiometryData || c.Email == EmailValue.Text.Trim() || c.Cpf == cpfValue.Text.Trim()).Count != 0))
                         throw new Exception("Usuário já cadastrado no sistema. Certifique-se que seus dados estão certos e tente novamente.");
 
                     var user = new User
@@ -141,6 +144,7 @@ namespace Vendas.View
                         Password = password,
                         TypeUser = ReturnTypeUser(comboBoxEditTypeUser.Text),
                         UserName = _userEdited == null ? nameValue.Text.Trim().ToLower() + LastNameValue.Text.Trim().ToLower() + cpfValue.Text.Substring(0, 2) : _userEdited.UserName,
+                        BiometricData = BiometryData,
                         Flag = _userEdited == null ? 'I' : 'U',
                         EditLogin = _userEdited == null ? 1 : 0,
                     };
@@ -194,7 +198,7 @@ namespace Vendas.View
 
         private void BtnRegisterBiometricPrint_Click(object sender, EventArgs e)
         {
-            //AppManager.Instance.Load<LoaderController, User>(new formRegisterBiometricFinger());
+            AppManager.Instance.Load<LoaderController, User>(new Biometric(this));
         }
     }
 }

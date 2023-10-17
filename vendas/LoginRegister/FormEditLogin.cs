@@ -56,6 +56,7 @@ namespace Vendas.View
                         Password = password,
                         TypeUser = user.TypeUser,
                         UserName = user.UserName,
+                        BiometricData = user.BiometricData,
                         Flag = 'U',
                         EditLogin = 0,
                     };
@@ -63,7 +64,7 @@ namespace Vendas.View
                     if (!string.IsNullOrWhiteSpace(_message)) throw new Exception(_message);
                     Global.Instance.User = newUser;
                     ChooseOpenForm((TypeUser)newUser.TypeUser);
-                    AppManager.Instance.CloseForm(view: this);
+                    //AppManager.Instance.CloseForm(view: this);
                 }
             }
             catch (Exception x) {
