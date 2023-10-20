@@ -97,5 +97,6 @@ namespace vendas.MenuForms
         {
             _formHomePage.BtnRegisterPurchases_Click();
         }
+
     }
 }

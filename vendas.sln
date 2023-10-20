@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vendas.Library", "Vendas.Li
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vendas.Communication", "Vendas.Communication\Vendas.Communication.csproj", "{331C1344-7252-4418-B572-56217FA9EC26}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "teste.ca", "teste.ca\teste.ca.csproj", "{7BD14635-2ED6-4753-B812-8F2364D13820}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -91,6 +93,14 @@ Global
 		{331C1344-7252-4418-B572-56217FA9EC26}.Release|Any CPU.Build.0 = Release|Any CPU
 		{331C1344-7252-4418-B572-56217FA9EC26}.Release|x64.ActiveCfg = Release|Any CPU
 		{331C1344-7252-4418-B572-56217FA9EC26}.Release|x64.Build.0 = Release|Any CPU
+		{7BD14635-2ED6-4753-B812-8F2364D13820}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BD14635-2ED6-4753-B812-8F2364D13820}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BD14635-2ED6-4753-B812-8F2364D13820}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7BD14635-2ED6-4753-B812-8F2364D13820}.Debug|x64.Build.0 = Debug|Any CPU
+		{7BD14635-2ED6-4753-B812-8F2364D13820}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BD14635-2ED6-4753-B812-8F2364D13820}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BD14635-2ED6-4753-B812-8F2364D13820}.Release|x64.ActiveCfg = Release|Any CPU
+		{7BD14635-2ED6-4753-B812-8F2364D13820}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

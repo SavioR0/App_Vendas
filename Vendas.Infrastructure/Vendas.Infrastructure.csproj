@@ -55,6 +55,19 @@
     <Compile Include="Mapping\ProductMapping.cs" />
     <Compile Include="Mapping\SaleMapping.cs" />
     <Compile Include="Mapping\UserMapping.cs" />
+    <Compile Include="Migrations\202310171346405_InitialCreate.cs" />
+    <Compile Include="Migrations\202310171346405_InitialCreate.designer.cs">
+      <DependentUpon>202310171346405_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202310181728078_binary_biometric.cs" />
+    <Compile Include="Migrations\202310181728078_binary_biometric.designer.cs">
+      <DependentUpon>202310181728078_binary_biometric.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202310191159386_properties_not_required_user.cs" />
+    <Compile Include="Migrations\202310191159386_properties_not_required_user.designer.cs">
+      <DependentUpon>202310191159386_properties_not_required_user.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SalesContext.cs" />
   </ItemGroup>
@@ -67,6 +80,17 @@
       <Project>{CF6270D3-DFA5-4AB3-8860-6FDB53948373}</Project>
       <Name>Vendas.Entity</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202310171346405_InitialCreate.resx">
+      <DependentUpon>202310171346405_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310181728078_binary_biometric.resx">
+      <DependentUpon>202310181728078_binary_biometric.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310191159386_properties_not_required_user.resx">
+      <DependentUpon>202310191159386_properties_not_required_user.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

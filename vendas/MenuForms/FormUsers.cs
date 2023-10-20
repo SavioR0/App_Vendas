@@ -56,7 +56,6 @@ namespace vendas.MenuForms
                 catch (InvalidOperationException ex) 
                 {
                     MessageBox.Show("Ocorreu uma exceção! \nCertiique-se de que o Usuário não está vinculado em algum relacionamento. Não é possível a exclusão caso o usuário tenha algum produto ou alguma venda vinculada ao seu nome. ", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
                 }
                 catch (Exception ex)
                 {
@@ -104,5 +103,6 @@ namespace vendas.MenuForms
             }
             textEditSearch.Text = "";
         }
+
     }
 }

@@ -345,7 +345,6 @@ namespace vendas
                 return;
             }
 
-
             m_NBioAPI.CloseDevice(NBioAPI.Type.DEVICE_ID.AUTO);
 
             // Regist FIR to IndexSearch DB
@@ -360,9 +359,12 @@ namespace vendas
             // Trasnformando em Binario
             NBioAPI.Type.FIR biFIR;
             m_NBioAPI.GetFIRFromHandle(hNewFIR, out biFIR);
+            _formRegisterUser.BiometryDataBinary = biFIR.Data;
 
-            _formRegisterUser.BiometryData = biFIR.Data;
-
+            // Transformando um Text
+            NBioAPI.Type.FIR_TEXTENCODE textFIR;
+            m_NBioAPI.GetTextFIRFromHandle(hNewFIR, out textFIR, true);
+            _formRegisterUser.BiometryDataText = textFIR.TextFIR;
 
             // Add item to list of SearchDB
             foreach (NBioAPI.IndexSearch.FP_INFO sampleInfo in fpInfo)
@@ -377,6 +379,14 @@ namespace vendas
             textUserID.Text = Convert.ToString(Convert.ToInt32(textUserID.Text) + 1);
         }
 
+        static Image ConvertBytesToImage(byte[] bytes)
+        {
+            using (MemoryStream stream = new MemoryStream(bytes))
+            {
+                Image imagem = Image.FromStream(stream);
+                return new Bitmap(imagem);
+            }
+        }
 
         public uint myCallback(ref NBioAPI.IndexSearch.CALLBACK_PARAM_0 cbParam0, IntPtr userParam)
         {
@@ -384,7 +394,7 @@ namespace vendas
             return NBioAPI.IndexSearch.CALLBACK_RETURN.OK;
         }
 
-        private void btnIdentify_Click(object sender, System.EventArgs e)
+        private User Identify()
         {
             NBioAPI.Type.HFIR hCapturedFIR;
 
@@ -397,58 +407,38 @@ namespace vendas
             {
                 DisplayErrorMsg(ret);
                 m_NBioAPI.CloseDevice(NBioAPI.Type.DEVICE_ID.AUTO);
-                return;
+                return null;
             }
 
             m_NBioAPI.CloseDevice(NBioAPI.Type.DEVICE_ID.AUTO);
 
 
-            uint nMax;
-            m_IndexSearch.GetDataCount(out nMax);
-            progressIdentify.Minimum = 0;
-            progressIdentify.Maximum = Convert.ToInt32(nMax);
-
-            NBioAPI.IndexSearch.CALLBACK_INFO_0 cbInfo0 = new NBioAPI.IndexSearch.CALLBACK_INFO_0();
-            cbInfo0.CallBackFunction = new NBioAPI.IndexSearch.INDEXSEARCH_CALLBACK(myCallback);
-
-            // Transformando em Binario
-            //NBioAPI.Type.FIR biFIR;
-            //m_NBioAPI.GetFIRFromHandle(hCapturedFIR, out biFIR);
+            //NBioAPI.IndexSearch.CALLBACK_INFO_0 cbInfo0 = new NBioAPI.IndexSearch.CALLBACK_INFO_0();
+            //cbInfo0.CallBackFunction = new NBioAPI.IndexSearch.INDEXSEARCH_CALLBACK(myCallback);
 
             //_formRegisterUser.BiometryData = biFIR.Data;
+            NBioAPI.Type.FIR_PAYLOAD myPayload = new NBioAPI.Type.FIR_PAYLOAD();
 
+            //string texto = "AQAAABQAAACEAQAAAQASAAMAWQAAAAAAfAEAAEO0*ozqvH22/rIQ1S*hKHZF/eo*yfi6AazK3P5GoKl2wXTt6eo0ZUrHfDBO2xZkmUXXYdYjapejjzlVXE8PYshfm88TcQayhI6V7BUSOJtWMZr48YYMU38M3qbQPGbtK1yut9/1fgYxMkdfeDzIqPCAmbh/bATIGd9jespsfaKLQiS9uvU3iGJiQ1IlzflYBpXJEdRb0i9ZNOXw5XfDxDZLdP1ZKl/XGYxZpnddsLRVXYtAZ6x1MCccJ*wzielhG3Hgh8ag3HaV/h6aTLPzg9TLkECVZ5YQkzB/2jPDrd6OAAMs2Ib2HD4NRVZnGGJ/F81je4Z1rBPmhUxnKaDeCLnmxyKpH4EtLw3RsuvkhKh0lBdkN31RZ7On7YAKqRiOjWXU71p8qeRZYFqbXuUM1diYok8nMdU6X4vL3hkHh/RGKl8gLTVGjKbj5L4Ka5Mmvwl4PuH7ghcWjYuVGC/zXIspVuLx7a/76LHExCc5eDsWQnqnQUEuPLINO9w3Brr2NQ";
 
-            var teste = Service.UserController.GetAll();
+            //m_NBioAPI.GetTextFIRFromHandle(hCapturedFIR, out textFIR, true);
+            //m_NBioAPI.
 
-            var binario = teste[0].BiometricData;
+            var users = Service.UserController.GetAll();
 
-            // -----------------------------------
-            //var fir = new NBioAPI.Type.FIR();
-            //fir.Data = binario;
+            //foreach (User user in users)
+            //{
+            //    NBioAPI.Type.FIR_TEXTENCODE m_textFIR = new NBioAPI.Type.FIR_TEXTENCODE();
+            //    m_textFIR.TextFIR = user.BiometricData;
+            //    ret = m_NBioAPI.VerifyMatch(hCapturedFIR, m_textFIR, out bool result, myPayload);
+            //    if (result == true) return user;
+            //}
+            return null;
+        }
 
-            //NBioAPI.Type.FIR_PAYLOAD myPayload = new NBioAPI.Type.FIR_PAYLOAD();
-
-            //ret = m_NBioAPI.VerifyMatch(hCapturedFIR, fir,  out bool result, myPayload);
-            // -----------------------------------
-
-            //if (Service.UserController.Filter((User c) => c.BiometricData == textFIR.TextFIR)) MessageBox.Show("Teste", "Esse usuário já está cadastrado"); 
-            //else MessageBox.Show("Teste", "Esse usuário não é cadastrado");
-
-            // Identify FIR to IndexSearch DB
-            NBioAPI.IndexSearch.FP_INFO fpInfo;
-            ret = m_IndexSearch.IdentifyData(hCapturedFIR, NBioAPI.Type.FIR_SECURITY_LEVEL.NORMAL, out fpInfo, cbInfo0);
-            if (ret != NBioAPI.Error.NONE)
-            {
-                DisplayErrorMsg(ret);
-                return;
-            }
-
-            // Add item to list of result
-            ListViewItem listItem = new ListViewItem();
-            listItem.Text = fpInfo.ID.ToString();
-            listItem.SubItems.Add(fpInfo.FingerID.ToString());
-            listItem.SubItems.Add(fpInfo.SampleNumber.ToString());
-            listResult.Items.Add(listItem);
+        private void btnIdentify_Click(object sender, System.EventArgs e)
+        {
+            var user = Identify();
         }
 
         private void btnExit_Click(object sender, System.EventArgs e)

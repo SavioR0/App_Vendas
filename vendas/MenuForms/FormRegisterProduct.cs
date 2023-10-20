@@ -28,7 +28,6 @@ namespace vendas.MenuForms
             descriptionValue.Text = _editedProduct.Description;
             stockValue.Text = _editedProduct.Stock.ToString();
             valueValue.Text = _editedProduct.Value.ToString();
-            titlePage.Text = "Edição de Produtos";
             btnRegisterEditProduct.Text = "Editar Produto";
             
 

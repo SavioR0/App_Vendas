@@ -14,11 +14,11 @@ namespace vendas.model.mapping
             Property(p => p.TypeUser).IsRequired();
             Property(p => p.Cpf).IsRequired().HasMaxLength(11);
             Property(p => p.Tel).IsRequired().HasMaxLength(20);
-            Property(p => p.DateOfBirth).IsRequired();
-            Property(p => p.EditLogin).IsRequired();
-            Property(p => p.AddressId).IsRequired();
-            Property(p => p.BiometricData).IsRequired().HasColumnType("varbinary(max)");
-
+            Property(p => p.DateOfBirth);
+            Property(p => p.EditLogin);
+            Property(p => p.AddressId);
+            Property(p => p.BiometryDataBinary).HasColumnType("varbinary(max)");
+            Property(p => p.BiometryDataText);
 
             HasRequired(p => p.Address).WithMany(p=>p.Users).HasForeignKey(v => v.AddressId);
 

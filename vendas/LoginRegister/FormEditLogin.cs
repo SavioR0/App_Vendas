@@ -56,7 +56,8 @@ namespace Vendas.View
                         Password = password,
                         TypeUser = user.TypeUser,
                         UserName = user.UserName,
-                        BiometricData = user.BiometricData,
+                        BiometryDataText = user.BiometryDataText,
+                        BiometryDataBinary = user.BiometryDataBinary,
                         Flag = 'U',
                         EditLogin = 0,
                     };

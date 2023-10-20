@@ -48,7 +48,7 @@ namespace vendas
             this.panelFormSelected.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelFormSelected.Location = new System.Drawing.Point(0, 24);
             this.panelFormSelected.Name = "panelFormSelected";
-            this.panelFormSelected.Size = new System.Drawing.Size(1066, 564);
+            this.panelFormSelected.Size = new System.Drawing.Size(1008, 537);
             this.panelFormSelected.TabIndex = 1;
             // 
             // menuToolStripMenuItem
@@ -129,7 +129,7 @@ namespace vendas
             this.menuToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1066, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1008, 24);
             this.menuStrip1.TabIndex = 11;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -137,10 +137,11 @@ namespace vendas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1066, 588);
+            this.ClientSize = new System.Drawing.Size(1008, 561);
             this.Controls.Add(this.panelFormSelected);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.MinimumSize = new System.Drawing.Size(1024, 600);
             this.Name = "FormHomePage";
             this.Text = "Tela Principal";
             this.Load += new System.EventHandler(this.FormHomePage_Load);

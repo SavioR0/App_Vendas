@@ -20,7 +20,8 @@ namespace Vendas.Entity.Entities
         public string UserName { get; set; }
         public char Flag { get; set; }
         public int EditLogin { get; set; }
-        public byte[] BiometricData { get; set; }
+        public byte[] BiometryDataBinary { get; set; }
+        public string BiometryDataText { get; set; }
 
         [IgnoreDataMember]
         public virtual Address Address { get; set; }

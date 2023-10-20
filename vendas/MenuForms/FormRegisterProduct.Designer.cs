@@ -38,13 +38,15 @@ namespace vendas.MenuForms
             this.nameLabel = new DevExpress.XtraEditors.LabelControl();
             this.valorLabel = new DevExpress.XtraEditors.LabelControl();
             this.descricaoLabel = new DevExpress.XtraEditors.LabelControl();
-            this.titlePage = new DevExpress.XtraEditors.LabelControl();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
+            this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             ((System.ComponentModel.ISupportInitialize)(this.nameValue.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stockValue.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.descriptionValue.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.valueValue.Properties)).BeginInit();
-            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
+            this.xtraTabControl1.SuspendLayout();
+            this.xtraTabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // nameValue
@@ -52,33 +54,36 @@ namespace vendas.MenuForms
             this.nameValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.nameValue.EditValue = "";
-            this.nameValue.Location = new System.Drawing.Point(143, 90);
+            this.nameValue.Location = new System.Drawing.Point(107, 34);
             this.nameValue.Name = "nameValue";
-            this.nameValue.Size = new System.Drawing.Size(855, 20);
+            this.nameValue.Size = new System.Drawing.Size(794, 20);
             this.nameValue.TabIndex = 21;
+            this.nameValue.ToolTip = "Informe o nome do produto";
             // 
             // stockValue
             // 
             this.stockValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.stockValue.EditValue = "";
-            this.stockValue.Location = new System.Drawing.Point(366, 142);
+            this.stockValue.Location = new System.Drawing.Point(286, 116);
             this.stockValue.Name = "stockValue";
             this.stockValue.Properties.BeepOnError = false;
             this.stockValue.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
             this.stockValue.Properties.MaskSettings.Set("MaskManagerSignature", "allowNull=False");
             this.stockValue.Properties.MaskSettings.Set("mask", "d");
-            this.stockValue.Size = new System.Drawing.Size(632, 20);
+            this.stockValue.Size = new System.Drawing.Size(140, 20);
             this.stockValue.TabIndex = 24;
+            this.stockValue.ToolTip = "Informe a quantidade de produtos no estoque";
             // 
             // btnRegisterEditProduct
             // 
             this.btnRegisterEditProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRegisterEditProduct.Location = new System.Drawing.Point(711, 497);
+            this.btnRegisterEditProduct.Location = new System.Drawing.Point(751, 471);
             this.btnRegisterEditProduct.Name = "btnRegisterEditProduct";
-            this.btnRegisterEditProduct.Size = new System.Drawing.Size(288, 33);
+            this.btnRegisterEditProduct.Size = new System.Drawing.Size(150, 30);
             this.btnRegisterEditProduct.TabIndex = 25;
             this.btnRegisterEditProduct.Text = "Cadastrar";
+            this.btnRegisterEditProduct.ToolTip = "Cadastro ddo produto";
             this.btnRegisterEditProduct.Click += new System.EventHandler(this.RegisterButton_Click);
             // 
             // descriptionValue
@@ -86,26 +91,27 @@ namespace vendas.MenuForms
             this.descriptionValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.descriptionValue.EditValue = "";
-            this.descriptionValue.Location = new System.Drawing.Point(143, 116);
+            this.descriptionValue.Location = new System.Drawing.Point(107, 75);
             this.descriptionValue.Name = "descriptionValue";
-            this.descriptionValue.Size = new System.Drawing.Size(855, 20);
+            this.descriptionValue.Size = new System.Drawing.Size(794, 20);
             this.descriptionValue.TabIndex = 22;
+            this.descriptionValue.ToolTip = "informe a descrição do produto";
             // 
             // labelControl4
             // 
             this.labelControl4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelControl4.Location = new System.Drawing.Point(311, 145);
+            this.labelControl4.Location = new System.Drawing.Point(286, 99);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(49, 13);
+            this.labelControl4.Size = new System.Drawing.Size(42, 13);
             this.labelControl4.TabIndex = 29;
-            this.labelControl4.Text = "Estoque : ";
+            this.labelControl4.Text = "Estoque ";
             // 
             // valueValue
             // 
             this.valueValue.EditValue = "";
-            this.valueValue.Location = new System.Drawing.Point(143, 142);
+            this.valueValue.Location = new System.Drawing.Point(107, 116);
             this.valueValue.Name = "valueValue";
             this.valueValue.Properties.BeepOnError = false;
             this.valueValue.Properties.MaskSettings.Set("mask", "c");
@@ -113,89 +119,87 @@ namespace vendas.MenuForms
             this.valueValue.Properties.UseMaskAsDisplayFormat = true;
             this.valueValue.Size = new System.Drawing.Size(162, 20);
             this.valueValue.TabIndex = 23;
+            this.valueValue.ToolTip = "Informe valor que do produto";
             // 
             // nameLabel
             // 
             this.nameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.nameLabel.Location = new System.Drawing.Point(103, 93);
+            this.nameLabel.Location = new System.Drawing.Point(107, 17);
             this.nameLabel.Name = "nameLabel";
-            this.nameLabel.Size = new System.Drawing.Size(34, 13);
+            this.nameLabel.Size = new System.Drawing.Size(27, 13);
             this.nameLabel.TabIndex = 26;
-            this.nameLabel.Text = "Nome :";
+            this.nameLabel.Text = "Nome";
             // 
             // valorLabel
             // 
             this.valorLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.valorLabel.Location = new System.Drawing.Point(106, 145);
+            this.valorLabel.Location = new System.Drawing.Point(107, 99);
             this.valorLabel.Name = "valorLabel";
-            this.valorLabel.Size = new System.Drawing.Size(34, 13);
+            this.valorLabel.Size = new System.Drawing.Size(27, 13);
             this.valorLabel.TabIndex = 28;
-            this.valorLabel.Text = "Valor : ";
+            this.valorLabel.Text = "Valor ";
             // 
             // descricaoLabel
             // 
             this.descricaoLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.descricaoLabel.Location = new System.Drawing.Point(84, 119);
+            this.descricaoLabel.Location = new System.Drawing.Point(107, 58);
             this.descricaoLabel.Name = "descricaoLabel";
-            this.descricaoLabel.Size = new System.Drawing.Size(56, 13);
+            this.descricaoLabel.Size = new System.Drawing.Size(49, 13);
             this.descricaoLabel.TabIndex = 27;
-            this.descricaoLabel.Text = "Descrição : ";
+            this.descricaoLabel.Text = "Descrição ";
             // 
-            // titlePage
+            // xtraTabControl1
             // 
-            this.titlePage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.titlePage.Appearance.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titlePage.Appearance.Options.UseFont = true;
-            this.titlePage.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Horizontal;
-            this.titlePage.Location = new System.Drawing.Point(419, 6);
-            this.titlePage.Name = "titlePage";
-            this.titlePage.Size = new System.Drawing.Size(216, 25);
-            this.titlePage.TabIndex = 0;
-            this.titlePage.Text = "Cadastro de Produto";
+            this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xtraTabControl1.Location = new System.Drawing.Point(0, 0);
+            this.xtraTabControl1.Name = "xtraTabControl1";
+            this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
+            this.xtraTabControl1.Size = new System.Drawing.Size(1008, 537);
+            this.xtraTabControl1.TabIndex = 30;
+            this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
+            this.xtraTabPage1});
             // 
-            // panel1
+            // xtraTabPage1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.titlePage);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1066, 38);
-            this.panel1.TabIndex = 107;
+            this.xtraTabPage1.AllowDrop = true;
+            this.xtraTabPage1.Controls.Add(this.nameLabel);
+            this.xtraTabPage1.Controls.Add(this.nameValue);
+            this.xtraTabPage1.Controls.Add(this.descricaoLabel);
+            this.xtraTabPage1.Controls.Add(this.stockValue);
+            this.xtraTabPage1.Controls.Add(this.valorLabel);
+            this.xtraTabPage1.Controls.Add(this.btnRegisterEditProduct);
+            this.xtraTabPage1.Controls.Add(this.valueValue);
+            this.xtraTabPage1.Controls.Add(this.descriptionValue);
+            this.xtraTabPage1.Controls.Add(this.labelControl4);
+            this.xtraTabPage1.Name = "xtraTabPage1";
+            this.xtraTabPage1.Size = new System.Drawing.Size(1006, 512);
+            this.xtraTabPage1.Text = "Registro de Produto";
             // 
             // FormRegisterProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1066, 564);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.nameValue);
-            this.Controls.Add(this.stockValue);
-            this.Controls.Add(this.btnRegisterEditProduct);
-            this.Controls.Add(this.descriptionValue);
-            this.Controls.Add(this.labelControl4);
-            this.Controls.Add(this.valueValue);
-            this.Controls.Add(this.nameLabel);
-            this.Controls.Add(this.valorLabel);
-            this.Controls.Add(this.descricaoLabel);
+            this.ClientSize = new System.Drawing.Size(1008, 537);
+            this.Controls.Add(this.xtraTabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MinimumSize = new System.Drawing.Size(1008, 537);
             this.Name = "FormRegisterProduct";
             this.Text = "FormRegisterProduct";
             ((System.ComponentModel.ISupportInitialize)(this.nameValue.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.stockValue.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.descriptionValue.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.valueValue.Properties)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
+            this.xtraTabControl1.ResumeLayout(false);
+            this.xtraTabPage1.ResumeLayout(false);
+            this.xtraTabPage1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -210,7 +214,7 @@ namespace vendas.MenuForms
         private DevExpress.XtraEditors.LabelControl nameLabel;
         private DevExpress.XtraEditors.LabelControl valorLabel;
         private DevExpress.XtraEditors.LabelControl descricaoLabel;
-        private DevExpress.XtraEditors.LabelControl titlePage;
-        private System.Windows.Forms.Panel panel1;
+        private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
     }
 }

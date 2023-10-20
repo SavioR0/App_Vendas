@@ -29,8 +29,6 @@ namespace vendas.MenuForms
         /// </summary>
         private void InitializeComponent()
         {
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.ValueTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.label3 = new System.Windows.Forms.Label();
             this.gridOrders = new DevExpress.XtraGrid.GridControl();
@@ -48,35 +46,17 @@ namespace vendas.MenuForms
             this.label1 = new System.Windows.Forms.Label();
             this.numValueEdit = new DevExpress.XtraEditors.SpinEdit();
             this.ComboBoxProduct = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.panel1.SuspendLayout();
+            this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
+            this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             ((System.ComponentModel.ISupportInitialize)(this.ValueTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numValueEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComboBoxProduct.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
+            this.xtraTabControl1.SuspendLayout();
+            this.xtraTabPage2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // labelControl4
-            // 
-            this.labelControl4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl4.Appearance.Options.UseFont = true;
-            this.labelControl4.Location = new System.Drawing.Point(406, 6);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(173, 25);
-            this.labelControl4.TabIndex = 0;
-            this.labelControl4.Text = "Realizar Pedidos";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.labelControl4);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1066, 38);
-            this.panel1.TabIndex = 107;
             // 
             // ValueTextEdit
             // 
@@ -86,7 +66,7 @@ namespace vendas.MenuForms
             0,
             0,
             131072});
-            this.ValueTextEdit.Location = new System.Drawing.Point(919, 532);
+            this.ValueTextEdit.Location = new System.Drawing.Point(1342, 476);
             this.ValueTextEdit.Name = "ValueTextEdit";
             this.ValueTextEdit.Properties.BeepOnError = false;
             this.ValueTextEdit.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
@@ -94,13 +74,14 @@ namespace vendas.MenuForms
             this.ValueTextEdit.Properties.ReadOnly = true;
             this.ValueTextEdit.Size = new System.Drawing.Size(135, 20);
             this.ValueTextEdit.TabIndex = 67;
+            this.ValueTextEdit.ToolTip = "Valor total da compra";
             // 
             // label3
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(865, 535);
+            this.label3.Location = new System.Drawing.Point(1288, 479);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 13);
             this.label3.TabIndex = 66;
@@ -112,10 +93,10 @@ namespace vendas.MenuForms
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridOrders.DataSource = typeof(Vendas.Entity.Entities.Product);
-            this.gridOrders.Location = new System.Drawing.Point(12, 74);
+            this.gridOrders.Location = new System.Drawing.Point(11, 33);
             this.gridOrders.MainView = this.gridView2;
             this.gridOrders.Name = "gridOrders";
-            this.gridOrders.Size = new System.Drawing.Size(1042, 425);
+            this.gridOrders.Size = new System.Drawing.Size(984, 432);
             this.gridOrders.TabIndex = 65;
             this.gridOrders.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -191,51 +172,54 @@ namespace vendas.MenuForms
             // btnExclude
             // 
             this.btnExclude.AccessibleName = "btnExclude";
-            this.btnExclude.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnExclude.Location = new System.Drawing.Point(12, 530);
+            this.btnExclude.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExclude.Location = new System.Drawing.Point(689, 7);
             this.btnExclude.Name = "btnExclude";
-            this.btnExclude.Size = new System.Drawing.Size(135, 24);
+            this.btnExclude.Size = new System.Drawing.Size(150, 20);
             this.btnExclude.TabIndex = 64;
             this.btnExclude.Text = "Remover Produto";
+            this.btnExclude.ToolTip = "Remover produto selecionado";
             this.btnExclude.Click += new System.EventHandler(this.RemoveOrderList);
             // 
             // simpleButton1
             // 
             this.simpleButton1.AccessibleName = "btnUpdate";
-            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.simpleButton1.Location = new System.Drawing.Point(156, 530);
+            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton1.Location = new System.Drawing.Point(846, 471);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(186, 24);
+            this.simpleButton1.Size = new System.Drawing.Size(150, 30);
             this.simpleButton1.TabIndex = 63;
             this.simpleButton1.Text = "Finalizar Pedidos";
+            this.simpleButton1.ToolTip = "Finalizar pedidos realizar a compra";
             this.simpleButton1.Click += new System.EventHandler(this.RegisterOrders);
             // 
             // btnUpdate
             // 
             this.btnUpdate.AccessibleName = "btnUpdate";
             this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUpdate.Location = new System.Drawing.Point(880, 44);
+            this.btnUpdate.Location = new System.Drawing.Point(845, 7);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(174, 24);
+            this.btnUpdate.Size = new System.Drawing.Size(150, 20);
             this.btnUpdate.TabIndex = 62;
             this.btnUpdate.Text = "Adicionar Produto(s)";
+            this.btnUpdate.ToolTip = "Adicionar o produto no carrinho";
             this.btnUpdate.Click += new System.EventHandler(this.BtnUpdate_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(165, 49);
+            this.label2.Location = new System.Drawing.Point(167, 10);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 13);
+            this.label2.Size = new System.Drawing.Size(63, 13);
             this.label2.TabIndex = 61;
-            this.label2.Text = "Quantidade : ";
+            this.label2.Text = "Quantidade";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 49);
+            this.label1.Location = new System.Drawing.Point(11, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 13);
+            this.label1.Size = new System.Drawing.Size(45, 13);
             this.label1.TabIndex = 58;
             this.label1.Text = "Produto";
             // 
@@ -246,7 +230,7 @@ namespace vendas.MenuForms
             0,
             0,
             0});
-            this.numValueEdit.Location = new System.Drawing.Point(242, 46);
+            this.numValueEdit.Location = new System.Drawing.Point(236, 7);
             this.numValueEdit.Name = "numValueEdit";
             this.numValueEdit.Properties.BeepOnError = false;
             this.numValueEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -255,52 +239,69 @@ namespace vendas.MenuForms
             this.numValueEdit.Properties.MaskSettings.Set("mask", "d");
             this.numValueEdit.Size = new System.Drawing.Size(100, 20);
             this.numValueEdit.TabIndex = 60;
+            this.numValueEdit.ToolTip = "Informe a quantidade do produto selecionado";
             // 
             // ComboBoxProduct
             // 
-            this.ComboBoxProduct.Location = new System.Drawing.Point(59, 46);
+            this.ComboBoxProduct.Location = new System.Drawing.Point(61, 7);
             this.ComboBoxProduct.Name = "ComboBoxProduct";
             this.ComboBoxProduct.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ComboBoxProduct.Size = new System.Drawing.Size(100, 20);
             this.ComboBoxProduct.TabIndex = 59;
+            this.ComboBoxProduct.ToolTip = "Selecione o produto";
             this.ComboBoxProduct.SelectedIndexChanged += new System.EventHandler(this.ComboBoxProduct_SelectedIndexChanged);
+            // 
+            // xtraTabControl1
+            // 
+            this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xtraTabControl1.Location = new System.Drawing.Point(0, 0);
+            this.xtraTabControl1.Name = "xtraTabControl1";
+            this.xtraTabControl1.SelectedTabPage = this.xtraTabPage2;
+            this.xtraTabControl1.Size = new System.Drawing.Size(1008, 537);
+            this.xtraTabControl1.TabIndex = 68;
+            this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
+            this.xtraTabPage2});
+            // 
+            // xtraTabPage2
+            // 
+            this.xtraTabPage2.Controls.Add(this.label1);
+            this.xtraTabPage2.Controls.Add(this.ValueTextEdit);
+            this.xtraTabPage2.Controls.Add(this.label2);
+            this.xtraTabPage2.Controls.Add(this.label3);
+            this.xtraTabPage2.Controls.Add(this.btnUpdate);
+            this.xtraTabPage2.Controls.Add(this.gridOrders);
+            this.xtraTabPage2.Controls.Add(this.simpleButton1);
+            this.xtraTabPage2.Controls.Add(this.ComboBoxProduct);
+            this.xtraTabPage2.Controls.Add(this.numValueEdit);
+            this.xtraTabPage2.Controls.Add(this.btnExclude);
+            this.xtraTabPage2.Name = "xtraTabPage2";
+            this.xtraTabPage2.Size = new System.Drawing.Size(1006, 512);
+            this.xtraTabPage2.Text = "Registro de Pedidos";
             // 
             // FormRegisterOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1066, 564);
-            this.Controls.Add(this.ValueTextEdit);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.gridOrders);
-            this.Controls.Add(this.ComboBoxProduct);
-            this.Controls.Add(this.btnExclude);
-            this.Controls.Add(this.numValueEdit);
-            this.Controls.Add(this.simpleButton1);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnUpdate);
-            this.Controls.Add(this.label2);
+            this.ClientSize = new System.Drawing.Size(1008, 537);
+            this.Controls.Add(this.xtraTabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormRegisterOrder";
             this.Text = "FormRegisterOrder";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ValueTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridOrders)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numValueEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComboBoxProduct.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
+            this.xtraTabControl1.ResumeLayout(false);
+            this.xtraTabPage2.ResumeLayout(false);
+            this.xtraTabPage2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private DevExpress.XtraEditors.LabelControl labelControl4;
-        private System.Windows.Forms.Panel panel1;
         private DevExpress.XtraEditors.TextEdit ValueTextEdit;
         private System.Windows.Forms.Label label3;
         private DevExpress.XtraGrid.GridControl gridOrders;
@@ -318,5 +319,7 @@ namespace vendas.MenuForms
         private System.Windows.Forms.Label label1;
         private DevExpress.XtraEditors.SpinEdit numValueEdit;
         private DevExpress.XtraEditors.ComboBoxEdit ComboBoxProduct;
+        private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
     }
 }

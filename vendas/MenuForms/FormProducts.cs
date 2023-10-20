@@ -50,11 +50,6 @@ namespace vendas.MenuForms
             _formHomePage.EditProductButtonClicked(prod);
         }
 
-        private void SimpleButton1_Click(object sender, EventArgs e)
-        {
-            _formHomePage.OpenFormProduct();
-        }
-
         private void comboBoxFilterProd_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBoxFilterProd.Text != "") textEditSearch.Enabled = true;

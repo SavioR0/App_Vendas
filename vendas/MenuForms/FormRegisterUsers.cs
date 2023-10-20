@@ -1,27 +1,32 @@
 ﻿using DevExpress.XtraEditors;
+using NITGEN.SDK.NBioBSP;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using vendas;
+using Vendas.Communication;
 using Vendas.Entity.Entities;
 using Vendas.Entity.Enums;
 using Vendas.Library;
-using Vendas.Communication;
 using Vendas.Management;
 using Vendas.View.Loader;
-using vendas;
 
 namespace Vendas.View
 {
     public partial class FormRegisterUser : Form
     {
         private readonly User _userEdited;
-        public byte[] BiometryData;
+        public string BiometryDataText;
+        public byte[] BiometryDataBinary;
+
+        NBioAPI m_NBioAPI;
 
         public FormRegisterUser(User user=null) {
             InitializeComponent();
             _userEdited = user;
             LoadEdit();
-            
+            m_NBioAPI = new NBioAPI();
+
         }
 
         private void LoadEdit()
@@ -113,6 +118,7 @@ namespace Vendas.View
             numberValue.Text = null;
             EmailValue.Text = null;
             comboBoxEditTypeUser.Text = null;
+            labelBiomerticAlert.Text = "";
         }
 
         private int ReturnTypeUser(string value) {
@@ -130,7 +136,7 @@ namespace Vendas.View
             {
                 if (ValidateFields()) {
                     var password = Security.Encrypt("TEXTO", Validations.DbFormatCPF(cpfValue.Text));
-                    if ( _userEdited == null && (Communication.Service.UserController.Filter((User c) =>  c.BiometricData == BiometryData || c.Email == EmailValue.Text.Trim() || c.Cpf == cpfValue.Text.Trim()).Count != 0))
+                    if ( _userEdited == null && (Communication.Service.UserController.Filter((User c) => c.Email == EmailValue.Text.Trim() || c.Cpf == cpfValue.Text.Trim()).Count != 0))
                         throw new Exception("Usuário já cadastrado no sistema. Certifique-se que seus dados estão certos e tente novamente.");
 
                     var user = new User
@@ -144,7 +150,8 @@ namespace Vendas.View
                         Password = password,
                         TypeUser = ReturnTypeUser(comboBoxEditTypeUser.Text),
                         UserName = _userEdited == null ? nameValue.Text.Trim().ToLower() + LastNameValue.Text.Trim().ToLower() + cpfValue.Text.Substring(0, 2) : _userEdited.UserName,
-                        BiometricData = BiometryData,
+                        BiometryDataText = BiometryDataText,
+                        BiometryDataBinary = BiometryDataBinary,
                         Flag = _userEdited == null ? 'I' : 'U',
                         EditLogin = _userEdited == null ? 1 : 0,
                     };
@@ -198,7 +205,41 @@ namespace Vendas.View
 
         private void BtnRegisterBiometricPrint_Click(object sender, EventArgs e)
         {
-            AppManager.Instance.Load<LoaderController, User>(new Biometric(this));
+            var message = Biometry.RegisterBiometry(ref BiometryDataBinary, ref BiometryDataText);
+            if (message != "")
+            {
+                MessageBox.Show(message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            labelBiomerticAlert.Text = "Biometria cadastrada com sucesso!";
+
+            ////AppManager.Instance.Load<LoaderController, User>(new Biometric(this));
+            //NBioAPI.Type.HFIR hNewFIR;
+
+            //// Get FIR data
+            //m_NBioAPI.OpenDevice(NBioAPI.Type.DEVICE_ID.AUTO);
+            //uint ret = m_NBioAPI.Enroll(out hNewFIR, null);
+            //if (ret != NBioAPI.Error.NONE)
+            //{
+            //    MessageBox.Show("Certifique-se que o leitor digital está conectado.\n " + NBioAPI.Error.GetErrorDescription(ret) + " [" + ret.ToString() + "]", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            //    m_NBioAPI.CloseDevice(NBioAPI.Type.DEVICE_ID.AUTO);
+            //    return;
+            //}
+            //m_NBioAPI.CloseDevice(NBioAPI.Type.DEVICE_ID.AUTO);
+
+            //// Trasnformando em Binario
+            //NBioAPI.Type.FIR biFIR;
+            //m_NBioAPI.GetFIRFromHandle(hNewFIR, out biFIR);
+            //BiometryDataBinary = biFIR.Data;
+
+            //// Transformando um Text
+            //NBioAPI.Type.FIR_TEXTENCODE textFIR;
+            //m_NBioAPI.GetTextFIRFromHandle(hNewFIR, out textFIR, true);
+            //BiometryDataText = textFIR.TextFIR;
+
+            //labelBiomerticAlert.Text = "Biometria cadastrada com sucesso!";
         }
     }
 }

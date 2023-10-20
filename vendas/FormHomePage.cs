@@ -45,22 +45,12 @@ namespace vendas
             menuToolStripMenuItem.DropDownItems[5].Text = "Minhas Vendas";
             menuToolStripMenuItem.DropDownItems[2].Visible = false;
             menuToolStripMenuItem.DropDownItems[6].Visible = false;
-            //btnUsersMenu.Text = "Clientes";
-            // btnProductMenu.Text = "Meus Produtos";
-            //btnRegisterUsersMenu.Visible = false;
-            //btnRegisterOrders.Visible = false;
-            //btnOrdersMenu.Text = "Minhas Vendas";
         }
         private void LoadClientPermissions()
         {
             menuToolStripMenuItem.DropDownItems[1].Visible = false;
             menuToolStripMenuItem.DropDownItems[2].Visible = false;
             menuToolStripMenuItem.DropDownItems[4].Visible = false;
-            //btnProductMenu.Text = "Produtos";
-            //btnUsersMenu.Visible = false;
-            //btnRegisterUsersMenu.Visible = false;
-            //btnOrdersMenu.Text = "Minhas Compras";
-            //btnRegisterProductMenu.Visible = false;
         }
 
         public void FormShow(Form frm,bool closeForm = true) {
@@ -70,6 +60,7 @@ namespace vendas
             panelFormSelected.Controls.Add(frm);
             frm.BringToFront();
             frm.Show();
+            frm.Dock = DockStyle.Fill;
         }
 
         private void ActiveFormClose(bool closeForm = true) {
