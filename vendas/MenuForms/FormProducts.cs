@@ -1,7 +1,9 @@
 ﻿using DevExpress.XtraGrid.Views.Grid;
+using FastReport;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using vendas.Reports;
 using Vendas.Communication;
 using Vendas.Entity.Entities;
 using Vendas.Entity.Enums;
@@ -75,6 +77,27 @@ namespace vendas.MenuForms
                 gridProduct.DataSource = teste;
             }
             textEditSearch.Text = "";
+        }
+
+        private void GenerateReport_Click(object sender, EventArgs e)
+        {
+            gridProduct.Refresh();
+            GridView gridView = gridProduct.FocusedView as GridView;
+            var productList = new List<Product>();
+            for (int i = 0; i < gridView.RowCount; i++)
+            {
+                productList.Add((gridView.GetRow(i)) as Product);
+            }
+            var fReport = new Report();
+            var pathReport = @"../../Reports/ProductReport.frx";
+            fReport.Load(pathReport);
+
+            fReport.Dictionary.RegisterBusinessObject(productList, "productList", 10, true);
+            fReport.Report.Save(pathReport);
+            //var fReport = GetReportTypes<Product>.GeneratePDF(TypeReport.Product, productList);
+            (new FormPreviewPDFReport(fReport)).ShowDialog();
+
+
         }
     }
 }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using vendas.Reports;
 using Vendas.Communication;
 using Vendas.Entity.Entities;
 using Vendas.Entity.Enums;
@@ -98,5 +99,16 @@ namespace vendas.MenuForms
             _formHomePage.BtnRegisterPurchases_Click();
         }
 
+        private void GenerateReport_Click(object sender, EventArgs e)
+        {
+            GridView gridView = gridSale.FocusedView as GridView;
+            var saleList = new List<Sale>();
+            for (int i = 0; i < gridView.RowCount; i++)
+            {
+                saleList.Add((gridView.GetRow(i)) as Sale);
+            }
+            var fReport = GetReportTypes<Sale>.GeneratePDF(TypeReport.Order, saleList);
+            (new FormPreviewPDFReport(fReport)).ShowDialog();
+        }
     }
 }

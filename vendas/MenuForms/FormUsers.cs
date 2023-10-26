@@ -1,7 +1,11 @@
-﻿using DevExpress.XtraGrid.Views.Grid;
+﻿
+
+
+using DevExpress.XtraGrid.Views.Grid;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using vendas.Reports;
 using Vendas.Communication;
 using Vendas.Entity.Entities;
 using Vendas.Entity.Enums;
@@ -104,5 +108,19 @@ namespace vendas.MenuForms
             textEditSearch.Text = "";
         }
 
+        
+
+        private void GenerateReport_Click(object sender, EventArgs e)
+        {
+            gridUsers.Refresh();
+            GridView gridView = gridUsers.FocusedView as GridView;
+            var userList = new List<User>();
+            for (int i =0; i< gridView.RowCount;i++) 
+            {
+                userList.Add((gridView.GetRow(i)) as User);
+            }
+            var fReport = GetReportTypes<User>.GeneratePDF(TypeReport.User, userList);
+            (new FormPreviewPDFReport(fReport)).ShowDialog();
+        }
     }
 }

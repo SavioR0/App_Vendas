@@ -47,6 +47,7 @@ namespace vendas.MenuForms
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            this.GenerateReport = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.gridProduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxFilterProd.Properties)).BeginInit();
@@ -238,6 +239,7 @@ namespace vendas.MenuForms
             // 
             // xtraTabPage2
             // 
+            this.xtraTabPage2.Controls.Add(this.GenerateReport);
             this.xtraTabPage2.Controls.Add(this.textEditSearch);
             this.xtraTabPage2.Controls.Add(this.simpleButton1);
             this.xtraTabPage2.Controls.Add(this.gridProduct);
@@ -250,6 +252,17 @@ namespace vendas.MenuForms
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.Size = new System.Drawing.Size(1006, 512);
             this.xtraTabPage2.Text = "Produtos";
+            // 
+            // GenerateReport
+            // 
+            this.GenerateReport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.GenerateReport.Location = new System.Drawing.Point(12, 471);
+            this.GenerateReport.Name = "GenerateReport";
+            this.GenerateReport.Size = new System.Drawing.Size(150, 30);
+            this.GenerateReport.TabIndex = 115;
+            this.GenerateReport.Text = "Gerar Relatório";
+            this.GenerateReport.ToolTip = "Editar usuário";
+            this.GenerateReport.Click += new System.EventHandler(this.GenerateReport_Click);
             // 
             // FormProducts
             // 
@@ -292,5 +305,6 @@ namespace vendas.MenuForms
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
+        private DevExpress.XtraEditors.SimpleButton GenerateReport;
     }
 }

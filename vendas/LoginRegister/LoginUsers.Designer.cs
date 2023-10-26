@@ -131,9 +131,9 @@ namespace Vendas.View
             // pictureBoxPerfile
             // 
             this.pictureBoxPerfile.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxPerfile.Image")));
-            this.pictureBoxPerfile.Location = new System.Drawing.Point(74, 57);
+            this.pictureBoxPerfile.Location = new System.Drawing.Point(74, 12);
             this.pictureBoxPerfile.Name = "pictureBoxPerfile";
-            this.pictureBoxPerfile.Size = new System.Drawing.Size(560, 119);
+            this.pictureBoxPerfile.Size = new System.Drawing.Size(560, 164);
             this.pictureBoxPerfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxPerfile.TabIndex = 43;
             this.pictureBoxPerfile.TabStop = false;
@@ -153,6 +153,7 @@ namespace Vendas.View
             this.Controls.Add(this.checkEdit1);
             this.Controls.Add(this.labelControl4);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1024, 600);
             this.MinimumSize = new System.Drawing.Size(607, 391);

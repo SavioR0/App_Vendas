@@ -82,7 +82,6 @@ namespace Vendas.View
             | System.Windows.Forms.AnchorStyles.Right)));
             this.LastNameValue.EditValue = "Rodrigues";
             this.LastNameValue.Location = new System.Drawing.Point(107, 75);
-            this.LastNameValue.MaximumSize = new System.Drawing.Size(1000, 0);
             this.LastNameValue.Name = "LastNameValue";
             this.LastNameValue.Size = new System.Drawing.Size(794, 20);
             this.LastNameValue.TabIndex = 82;
@@ -136,7 +135,6 @@ namespace Vendas.View
             | System.Windows.Forms.AnchorStyles.Right)));
             this.StreetValue.EditValue = "Praça Getúlio Vargas";
             this.StreetValue.Location = new System.Drawing.Point(277, 280);
-            this.StreetValue.MaximumSize = new System.Drawing.Size(831, 0);
             this.StreetValue.Name = "StreetValue";
             this.StreetValue.Properties.BeepOnError = false;
             this.StreetValue.Properties.UseMaskAsDisplayFormat = true;
@@ -217,7 +215,6 @@ namespace Vendas.View
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CityValue.EditValue = "Pitangui";
             this.CityValue.Location = new System.Drawing.Point(107, 239);
-            this.CityValue.MaximumSize = new System.Drawing.Size(1000, 0);
             this.CityValue.Name = "CityValue";
             this.CityValue.Properties.BeepOnError = false;
             this.CityValue.Properties.UseMaskAsDisplayFormat = true;
@@ -231,7 +228,6 @@ namespace Vendas.View
             | System.Windows.Forms.AnchorStyles.Right)));
             this.EmailValue.EditValue = "saviorodrigues012@gmail.com";
             this.EmailValue.Location = new System.Drawing.Point(107, 365);
-            this.EmailValue.MaximumSize = new System.Drawing.Size(1000, 0);
             this.EmailValue.Name = "EmailValue";
             this.EmailValue.Properties.BeepOnError = false;
             this.EmailValue.Properties.UseMaskAsDisplayFormat = true;
@@ -277,7 +273,6 @@ namespace Vendas.View
             | System.Windows.Forms.AnchorStyles.Right)));
             this.nameValue.EditValue = "Savio";
             this.nameValue.Location = new System.Drawing.Point(107, 34);
-            this.nameValue.MaximumSize = new System.Drawing.Size(1000, 0);
             this.nameValue.Name = "nameValue";
             this.nameValue.Size = new System.Drawing.Size(794, 20);
             this.nameValue.TabIndex = 81;
@@ -289,7 +284,6 @@ namespace Vendas.View
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cpfValue.EditValue = "14691240683";
             this.cpfValue.Location = new System.Drawing.Point(107, 116);
-            this.cpfValue.MaximumSize = new System.Drawing.Size(1000, 0);
             this.cpfValue.Name = "cpfValue";
             this.cpfValue.Properties.BeepOnError = false;
             this.cpfValue.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));

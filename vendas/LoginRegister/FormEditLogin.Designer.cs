@@ -29,6 +29,7 @@ namespace Vendas.View
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEditLogin));
             this.ConfirmPasswordValue = new DevExpress.XtraEditors.TextEdit();
             this.PasswordValue = new DevExpress.XtraEditors.TextEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
@@ -105,6 +106,7 @@ namespace Vendas.View
             this.Controls.Add(this.PasswordValue);
             this.Controls.Add(this.labelControl5);
             this.Controls.Add(this.labelControl4);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormEditLogin";
             this.Text = "Editar Senha";
             ((System.ComponentModel.ISupportInitialize)(this.ConfirmPasswordValue.Properties)).EndInit();

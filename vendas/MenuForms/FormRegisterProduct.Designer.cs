@@ -62,8 +62,6 @@ namespace vendas.MenuForms
             // 
             // stockValue
             // 
-            this.stockValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.stockValue.EditValue = "";
             this.stockValue.Location = new System.Drawing.Point(286, 116);
             this.stockValue.Name = "stockValue";
