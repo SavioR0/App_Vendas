@@ -108,7 +108,7 @@ namespace vendas.MenuForms
             // 
             // valueValue
             // 
-            this.valueValue.EditValue = "";
+            this.valueValue.EditValue = " ";
             this.valueValue.Location = new System.Drawing.Point(107, 116);
             this.valueValue.Name = "valueValue";
             this.valueValue.Properties.BeepOnError = false;

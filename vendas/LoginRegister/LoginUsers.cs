@@ -12,10 +12,13 @@ namespace Vendas.View
     public partial class LoginUser : Form, IView
     {
         NBioAPI m_NBioAPI;
-        public LoginUser()
+        private string _version;
+        public LoginUser(string version)
         {
+            _version = version;
             InitializeComponent();
             m_NBioAPI = new NBioAPI();
+            label1.Text = _version;
         }
 
         public Form Form
@@ -101,5 +104,6 @@ namespace Vendas.View
                 ChooseOpenForm(Global.Instance.User);
             }
         }
+
     }
 }

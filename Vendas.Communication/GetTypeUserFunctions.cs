@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Vendas.Communication;
 using Vendas.Entity.Entities;
@@ -8,8 +7,16 @@ using Vendas.Library;
 
 namespace vendas
 {
+    public class StringUser {
+        public static Dictionary<int, string> returnUserString = new Dictionary<int, string> {
+            { 0,"Administrador"},
+            { 1,"Cliente"},
+            { 2,"Vendedor"}
+        };
+    }
     public class GetTypeUserFunctions<T> where T : class
     {
+
         public static Dictionary<(TypeUser, Type), Func<List<T>>> typeUserFunctions = new Dictionary<(TypeUser, Type), Func<List<T>>>()  {
                 {(TypeUser.Admin , typeof(T)), () =>  LoadGridAdmin() },
                 {(TypeUser.Seller, typeof(T)) , () => LoadGridSeller() },
@@ -41,7 +48,7 @@ namespace vendas
             if (typeof(T) == typeof(Product))
                 return Service.ProductController.GetAll() as List<T>;
             if (typeof(T) == typeof(Sale))
-                return Service.SaleController.Filter(c=> c.ClientId == Global.Instance.User.Id) as List<T>;
+                return Service.SaleController.Filter(c => c.ClientId == Global.Instance.User.Id) as List<T>;
             return null;
         }
     }

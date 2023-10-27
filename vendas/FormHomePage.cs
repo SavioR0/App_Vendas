@@ -121,7 +121,7 @@ namespace vendas
 
         private void BtnExit_Click(object sender, System.EventArgs e)
         {
-            AppManager.Instance.Load<LoaderController, User>(new LoginUser());
+            AppManager.Instance.Load<LoaderController, User>(new LoginUser(Vendas.Library.Version.Instance.version));
             Global.Instance.User = null;
             AppManager.Instance.CloseForm(view: this);
         }

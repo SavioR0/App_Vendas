@@ -225,6 +225,7 @@ namespace vendas.MenuForms
             this.simpleButton1.TabIndex = 111;
             this.simpleButton1.Text = "Cadastrar";
             this.simpleButton1.ToolTip = "Cadastrar produto";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // xtraTabControl1
             // 
@@ -260,8 +261,8 @@ namespace vendas.MenuForms
             this.GenerateReport.Name = "GenerateReport";
             this.GenerateReport.Size = new System.Drawing.Size(150, 30);
             this.GenerateReport.TabIndex = 115;
-            this.GenerateReport.Text = "Gerar Relatório";
-            this.GenerateReport.ToolTip = "Editar usuário";
+            this.GenerateReport.Text = "Gerar Relatório ";
+            this.GenerateReport.ToolTip = "Gerar Relatório de Produtos";
             this.GenerateReport.Click += new System.EventHandler(this.GenerateReport_Click);
             // 
             // FormProducts

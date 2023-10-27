@@ -11,10 +11,11 @@ namespace Vendas.View
         [STAThread]
         static void Main()
         {
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new teste());
-            AppManager.Start<LoaderController>(new LoginUser());
+            AppManager.Start<LoaderController>(new LoginUser(Vendas.Library.Version.Instance.version));
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using DevExpress.XtraGrid.Views.Grid;
+using FastReport;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Windows.Forms;
 using vendas.Reports;
 using Vendas.Communication;
@@ -105,8 +107,25 @@ namespace vendas.MenuForms
             var saleList = new List<Sale>();
             for (int i = 0; i < gridView.RowCount; i++)
             {
-                saleList.Add((gridView.GetRow(i)) as Sale);
+                var sale = gridView.GetRow(i) as Sale;
+
+                if (sale != null)
+                {
+                    int productId = sale.ProductId;
+                    int clientId = sale.ClientId;
+                    int sellerId = sale.SellerId;
+
+                    saleList.Add(sale);
+                }
             }
+            //var fReport = new Report();
+            //report.Load(@"../../Reports/OrderReports.frx");
+
+            //report.Dictionary.RegisterBusinessObject(Service.UserController.GetAll(), "userList", 10, true);
+            //report.Dictionary.RegisterBusinessObject(Service.ProductController.GetAll(), "productList", 10, true);
+            //fReport.Dictionary.RegisterBusinessObject(saleList, "orderList", 10, true);
+            //fReport.Report.Save(@"../../Reports/OrderReports.frx");
+
             var fReport = GetReportTypes<Sale>.GeneratePDF(TypeReport.Order, saleList);
             (new FormPreviewPDFReport(fReport)).ShowDialog();
         }

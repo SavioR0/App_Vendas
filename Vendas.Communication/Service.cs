@@ -5,6 +5,7 @@ using Vendas.Service.Interfaces;
 
 namespace Vendas.Communication
 {
+    
     public static class Service
     {
         public static IUserController UserController

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using Vendas.Communication;
 using Vendas.Entity.Enums;
 using Vendas.Library;
 
@@ -52,34 +53,87 @@ namespace vendas
             fReport.Report.Save(pathReport);
             //ExportPDF(fReport, pathReport, outputPath);
         }
-        private static void ConfigureProductReport( Report fReport, List<T> _productList)
+        private static void ConfigureProductReport( Report fReport, List<T> productList)
         {
-            var pathReport = @"../../Reports/ProductReport.frx";
+            var pathReport = @"../../Reports/ProductReports.frx";
+
             fReport.Load(pathReport);
+            fReport.Dictionary.RegisterBusinessObject(productList, "productList", 10, true);
             LoadStaticUserData(fReport);
+            TextObject txtObject = fReport.FindObject("Text12") as TextObject;
 
-            fReport.Dictionary.RegisterBusinessObject(_productList, "productList", 10, true);
-            fReport.Report.Save(pathReport);
-            //var pathReport = "../../Reports/ProductReport.frx";
-            //fReport.Load(pathReport);
-            ////fReport.RegisterData(_productList, "productOrder");
-            //fReport.Dictionary.RegisterBusinessObject(_productList, "productList", 10, true);
-
-            
-
+            if (txtObject != null)
+            {
+                txtObject.AfterData += (sendere, ex) =>
+                {
+                    if (txtObject.Text != null && int.TryParse(txtObject.Text, out int userID))
+                    {
+                        txtObject.Text = Service.UserController.Filter(c => c.Id == userID)[0].Name;
+                    }
+                };
+            }
             //fReport.Report.Save(pathReport);
         }
         private static void ConfigureOrderReport( Report fReport, List<T> orderList)
         {
-            var pathReport = @"../../Reports/OrderReport.frx";
+            var pathReport = @"../../Reports/OrderReports.frx";
+
             fReport.Load(pathReport);
-            //fReport.RegisterData(orderList, "listOrder");
             fReport.Dictionary.RegisterBusinessObject(orderList, "orderList", 10, true);
-            fReport.Report.Save(pathReport);
+            LoadStaticUserData(fReport);
+
+            TextObject txtObject1 = fReport.FindObject("Text1") as TextObject;
+
+            if (txtObject1 != null)
+            {
+                txtObject1.AfterData += (sendere, ex) =>
+                {
+                    if (txtObject1.Text != null && int.TryParse(txtObject1.Text, out int productID))
+                    {
+                        txtObject1.Text = Service.ProductController.Filter(c => c.Id == productID)[0].Name;
+                    }
+                };
+            }
+            TextObject txtObject2 = fReport.FindObject("Text5") as TextObject;
+
+            if (txtObject2 != null)
+            {
+                txtObject2.AfterData += (sendere, ex) =>
+                {
+                    if (txtObject2.Text != null && int.TryParse(txtObject2.Text, out int sellerID))
+                    {
+                        txtObject2.Text = Service.UserController.Filter(c => c.Id == sellerID)[0].Name;
+                    }
+                };
+            }
+            TextObject txtObject3 = fReport.FindObject("Text8") as TextObject;
+
+            if (txtObject3 != null)
+            {
+                txtObject3.AfterData += (sendere, ex) =>
+                {
+                    if (txtObject3.Text != null && int.TryParse(txtObject3.Text, out int clientID))
+                    {
+                        txtObject3.Text = Service.UserController.Filter(c => c.Id == clientID)[0].Name;
+                    }
+                };
+            }
+            TextObject txtObject4 = fReport.FindObject("Text10") as TextObject;
+
+            if (txtObject4 != null)
+            {
+                txtObject4.AfterData += (sendere, ex) =>
+                {
+                    if (txtObject4.Text != null && int.TryParse(txtObject4.Text, out int productID))
+                    {
+                        txtObject4.Text = Service.ProductController.Filter(c => c.Id == productID)[0].Value.ToString();
+                    }
+                };
+            }
+
+            fReport.Dictionary.RegisterBusinessObject(orderList, "orderList", 10, true);
 
             //LoadStaticUserData(fReport);
-
-            fReport.Report.Save(pathReport);
         }
 
         public static Report GeneratePDF(TypeReport _typeReport, List<T> listItems)

@@ -35,12 +35,12 @@ namespace vendas.MenuForms
 
         private void BtnExclude_Click(object sender, System.EventArgs e)
         {
-            if (MessageBox.Show("Tem certeza que deseja remover o usuário do sistema?", "Remover Usuário!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("Tem certeza que deseja remover o produto do sistema?", "Remover Produto!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 GridView gridView = gridProduct.FocusedView as GridView;
                 var prod = (gridView.GetRow(gridView.FocusedRowHandle) as Product);
                 var message = Service.ProductController.Exclude(prod.Id);
-                if (message != "") MessageBox.Show(message, "Ocorreu um erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (message != "") MessageBox.Show("Certifique a conexão com o banco e a possíbilidade que exitir alguma venda com o referente produto.", "Ocorreu um erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 LoadGridProduct((TypeUser)Global.Instance.User.TypeUser);
             }
         }
@@ -88,16 +88,14 @@ namespace vendas.MenuForms
             {
                 productList.Add((gridView.GetRow(i)) as Product);
             }
-            var fReport = new Report();
-            var pathReport = @"../../Reports/ProductReport.frx";
-            fReport.Load(pathReport);
 
-            fReport.Dictionary.RegisterBusinessObject(productList, "productList", 10, true);
-            fReport.Report.Save(pathReport);
-            //var fReport = GetReportTypes<Product>.GeneratePDF(TypeReport.Product, productList);
+            var fReport = GetReportTypes<Product>.GeneratePDF(TypeReport.Product, productList);
             (new FormPreviewPDFReport(fReport)).ShowDialog();
+        }
 
-
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            _formHomePage.BtnRegisterProductMenu_Click();
         }
     }
 }

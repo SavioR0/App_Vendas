@@ -288,7 +288,7 @@ namespace vendas.MenuForms
             this.GenerateReport.Size = new System.Drawing.Size(150, 30);
             this.GenerateReport.TabIndex = 114;
             this.GenerateReport.Text = "Gerar Relatório";
-            this.GenerateReport.ToolTip = "Editar usuário";
+            this.GenerateReport.ToolTip = "Gerar Relatório de Usuários";
             this.GenerateReport.Click += new System.EventHandler(this.GenerateReport_Click);
             // 
             // FormUsers

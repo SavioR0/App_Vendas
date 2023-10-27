@@ -40,6 +40,8 @@ namespace Vendas.View
             this.UserName = new DevExpress.XtraEditors.LabelControl();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.pictureBoxPerfile = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PasswordValue.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserNameValue.Properties)).BeginInit();
@@ -59,7 +61,7 @@ namespace Vendas.View
             // checkEdit1
             // 
             this.checkEdit1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkEdit1.Location = new System.Drawing.Point(643, 420);
+            this.checkEdit1.Location = new System.Drawing.Point(643, 471);
             this.checkEdit1.Name = "checkEdit1";
             this.checkEdit1.Properties.Caption = "Distribuida?";
             this.checkEdit1.Size = new System.Drawing.Size(75, 20);
@@ -138,12 +140,34 @@ namespace Vendas.View
             this.pictureBoxPerfile.TabIndex = 43;
             this.pictureBoxPerfile.TabStop = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(292, 447);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(124, 13);
+            this.label1.TabIndex = 45;
+            this.label1.Text = "1.0.10.0 em 27/10/2023";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(286, 474);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(136, 13);
+            this.label2.TabIndex = 46;
+            this.label2.Text = "Copyright -  Savio\'s Vendas";
+            // 
             // LoginUser
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(730, 452);
+            this.ClientSize = new System.Drawing.Size(730, 503);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.simpleButton1);
             this.Controls.Add(this.UserNameValue);
             this.Controls.Add(this.btn_login);
@@ -178,6 +202,8 @@ namespace Vendas.View
         private DevExpress.XtraEditors.LabelControl UserName;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private PictureBox pictureBoxPerfile;
+        private Label label1;
+        private Label label2;
     }
 }
 
