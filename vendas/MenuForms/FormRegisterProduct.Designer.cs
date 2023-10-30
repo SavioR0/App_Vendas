@@ -80,8 +80,8 @@ namespace vendas.MenuForms
             this.btnRegisterEditProduct.Name = "btnRegisterEditProduct";
             this.btnRegisterEditProduct.Size = new System.Drawing.Size(150, 30);
             this.btnRegisterEditProduct.TabIndex = 25;
-            this.btnRegisterEditProduct.Text = "Cadastrar";
-            this.btnRegisterEditProduct.ToolTip = "Cadastro ddo produto";
+            this.btnRegisterEditProduct.Text = "&Cadastrar";
+            this.btnRegisterEditProduct.ToolTip = "C - Cadastro ddo produto";
             this.btnRegisterEditProduct.Click += new System.EventHandler(this.RegisterButton_Click);
             // 
             // descriptionValue

@@ -61,7 +61,7 @@ namespace vendas.MenuForms
             this.tileControl.AppearanceItem.Normal.BackColor = System.Drawing.Color.DarkGray;
             this.tileControl.AppearanceItem.Normal.BackColor2 = System.Drawing.Color.Gray;
             this.tileControl.AppearanceItem.Normal.BorderColor = System.Drawing.Color.Black;
-            this.tileControl.AppearanceItem.Normal.ForeColor = System.Drawing.Color.White;
+            this.tileControl.AppearanceItem.Normal.ForeColor = System.Drawing.Color.Black;
             this.tileControl.AppearanceItem.Normal.Options.UseBackColor = true;
             this.tileControl.AppearanceItem.Normal.Options.UseBorderColor = true;
             this.tileControl.AppearanceItem.Normal.Options.UseForeColor = true;
@@ -84,6 +84,11 @@ namespace vendas.MenuForms
             // 
             // tileItem3
             // 
+            this.tileItem3.AppearanceItem.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.tileItem3.AppearanceItem.Normal.BackColor2 = System.Drawing.Color.Silver;
+            this.tileItem3.AppearanceItem.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tileItem3.AppearanceItem.Normal.Options.UseBackColor = true;
+            this.tileItem3.AppearanceItem.Normal.Options.UseFont = true;
             tileItemElement1.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI Light", 17F);
             tileItemElement1.Appearance.Hovered.Options.UseFont = true;
             tileItemElement1.Appearance.Hovered.Options.UseTextOptions = true;
@@ -117,6 +122,11 @@ namespace vendas.MenuForms
             // 
             // tileItem5
             // 
+            this.tileItem5.AppearanceItem.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.tileItem5.AppearanceItem.Normal.BackColor2 = System.Drawing.Color.Silver;
+            this.tileItem5.AppearanceItem.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tileItem5.AppearanceItem.Normal.Options.UseBackColor = true;
+            this.tileItem5.AppearanceItem.Normal.Options.UseFont = true;
             tileItemElement3.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI Light", 17F);
             tileItemElement3.Appearance.Hovered.Options.UseFont = true;
             tileItemElement3.Appearance.Hovered.Options.UseTextOptions = true;
@@ -150,6 +160,11 @@ namespace vendas.MenuForms
             // 
             // tileItem2
             // 
+            this.tileItem2.AppearanceItem.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.tileItem2.AppearanceItem.Normal.BackColor2 = System.Drawing.Color.Silver;
+            this.tileItem2.AppearanceItem.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tileItem2.AppearanceItem.Normal.Options.UseBackColor = true;
+            this.tileItem2.AppearanceItem.Normal.Options.UseFont = true;
             tileItemElement5.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI Light", 17F);
             tileItemElement5.Appearance.Hovered.Options.UseFont = true;
             tileItemElement5.Appearance.Hovered.Options.UseTextOptions = true;
@@ -190,6 +205,11 @@ namespace vendas.MenuForms
             // 
             // tileItem6
             // 
+            this.tileItem6.AppearanceItem.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.tileItem6.AppearanceItem.Normal.BackColor2 = System.Drawing.Color.Silver;
+            this.tileItem6.AppearanceItem.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tileItem6.AppearanceItem.Normal.Options.UseBackColor = true;
+            this.tileItem6.AppearanceItem.Normal.Options.UseFont = true;
             tileItemElement7.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI Light", 17F);
             tileItemElement7.Appearance.Hovered.Options.UseFont = true;
             tileItemElement7.Appearance.Hovered.Options.UseTextOptions = true;
@@ -223,6 +243,11 @@ namespace vendas.MenuForms
             // 
             // tileItem8
             // 
+            this.tileItem8.AppearanceItem.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.tileItem8.AppearanceItem.Normal.BackColor2 = System.Drawing.Color.Silver;
+            this.tileItem8.AppearanceItem.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tileItem8.AppearanceItem.Normal.Options.UseBackColor = true;
+            this.tileItem8.AppearanceItem.Normal.Options.UseFont = true;
             tileItemElement9.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI Light", 17F);
             tileItemElement9.Appearance.Hovered.Options.UseFont = true;
             tileItemElement9.Appearance.Hovered.Options.UseTextOptions = true;
@@ -256,6 +281,11 @@ namespace vendas.MenuForms
             // 
             // tileItem1
             // 
+            this.tileItem1.AppearanceItem.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.tileItem1.AppearanceItem.Normal.BackColor2 = System.Drawing.Color.Silver;
+            this.tileItem1.AppearanceItem.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tileItem1.AppearanceItem.Normal.Options.UseBackColor = true;
+            this.tileItem1.AppearanceItem.Normal.Options.UseFont = true;
             tileItemElement11.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI Light", 17F);
             tileItemElement11.Appearance.Hovered.Options.UseFont = true;
             tileItemElement11.Appearance.Hovered.Options.UseTextOptions = true;

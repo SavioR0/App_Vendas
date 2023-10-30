@@ -16,9 +16,9 @@ namespace vendas.MenuForms
         public FormRegisterProduct(Product product = null)
         {
             InitializeComponent();
-            valueValue.Text = null;
+            
             SetFields(product);
-
+            ClearFields();
         }
 
         private void SetFields(Product product)

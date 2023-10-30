@@ -26,7 +26,7 @@ namespace Vendas.View
             _userEdited = user;
             LoadEdit();
             m_NBioAPI = new NBioAPI();
-
+            ClearFields();
         }
 
         private void LoadEdit()

@@ -177,8 +177,8 @@ namespace vendas.MenuForms
             this.btnExclude.Name = "btnExclude";
             this.btnExclude.Size = new System.Drawing.Size(150, 20);
             this.btnExclude.TabIndex = 64;
-            this.btnExclude.Text = "Remover Produto";
-            this.btnExclude.ToolTip = "Remover produto selecionado";
+            this.btnExclude.Text = "&Remover Produto";
+            this.btnExclude.ToolTip = "R - Remover produto selecionado";
             this.btnExclude.Click += new System.EventHandler(this.RemoveOrderList);
             // 
             // simpleButton1
@@ -189,8 +189,8 @@ namespace vendas.MenuForms
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(150, 30);
             this.simpleButton1.TabIndex = 63;
-            this.simpleButton1.Text = "Finalizar Pedidos";
-            this.simpleButton1.ToolTip = "Finalizar pedidos realizar a compra";
+            this.simpleButton1.Text = "&Finalizar Pedidos";
+            this.simpleButton1.ToolTip = "F - Finalizar pedidos realizar a compra";
             this.simpleButton1.Click += new System.EventHandler(this.RegisterOrders);
             // 
             // btnUpdate
@@ -201,8 +201,8 @@ namespace vendas.MenuForms
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(150, 20);
             this.btnUpdate.TabIndex = 62;
-            this.btnUpdate.Text = "Adicionar Produto(s)";
-            this.btnUpdate.ToolTip = "Adicionar o produto no carrinho";
+            this.btnUpdate.Text = "&Adicionar Produto(s)";
+            this.btnUpdate.ToolTip = "A - Adicionar o produto no carrinho";
             this.btnUpdate.Click += new System.EventHandler(this.BtnUpdate_Click);
             // 
             // label2

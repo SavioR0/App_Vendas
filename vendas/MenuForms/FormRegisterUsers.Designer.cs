@@ -80,7 +80,7 @@ namespace Vendas.View
             // 
             this.LastNameValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.LastNameValue.EditValue = "Rodrigues";
+            this.LastNameValue.EditValue = "";
             this.LastNameValue.Location = new System.Drawing.Point(107, 75);
             this.LastNameValue.Name = "LastNameValue";
             this.LastNameValue.Size = new System.Drawing.Size(794, 20);
@@ -99,7 +99,7 @@ namespace Vendas.View
             // 
             // numberValue
             // 
-            this.numberValue.EditValue = "154";
+            this.numberValue.EditValue = "";
             this.numberValue.Location = new System.Drawing.Point(107, 321);
             this.numberValue.MaximumSize = new System.Drawing.Size(1000, 0);
             this.numberValue.Name = "numberValue";
@@ -133,7 +133,7 @@ namespace Vendas.View
             // 
             this.StreetValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.StreetValue.EditValue = "Praça Getúlio Vargas";
+            this.StreetValue.EditValue = "";
             this.StreetValue.Location = new System.Drawing.Point(277, 280);
             this.StreetValue.Name = "StreetValue";
             this.StreetValue.Properties.BeepOnError = false;
@@ -144,7 +144,7 @@ namespace Vendas.View
             // 
             // NeighborhoodValue
             // 
-            this.NeighborhoodValue.EditValue = "Centro";
+            this.NeighborhoodValue.EditValue = "";
             this.NeighborhoodValue.Location = new System.Drawing.Point(107, 280);
             this.NeighborhoodValue.MaximumSize = new System.Drawing.Size(1000, 0);
             this.NeighborhoodValue.Name = "NeighborhoodValue";
@@ -176,7 +176,7 @@ namespace Vendas.View
             // 
             // CEPValue
             // 
-            this.CEPValue.EditValue = "35650000";
+            this.CEPValue.EditValue = "";
             this.CEPValue.Location = new System.Drawing.Point(107, 196);
             this.CEPValue.MaximumSize = new System.Drawing.Size(1000, 0);
             this.CEPValue.Name = "CEPValue";
@@ -213,7 +213,7 @@ namespace Vendas.View
             // 
             this.CityValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.CityValue.EditValue = "Pitangui";
+            this.CityValue.EditValue = "";
             this.CityValue.Location = new System.Drawing.Point(107, 239);
             this.CityValue.Name = "CityValue";
             this.CityValue.Properties.BeepOnError = false;
@@ -226,7 +226,7 @@ namespace Vendas.View
             // 
             this.EmailValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.EmailValue.EditValue = "saviorodrigues012@gmail.com";
+            this.EmailValue.EditValue = "";
             this.EmailValue.Location = new System.Drawing.Point(107, 365);
             this.EmailValue.Name = "EmailValue";
             this.EmailValue.Properties.BeepOnError = false;
@@ -247,7 +247,7 @@ namespace Vendas.View
             // 
             // dateValue
             // 
-            this.dateValue.EditValue = new System.DateTime(1989, 1, 1, 0, 0, 0, 0);
+            this.dateValue.EditValue = new System.DateTime(((long)(0)));
             this.dateValue.Location = new System.Drawing.Point(277, 159);
             this.dateValue.MaximumSize = new System.Drawing.Size(1000, 0);
             this.dateValue.Name = "dateValue";
@@ -271,7 +271,7 @@ namespace Vendas.View
             // 
             this.nameValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.nameValue.EditValue = "Savio";
+            this.nameValue.EditValue = "";
             this.nameValue.Location = new System.Drawing.Point(107, 34);
             this.nameValue.Name = "nameValue";
             this.nameValue.Size = new System.Drawing.Size(794, 20);
@@ -282,7 +282,7 @@ namespace Vendas.View
             // 
             this.cpfValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cpfValue.EditValue = "14691240683";
+            this.cpfValue.EditValue = "";
             this.cpfValue.Location = new System.Drawing.Point(107, 116);
             this.cpfValue.Name = "cpfValue";
             this.cpfValue.Properties.BeepOnError = false;
@@ -297,7 +297,7 @@ namespace Vendas.View
             // 
             // telValue
             // 
-            this.telValue.EditValue = "37988328345";
+            this.telValue.EditValue = "";
             this.telValue.Location = new System.Drawing.Point(107, 159);
             this.telValue.MaximumSize = new System.Drawing.Size(1000, 0);
             this.telValue.Name = "telValue";
@@ -347,8 +347,8 @@ namespace Vendas.View
             this.Btn_register_user.Name = "Btn_register_user";
             this.Btn_register_user.Size = new System.Drawing.Size(150, 30);
             this.Btn_register_user.TabIndex = 92;
-            this.Btn_register_user.Text = "Cadastrar";
-            this.Btn_register_user.ToolTip = "Cadastrar novo usuário";
+            this.Btn_register_user.Text = "&Cadastrar";
+            this.Btn_register_user.ToolTip = "C - Cadastrar novo usuário";
             this.Btn_register_user.Click += new System.EventHandler(this.Btn_register_user_Click_1);
             // 
             // comboBoxEditTypeUser
@@ -371,8 +371,8 @@ namespace Vendas.View
             this.btnRegisterBiometricPrint.Name = "btnRegisterBiometricPrint";
             this.btnRegisterBiometricPrint.Size = new System.Drawing.Size(150, 20);
             this.btnRegisterBiometricPrint.TabIndex = 108;
-            this.btnRegisterBiometricPrint.Text = "Cadastrar impressão Digital";
-            this.btnRegisterBiometricPrint.ToolTip = "Cadastro de Biometria";
+            this.btnRegisterBiometricPrint.Text = "Cadastrar impressão &Digital";
+            this.btnRegisterBiometricPrint.ToolTip = "D - Cadastro de Biometria";
             this.btnRegisterBiometricPrint.Click += new System.EventHandler(this.BtnRegisterBiometricPrint_Click);
             // 
             // labelBiomerticAlert

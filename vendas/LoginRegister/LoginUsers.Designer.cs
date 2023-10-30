@@ -54,7 +54,7 @@ namespace Vendas.View
             this.btn_login.Name = "btn_login";
             this.btn_login.Size = new System.Drawing.Size(150, 30);
             this.btn_login.TabIndex = 0;
-            this.btn_login.Text = "Login";
+            this.btn_login.Text = "&Login";
             this.btn_login.ToolTip = "Relizar login";
             this.btn_login.Click += new System.EventHandler(this.Btn_login_Click);
             // 
@@ -126,7 +126,7 @@ namespace Vendas.View
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(150, 30);
             this.simpleButton1.TabIndex = 44;
-            this.simpleButton1.Text = "Biometria";
+            this.simpleButton1.Text = "&Biometria";
             this.simpleButton1.ToolTip = "Login por Biometria";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 

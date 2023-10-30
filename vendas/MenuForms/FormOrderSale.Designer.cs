@@ -152,8 +152,8 @@ namespace vendas.MenuForms
             this.btnSearchProd.Name = "btnSearchProd";
             this.btnSearchProd.Size = new System.Drawing.Size(150, 20);
             this.btnSearchProd.TabIndex = 109;
-            this.btnSearchProd.Text = "Filtrar";
-            this.btnSearchProd.ToolTip = "Aplicar filtro";
+            this.btnSearchProd.Text = "&Filtrar";
+            this.btnSearchProd.ToolTip = "F - Aplicar filtro";
             this.btnSearchProd.Click += new System.EventHandler(this.BtnSearchProd_Click);
             // 
             // comboBoxFilterSale
@@ -191,8 +191,8 @@ namespace vendas.MenuForms
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(150, 30);
             this.simpleButton1.TabIndex = 116;
-            this.simpleButton1.Text = "Cadastrar";
-            this.simpleButton1.ToolTip = "Cadastrar pedido";
+            this.simpleButton1.Text = "&Cadastrar";
+            this.simpleButton1.ToolTip = "C - Cadastrar pedido";
             this.simpleButton1.Click += new System.EventHandler(this.Register_Click_1);
             // 
             // btnExclude
@@ -202,8 +202,8 @@ namespace vendas.MenuForms
             this.btnExclude.Name = "btnExclude";
             this.btnExclude.Size = new System.Drawing.Size(150, 30);
             this.btnExclude.TabIndex = 115;
-            this.btnExclude.Text = "Excluir";
-            this.btnExclude.ToolTip = "Excluir pedido";
+            this.btnExclude.Text = "&Excluir";
+            this.btnExclude.ToolTip = "E - Excluir pedido";
             this.btnExclude.Click += new System.EventHandler(this.BtnExclude_Click);
             // 
             // btnEdit
@@ -213,8 +213,8 @@ namespace vendas.MenuForms
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(150, 30);
             this.btnEdit.TabIndex = 114;
-            this.btnEdit.Text = "Editar";
-            this.btnEdit.ToolTip = "Editar pedido";
+            this.btnEdit.Text = "E&ditar";
+            this.btnEdit.ToolTip = "D - Editar pedido";
             this.btnEdit.Visible = false;
             // 
             // xtraTabControl1
@@ -251,8 +251,8 @@ namespace vendas.MenuForms
             this.GenerateReport.Name = "GenerateReport";
             this.GenerateReport.Size = new System.Drawing.Size(150, 30);
             this.GenerateReport.TabIndex = 117;
-            this.GenerateReport.Text = "Gerar Relatório";
-            this.GenerateReport.ToolTip = "Gerar relatório de Pedidos";
+            this.GenerateReport.Text = "Gerar &Relatório";
+            this.GenerateReport.ToolTip = "R - Gerar relatório de Pedidos";
             this.GenerateReport.Click += new System.EventHandler(this.GenerateReport_Click);
             // 
             // FormOrderSale

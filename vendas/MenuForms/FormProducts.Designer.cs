@@ -163,8 +163,8 @@ namespace vendas.MenuForms
             this.btnSearchProd.Name = "btnSearchProd";
             this.btnSearchProd.Size = new System.Drawing.Size(150, 20);
             this.btnSearchProd.TabIndex = 42;
-            this.btnSearchProd.Text = "Filtrar";
-            this.btnSearchProd.ToolTip = "Aplicar filtro";
+            this.btnSearchProd.Text = "&Filtrar";
+            this.btnSearchProd.ToolTip = "F - Aplicar filtro";
             this.btnSearchProd.Click += new System.EventHandler(this.BtnSearchProd_Click);
             // 
             // comboBoxFilterProd
@@ -201,8 +201,8 @@ namespace vendas.MenuForms
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(150, 30);
             this.btnEdit.TabIndex = 109;
-            this.btnEdit.Text = "Editar";
-            this.btnEdit.ToolTip = "Editar produto";
+            this.btnEdit.Text = "E&ditar";
+            this.btnEdit.ToolTip = "D - Editar produto";
             this.btnEdit.Click += new System.EventHandler(this.BtnEdit_Click);
             // 
             // btnExclude
@@ -212,8 +212,8 @@ namespace vendas.MenuForms
             this.btnExclude.Name = "btnExclude";
             this.btnExclude.Size = new System.Drawing.Size(150, 30);
             this.btnExclude.TabIndex = 110;
-            this.btnExclude.Text = "Excluir";
-            this.btnExclude.ToolTip = "Excluir produto";
+            this.btnExclude.Text = "&Excluir";
+            this.btnExclude.ToolTip = "E - Excluir produto";
             this.btnExclude.Click += new System.EventHandler(this.BtnExclude_Click);
             // 
             // simpleButton1
@@ -223,8 +223,8 @@ namespace vendas.MenuForms
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(150, 30);
             this.simpleButton1.TabIndex = 111;
-            this.simpleButton1.Text = "Cadastrar";
-            this.simpleButton1.ToolTip = "Cadastrar produto";
+            this.simpleButton1.Text = "&Cadastrar";
+            this.simpleButton1.ToolTip = "C - Cadastrar produto";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // xtraTabControl1
@@ -261,8 +261,8 @@ namespace vendas.MenuForms
             this.GenerateReport.Name = "GenerateReport";
             this.GenerateReport.Size = new System.Drawing.Size(150, 30);
             this.GenerateReport.TabIndex = 115;
-            this.GenerateReport.Text = "Gerar Relatório ";
-            this.GenerateReport.ToolTip = "Gerar Relatório de Produtos";
+            this.GenerateReport.Text = "Gerar &Relatório ";
+            this.GenerateReport.ToolTip = "R - Gerar Relatório de Produtos";
             this.GenerateReport.Click += new System.EventHandler(this.GenerateReport_Click);
             // 
             // FormProducts
