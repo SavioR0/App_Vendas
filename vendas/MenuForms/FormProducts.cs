@@ -33,6 +33,11 @@ namespace vendas.MenuForms
             }
         }
 
+        private void EditColumn()
+        { 
+            
+        }
+
         private void BtnExclude_Click(object sender, System.EventArgs e)
         {
             if (MessageBox.Show("Tem certeza que deseja remover o produto do sistema?", "Remover Produto!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Report ScriptLanguage="CSharp" ReportInfo.Created="10/23/2023 10:10:07" ReportInfo.Modified="10/30/2023 08:30:47" ReportInfo.CreatorVersion="2023.3.7.0">
+<Report ScriptLanguage="CSharp" ReportInfo.Created="10/23/2023 10:10:07" ReportInfo.Modified="10/31/2023 11:50:59" ReportInfo.CreatorVersion="2023.3.7.0">
   <Dictionary>
     <BusinessObjectDataSource Name="userList" ReferenceName="userList" DataType="System.Collections.Generic.List`1[[Vendas.Entity.Entities.User, Vendas.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" Enabled="true">
       <Column Name="Name" DataType="System.String"/>

@@ -29,6 +29,7 @@ namespace vendas.MenuForms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormProducts));
             this.gridProduct = new DevExpress.XtraGrid.GridControl();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.IdP = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -159,9 +160,10 @@ namespace vendas.MenuForms
             // btnSearchProd
             // 
             this.btnSearchProd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSearchProd.Location = new System.Drawing.Point(845, 7);
+            this.btnSearchProd.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSearchProd.ImageOptions.Image")));
+            this.btnSearchProd.Location = new System.Drawing.Point(895, 7);
             this.btnSearchProd.Name = "btnSearchProd";
-            this.btnSearchProd.Size = new System.Drawing.Size(150, 20);
+            this.btnSearchProd.Size = new System.Drawing.Size(100, 20);
             this.btnSearchProd.TabIndex = 42;
             this.btnSearchProd.Text = "&Filtrar";
             this.btnSearchProd.ToolTip = "F - Aplicar filtro";
@@ -197,9 +199,10 @@ namespace vendas.MenuForms
             // btnEdit
             // 
             this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEdit.Location = new System.Drawing.Point(534, 471);
+            this.btnEdit.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.ImageOptions.Image")));
+            this.btnEdit.Location = new System.Drawing.Point(118, 471);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(150, 30);
+            this.btnEdit.Size = new System.Drawing.Size(100, 30);
             this.btnEdit.TabIndex = 109;
             this.btnEdit.Text = "E&ditar";
             this.btnEdit.ToolTip = "D - Editar produto";
@@ -208,9 +211,10 @@ namespace vendas.MenuForms
             // btnExclude
             // 
             this.btnExclude.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExclude.Location = new System.Drawing.Point(690, 471);
+            this.btnExclude.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnExclude.ImageOptions.Image")));
+            this.btnExclude.Location = new System.Drawing.Point(224, 471);
             this.btnExclude.Name = "btnExclude";
-            this.btnExclude.Size = new System.Drawing.Size(150, 30);
+            this.btnExclude.Size = new System.Drawing.Size(100, 30);
             this.btnExclude.TabIndex = 110;
             this.btnExclude.Text = "&Excluir";
             this.btnExclude.ToolTip = "E - Excluir produto";
@@ -219,9 +223,10 @@ namespace vendas.MenuForms
             // simpleButton1
             // 
             this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton1.Location = new System.Drawing.Point(846, 471);
+            this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.simpleButton1.Location = new System.Drawing.Point(12, 471);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(150, 30);
+            this.simpleButton1.Size = new System.Drawing.Size(100, 30);
             this.simpleButton1.TabIndex = 111;
             this.simpleButton1.Text = "&Cadastrar";
             this.simpleButton1.ToolTip = "C - Cadastrar produto";
@@ -257,11 +262,12 @@ namespace vendas.MenuForms
             // GenerateReport
             // 
             this.GenerateReport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.GenerateReport.Location = new System.Drawing.Point(12, 471);
+            this.GenerateReport.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("GenerateReport.ImageOptions.Image")));
+            this.GenerateReport.Location = new System.Drawing.Point(895, 471);
             this.GenerateReport.Name = "GenerateReport";
-            this.GenerateReport.Size = new System.Drawing.Size(150, 30);
+            this.GenerateReport.Size = new System.Drawing.Size(100, 30);
             this.GenerateReport.TabIndex = 115;
-            this.GenerateReport.Text = "Gerar &Relatório ";
+            this.GenerateReport.Text = "&Relatório";
             this.GenerateReport.ToolTip = "R - Gerar Relatório de Produtos";
             this.GenerateReport.Click += new System.EventHandler(this.GenerateReport_Click);
             // 

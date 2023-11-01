@@ -51,6 +51,7 @@ namespace Vendas.View
             this.ConfirmPasswordValue.Properties.UseSystemPasswordChar = true;
             this.ConfirmPasswordValue.Size = new System.Drawing.Size(273, 20);
             this.ConfirmPasswordValue.TabIndex = 41;
+            this.ConfirmPasswordValue.ToolTip = "Inofrme a senha para confirmação";
             // 
             // PasswordValue
             // 
@@ -64,6 +65,7 @@ namespace Vendas.View
             this.PasswordValue.Properties.UseSystemPasswordChar = true;
             this.PasswordValue.Size = new System.Drawing.Size(273, 20);
             this.PasswordValue.TabIndex = 40;
+            this.PasswordValue.ToolTip = "Informe a nova senha";
             // 
             // labelControl5
             // 
@@ -89,11 +91,12 @@ namespace Vendas.View
             // 
             this.Btn_register_user.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Btn_register_user.Location = new System.Drawing.Point(109, 144);
+            this.Btn_register_user.Location = new System.Drawing.Point(199, 145);
             this.Btn_register_user.Name = "Btn_register_user";
-            this.Btn_register_user.Size = new System.Drawing.Size(251, 33);
+            this.Btn_register_user.Size = new System.Drawing.Size(100, 30);
             this.Btn_register_user.TabIndex = 44;
             this.Btn_register_user.Text = "Cadastrar";
+            this.Btn_register_user.ToolTip = "C- Confirmar Edição de Senha";
             this.Btn_register_user.Click += new System.EventHandler(this.Btn_register_user_Click);
             // 
             // FormEditLogin
@@ -107,6 +110,8 @@ namespace Vendas.View
             this.Controls.Add(this.labelControl5);
             this.Controls.Add(this.labelControl4);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(483, 249);
+            this.MinimumSize = new System.Drawing.Size(483, 249);
             this.Name = "FormEditLogin";
             this.Text = "Editar Senha";
             ((System.ComponentModel.ISupportInitialize)(this.ConfirmPasswordValue.Properties)).EndInit();

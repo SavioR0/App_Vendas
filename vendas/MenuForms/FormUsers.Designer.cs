@@ -29,6 +29,10 @@ namespace vendas.MenuForms
         /// </summary>
         private void InitializeComponent()
         {
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue1 = new DevExpress.XtraEditors.FormatConditionRuleValue();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormUsers));
+            this.Tipo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridUsers = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.Id = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -38,7 +42,7 @@ namespace vendas.MenuForms
             this.Telefone = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Data_Nascimento = new DevExpress.XtraGrid.Columns.GridColumn();
             this.UserName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Tipo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.label6 = new System.Windows.Forms.Label();
             this.labelTExt4 = new System.Windows.Forms.Label();
             this.btnSearchProd = new DevExpress.XtraEditors.SimpleButton();
@@ -52,12 +56,23 @@ namespace vendas.MenuForms
             this.GenerateReport = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.gridUsers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxFilterProd.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditSearch.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Usuários)).BeginInit();
             this.Usuários.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // Tipo
+            // 
+            this.Tipo.Caption = "Tipo Usuário";
+            this.Tipo.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.Tipo.FieldName = "TypeUser";
+            this.Tipo.Name = "Tipo";
+            this.Tipo.Visible = true;
+            this.Tipo.VisibleIndex = 6;
+            this.Tipo.Width = 41;
             // 
             // gridUsers
             // 
@@ -68,6 +83,8 @@ namespace vendas.MenuForms
             this.gridUsers.Location = new System.Drawing.Point(12, 33);
             this.gridUsers.MainView = this.gridView1;
             this.gridUsers.Name = "gridUsers";
+            this.gridUsers.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemTextEdit1});
             this.gridUsers.Size = new System.Drawing.Size(983, 432);
             this.gridUsers.TabIndex = 1;
             this.gridUsers.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -75,6 +92,7 @@ namespace vendas.MenuForms
             // 
             // gridView1
             // 
+            this.gridView1.AutoFillColumn = this.Tipo;
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.Id,
             this.Nome,
@@ -84,6 +102,13 @@ namespace vendas.MenuForms
             this.Data_Nascimento,
             this.UserName,
             this.Tipo});
+            gridFormatRule1.Column = this.Tipo;
+            gridFormatRule1.ColumnApplyTo = this.Tipo;
+            gridFormatRule1.Name = "Format0";
+            formatConditionRuleValue1.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
+            formatConditionRuleValue1.Expression = "[TypeUser] = 1";
+            gridFormatRule1.Rule = formatConditionRuleValue1;
+            this.gridView1.FormatRules.Add(gridFormatRule1);
             this.gridView1.GridControl = this.gridUsers;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
@@ -95,9 +120,7 @@ namespace vendas.MenuForms
             this.Id.FieldName = "Id";
             this.Id.MinWidth = 30;
             this.Id.Name = "Id";
-            this.Id.Visible = true;
-            this.Id.VisibleIndex = 0;
-            this.Id.Width = 37;
+            this.Id.Width = 53;
             // 
             // Nome
             // 
@@ -105,8 +128,8 @@ namespace vendas.MenuForms
             this.Nome.FieldName = "Name";
             this.Nome.Name = "Nome";
             this.Nome.Visible = true;
-            this.Nome.VisibleIndex = 1;
-            this.Nome.Width = 113;
+            this.Nome.VisibleIndex = 0;
+            this.Nome.Width = 51;
             // 
             // Cpf
             // 
@@ -114,8 +137,8 @@ namespace vendas.MenuForms
             this.Cpf.FieldName = "Cpf";
             this.Cpf.Name = "Cpf";
             this.Cpf.Visible = true;
-            this.Cpf.VisibleIndex = 5;
-            this.Cpf.Width = 90;
+            this.Cpf.VisibleIndex = 4;
+            this.Cpf.Width = 62;
             // 
             // Email
             // 
@@ -123,8 +146,8 @@ namespace vendas.MenuForms
             this.Email.FieldName = "Email";
             this.Email.Name = "Email";
             this.Email.Visible = true;
-            this.Email.VisibleIndex = 2;
-            this.Email.Width = 303;
+            this.Email.VisibleIndex = 1;
+            this.Email.Width = 136;
             // 
             // Telefone
             // 
@@ -132,8 +155,8 @@ namespace vendas.MenuForms
             this.Telefone.FieldName = "Tel";
             this.Telefone.Name = "Telefone";
             this.Telefone.Visible = true;
-            this.Telefone.VisibleIndex = 3;
-            this.Telefone.Width = 104;
+            this.Telefone.VisibleIndex = 2;
+            this.Telefone.Width = 46;
             // 
             // Data_Nascimento
             // 
@@ -142,8 +165,8 @@ namespace vendas.MenuForms
             this.Data_Nascimento.GroupInterval = DevExpress.XtraGrid.ColumnGroupInterval.Date;
             this.Data_Nascimento.Name = "Data_Nascimento";
             this.Data_Nascimento.Visible = true;
-            this.Data_Nascimento.VisibleIndex = 4;
-            this.Data_Nascimento.Width = 79;
+            this.Data_Nascimento.VisibleIndex = 3;
+            this.Data_Nascimento.Width = 35;
             // 
             // UserName
             // 
@@ -151,17 +174,13 @@ namespace vendas.MenuForms
             this.UserName.FieldName = "UserName";
             this.UserName.Name = "UserName";
             this.UserName.Visible = true;
-            this.UserName.VisibleIndex = 6;
-            this.UserName.Width = 162;
+            this.UserName.VisibleIndex = 5;
+            this.UserName.Width = 105;
             // 
-            // Tipo
+            // repositoryItemTextEdit1
             // 
-            this.Tipo.Caption = "Tipo Usuário";
-            this.Tipo.FieldName = "TypeUser";
-            this.Tipo.Name = "Tipo";
-            this.Tipo.Visible = true;
-            this.Tipo.VisibleIndex = 7;
-            this.Tipo.Width = 71;
+            this.repositoryItemTextEdit1.AutoHeight = false;
+            this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
             // 
             // label6
             // 
@@ -184,9 +203,10 @@ namespace vendas.MenuForms
             // btnSearchProd
             // 
             this.btnSearchProd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSearchProd.Location = new System.Drawing.Point(845, 7);
+            this.btnSearchProd.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSearchProd.ImageOptions.Image")));
+            this.btnSearchProd.Location = new System.Drawing.Point(895, 7);
             this.btnSearchProd.Name = "btnSearchProd";
-            this.btnSearchProd.Size = new System.Drawing.Size(150, 20);
+            this.btnSearchProd.Size = new System.Drawing.Size(100, 20);
             this.btnSearchProd.TabIndex = 42;
             this.btnSearchProd.Text = "&Filtrar";
             this.btnSearchProd.ToolTip = "F - Aplicar filtro";
@@ -222,9 +242,10 @@ namespace vendas.MenuForms
             // btnExclude
             // 
             this.btnExclude.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExclude.Location = new System.Drawing.Point(690, 471);
+            this.btnExclude.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnExclude.ImageOptions.Image")));
+            this.btnExclude.Location = new System.Drawing.Point(118, 471);
             this.btnExclude.Name = "btnExclude";
-            this.btnExclude.Size = new System.Drawing.Size(150, 30);
+            this.btnExclude.Size = new System.Drawing.Size(100, 30);
             this.btnExclude.TabIndex = 111;
             this.btnExclude.Text = "&Excluir";
             this.btnExclude.ToolTip = "E - Excluir usuário";
@@ -233,9 +254,10 @@ namespace vendas.MenuForms
             // simpleButton1
             // 
             this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton1.Location = new System.Drawing.Point(846, 471);
+            this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.simpleButton1.Location = new System.Drawing.Point(12, 471);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(150, 30);
+            this.simpleButton1.Size = new System.Drawing.Size(100, 30);
             this.simpleButton1.TabIndex = 113;
             this.simpleButton1.Text = "&Cadastrar";
             this.simpleButton1.ToolTip = "C - Cadastrar usuário";
@@ -244,9 +266,10 @@ namespace vendas.MenuForms
             // btnEdit
             // 
             this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEdit.Location = new System.Drawing.Point(534, 471);
+            this.btnEdit.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.ImageOptions.Image")));
+            this.btnEdit.Location = new System.Drawing.Point(224, 471);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(150, 30);
+            this.btnEdit.Size = new System.Drawing.Size(100, 30);
             this.btnEdit.TabIndex = 112;
             this.btnEdit.Text = "E&ditar";
             this.btnEdit.ToolTip = "D - Editar usuário";
@@ -283,11 +306,12 @@ namespace vendas.MenuForms
             // GenerateReport
             // 
             this.GenerateReport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.GenerateReport.Location = new System.Drawing.Point(12, 471);
+            this.GenerateReport.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("GenerateReport.ImageOptions.Image")));
+            this.GenerateReport.Location = new System.Drawing.Point(895, 471);
             this.GenerateReport.Name = "GenerateReport";
-            this.GenerateReport.Size = new System.Drawing.Size(150, 30);
+            this.GenerateReport.Size = new System.Drawing.Size(100, 30);
             this.GenerateReport.TabIndex = 114;
-            this.GenerateReport.Text = "Gerar &Relatório";
+            this.GenerateReport.Text = "&Relatório";
             this.GenerateReport.ToolTip = "R - Gerar Relatório de Usuários";
             this.GenerateReport.Click += new System.EventHandler(this.GenerateReport_Click);
             // 
@@ -303,6 +327,7 @@ namespace vendas.MenuForms
             this.Text = "FormUsers";
             ((System.ComponentModel.ISupportInitialize)(this.gridUsers)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxFilterProd.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditSearch.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Usuários)).EndInit();
@@ -336,5 +361,6 @@ namespace vendas.MenuForms
         private DevExpress.XtraTab.XtraTabControl Usuários;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
         private DevExpress.XtraEditors.SimpleButton GenerateReport;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
     }
 }

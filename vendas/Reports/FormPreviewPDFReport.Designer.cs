@@ -58,7 +58,7 @@ namespace vendas.Reports
             this.Controls.Add(this.pdfViewer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormPreviewPDFReport";
-            this.Text = "Formulário";
+            this.Text = "Relatório";
             this.ResumeLayout(false);
 
         }

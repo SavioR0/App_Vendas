@@ -29,6 +29,7 @@ namespace vendas.MenuForms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRegisterOrder));
             this.ValueTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.label3 = new System.Windows.Forms.Label();
             this.gridOrders = new DevExpress.XtraGrid.GridControl();
@@ -173,23 +174,25 @@ namespace vendas.MenuForms
             // 
             this.btnExclude.AccessibleName = "btnExclude";
             this.btnExclude.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExclude.Location = new System.Drawing.Point(689, 7);
+            this.btnExclude.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnExclude.ImageOptions.Image")));
+            this.btnExclude.Location = new System.Drawing.Point(789, 7);
             this.btnExclude.Name = "btnExclude";
-            this.btnExclude.Size = new System.Drawing.Size(150, 20);
+            this.btnExclude.Size = new System.Drawing.Size(100, 20);
             this.btnExclude.TabIndex = 64;
-            this.btnExclude.Text = "&Remover Produto";
+            this.btnExclude.Text = "&Remover";
             this.btnExclude.ToolTip = "R - Remover produto selecionado";
             this.btnExclude.Click += new System.EventHandler(this.RemoveOrderList);
             // 
             // simpleButton1
             // 
             this.simpleButton1.AccessibleName = "btnUpdate";
-            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton1.Location = new System.Drawing.Point(846, 471);
+            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.simpleButton1.Location = new System.Drawing.Point(11, 471);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(150, 30);
+            this.simpleButton1.Size = new System.Drawing.Size(100, 30);
             this.simpleButton1.TabIndex = 63;
-            this.simpleButton1.Text = "&Finalizar Pedidos";
+            this.simpleButton1.Text = "&Comprar";
             this.simpleButton1.ToolTip = "F - Finalizar pedidos realizar a compra";
             this.simpleButton1.Click += new System.EventHandler(this.RegisterOrders);
             // 
@@ -197,11 +200,12 @@ namespace vendas.MenuForms
             // 
             this.btnUpdate.AccessibleName = "btnUpdate";
             this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUpdate.Location = new System.Drawing.Point(845, 7);
+            this.btnUpdate.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.ImageOptions.Image")));
+            this.btnUpdate.Location = new System.Drawing.Point(895, 7);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(150, 20);
+            this.btnUpdate.Size = new System.Drawing.Size(100, 20);
             this.btnUpdate.TabIndex = 62;
-            this.btnUpdate.Text = "&Adicionar Produto(s)";
+            this.btnUpdate.Text = "&Adicionar";
             this.btnUpdate.ToolTip = "A - Adicionar o produto no carrinho";
             this.btnUpdate.Click += new System.EventHandler(this.BtnUpdate_Click);
             // 

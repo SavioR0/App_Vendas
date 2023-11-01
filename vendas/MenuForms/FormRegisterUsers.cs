@@ -121,13 +121,13 @@ namespace Vendas.View
             labelBiomerticAlert.Text = "";
         }
 
-        private int ReturnTypeUser(string value) {
+        private TypeUser ReturnTypeUser(string value) {
             if (value == "Administrador")
-                return (int)TypeUser.Admin;
+                return TypeUser.Admin;
             if (value == "Vendedor")
-                return (int)TypeUser.Seller;
+                return TypeUser.Seller;
             else
-                return (int)TypeUser.Client;
+                return TypeUser.Client;
         }
 
         private void Btn_register_user_Click_1(object sender, EventArgs e)

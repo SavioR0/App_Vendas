@@ -10,7 +10,6 @@
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "Vendas.Infrastructure.SalesContext";
         }
 
         protected override void Seed(Vendas.Infrastructure.SalesContext context)

@@ -47,6 +47,7 @@
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\Sale.cs" />
+    <Compile Include="Entities\TypeUsers.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Enums\TypeReport.cs" />
     <Compile Include="Enums\TypeUser.cs" />

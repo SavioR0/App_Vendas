@@ -29,6 +29,7 @@ namespace vendas.MenuForms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRegisterProduct));
             this.nameValue = new DevExpress.XtraEditors.TextEdit();
             this.stockValue = new DevExpress.XtraEditors.TextEdit();
             this.btnRegisterEditProduct = new DevExpress.XtraEditors.SimpleButton();
@@ -51,12 +52,10 @@ namespace vendas.MenuForms
             // 
             // nameValue
             // 
-            this.nameValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.nameValue.EditValue = "";
             this.nameValue.Location = new System.Drawing.Point(107, 34);
             this.nameValue.Name = "nameValue";
-            this.nameValue.Size = new System.Drawing.Size(794, 20);
+            this.nameValue.Size = new System.Drawing.Size(517, 20);
             this.nameValue.TabIndex = 21;
             this.nameValue.ToolTip = "Informe o nome do produto";
             // 
@@ -75,10 +74,11 @@ namespace vendas.MenuForms
             // 
             // btnRegisterEditProduct
             // 
-            this.btnRegisterEditProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRegisterEditProduct.Location = new System.Drawing.Point(751, 471);
+            this.btnRegisterEditProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnRegisterEditProduct.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnRegisterEditProduct.ImageOptions.Image")));
+            this.btnRegisterEditProduct.Location = new System.Drawing.Point(107, 471);
             this.btnRegisterEditProduct.Name = "btnRegisterEditProduct";
-            this.btnRegisterEditProduct.Size = new System.Drawing.Size(150, 30);
+            this.btnRegisterEditProduct.Size = new System.Drawing.Size(100, 30);
             this.btnRegisterEditProduct.TabIndex = 25;
             this.btnRegisterEditProduct.Text = "&Cadastrar";
             this.btnRegisterEditProduct.ToolTip = "C - Cadastro ddo produto";
@@ -86,12 +86,10 @@ namespace vendas.MenuForms
             // 
             // descriptionValue
             // 
-            this.descriptionValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.descriptionValue.EditValue = "";
             this.descriptionValue.Location = new System.Drawing.Point(107, 75);
             this.descriptionValue.Name = "descriptionValue";
-            this.descriptionValue.Size = new System.Drawing.Size(794, 20);
+            this.descriptionValue.Size = new System.Drawing.Size(517, 20);
             this.descriptionValue.TabIndex = 22;
             this.descriptionValue.ToolTip = "informe a descrição do produto";
             // 

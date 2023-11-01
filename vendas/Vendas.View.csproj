@@ -302,6 +302,12 @@
     <Compile Include="LoginRegister\LoginUsers.Designer.cs">
       <DependentUpon>LoginUsers.cs</DependentUpon>
     </Compile>
+    <Compile Include="MenuForms\FormAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuForms\FormAbout.Designer.cs">
+      <DependentUpon>FormAbout.cs</DependentUpon>
+    </Compile>
     <Compile Include="MenuForms\FormHome.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -361,6 +367,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LoginRegister\LoginUsers.resx">
       <DependentUpon>LoginUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuForms\FormAbout.resx">
+      <DependentUpon>FormAbout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuForms\FormHome.resx">
       <DependentUpon>FormHome.cs</DependentUpon>

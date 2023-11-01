@@ -7,13 +7,13 @@ namespace Vendas.Infrastructure.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class binary_biometric : IMigrationMetadata
+    public sealed partial class init_migration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(binary_biometric));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(init_migration));
         
         string IMigrationMetadata.Id
         {
-            get { return "202310181728078_binary_biometric"; }
+            get { return "202311011219067_init_migration"; }
         }
         
         string IMigrationMetadata.Source

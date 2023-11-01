@@ -20,7 +20,7 @@ namespace vendas
         private static void LoadStaticUserData(Report fReport)
         {
             fReport.SetParameterValue("GlobalName", Global.Instance.User.Name);
-            fReport.SetParameterValue("GlobalType", StringUser.returnUserString[Global.Instance.User.TypeUser]);
+            fReport.SetParameterValue("GlobalType", StringUser.returnUserString[(int)Global.Instance.User.TypeUser]);
             fReport.SetParameterValue("GlobalEmail", Global.Instance.User.Email);
             fReport.SetParameterValue("GlobalCPF", Global.Instance.User.Cpf);
             fReport.SetParameterValue("GlobalUserName", Global.Instance.User.UserName);

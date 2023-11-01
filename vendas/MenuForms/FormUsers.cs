@@ -122,5 +122,7 @@ namespace vendas.MenuForms
             var fReport = GetReportTypes<User>.GeneratePDF(TypeReport.User, userList);
             (new FormPreviewPDFReport(fReport)).ShowDialog();
         }
+
+
     }
 }

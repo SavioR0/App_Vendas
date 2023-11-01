@@ -48,6 +48,7 @@ namespace vendas
         }
         private void LoadClientPermissions()
         {
+            menuToolStripMenuItem.DropDownItems[5].Text = "Minhas Compras";
             menuToolStripMenuItem.DropDownItems[1].Visible = false;
             menuToolStripMenuItem.DropDownItems[2].Visible = false;
             menuToolStripMenuItem.DropDownItems[4].Visible = false;
@@ -119,16 +120,58 @@ namespace vendas
             OpenFormProduct();
         }
 
-        private void BtnExit_Click(object sender, System.EventArgs e)
+        private void FormHomePage_Load(object sender, EventArgs e)
+        {
+            FormShow(new FormHome(this), closeForm: false);
+        }
+
+        private void listarUsuáriosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormShow(new FormUsers(this));
+        }
+
+        private void RegisterUserToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFormUser();
+        }
+
+        private void ListProductsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormShow(new FormProducts(this));
+        }
+
+        private void RegisterProductsToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            OpenFormProduct();
+        }
+
+        private void ListOrdersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormShow(new FormOrderSale(this));
+        }
+
+        private void cadastroDePedidosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormShow(new FormRegisterOrder());
+        }
+
+        private void menuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormShow(new FormHome(this));
+        }
+
+        private void BtnExit_Click(object sender, EventArgs e)
         {
             AppManager.Instance.Load<LoaderController, User>(new LoginUser(Vendas.Library.Version.Instance.version));
             Global.Instance.User = null;
             AppManager.Instance.CloseForm(view: this);
         }
 
-        private void FormHomePage_Load(object sender, EventArgs e)
+        private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormShow(new FormHome(this), closeForm: false);
+            FormShow(new FormAbout());
         }
+
+
     }
 }

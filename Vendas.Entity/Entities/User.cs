@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using Vendas.Entity.Enums;
 
 namespace Vendas.Entity.Entities
 {
@@ -16,7 +17,7 @@ namespace Vendas.Entity.Entities
         public int AddressId{ get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public int TypeUser { get; set; }
+        public TypeUser TypeUser { get; set; }
         public string UserName { get; set; }
         public char Flag { get; set; }
         public int EditLogin { get; set; }

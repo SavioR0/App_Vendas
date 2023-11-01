@@ -43,7 +43,7 @@ namespace vendas.MenuForms
                 MessageBox.Show("O produto especificado não existe.","Produto Inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            prod.Seller = Service.UserController.Filter(c => (c.TypeUser == (int)TypeUser.Seller || c.TypeUser == (int)TypeUser.Admin) && prod.SellerId == c.Id)[0];
+            prod.Seller = Service.UserController.Filter(c => (c.TypeUser == TypeUser.Seller || c.TypeUser ==TypeUser.Admin) && prod.SellerId == c.Id)[0];
 
             for (int i = 0; i <int.Parse(numValueEdit.Text); i++)
             {
