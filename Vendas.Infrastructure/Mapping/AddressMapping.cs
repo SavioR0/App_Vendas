@@ -12,7 +12,7 @@ namespace Vendas.Infrastructure.Mapping
 
             Property(c => c.CEP).IsRequired().HasMaxLength(9);
             Property(p => p.City).IsRequired().HasMaxLength(100);
-            Property(p => p.Neighborhood).IsRequired().HasMaxLength(100);
+            Property(p => p.District).IsRequired().HasMaxLength(100);
             Property(p => p.Street).IsRequired().HasMaxLength(100);
             Property(p => p.Number).IsRequired();
         }

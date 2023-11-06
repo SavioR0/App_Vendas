@@ -53,7 +53,7 @@ namespace Vendas.View
             dateValue.Text = _userEdited.DateOfBirth.ToString("d");
             CEPValue.Text = _userEdited.Address.CEP;
             CityValue.Text = _userEdited.Address.City;
-            NeighborhoodValue.Text = _userEdited.Address.Neighborhood;
+            DistrictValue.Text = _userEdited.Address.District;
             numberValue.Text = _userEdited.Address.Number.ToString();
             EmailValue.Text = _userEdited.Email;
             comboBoxEditTypeUser.Text = ReturnTextTypeUser((TypeUser)_userEdited.TypeUser);
@@ -78,7 +78,7 @@ namespace Vendas.View
                 { dateValue, "Campo data está vazio"},
                 { CEPValue, "Campo CEP está vazio"},
                 { CityValue, "Campo Cidade está vazio"},
-                { NeighborhoodValue, "Campo Bairro está vazio"},
+                { DistrictValue, "Campo Bairro está vazio"},
                 { StreetValue, "Campo logradouro está vazio"},
                 { numberValue, "Campo Número está vazio"},
                 { EmailValue, "Campo email está vazio"},
@@ -113,7 +113,7 @@ namespace Vendas.View
             dateValue.Text = null;
             CEPValue.Text = null;
             CityValue.Text = null;
-            NeighborhoodValue.Text = null;
+            DistrictValue.Text = null;
             StreetValue.Text = null;
             numberValue.Text = null;
             EmailValue.Text = null;
@@ -159,24 +159,21 @@ namespace Vendas.View
                     var address = new Address
                     {
                         CEP = CEPValue.Text,
+                        State = StateValue.Text,
                         City = CityValue.Text.Trim(),
-                        Neighborhood = NeighborhoodValue.Text.Trim(),
+                        District = DistrictValue.Text.Trim(),
                         Street = StreetValue.Text.Trim(),
                         Number = int.Parse(numberValue.Text),
                     };
                     var adressRegistered = Communication.Service.AddressController.Filter(
                         c => c.CEP == address.CEP &&
+                        c.State == address.State &&
                         c.City == address.City &&
-                        c.Neighborhood == address.Neighborhood &&
+                        c.District == address.District &&
                         c.Number == address.Number &&
                         c.Street == address.Street
-                    );
-                    //if (_userEdited != null  && !(_userEdited.Address.CEP == address.CEP &&
-                    //    _userEdited.Address.City == address.City &&
-                    //    _userEdited.Address.Neighborhood == address.Neighborhood &&
-                    //    _userEdited.Address.Number == address.Number &&
-                    //    _userEdited.Address.Street == address.Street)) 
-                    //{
+                    )[0];
+
                     if(_userEdited != null && !_userEdited.Address.Equals(address))
                     { 
                         var message = Communication.Service.AddressController.Save(address);
@@ -185,12 +182,14 @@ namespace Vendas.View
                         user.AddressId = Communication.Service.AddressController.Filter(c => c.Id == address.Id)[0].Id;
                     }
 
-                    if (adressRegistered.Count == 1) 
-                    {
-                        user.AddressId = adressRegistered[0].Id;
-                        user.Address = adressRegistered[0];
-                    }
-                    else user.Address = address;
+                    //if (adressRegistered != null) 
+                    //{
+                    //    user.AddressId = adressRegistered.Id;
+                    //    user.Address = adressRegistered;
+
+                    //}
+                    //else
+                    user.Address = address;
 
                     var messageSave = Communication.Service.UserController.Save(user);
                     if (messageSave != "") throw new Exception("Certifique que os dados do usuário foram editados e tente novamente.\n ERRO: " + messageSave);
@@ -242,6 +241,25 @@ namespace Vendas.View
             //BiometryDataText = textFIR.TextFIR;
 
             //labelBiomerticAlert.Text = "Biometria cadastrada com sucesso!";
+        }
+
+        private void CEPValue_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                Address address = SearchCEP.LocalizeCEP(CEPValue.Text.Replace("-", ""));
+                if (address != null)
+                {
+                    StateValue.Text = address.State;
+                    CityValue.Text = address.City;
+                    DistrictValue.Text = address.District;
+                    StreetValue.Text = address.Street;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

@@ -89,7 +89,7 @@ namespace vendas.MenuForms
             this.gridUsers.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1});
             this.gridUsers.Size = new System.Drawing.Size(983, 432);
-            this.gridUsers.TabIndex = 1;
+            this.gridUsers.TabIndex = 9;
             this.gridUsers.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
@@ -213,7 +213,7 @@ namespace vendas.MenuForms
             this.btnSearchProd.Location = new System.Drawing.Point(789, 7);
             this.btnSearchProd.Name = "btnSearchProd";
             this.btnSearchProd.Size = new System.Drawing.Size(100, 20);
-            this.btnSearchProd.TabIndex = 42;
+            this.btnSearchProd.TabIndex = 3;
             this.btnSearchProd.Text = "&Filtrar";
             this.btnSearchProd.ToolTip = "F - Aplicar filtro";
             this.btnSearchProd.Click += new System.EventHandler(this.BtnSearchProd_Click);
@@ -236,7 +236,7 @@ namespace vendas.MenuForms
             "Usuário",
             "Tipo Usuário"});
             this.comboBoxFilterUsers.Size = new System.Drawing.Size(75, 20);
-            this.comboBoxFilterUsers.TabIndex = 41;
+            this.comboBoxFilterUsers.TabIndex = 1;
             this.comboBoxFilterUsers.ToolTip = "Informe o atributo para o filtro";
             this.comboBoxFilterUsers.SelectedIndexChanged += new System.EventHandler(this.ComboBoxFilterProd_SelectedIndexChanged);
             // 
@@ -248,7 +248,7 @@ namespace vendas.MenuForms
             this.textEditSearch.Name = "textEditSearch";
             this.textEditSearch.Properties.BeepOnError = false;
             this.textEditSearch.Size = new System.Drawing.Size(191, 20);
-            this.textEditSearch.TabIndex = 43;
+            this.textEditSearch.TabIndex = 2;
             this.textEditSearch.ToolTip = "Informe o que deseja filtrar";
             // 
             // btnExclude
@@ -258,7 +258,7 @@ namespace vendas.MenuForms
             this.btnExclude.Location = new System.Drawing.Point(118, 471);
             this.btnExclude.Name = "btnExclude";
             this.btnExclude.Size = new System.Drawing.Size(100, 30);
-            this.btnExclude.TabIndex = 111;
+            this.btnExclude.TabIndex = 6;
             this.btnExclude.Text = "&Excluir";
             this.btnExclude.ToolTip = "E - Excluir usuário";
             this.btnExclude.Click += new System.EventHandler(this.BtnExclude_Click);
@@ -270,7 +270,7 @@ namespace vendas.MenuForms
             this.simpleButton1.Location = new System.Drawing.Point(12, 471);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(100, 30);
-            this.simpleButton1.TabIndex = 113;
+            this.simpleButton1.TabIndex = 5;
             this.simpleButton1.Text = "&Cadastrar";
             this.simpleButton1.ToolTip = "C - Cadastrar usuário";
             this.simpleButton1.Click += new System.EventHandler(this.RegisterUserButton_Click);
@@ -282,7 +282,7 @@ namespace vendas.MenuForms
             this.btnEdit.Location = new System.Drawing.Point(224, 471);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(100, 30);
-            this.btnEdit.TabIndex = 112;
+            this.btnEdit.TabIndex = 7;
             this.btnEdit.Text = "E&ditar";
             this.btnEdit.ToolTip = "D - Editar usuário";
             this.btnEdit.Visible = false;
@@ -343,7 +343,7 @@ namespace vendas.MenuForms
             this.simpleButton2.Location = new System.Drawing.Point(895, 7);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(100, 20);
-            this.simpleButton2.TabIndex = 119;
+            this.simpleButton2.TabIndex = 4;
             this.simpleButton2.Text = "&Atualizar";
             this.simpleButton2.ToolTip = "F - Aplicar filtro";
             this.simpleButton2.Click += new System.EventHandler(this.UpdateGridButton_Click);
@@ -355,7 +355,7 @@ namespace vendas.MenuForms
             this.GenerateReport.Location = new System.Drawing.Point(895, 471);
             this.GenerateReport.Name = "GenerateReport";
             this.GenerateReport.Size = new System.Drawing.Size(100, 30);
-            this.GenerateReport.TabIndex = 114;
+            this.GenerateReport.TabIndex = 8;
             this.GenerateReport.Text = "&Relatório";
             this.GenerateReport.ToolTip = "R - Gerar Relatório de Usuários";
             this.GenerateReport.Click += new System.EventHandler(this.GenerateReport_Click);

@@ -56,7 +56,7 @@ namespace vendas.MenuForms
             this.nameValue.Location = new System.Drawing.Point(107, 34);
             this.nameValue.Name = "nameValue";
             this.nameValue.Size = new System.Drawing.Size(517, 20);
-            this.nameValue.TabIndex = 21;
+            this.nameValue.TabIndex = 1;
             this.nameValue.ToolTip = "Informe o nome do produto";
             // 
             // stockValue
@@ -69,7 +69,7 @@ namespace vendas.MenuForms
             this.stockValue.Properties.MaskSettings.Set("MaskManagerSignature", "allowNull=False");
             this.stockValue.Properties.MaskSettings.Set("mask", "d");
             this.stockValue.Size = new System.Drawing.Size(140, 20);
-            this.stockValue.TabIndex = 24;
+            this.stockValue.TabIndex = 4;
             this.stockValue.ToolTip = "Informe a quantidade de produtos no estoque";
             // 
             // btnRegisterEditProduct
@@ -79,7 +79,7 @@ namespace vendas.MenuForms
             this.btnRegisterEditProduct.Location = new System.Drawing.Point(107, 471);
             this.btnRegisterEditProduct.Name = "btnRegisterEditProduct";
             this.btnRegisterEditProduct.Size = new System.Drawing.Size(100, 30);
-            this.btnRegisterEditProduct.TabIndex = 25;
+            this.btnRegisterEditProduct.TabIndex = 5;
             this.btnRegisterEditProduct.Text = "&Cadastrar";
             this.btnRegisterEditProduct.ToolTip = "C - Cadastro ddo produto";
             this.btnRegisterEditProduct.Click += new System.EventHandler(this.RegisterButton_Click);
@@ -90,7 +90,7 @@ namespace vendas.MenuForms
             this.descriptionValue.Location = new System.Drawing.Point(107, 75);
             this.descriptionValue.Name = "descriptionValue";
             this.descriptionValue.Size = new System.Drawing.Size(517, 20);
-            this.descriptionValue.TabIndex = 22;
+            this.descriptionValue.TabIndex = 2;
             this.descriptionValue.ToolTip = "informe a descrição do produto";
             // 
             // labelControl4
@@ -114,7 +114,7 @@ namespace vendas.MenuForms
             this.valueValue.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
             this.valueValue.Properties.UseMaskAsDisplayFormat = true;
             this.valueValue.Size = new System.Drawing.Size(162, 20);
-            this.valueValue.TabIndex = 23;
+            this.valueValue.TabIndex = 3;
             this.valueValue.ToolTip = "Informe valor que do produto";
             // 
             // nameLabel

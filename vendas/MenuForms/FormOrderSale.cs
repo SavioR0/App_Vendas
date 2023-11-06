@@ -28,7 +28,17 @@ namespace vendas.MenuForms
                 { "Vendedor", FilterBySeller},
                 { "Produto", FilterByProduct},
                 { "Valor", FilterByValue},
+                { "Estoque", FilterByStock},
             };
+        }
+
+        private void FilterByStock()
+        {
+            if (!int.TryParse(textEditSearch.Text, out int value)) throw new ApplicationException("Coloque um Estoque válido!");
+
+            var allSales = gridSale.DataSource as List<Sale>;
+            List<Sale> sale = allSales.FindAll(c => c.Product.Stock == value);
+            gridSale.DataSource = sale;
         }
 
         private void FilterByValue()

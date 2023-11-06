@@ -64,6 +64,10 @@
     <Compile Include="Migrations\202311011335136_Flag_update.designer.cs">
       <DependentUpon>202311011335136_Flag_update.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202311061234507_add_state_Address.cs" />
+    <Compile Include="Migrations\202311061234507_add_state_Address.designer.cs">
+      <DependentUpon>202311061234507_add_state_Address.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SalesContext.cs" />
@@ -84,6 +88,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202311011335136_Flag_update.resx">
       <DependentUpon>202311011335136_Flag_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202311061234507_add_state_Address.resx">
+      <DependentUpon>202311061234507_add_state_Address.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -11,7 +11,7 @@ namespace Vendas.Repository
 {
     public class AddressRepository : IDefaultRepository<Address>
     {
-        private IRepository<Address> _repository;
+        private readonly IRepository<Address> _repository;
 
         public AddressRepository(SalesContext context = null)
         {

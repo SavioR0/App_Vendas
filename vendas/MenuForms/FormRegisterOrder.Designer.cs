@@ -98,7 +98,7 @@ namespace vendas.MenuForms
             this.gridOrders.MainView = this.gridView2;
             this.gridOrders.Name = "gridOrders";
             this.gridOrders.Size = new System.Drawing.Size(984, 432);
-            this.gridOrders.TabIndex = 65;
+            this.gridOrders.TabIndex = 6;
             this.gridOrders.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
             // 
@@ -178,7 +178,7 @@ namespace vendas.MenuForms
             this.btnExclude.Location = new System.Drawing.Point(789, 7);
             this.btnExclude.Name = "btnExclude";
             this.btnExclude.Size = new System.Drawing.Size(100, 20);
-            this.btnExclude.TabIndex = 64;
+            this.btnExclude.TabIndex = 3;
             this.btnExclude.Text = "&Remover";
             this.btnExclude.ToolTip = "R - Remover produto selecionado";
             this.btnExclude.Click += new System.EventHandler(this.RemoveOrderList);
@@ -191,7 +191,7 @@ namespace vendas.MenuForms
             this.simpleButton1.Location = new System.Drawing.Point(11, 471);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(100, 30);
-            this.simpleButton1.TabIndex = 63;
+            this.simpleButton1.TabIndex = 5;
             this.simpleButton1.Text = "&Comprar";
             this.simpleButton1.ToolTip = "F - Finalizar pedidos realizar a compra";
             this.simpleButton1.Click += new System.EventHandler(this.RegisterOrders);
@@ -204,7 +204,7 @@ namespace vendas.MenuForms
             this.btnUpdate.Location = new System.Drawing.Point(895, 7);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(100, 20);
-            this.btnUpdate.TabIndex = 62;
+            this.btnUpdate.TabIndex = 4;
             this.btnUpdate.Text = "&Adicionar";
             this.btnUpdate.ToolTip = "A - Adicionar o produto no carrinho";
             this.btnUpdate.Click += new System.EventHandler(this.BtnUpdate_Click);
@@ -242,7 +242,7 @@ namespace vendas.MenuForms
             this.numValueEdit.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
             this.numValueEdit.Properties.MaskSettings.Set("mask", "d");
             this.numValueEdit.Size = new System.Drawing.Size(100, 20);
-            this.numValueEdit.TabIndex = 60;
+            this.numValueEdit.TabIndex = 2;
             this.numValueEdit.ToolTip = "Informe a quantidade do produto selecionado";
             // 
             // ComboBoxProduct
@@ -252,7 +252,7 @@ namespace vendas.MenuForms
             this.ComboBoxProduct.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ComboBoxProduct.Size = new System.Drawing.Size(100, 20);
-            this.ComboBoxProduct.TabIndex = 59;
+            this.ComboBoxProduct.TabIndex = 1;
             this.ComboBoxProduct.ToolTip = "Selecione o produto";
             this.ComboBoxProduct.SelectedIndexChanged += new System.EventHandler(this.ComboBoxProduct_SelectedIndexChanged);
             // 
