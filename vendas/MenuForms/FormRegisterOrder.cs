@@ -43,7 +43,7 @@ namespace vendas.MenuForms
                 MessageBox.Show("O produto especificado não existe.","Produto Inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            prod.Seller = Service.UserController.Filter(c => (c.TypeUser == TypeUser.Seller || c.TypeUser ==TypeUser.Admin) && prod.SellerId == c.Id)[0];
+            prod.Seller = Service.UserController.Filter(c => (c.TypeUser == (int)TypeUser.Seller || c.TypeUser ==(int)TypeUser.Admin) && prod.SellerId == c.Id)[0];
 
             for (int i = 0; i <int.Parse(numValueEdit.Text); i++)
             {
@@ -92,7 +92,7 @@ namespace vendas.MenuForms
                         ProductId = prod.Id,
                         ClientId = Global.Instance.User.Id,
                         SellerId = prod.SellerId,
-                        Flag = 'I',
+                        Flag = "I",
                     });
                     if (message != "") throw new Exception(message);
                     // Cadastro da Venda
@@ -102,8 +102,8 @@ namespace vendas.MenuForms
                         Name = prod.Name,
                         Value = prod.Value,
                         Description = prod.Description,
-                        Stock = prod.Stock--,
-                        Flag = 'U',
+                        Stock = prod.Stock - 1,
+                        Flag = "U",
                         SellerId = prod.SellerId,
                     });
                     if (message != "") throw new Exception(message);

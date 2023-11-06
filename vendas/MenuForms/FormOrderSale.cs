@@ -1,5 +1,4 @@
 ﻿using DevExpress.XtraGrid.Views.Grid;
-using FastReport;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -15,12 +14,65 @@ namespace vendas.MenuForms
     public partial class FormOrderSale : Form
     {
         private readonly FormHomePage _formHomePage;
+        private readonly Dictionary<string, Action> FilterSelected;
         public FormOrderSale(FormHomePage formHomePage)
         {
             _formHomePage = formHomePage;
             InitializeComponent();
 
             LoadGridSale((TypeUser)Global.Instance.User.TypeUser);
+
+            FilterSelected = new Dictionary<string, Action> {
+                { "Id", FilterById},
+                { "Cliente", FilterByClient},
+                { "Vendedor", FilterBySeller},
+                { "Produto", FilterByProduct},
+                { "Valor", FilterByValue},
+            };
+        }
+
+        private void FilterByValue()
+        {
+            if (!double.TryParse(textEditSearch.Text, out double value)) throw new ApplicationException("Coloque um Id válido!");
+
+            var allSales = gridSale.DataSource as List<Sale>;
+            List<Sale> sale = allSales.FindAll(c => c.Product.Value == value);
+            gridSale.DataSource = sale;
+        }
+
+        private void FilterByProduct()
+        {
+            var sales = gridSale.DataSource as List<Sale>;
+            List<Sale> teste = sales.FindAll(c => c.Product.Name.IndexOf(textEditSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+            gridSale.DataSource = teste;
+        }
+
+        private void FilterBySeller()
+        {
+            var sales = gridSale.DataSource as List<Sale>;
+            List<Sale> teste = sales.FindAll(c => c.Seller.Name.IndexOf(textEditSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+            gridSale.DataSource = teste;
+        }
+
+        private void FilterByClient()
+        {
+            var sales = gridSale.DataSource as List<Sale>;
+            List<Sale> teste = sales.FindAll(c => c.Client.Name.IndexOf(textEditSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+            gridSale.DataSource = teste;
+        }
+
+        private void FilterById()
+        {
+            if (!int.TryParse(textEditSearch.Text, out int id)) throw new ApplicationException("Coloque um Id válido!");
+
+            var allSales = gridSale.DataSource as List<Sale>;
+            List<Sale> sale = allSales.FindAll(c => c.Id == id);
+            gridSale.DataSource = sale;
+        }
+
+        private void LoadNumLabel()
+        {
+            LabelNumOrder.Text = ((List<Sale>)gridSale.DataSource).Count.ToString();
         }
 
         private void LoadGridSale(TypeUser typeUser)
@@ -36,6 +88,7 @@ namespace vendas.MenuForms
                 }
                 gridSale.DataSource = sales;
                 gridSale.RefreshDataSource();
+                LoadNumLabel();
             }
         }
         private void BtnExclude_Click(object sender, EventArgs e)
@@ -59,33 +112,19 @@ namespace vendas.MenuForms
         }
         private void BtnSearchProd_Click(object sender, EventArgs e)
         {
-            LoadGridSale((TypeUser)Global.Instance.User.TypeUser);
-            if (string.IsNullOrWhiteSpace(textEditSearch.Text)) return;
+            try
+            {
+                LoadGridSale((TypeUser)Global.Instance.User.TypeUser);
+                if (string.IsNullOrWhiteSpace(textEditSearch.Text)) return;
 
-            if (comboBoxFilterSale.Text == "Id")
-            {
-                if (int.TryParse(textEditSearch.Text, out int id))
-                    gridSale.DataSource = Service.SaleController.Filter(c => c.Id == id);
-                else
-                    MessageBox.Show("Insira um id Válido", "Id inválido.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                if (FilterSelected.TryGetValue(comboBoxFilterSale.Text, out Action LoadFilter))
+                {
+                    LoadFilter();
+                }
             }
-            else if (comboBoxFilterSale.Text == "Vendedor")
+            catch (ApplicationException ex)
             {
-                var sales = gridSale.DataSource as List<Sale>;
-                List<Sale> teste = sales.FindAll(c => c.Seller.Name.IndexOf(textEditSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
-                gridSale.DataSource = teste;
-            }
-            else if (comboBoxFilterSale.Text == "Cliente")
-            {
-                var sales = gridSale.DataSource as List<Sale>;
-                List<Sale> teste = sales.FindAll(c => c.Client.Name.IndexOf(textEditSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
-                gridSale.DataSource = teste;
-            }
-            else if (comboBoxFilterSale.Text == "Produto")
-            {
-                var sales = gridSale.DataSource as List<Sale>;
-                List<Sale> teste = sales.FindAll(c => c.Product.Name.IndexOf(textEditSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
-                gridSale.DataSource = teste;
+                MessageBox.Show(ex.Message, "Erro ao filtrar!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             textEditSearch.Text = "";
         }
@@ -107,14 +146,8 @@ namespace vendas.MenuForms
             var saleList = new List<Sale>();
             for (int i = 0; i < gridView.RowCount; i++)
             {
-                var sale = gridView.GetRow(i) as Sale;
-
-                if (sale != null)
+                if (gridView.GetRow(i) is Sale sale)
                 {
-                    int productId = sale.ProductId;
-                    int clientId = sale.ClientId;
-                    int sellerId = sale.SellerId;
-
                     saleList.Add(sale);
                 }
             }
@@ -129,5 +162,11 @@ namespace vendas.MenuForms
             var fReport = GetReportTypes<Sale>.GeneratePDF(TypeReport.Order, saleList);
             (new FormPreviewPDFReport(fReport)).ShowDialog();
         }
+
+        private void UpdateGridButton_Click(object sender, EventArgs e)
+        {
+            LoadGridSale((TypeUser)Global.Instance.User.TypeUser);
+        }
+
     }
 }

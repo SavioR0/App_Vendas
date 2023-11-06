@@ -16,11 +16,11 @@ namespace Vendas.Service.Controllers.Interfaces
         [Route("salvar")]
         public string Save(Product entity)
         {
-            if (entity.Flag == 'U')
+            if (entity.Flag == "U")
             {
                 _message = new ProductRepository().Update(entity);
             }
-            else if (entity.Flag == 'I')
+            else if (entity.Flag == "I")
             {
                 _message = new ProductRepository().Add(entity);
             }

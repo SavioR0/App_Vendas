@@ -8,8 +8,8 @@ namespace vendas.MenuForms
 {
     public partial class FormHome : Form
     {
-        private FormHomePage _formHomePage;
-        private Dictionary<TypeUser, Action> _loadPermissions;
+        private readonly FormHomePage _formHomePage;
+        private readonly Dictionary<TypeUser, Action> _loadPermissions;
         public FormHome(FormHomePage formHomePage)
         {
             InitializeComponent();
@@ -49,32 +49,32 @@ namespace vendas.MenuForms
             tileItem8.Visible = false;
         }
 
-        private void tileUsers_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
+        private void TileUsers_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
             _formHomePage.BtnUsersMenu_Click();
         }
 
-        private void tileProducts_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
+        private void TileProducts_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
             _formHomePage.BtnProductMenu_Click();
         }
 
-        private void tileRegisterUser_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
+        private void TileRegisterUser_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
             _formHomePage.BntRegisterUsersMenu_Click();
         }
 
-        private void tileItem8_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
+        private void TileItem8_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
             _formHomePage.BtnRegisterProductMenu_Click();
         }
 
-        private void tileItem2_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
+        private void TileItem2_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
             _formHomePage.BtnPurchasesSalesMenu_Click();
         }
 
-        private void tileItem1_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
+        private void TileItem1_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
             _formHomePage.BtnRegisterPurchases_Click();
         }

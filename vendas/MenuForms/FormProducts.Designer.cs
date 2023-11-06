@@ -48,6 +48,9 @@ namespace vendas.MenuForms
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            this.LabelNumProd = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.GenerateReport = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.gridProduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
@@ -81,18 +84,20 @@ namespace vendas.MenuForms
             this.estoque,
             this.Valor,
             this.Vendedor});
+            this.gridView2.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.gridView2.GridControl = this.gridProduct;
             this.gridView2.Name = "gridView2";
+            this.gridView2.OptionsBehavior.Editable = false;
             this.gridView2.OptionsBehavior.ReadOnly = true;
+            this.gridView2.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gridView2.OptionsView.ShowGroupPanel = false;
+            this.gridView2.OptionsView.ShowIndicator = false;
             // 
             // IdP
             // 
             this.IdP.Caption = "Id";
             this.IdP.FieldName = "Id";
             this.IdP.Name = "IdP";
-            this.IdP.Visible = true;
-            this.IdP.VisibleIndex = 0;
             this.IdP.Width = 47;
             // 
             // NameP
@@ -101,7 +106,7 @@ namespace vendas.MenuForms
             this.NameP.FieldName = "Name";
             this.NameP.Name = "NameP";
             this.NameP.Visible = true;
-            this.NameP.VisibleIndex = 1;
+            this.NameP.VisibleIndex = 0;
             this.NameP.Width = 109;
             // 
             // descricao
@@ -110,7 +115,7 @@ namespace vendas.MenuForms
             this.descricao.FieldName = "Description";
             this.descricao.Name = "descricao";
             this.descricao.Visible = true;
-            this.descricao.VisibleIndex = 2;
+            this.descricao.VisibleIndex = 1;
             this.descricao.Width = 241;
             // 
             // estoque
@@ -119,7 +124,7 @@ namespace vendas.MenuForms
             this.estoque.FieldName = "Stock";
             this.estoque.Name = "estoque";
             this.estoque.Visible = true;
-            this.estoque.VisibleIndex = 3;
+            this.estoque.VisibleIndex = 2;
             this.estoque.Width = 140;
             // 
             // Valor
@@ -128,7 +133,7 @@ namespace vendas.MenuForms
             this.Valor.FieldName = "Value";
             this.Valor.Name = "Valor";
             this.Valor.Visible = true;
-            this.Valor.VisibleIndex = 4;
+            this.Valor.VisibleIndex = 3;
             this.Valor.Width = 102;
             // 
             // Vendedor
@@ -137,7 +142,7 @@ namespace vendas.MenuForms
             this.Vendedor.FieldName = "Seller.Name";
             this.Vendedor.Name = "Vendedor";
             this.Vendedor.Visible = true;
-            this.Vendedor.VisibleIndex = 5;
+            this.Vendedor.VisibleIndex = 4;
             // 
             // label6
             // 
@@ -161,7 +166,7 @@ namespace vendas.MenuForms
             // 
             this.btnSearchProd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSearchProd.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSearchProd.ImageOptions.Image")));
-            this.btnSearchProd.Location = new System.Drawing.Point(895, 7);
+            this.btnSearchProd.Location = new System.Drawing.Point(789, 7);
             this.btnSearchProd.Name = "btnSearchProd";
             this.btnSearchProd.Size = new System.Drawing.Size(100, 20);
             this.btnSearchProd.TabIndex = 42;
@@ -179,11 +184,15 @@ namespace vendas.MenuForms
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.comboBoxFilterProd.Properties.Items.AddRange(new object[] {
             "Id",
-            "Nome"});
+            "Nome",
+            "Descrição",
+            "Estoque",
+            "Valor",
+            "Vendedor"});
             this.comboBoxFilterProd.Size = new System.Drawing.Size(75, 20);
             this.comboBoxFilterProd.TabIndex = 41;
             this.comboBoxFilterProd.ToolTip = "Informe o atributo para o filtro";
-            this.comboBoxFilterProd.SelectedIndexChanged += new System.EventHandler(this.comboBoxFilterProd_SelectedIndexChanged);
+            this.comboBoxFilterProd.SelectedIndexChanged += new System.EventHandler(this.ComboBoxFilterProd_SelectedIndexChanged);
             // 
             // textEditSearch
             // 
@@ -198,7 +207,7 @@ namespace vendas.MenuForms
             // 
             // btnEdit
             // 
-            this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnEdit.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.ImageOptions.Image")));
             this.btnEdit.Location = new System.Drawing.Point(118, 471);
             this.btnEdit.Name = "btnEdit";
@@ -210,7 +219,7 @@ namespace vendas.MenuForms
             // 
             // btnExclude
             // 
-            this.btnExclude.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExclude.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnExclude.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnExclude.ImageOptions.Image")));
             this.btnExclude.Location = new System.Drawing.Point(224, 471);
             this.btnExclude.Name = "btnExclude";
@@ -222,7 +231,7 @@ namespace vendas.MenuForms
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
             this.simpleButton1.Location = new System.Drawing.Point(12, 471);
             this.simpleButton1.Name = "simpleButton1";
@@ -230,7 +239,7 @@ namespace vendas.MenuForms
             this.simpleButton1.TabIndex = 111;
             this.simpleButton1.Text = "&Cadastrar";
             this.simpleButton1.ToolTip = "C - Cadastrar produto";
-            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            this.simpleButton1.Click += new System.EventHandler(this.SimpleButton1_Click);
             // 
             // xtraTabControl1
             // 
@@ -245,6 +254,9 @@ namespace vendas.MenuForms
             // 
             // xtraTabPage2
             // 
+            this.xtraTabPage2.Controls.Add(this.LabelNumProd);
+            this.xtraTabPage2.Controls.Add(this.label1);
+            this.xtraTabPage2.Controls.Add(this.simpleButton2);
             this.xtraTabPage2.Controls.Add(this.GenerateReport);
             this.xtraTabPage2.Controls.Add(this.textEditSearch);
             this.xtraTabPage2.Controls.Add(this.simpleButton1);
@@ -258,6 +270,36 @@ namespace vendas.MenuForms
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.Size = new System.Drawing.Size(1006, 512);
             this.xtraTabPage2.Text = "Produtos";
+            // 
+            // LabelNumProd
+            // 
+            this.LabelNumProd.AutoSize = true;
+            this.LabelNumProd.Location = new System.Drawing.Point(508, 10);
+            this.LabelNumProd.Name = "LabelNumProd";
+            this.LabelNumProd.Size = new System.Drawing.Size(13, 13);
+            this.LabelNumProd.TabIndex = 122;
+            this.LabelNumProd.Text = "0";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(381, 10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(121, 13);
+            this.label1.TabIndex = 121;
+            this.label1.Text = "Produtos Cadastrados :";
+            // 
+            // simpleButton2
+            // 
+            this.simpleButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
+            this.simpleButton2.Location = new System.Drawing.Point(895, 7);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(100, 20);
+            this.simpleButton2.TabIndex = 120;
+            this.simpleButton2.Text = "&Atualizar";
+            this.simpleButton2.ToolTip = "F - Aplicar filtro";
+            this.simpleButton2.Click += new System.EventHandler(this.UpdateGridButton_Click);
             // 
             // GenerateReport
             // 
@@ -313,5 +355,8 @@ namespace vendas.MenuForms
         private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
         private DevExpress.XtraEditors.SimpleButton GenerateReport;
+        private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label LabelNumProd;
     }
 }

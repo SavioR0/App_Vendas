@@ -18,8 +18,8 @@ namespace Vendas.View
         private readonly User _userEdited;
         public string BiometryDataText;
         public byte[] BiometryDataBinary;
+        private readonly NBioAPI m_NBioAPI;
 
-        NBioAPI m_NBioAPI;
 
         public FormRegisterUser(User user=null) {
             InitializeComponent();
@@ -121,13 +121,13 @@ namespace Vendas.View
             labelBiomerticAlert.Text = "";
         }
 
-        private TypeUser ReturnTypeUser(string value) {
+        private int ReturnTypeUser(string value) {
             if (value == "Administrador")
-                return TypeUser.Admin;
+                return (int)TypeUser.Admin;
             if (value == "Vendedor")
-                return TypeUser.Seller;
+                return (int)TypeUser.Seller;
             else
-                return TypeUser.Client;
+                return (int)TypeUser.Client;
         }
 
         private void Btn_register_user_Click_1(object sender, EventArgs e)
@@ -152,7 +152,7 @@ namespace Vendas.View
                         UserName = _userEdited == null ? nameValue.Text.Trim().ToLower() + LastNameValue.Text.Trim().ToLower() + cpfValue.Text.Substring(0, 2) : _userEdited.UserName,
                         BiometryDataText = BiometryDataText,
                         BiometryDataBinary = BiometryDataBinary,
-                        Flag = _userEdited == null ? 'I' : 'U',
+                        Flag = _userEdited == null ? "I" : "U",
                         EditLogin = _userEdited == null ? 1 : 0,
                     };
 
@@ -171,12 +171,14 @@ namespace Vendas.View
                         c.Number == address.Number &&
                         c.Street == address.Street
                     );
-                    if (_userEdited != null  && !(_userEdited.Address.CEP == address.CEP &&
-                        _userEdited.Address.City == address.City &&
-                        _userEdited.Address.Neighborhood == address.Neighborhood &&
-                        _userEdited.Address.Number == address.Number &&
-                        _userEdited.Address.Street == address.Street)) 
-                    {
+                    //if (_userEdited != null  && !(_userEdited.Address.CEP == address.CEP &&
+                    //    _userEdited.Address.City == address.City &&
+                    //    _userEdited.Address.Neighborhood == address.Neighborhood &&
+                    //    _userEdited.Address.Number == address.Number &&
+                    //    _userEdited.Address.Street == address.Street)) 
+                    //{
+                    if(_userEdited != null && !_userEdited.Address.Equals(address))
+                    { 
                         var message = Communication.Service.AddressController.Save(address);
                         if (message != "") throw new Exception(message);
 

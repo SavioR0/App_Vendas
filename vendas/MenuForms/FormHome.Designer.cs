@@ -118,7 +118,7 @@ namespace vendas.MenuForms
             this.tileItem3.Id = 6;
             this.tileItem3.ItemSize = DevExpress.XtraEditors.TileItemSize.Wide;
             this.tileItem3.Name = "tileItem3";
-            this.tileItem3.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.tileUsers_ItemClick);
+            this.tileItem3.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.TileUsers_ItemClick);
             // 
             // tileItem5
             // 
@@ -156,7 +156,7 @@ namespace vendas.MenuForms
             this.tileItem5.Id = 11;
             this.tileItem5.ItemSize = DevExpress.XtraEditors.TileItemSize.Wide;
             this.tileItem5.Name = "tileItem5";
-            this.tileItem5.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.tileProducts_ItemClick);
+            this.tileItem5.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.TileProducts_ItemClick);
             // 
             // tileItem2
             // 
@@ -194,7 +194,7 @@ namespace vendas.MenuForms
             this.tileItem2.Id = 8;
             this.tileItem2.ItemSize = DevExpress.XtraEditors.TileItemSize.Wide;
             this.tileItem2.Name = "tileItem2";
-            this.tileItem2.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.tileItem2_ItemClick);
+            this.tileItem2.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.TileItem2_ItemClick);
             // 
             // GroupRegisterItems
             // 
@@ -239,7 +239,7 @@ namespace vendas.MenuForms
             this.tileItem6.Id = 13;
             this.tileItem6.ItemSize = DevExpress.XtraEditors.TileItemSize.Wide;
             this.tileItem6.Name = "tileItem6";
-            this.tileItem6.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.tileRegisterUser_ItemClick);
+            this.tileItem6.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.TileRegisterUser_ItemClick);
             // 
             // tileItem8
             // 
@@ -277,7 +277,7 @@ namespace vendas.MenuForms
             this.tileItem8.Id = 17;
             this.tileItem8.ItemSize = DevExpress.XtraEditors.TileItemSize.Wide;
             this.tileItem8.Name = "tileItem8";
-            this.tileItem8.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.tileItem8_ItemClick);
+            this.tileItem8.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.TileItem8_ItemClick);
             // 
             // tileItem1
             // 
@@ -315,7 +315,7 @@ namespace vendas.MenuForms
             this.tileItem1.Id = 18;
             this.tileItem1.ItemSize = DevExpress.XtraEditors.TileItemSize.Wide;
             this.tileItem1.Name = "tileItem1";
-            this.tileItem1.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.tileItem1_ItemClick);
+            this.tileItem1.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.TileItem1_ItemClick);
             // 
             // tileGroup1
             // 

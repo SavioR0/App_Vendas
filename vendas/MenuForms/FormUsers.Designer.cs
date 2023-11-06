@@ -46,18 +46,21 @@ namespace vendas.MenuForms
             this.label6 = new System.Windows.Forms.Label();
             this.labelTExt4 = new System.Windows.Forms.Label();
             this.btnSearchProd = new DevExpress.XtraEditors.SimpleButton();
-            this.comboBoxFilterProd = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.comboBoxFilterUsers = new DevExpress.XtraEditors.ComboBoxEdit();
             this.textEditSearch = new DevExpress.XtraEditors.TextEdit();
             this.btnExclude = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.btnEdit = new DevExpress.XtraEditors.SimpleButton();
             this.Usuários = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
+            this.LabelNumUser = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.GenerateReport = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.gridUsers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxFilterProd.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxFilterUsers.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditSearch.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Usuários)).BeginInit();
             this.Usuários.SuspendLayout();
@@ -68,7 +71,7 @@ namespace vendas.MenuForms
             // 
             this.Tipo.Caption = "Tipo Usuário";
             this.Tipo.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
-            this.Tipo.FieldName = "TypeUser";
+            this.Tipo.FieldName = "TypeUsers.Name";
             this.Tipo.Name = "Tipo";
             this.Tipo.Visible = true;
             this.Tipo.VisibleIndex = 6;
@@ -102,6 +105,7 @@ namespace vendas.MenuForms
             this.Data_Nascimento,
             this.UserName,
             this.Tipo});
+            this.gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             gridFormatRule1.Column = this.Tipo;
             gridFormatRule1.ColumnApplyTo = this.Tipo;
             gridFormatRule1.Name = "Format0";
@@ -113,7 +117,9 @@ namespace vendas.MenuForms
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.OptionsBehavior.ReadOnly = true;
+            this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.OptionsView.ShowIndicator = false;
             // 
             // Id
             // 
@@ -204,7 +210,7 @@ namespace vendas.MenuForms
             // 
             this.btnSearchProd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSearchProd.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSearchProd.ImageOptions.Image")));
-            this.btnSearchProd.Location = new System.Drawing.Point(895, 7);
+            this.btnSearchProd.Location = new System.Drawing.Point(789, 7);
             this.btnSearchProd.Name = "btnSearchProd";
             this.btnSearchProd.Size = new System.Drawing.Size(100, 20);
             this.btnSearchProd.TabIndex = 42;
@@ -212,21 +218,27 @@ namespace vendas.MenuForms
             this.btnSearchProd.ToolTip = "F - Aplicar filtro";
             this.btnSearchProd.Click += new System.EventHandler(this.BtnSearchProd_Click);
             // 
-            // comboBoxFilterProd
+            // comboBoxFilterUsers
             // 
-            this.comboBoxFilterProd.EditValue = "";
-            this.comboBoxFilterProd.Location = new System.Drawing.Point(47, 7);
-            this.comboBoxFilterProd.Name = "comboBoxFilterProd";
-            this.comboBoxFilterProd.Properties.BeepOnError = false;
-            this.comboBoxFilterProd.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.comboBoxFilterUsers.EditValue = "";
+            this.comboBoxFilterUsers.Location = new System.Drawing.Point(47, 7);
+            this.comboBoxFilterUsers.Name = "comboBoxFilterUsers";
+            this.comboBoxFilterUsers.Properties.BeepOnError = false;
+            this.comboBoxFilterUsers.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxFilterProd.Properties.Items.AddRange(new object[] {
+            this.comboBoxFilterUsers.Properties.Items.AddRange(new object[] {
             "Id",
-            "Nome"});
-            this.comboBoxFilterProd.Size = new System.Drawing.Size(75, 20);
-            this.comboBoxFilterProd.TabIndex = 41;
-            this.comboBoxFilterProd.ToolTip = "Informe o atributo para o filtro";
-            this.comboBoxFilterProd.SelectedIndexChanged += new System.EventHandler(this.ComboBoxFilterProd_SelectedIndexChanged);
+            "Nome",
+            "Email",
+            "Telefone",
+            "Data Nasc.",
+            "CPF",
+            "Usuário",
+            "Tipo Usuário"});
+            this.comboBoxFilterUsers.Size = new System.Drawing.Size(75, 20);
+            this.comboBoxFilterUsers.TabIndex = 41;
+            this.comboBoxFilterUsers.ToolTip = "Informe o atributo para o filtro";
+            this.comboBoxFilterUsers.SelectedIndexChanged += new System.EventHandler(this.ComboBoxFilterProd_SelectedIndexChanged);
             // 
             // textEditSearch
             // 
@@ -241,7 +253,7 @@ namespace vendas.MenuForms
             // 
             // btnExclude
             // 
-            this.btnExclude.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExclude.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnExclude.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnExclude.ImageOptions.Image")));
             this.btnExclude.Location = new System.Drawing.Point(118, 471);
             this.btnExclude.Name = "btnExclude";
@@ -253,7 +265,7 @@ namespace vendas.MenuForms
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
             this.simpleButton1.Location = new System.Drawing.Point(12, 471);
             this.simpleButton1.Name = "simpleButton1";
@@ -261,11 +273,11 @@ namespace vendas.MenuForms
             this.simpleButton1.TabIndex = 113;
             this.simpleButton1.Text = "&Cadastrar";
             this.simpleButton1.ToolTip = "C - Cadastrar usuário";
-            this.simpleButton1.Click += new System.EventHandler(this.SimpleButton1_Click);
+            this.simpleButton1.Click += new System.EventHandler(this.RegisterUserButton_Click);
             // 
             // btnEdit
             // 
-            this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnEdit.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.ImageOptions.Image")));
             this.btnEdit.Location = new System.Drawing.Point(224, 471);
             this.btnEdit.Name = "btnEdit";
@@ -289,6 +301,9 @@ namespace vendas.MenuForms
             // 
             // xtraTabPage1
             // 
+            this.xtraTabPage1.Controls.Add(this.LabelNumUser);
+            this.xtraTabPage1.Controls.Add(this.label1);
+            this.xtraTabPage1.Controls.Add(this.simpleButton2);
             this.xtraTabPage1.Controls.Add(this.GenerateReport);
             this.xtraTabPage1.Controls.Add(this.label6);
             this.xtraTabPage1.Controls.Add(this.simpleButton1);
@@ -296,12 +311,42 @@ namespace vendas.MenuForms
             this.xtraTabPage1.Controls.Add(this.btnEdit);
             this.xtraTabPage1.Controls.Add(this.textEditSearch);
             this.xtraTabPage1.Controls.Add(this.btnExclude);
-            this.xtraTabPage1.Controls.Add(this.comboBoxFilterProd);
+            this.xtraTabPage1.Controls.Add(this.comboBoxFilterUsers);
             this.xtraTabPage1.Controls.Add(this.btnSearchProd);
             this.xtraTabPage1.Controls.Add(this.labelTExt4);
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Size = new System.Drawing.Size(1006, 512);
             this.xtraTabPage1.Text = "Usuários";
+            // 
+            // LabelNumUser
+            // 
+            this.LabelNumUser.AutoSize = true;
+            this.LabelNumUser.Location = new System.Drawing.Point(508, 10);
+            this.LabelNumUser.Name = "LabelNumUser";
+            this.LabelNumUser.Size = new System.Drawing.Size(13, 13);
+            this.LabelNumUser.TabIndex = 124;
+            this.LabelNumUser.Text = "0";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(380, 10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(119, 13);
+            this.label1.TabIndex = 123;
+            this.label1.Text = "Usuários Cadastrados :";
+            // 
+            // simpleButton2
+            // 
+            this.simpleButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
+            this.simpleButton2.Location = new System.Drawing.Point(895, 7);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(100, 20);
+            this.simpleButton2.TabIndex = 119;
+            this.simpleButton2.Text = "&Atualizar";
+            this.simpleButton2.ToolTip = "F - Aplicar filtro";
+            this.simpleButton2.Click += new System.EventHandler(this.UpdateGridButton_Click);
             // 
             // GenerateReport
             // 
@@ -328,7 +373,7 @@ namespace vendas.MenuForms
             ((System.ComponentModel.ISupportInitialize)(this.gridUsers)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxFilterProd.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxFilterUsers.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditSearch.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Usuários)).EndInit();
             this.Usuários.ResumeLayout(false);
@@ -352,7 +397,7 @@ namespace vendas.MenuForms
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label labelTExt4;
         private DevExpress.XtraEditors.SimpleButton btnSearchProd;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxFilterProd;
+        private DevExpress.XtraEditors.ComboBoxEdit comboBoxFilterUsers;
         private DevExpress.XtraEditors.TextEdit textEditSearch;
         private DevExpress.XtraGrid.Columns.GridColumn Tipo;
         private DevExpress.XtraEditors.SimpleButton btnExclude;
@@ -362,5 +407,8 @@ namespace vendas.MenuForms
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
         private DevExpress.XtraEditors.SimpleButton GenerateReport;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
+        private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        private System.Windows.Forms.Label LabelNumUser;
+        private System.Windows.Forms.Label label1;
     }
 }

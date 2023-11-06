@@ -18,6 +18,7 @@ namespace Vendas.Infrastructure.Mapping
             Property(p => p.Description).IsRequired().HasMaxLength(100);
             Property(p => p.Stock).IsRequired();
             Property(p => p.Value).IsRequired();
+            Property(p => p.Flag).IsRequired();
 
 
             HasRequired(p => p.Seller).WithMany().HasForeignKey(v => v.SellerId);

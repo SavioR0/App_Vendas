@@ -114,7 +114,7 @@ namespace Vendas.View
             this.simpleButton1.Text = "&Biometria";
             this.simpleButton1.ToolTip = "Login por Biometria";
             this.simpleButton1.Visible = false;
-            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            this.simpleButton1.Click += new System.EventHandler(this.SimpleButton1_Click);
             // 
             // label1
             // 
@@ -161,7 +161,7 @@ namespace Vendas.View
             this.checkEdit1.Size = new System.Drawing.Size(75, 20);
             this.checkEdit1.TabIndex = 2;
             this.checkEdit1.Visible = false;
-            this.checkEdit1.CheckedChanged += new System.EventHandler(this.checkEdit1_CheckedChanged);
+            this.checkEdit1.CheckedChanged += new System.EventHandler(this.CheckEdit1_CheckedChanged);
             // 
             // LoginUser
             // 

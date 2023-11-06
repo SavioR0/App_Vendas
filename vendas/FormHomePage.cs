@@ -40,18 +40,30 @@ namespace vendas
 
         private void LoadSellerPermissions()
         {
-            menuToolStripMenuItem.DropDownItems[1].Text = "Clientes";
-            menuToolStripMenuItem.DropDownItems[3].Text = "Meus Produtos";
-            menuToolStripMenuItem.DropDownItems[5].Text = "Minhas Vendas";
-            menuToolStripMenuItem.DropDownItems[2].Visible = false;
-            menuToolStripMenuItem.DropDownItems[6].Visible = false;
+            UsersToolStripMenuItem.Text = "Clientes";
+            ListUsersToolStripMenuItem.Text = "Listar Clientes";
+            RegisterUsersToolStripMenuItem.Visible = false;
+            ListMyProductsToolStripMenuItem.Text = "Listar meus Produtos";
+            SaleToolStripMenuItem.Text = "Vendas";
+            ListSalesToolStripMenuItem.Text = "Listar vendas";
+            RegisterOrderToolStripMenuItem.Visible = false;
+
+
+            //menuToolStripMenuItem.DropDownItems[1].Text = "Clientes";
+            //menuToolStripMenuItem.DropDownItems[3].Text = "Meus Produtos";
+            //menuToolStripMenuItem.DropDownItems[5].Text = "Minhas Vendas";
+            //menuToolStripMenuItem.DropDownItems[2].Visible = false;
+            //menuToolStripMenuItem.DropDownItems[6].Visible = false;
         }
         private void LoadClientPermissions()
         {
-            menuToolStripMenuItem.DropDownItems[5].Text = "Minhas Compras";
-            menuToolStripMenuItem.DropDownItems[1].Visible = false;
-            menuToolStripMenuItem.DropDownItems[2].Visible = false;
-            menuToolStripMenuItem.DropDownItems[4].Visible = false;
+            UsersToolStripMenuItem.Visible = false;
+            RegisterProductsToolStripMenuItem1.Visible = false;
+            ListSalesToolStripMenuItem.Text = "Meus Pedidos";
+            //menuToolStripMenuItem.DropDownItems[5].Text = "Minhas Compras";
+            //menuToolStripMenuItem.DropDownItems[1].Visible = false;
+            //menuToolStripMenuItem.DropDownItems[2].Visible = false;
+            //menuToolStripMenuItem.DropDownItems[4].Visible = false;
         }
 
         public void FormShow(Form frm,bool closeForm = true) {
@@ -125,7 +137,7 @@ namespace vendas
             FormShow(new FormHome(this), closeForm: false);
         }
 
-        private void listarUsuáriosToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ListUsersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormShow(new FormUsers(this));
         }
@@ -150,12 +162,12 @@ namespace vendas
             FormShow(new FormOrderSale(this));
         }
 
-        private void cadastroDePedidosToolStripMenuItem_Click(object sender, EventArgs e)
+        private void RegisterOrdersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormShow(new FormRegisterOrder());
         }
 
-        private void menuToolStripMenuItem_Click(object sender, EventArgs e)
+        private void MenuToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormShow(new FormHome(this));
         }

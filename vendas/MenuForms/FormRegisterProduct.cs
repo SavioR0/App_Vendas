@@ -16,9 +16,9 @@ namespace vendas.MenuForms
         public FormRegisterProduct(Product product = null)
         {
             InitializeComponent();
-            
-            SetFields(product);
             ClearFields();
+            SetFields(product);
+            
         }
 
         private void SetFields(Product product)
@@ -30,8 +30,6 @@ namespace vendas.MenuForms
             stockValue.Text = _editedProduct.Stock.ToString();
             valueValue.Text = _editedProduct.Value.ToString();
             btnRegisterEditProduct.Text = "Editar Produto";
-            
-
         }
         private void RegisterButton_Click(object sender, System.EventArgs e)
         {
@@ -47,7 +45,7 @@ namespace vendas.MenuForms
         }
         private void UpdateProduct()
         {
-            _editedProduct.Flag = 'U';
+            _editedProduct.Flag = "U";
             var message = Service.ProductController.Save(new Product()
             {
                 Id = _editedProduct.Id,
@@ -55,7 +53,7 @@ namespace vendas.MenuForms
                 Description = descriptionValue.Text,
                 Value = float.Parse(valueValue.Text.Replace("R$", "")),
                 Stock = int.Parse(stockValue.Text),
-                Flag = 'U',
+                Flag = "U",
                 SellerId = Global.Instance.User.Id,
             });
             if (!string.IsNullOrWhiteSpace(message)) { throw new Exception(message); }
@@ -72,7 +70,7 @@ namespace vendas.MenuForms
                     Description = descriptionValue.Text,
                     Value = float.Parse(valueValue.Text.Replace("R$", "")),
                     Stock = int.Parse(stockValue.Text),
-                    Flag = 'I',
+                    Flag = "I",
                     SellerId = Global.Instance.User.Id,
                 });
                 if (!string.IsNullOrWhiteSpace(message)) { throw new Exception(message); }

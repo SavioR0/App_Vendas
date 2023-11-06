@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class init_migration : DbMigration
+    public partial class Init_Migration : DbMigration
     {
         public override void Up()
         {
@@ -28,7 +28,9 @@
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Endereços", t => t.AddressId)
-                .Index(t => t.AddressId);
+                .ForeignKey("dbo.TipoUsuarios", t => t.TypeUser)
+                .Index(t => t.AddressId)
+                .Index(t => t.TypeUser);
             
             CreateTable(
                 "dbo.Endereços",
@@ -91,6 +93,7 @@
         
         public override void Down()
         {
+            DropForeignKey("dbo.Usuarios", "TypeUser", "dbo.TipoUsuarios");
             DropForeignKey("dbo.Vendas", "User_Id", "dbo.Usuarios");
             DropForeignKey("dbo.Vendas", "SellerId", "dbo.Usuarios");
             DropForeignKey("dbo.Vendas", "ProductId", "dbo.Produtos");
@@ -102,6 +105,7 @@
             DropIndex("dbo.Vendas", new[] { "ClientId" });
             DropIndex("dbo.Vendas", new[] { "SellerId" });
             DropIndex("dbo.Vendas", new[] { "ProductId" });
+            DropIndex("dbo.Usuarios", new[] { "TypeUser" });
             DropIndex("dbo.Usuarios", new[] { "AddressId" });
             DropTable("dbo.TipoUsuarios");
             DropTable("dbo.Produtos");

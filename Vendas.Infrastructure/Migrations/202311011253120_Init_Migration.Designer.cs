@@ -7,13 +7,13 @@ namespace Vendas.Infrastructure.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class init_migration : IMigrationMetadata
+    public sealed partial class Init_Migration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(init_migration));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Init_Migration));
         
         string IMigrationMetadata.Id
         {
-            get { return "202311011219067_init_migration"; }
+            get { return "202311011253120_Init_Migration"; }
         }
         
         string IMigrationMetadata.Source

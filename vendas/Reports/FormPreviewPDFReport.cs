@@ -6,7 +6,7 @@ namespace vendas.Reports
 {
     public partial class FormPreviewPDFReport : Form
     {
-        private Report _fReport;
+        private readonly Report _fReport;
         public FormPreviewPDFReport(Report fReport)
         {
             InitializeComponent();

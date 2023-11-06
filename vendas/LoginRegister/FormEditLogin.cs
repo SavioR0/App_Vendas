@@ -20,8 +20,7 @@ namespace Vendas.View
 
         public Form Form { get { return this; } }
         private bool ValidateFields() {
-            string message = "";
-            if (Validations.ValidatePassword(out message, PasswordValue.Text, ConfirmPasswordValue.Text))
+            if (Validations.ValidatePassword(out string message, PasswordValue.Text, ConfirmPasswordValue.Text))
             {
                 MessageBox.Show(message, "Senhas inválidas", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
@@ -29,7 +28,7 @@ namespace Vendas.View
             return true;
         }
 
-        public void ChooseOpenForm(TypeUser typeUser)
+        public void ChooseOpenForm()
         {
             AppManager.Instance.Load<LoaderController, User>(new FormHomePage());
             AppManager.Instance.CloseForm(view: this);
@@ -58,13 +57,13 @@ namespace Vendas.View
                         UserName = user.UserName,
                         BiometryDataText = user.BiometryDataText,
                         BiometryDataBinary = user.BiometryDataBinary,
-                        Flag = 'U',
+                        Flag = "U",
                         EditLogin = 0,
                     };
                     var _message = Communication.Service.UserController.Save(newUser);
                     if (!string.IsNullOrWhiteSpace(_message)) throw new Exception(_message);
                     Global.Instance.User = newUser;
-                    ChooseOpenForm((TypeUser)newUser.TypeUser);
+                    ChooseOpenForm();
                     //AppManager.Instance.CloseForm(view: this);
                 }
             }

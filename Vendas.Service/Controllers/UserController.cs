@@ -17,8 +17,8 @@ namespace Vendas.Service.Controllers
         [Route("salvar")]
         public string Save(User entity)
         {
-            if (entity.Flag == 'U') _message = new UserRepository().Update(entity);
-            else if (entity.Flag == 'I')
+            if (entity.Flag == "U") _message = new UserRepository().Update(entity);
+            else if (entity.Flag == "I")
             {
                 _message = new UserRepository().Add(entity);
                 //SendEmail.SendEmailClient(
@@ -66,10 +66,11 @@ namespace Vendas.Service.Controllers
         public bool Login(string userName, string senha)
         {
             var password = Security.Decrypt("TEXTO", senha);
-            var users = new UserRepository().Filter((User c) => c.UserName == userName.Trim() &&  c.Password == password) as List<User>;
-            if (users.Count == 0) return false;
+            var user = new UserRepository().Filter((User c) => c.UserName == userName.Trim() &&  c.Password == password)[0];
+            if (user == null) return false;
+            user.TypeUsers = new TypeUserRepository().Filter((TypeUsers c) => c.Id == user.TypeUser)[0];
 
-            Global.Instance.User = users[0];
+            Global.Instance.User = user;
             return true;
         }
     }

@@ -20,7 +20,7 @@ namespace vendas
         private static void LoadStaticUserData(Report fReport)
         {
             fReport.SetParameterValue("GlobalName", Global.Instance.User.Name);
-            fReport.SetParameterValue("GlobalType", StringUser.returnUserString[(int)Global.Instance.User.TypeUser]);
+            fReport.SetParameterValue("GlobalType", Global.Instance.User.TypeUsers.Name);
             fReport.SetParameterValue("GlobalEmail", Global.Instance.User.Email);
             fReport.SetParameterValue("GlobalCPF", Global.Instance.User.Cpf);
             fReport.SetParameterValue("GlobalUserName", Global.Instance.User.UserName);
@@ -35,18 +35,15 @@ namespace vendas
 
             LoadStaticUserData(fReport);
 
-            TextObject txtObject = fReport.FindObject("Text12") as TextObject;
 
-            if (txtObject != null)
+            if (fReport.FindObject("Text12") is TextObject txtObject)
             {
                 txtObject.AfterData += (sendere, ex) =>
                 {
-                    if (txtObject.Text != null && int.TryParse(txtObject.Text, out  int userType))
+                    if (txtObject.Text != null && int.TryParse(txtObject.Text, out int userType))
                     {
-                        if (StringUser.returnUserString.TryGetValue(userType, out string userTypeText))
-                        {
-                            txtObject.Text = userTypeText;
-                        }
+
+                        txtObject.Text = Service.TypeUserController.Filter(c => c.Id == userType)[0].Name;
                     }
                 };
             }
@@ -60,9 +57,8 @@ namespace vendas
             fReport.Load(pathReport);
             fReport.Dictionary.RegisterBusinessObject(productList, "productList", 10, true);
             LoadStaticUserData(fReport);
-            TextObject txtObject = fReport.FindObject("Text12") as TextObject;
 
-            if (txtObject != null)
+            if (fReport.FindObject("Text12") is TextObject txtObject)
             {
                 txtObject.AfterData += (sendere, ex) =>
                 {
@@ -82,9 +78,8 @@ namespace vendas
             fReport.Dictionary.RegisterBusinessObject(orderList, "orderList", 10, true);
             LoadStaticUserData(fReport);
 
-            TextObject txtObject1 = fReport.FindObject("Text1") as TextObject;
 
-            if (txtObject1 != null)
+            if (fReport.FindObject("Text1") is TextObject txtObject1)
             {
                 txtObject1.AfterData += (sendere, ex) =>
                 {
@@ -94,9 +89,8 @@ namespace vendas
                     }
                 };
             }
-            TextObject txtObject2 = fReport.FindObject("Text5") as TextObject;
 
-            if (txtObject2 != null)
+            if (fReport.FindObject("Text5") is TextObject txtObject2)
             {
                 txtObject2.AfterData += (sendere, ex) =>
                 {
@@ -106,9 +100,8 @@ namespace vendas
                     }
                 };
             }
-            TextObject txtObject3 = fReport.FindObject("Text8") as TextObject;
 
-            if (txtObject3 != null)
+            if (fReport.FindObject("Text8") is TextObject txtObject3)
             {
                 txtObject3.AfterData += (sendere, ex) =>
                 {
@@ -118,9 +111,8 @@ namespace vendas
                     }
                 };
             }
-            TextObject txtObject4 = fReport.FindObject("Text10") as TextObject;
 
-            if (txtObject4 != null)
+            if (fReport.FindObject("Text10") is TextObject txtObject4)
             {
                 txtObject4.AfterData += (sendere, ex) =>
                 {

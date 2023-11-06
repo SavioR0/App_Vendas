@@ -50,5 +50,16 @@ namespace Vendas.Communication
                     return new SaleController();
             }
         }
+
+        public static ITypeUsersController TypeUserController
+        {
+            get
+            {
+                if (Global.Instance.Distribuida)
+                    return null;
+                else
+                    return new TypeUserController();
+            }
+        }
     }
 }

@@ -14,11 +14,69 @@ namespace vendas.MenuForms
     public partial class FormProducts : Form
     {
         private readonly FormHomePage _formHomePage;
+        private readonly Dictionary<string, Action> FilterSelected;
         public FormProducts(FormHomePage formHomePage)
         {
             InitializeComponent();
             LoadGridProduct((TypeUser)Global.Instance.User.TypeUser);
             _formHomePage = formHomePage;
+
+            FilterSelected = new Dictionary<string, Action> {
+                { "Id", FilterById},
+                { "Nome", FilterByName},
+                { "Descrição", FilterByDescription},
+                { "Estoque", FilterByEstoque},
+                { "Valor", FilterByValue},
+                { "Vendedor", FilterBySeller},
+            };
+        }
+
+        private void FilterBySeller()
+        {
+            var allProds = gridProduct.DataSource as List<Product>;
+            List<Product> prods = allProds.FindAll(c => c.Seller.Name.IndexOf(textEditSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+            gridProduct.DataSource = prods;
+        }
+
+        private void FilterByValue()
+        {
+            if (!double.TryParse(textEditSearch.Text, out double value)) throw new ApplicationException("Coloque um Valor válido!");
+
+            var allProds = gridProduct.DataSource as List<Product>;
+            List<Product> prods = allProds.FindAll(c => c.Value == value);
+            gridProduct.DataSource = prods;
+        }
+
+        private void FilterByEstoque()
+        {
+            if (!int.TryParse(textEditSearch.Text, out int stock)) throw new ApplicationException("Coloque um Estoque válido!");
+
+            var allProds = gridProduct.DataSource as List<Product>;
+            List<Product> prods = allProds.FindAll(c => c.Stock == stock);
+            gridProduct.DataSource = prods;
+        }
+
+        private void FilterByDescription()
+        {
+            var allProds = gridProduct.DataSource as List<Product>;
+            List<Product> prods = allProds.FindAll(c => c.Description.IndexOf(textEditSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+            gridProduct.DataSource = prods;
+        }
+
+        private void FilterByName()
+        {
+            var allProds = gridProduct.DataSource as List<Product>;
+            List<Product> prods = allProds.FindAll(c => c.Name.IndexOf(textEditSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+            gridProduct.DataSource = prods;
+        }
+
+        private void FilterById()
+        {
+            if (!int.TryParse(textEditSearch.Text, out int id)) throw new ApplicationException("Coloque um Id válido!");
+
+            var allProds = gridProduct.DataSource as List<Product>;
+            List<Product> prods= allProds.FindAll(c => c.Id == id);
+            gridProduct.DataSource = prods;
         }
 
         private void LoadGridProduct(TypeUser typeUser) {
@@ -30,12 +88,13 @@ namespace vendas.MenuForms
                     product.Seller = Service.UserController.Filter(c => c.Id == product.SellerId)[0];
                 }
                 gridProduct.DataSource = products;
+                LoadNumLabel();
             }
         }
 
-        private void EditColumn()
-        { 
-            
+        private void LoadNumLabel()
+        {
+            LabelNumProd.Text = ((List<Product>)gridProduct.DataSource).Count.ToString();
         }
 
         private void BtnExclude_Click(object sender, System.EventArgs e)
@@ -57,7 +116,7 @@ namespace vendas.MenuForms
             _formHomePage.EditProductButtonClicked(prod);
         }
 
-        private void comboBoxFilterProd_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBoxFilterProd_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBoxFilterProd.Text != "") textEditSearch.Enabled = true;
             else textEditSearch.Enabled = false;
@@ -65,21 +124,18 @@ namespace vendas.MenuForms
 
         private void BtnSearchProd_Click(object sender, EventArgs e)
         {
-            LoadGridProduct((TypeUser)Global.Instance.User.TypeUser);
-            if (string.IsNullOrWhiteSpace(textEditSearch.Text)) return;
+            try
+            {
+                LoadGridProduct((TypeUser)Global.Instance.User.TypeUser);
+                if (string.IsNullOrWhiteSpace(textEditSearch.Text)) return;
 
-            if (comboBoxFilterProd.Text == "Id")
-            {
-                if (int.TryParse(textEditSearch.Text, out int id))
-                    gridProduct.DataSource = Service.ProductController.Filter(c => c.Id == id);
-                else
-                    MessageBox.Show("Insira um id Válido", "Id inválido", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                if (FilterSelected.TryGetValue(comboBoxFilterProd.Text, out Action LoadFilter))
+                {
+                    LoadFilter();
+                }
             }
-            else if (comboBoxFilterProd.Text == "Nome")
-            {
-                var prod = gridProduct.DataSource as List<Product>;
-                List<Product> teste = prod.FindAll(c => c.Name.IndexOf(textEditSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
-                gridProduct.DataSource = teste;
+            catch (ApplicationException ex) {
+                MessageBox.Show(ex.Message, "Erro ao filtrar!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             textEditSearch.Text = "";
         }
@@ -93,14 +149,18 @@ namespace vendas.MenuForms
             {
                 productList.Add((gridView.GetRow(i)) as Product);
             }
-
             var fReport = GetReportTypes<Product>.GeneratePDF(TypeReport.Product, productList);
             (new FormPreviewPDFReport(fReport)).ShowDialog();
         }
 
-        private void simpleButton1_Click(object sender, EventArgs e)
+        private void SimpleButton1_Click(object sender, EventArgs e)
         {
             _formHomePage.BtnRegisterProductMenu_Click();
+        }
+
+        private void UpdateGridButton_Click(object sender, EventArgs e)
+        {
+            LoadGridProduct((TypeUser)Global.Instance.User.TypeUser);
         }
     }
 }

@@ -2,8 +2,8 @@
 {
     public enum TypeUser : int
     {
-        Admin = 0,
-        Client = 1,
-        Seller = 2
+        Admin = 1,
+        Client = 2,
+        Seller = 3
     }
 }

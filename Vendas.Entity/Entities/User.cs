@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 using Vendas.Entity.Enums;
 
@@ -17,9 +18,9 @@ namespace Vendas.Entity.Entities
         public int AddressId{ get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public TypeUser TypeUser { get; set; }
+        public int TypeUser { get; set; }
         public string UserName { get; set; }
-        public char Flag { get; set; }
+        public string Flag { get; set; }
         public int EditLogin { get; set; }
         public byte[] BiometryDataBinary { get; set; }
         public string BiometryDataText { get; set; }
@@ -29,5 +30,8 @@ namespace Vendas.Entity.Entities
 
         [IgnoreDataMember]
         public virtual ICollection<Sale> Sales { get; set; }
+
+        [IgnoreDataMember]
+        public virtual TypeUsers TypeUsers { get; set; }
     }
 }

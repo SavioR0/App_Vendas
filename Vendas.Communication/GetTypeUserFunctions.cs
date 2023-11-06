@@ -7,13 +7,7 @@ using Vendas.Library;
 
 namespace vendas
 {
-    public class StringUser {
-        public static Dictionary<int, string> returnUserString = new Dictionary<int, string> {
-            { 0,"Administrador"},
-            { 1,"Cliente"},
-            { 2,"Vendedor"}
-        };
-    }
+
     public class GetTypeUserFunctions<T> where T : class
     {
 
