@@ -1,5 +1,6 @@
 ﻿using NITGEN.SDK.NBioBSP;
 using System;
+using System.Threading;
 using System.Windows.Forms;
 using vendas;
 using Vendas.Communication;
@@ -8,6 +9,7 @@ using Vendas.Entity.Enums;
 using Vendas.Library;
 using Vendas.Management;
 using Vendas.View.Loader;
+
 namespace Vendas.View
 {
     public partial class LoginUser : Form, IView
@@ -20,7 +22,11 @@ namespace Vendas.View
             InitializeComponent();
             m_NBioAPI = new NBioAPI();
             label1.Text = _version;
+            Thread thread = new Thread(SimpleButton1_Click);
+            thread.Start();
         }
+
+        delegate void SetCloseFormCallback(User user);
 
         public Form Form
         {
@@ -73,14 +79,29 @@ namespace Vendas.View
             Global.Instance.Distribuida = checkEdit1.Checked;
         }
 
-        private void SimpleButton1_Click(object sender, EventArgs e)
+        private void  SimpleButton1_Click()
         {
-            var user = Biometry.Identify(login: true);
-            if (user != null)
+            try
             {
-                Global.Instance.User = user;
-                ChooseOpenForm(Global.Instance.User);
+                Biometry.Identify(out User user, login: true);
+                if (user != null)
+                {
+                    Global.Instance.User = user;
+
+                    SetCloseFormCallback d = new SetCloseFormCallback(ChooseOpenForm);
+                    this.Invoke(d, new object[] {
+                        Global.Instance.User
+                    });
+
+                }
             }
+            catch (ApplicationException ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SimpleButton1_Click();
+            }
+            catch (Exception)
+            {}
         }
 
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Web.Http;
 using Vendas.Entity.Entities;
@@ -49,16 +50,16 @@ namespace Vendas.Service.Controllers
 
         [HttpPost]
         [Route("filtrar")]
-        public List<User> Filter(Expression<Func<User, bool>> condition)
+        public IQueryable<User> Filter(Expression<Func<User, bool>> condition)
         {
-            return new UserRepository().Filter(condition) as List<User>;
+            return new UserRepository().Filter(condition);
         }
 
         [HttpPost]
         [Route("filtrarTodos")]
-        public List<User> GetAll()
+        public IQueryable<User> GetAll()
         {
-            return new UserRepository().GetAll() as List<User>;
+            return new UserRepository().GetAll();
         }
 
         [HttpPost]
@@ -66,9 +67,9 @@ namespace Vendas.Service.Controllers
         public bool Login(string userName, string senha)
         {
             var password = Security.Decrypt("TEXTO", senha);
-            var user = new UserRepository().Filter((User c) => c.UserName == userName.Trim() &&  c.Password == password)[0];
+            User user = new UserRepository().Filter((User c) => c.UserName == userName.Trim() &&  c.Password == password).FirstOrDefault();
             if (user == null) return false;
-            user.TypeUsers = new TypeUserRepository().Filter((TypeUsers c) => c.Id == user.TypeUser)[0];
+            user.TypeUsers = new TypeUserRepository().Filter((TypeUsers c) => c.Id == user.TypeUser).FirstOrDefault();
 
             Global.Instance.User = user;
             return true;

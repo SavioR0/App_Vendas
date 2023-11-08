@@ -14,7 +14,7 @@ namespace Vendas.Service.Controllers
     {
         [HttpPost]
         [Route("filtrar")]
-        public List<TypeUsers> Filter(Expression<Func<TypeUsers, bool>> condition)
+        public IQueryable<TypeUsers> Filter(Expression<Func<TypeUsers, bool>> condition)
         {
             return new TypeUserRepository().Filter(condition);
         }
@@ -22,7 +22,7 @@ namespace Vendas.Service.Controllers
         [HttpPost]
         [Route("filtrarTodos")]
 
-        List<TypeUsers> ITypeUsersController.GetAll()
+        IQueryable<TypeUsers> ITypeUsersController.GetAll()
         {
             return new TypeUserRepository().GetAll();
         }

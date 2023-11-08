@@ -7,10 +7,10 @@ namespace Vendas.Repository.Interfaces
     public interface IDefaultRepository<T> where T : class
     {
         T GetById(int id);
-        List<T> GetAll();
+        IQueryable<T> GetAll();
         string Add(T entity);
         string Update(T entity);
         string Remove(T entity);
-        List<T> Filter(Expression<System.Func<T, bool>> condition);
+        IQueryable<T> Filter(Expression<System.Func<T, bool>> condition);
     }
 }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 using vendas.Reports;
 using Vendas.Communication;
@@ -87,14 +88,14 @@ namespace vendas.MenuForms
 
         private void LoadGridSale(TypeUser typeUser)
         {
-            if (GetTypeUserFunctions<Sale>.typeUserFunctions.TryGetValue((typeUser, typeof(Sale)), out Func<List<Sale>> loadSales)) 
+            if (GetTypeUserFunctions<Sale>.typeUserFunctions.TryGetValue((typeUser, typeof(Sale)), out Func<IQueryable<Sale>> loadSales)) 
             {
-                var sales = loadSales();
+                var sales = loadSales().ToList<Sale>();
                 foreach (var sale in sales)
                 {
-                    sale.Seller = Service.UserController.Filter(c => c.Id == sale.SellerId)[0];
-                    sale.Client = Service.UserController.Filter(c => c.Id == sale.ClientId)[0];
-                    sale.Product = Service.ProductController.Filter(c => c.Id == sale.ProductId)[0];
+                    sale.Seller = Service.UserController.Filter(c => c.Id == sale.SellerId).FirstOrDefault();
+                    sale.Client = Service.UserController.Filter(c => c.Id == sale.ClientId).FirstOrDefault();
+                    sale.Product = Service.ProductController.Filter(c => c.Id == sale.ProductId).FirstOrDefault();
                 }
                 gridSale.DataSource = sales;
                 gridSale.RefreshDataSource();

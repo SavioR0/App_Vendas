@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Web.Http;
 using Vendas.Entity.Entities;
@@ -44,16 +45,16 @@ namespace Vendas.Service.Controllers
 
             [HttpPost]
             [Route("filtrar")]
-            public List<Sale> Filter(Expression<Func<Sale, bool>> condition)
+            public IQueryable<Sale> Filter(Expression<Func<Sale, bool>> condition)
             {
-                return new SaleRepository().Filter(condition) as List<Sale>;
+                return new SaleRepository().Filter(condition);
             }
 
             [HttpPost]
             [Route("filtrarTodos")]
-            public List<Sale> GetAll()
+            public IQueryable<Sale> GetAll()
             {
-                return new SaleRepository().GetAll() as List<Sale>;
+                return new SaleRepository().GetAll();
         }
 
         }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Windows.Forms;
 using vendas.Reports;
 using Vendas.Communication;
@@ -40,15 +41,15 @@ namespace vendas.MenuForms
 
         private void LoadGridUsers(TypeUser typeUser)
         {
-            if (GetTypeUserFunctions<User>.typeUserFunctions.TryGetValue((typeUser, typeof(User)), out Func<List<User>> loadUsers))
+            if (GetTypeUserFunctions<User>.typeUserFunctions.TryGetValue((typeUser, typeof(User)), out Func<IQueryable<User>> loadUsers))
             {
                 var users = loadUsers();
                 foreach (var user in users)
                 {
-                    user.Address = Service.AddressController.Filter(c => c.Id == user.AddressId)[0];
-                    user.TypeUsers = Service.TypeUserController.Filter(c => c.Id == user.TypeUser)[0];
+                    user.Address = Service.AddressController.Filter(c => c.Id == user.AddressId).FirstOrDefault();
+                    user.TypeUsers = Service.TypeUserController.Filter(c => c.Id == user.TypeUser).FirstOrDefault();
                 }
-                gridUsers.DataSource = users;
+                gridUsers.DataSource = users.ToList<User>();
                 LoadNumLabel();
             }
         }
@@ -85,7 +86,7 @@ namespace vendas.MenuForms
         {
             GridView gridView = gridUsers.FocusedView as GridView;
             var user = (gridView.GetRow(gridView.FocusedRowHandle) as User);
-            user.Address = Service.AddressController.Filter(c => c.Id == user.AddressId)[0];
+            user.Address = Service.AddressController.Filter(c => c.Id == user.AddressId).FirstOrDefault();
             _formHomePage.EditUserButtonClicked(user);
         }
 
@@ -129,7 +130,7 @@ namespace vendas.MenuForms
             var allUsers = gridUsers.DataSource as List<User>;
             try
             {
-                var type = Service.TypeUserController.Filter(c1 => c1.Name == value)[0];
+                var type = Service.TypeUserController.Filter(c1 => c1.Name == value).FirstOrDefault();
                 gridUsers.DataSource = allUsers.FindAll(c => c.TypeUsers.Name == type.Name);
             }
             catch (Exception)

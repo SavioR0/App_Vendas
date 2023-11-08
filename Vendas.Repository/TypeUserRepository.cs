@@ -24,14 +24,14 @@ namespace Vendas.Repository
             throw new NotImplementedException();
         }
 
-        public List<TypeUsers> Filter(Expression<Func<TypeUsers, bool>> condition)
+        public IQueryable<TypeUsers> Filter(Expression<Func<TypeUsers, bool>> condition)
         {
-            return _repository.Filter(condition).ToList();
+            return _repository.Filter(condition);
         }
 
-        public List<TypeUsers> GetAll()
+        public IQueryable<TypeUsers> GetAll()
         {
-            return _repository.GetAll().ToList();
+            return _repository.GetAll();
         }
 
         public TypeUsers GetById(int id)

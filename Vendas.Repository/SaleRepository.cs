@@ -23,14 +23,14 @@ namespace Vendas.Repository
             return message;
         }
 
-        public List<Sale> Filter(Expression<Func<Sale, bool>> condition)
+        public IQueryable<Sale> Filter(Expression<Func<Sale, bool>> condition)
         {
-            return _repository.Filter(condition).ToList();
+            return _repository.Filter(condition);
         }
 
-        public List<Sale> GetAll()
+        public IQueryable<Sale> GetAll()
         {
-            return _repository.GetAll().ToList();
+            return _repository.GetAll();
         }
 
         public Sale GetById(int id)

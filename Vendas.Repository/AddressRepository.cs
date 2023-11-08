@@ -22,12 +22,12 @@ namespace Vendas.Repository
             return _repository.Insert(entity);
         }
 
-        public List<Address> Filter(Expression<Func<Address, bool>> condition)
+        public IQueryable<Address> Filter(Expression<Func<Address, bool>> condition)
         {
-            return _repository.Filter(condition).ToList();
+            return _repository.Filter(condition);
         }
 
-        public List<Address> GetAll()
+        public IQueryable<Address> GetAll()
         {
             return _repository.GetAll();
         }

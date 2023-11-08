@@ -26,9 +26,9 @@ namespace Vendas.Repository
             return message;
         }
 
-        public List<User> Filter(Expression<Func<User, bool>> condition)
+        public IQueryable<User> Filter(Expression<Func<User, bool>> condition)
         {
-            return _repository.Filter(condition).ToList();
+            return _repository.Filter(condition);
         }
 
         public User GetById(int id)
@@ -52,9 +52,10 @@ namespace Vendas.Repository
             return message;
         }
 
-        public List<User> GetAll()
+        public IQueryable<User> GetAll()
         {
-            return _repository.GetAll().ToList();
+            return _repository.GetAll();
         }
+
     }
 }

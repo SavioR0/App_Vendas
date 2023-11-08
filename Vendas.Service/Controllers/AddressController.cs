@@ -21,15 +21,15 @@ namespace Vendas.Service.Controllers
             
         [HttpPost]
         [Route("filtrar")]
-        public List<Address> Filter(Expression<Func<Address, bool>> condition)
+        public IQueryable<Address> Filter(Expression<Func<Address, bool>> condition)
         {
-            return new AddressRepository().Filter(condition) as List<Address>;
+            return new AddressRepository().Filter(condition);
         }
         [HttpPost]
         [Route("filtrarTodos")]
-        public List<Address> GetAll()
+        public IQueryable<Address> GetAll()
         {
-            return new AddressRepository().GetAll() as List<Address>; ;
+            return new AddressRepository().GetAll() ;
         }
         [HttpPost]
         [Route("salvar")]

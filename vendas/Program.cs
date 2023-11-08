@@ -15,7 +15,7 @@ namespace Vendas.View
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new teste());
-            AppManager.Start<LoaderController>(new LoginUser(Vendas.Library.Version.Instance.version));
+            AppManager.Start<LoaderController>(new LoginUser(Library.Version.Instance.version));
         }
     }
 }

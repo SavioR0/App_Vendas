@@ -2,6 +2,7 @@
 using NITGEN.SDK.NBioBSP;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using vendas;
 using Vendas.Communication;
@@ -73,10 +74,7 @@ namespace Vendas.View
         {
             Dictionary<TextEdit, string> fields = new Dictionary<TextEdit, string> {
                 { nameValue, "Campo nome está vazio"},
-                { cpfValue, "Campo cpf está vazio"},
-                { telValue, "Campo Telefone está vazio"},
                 { dateValue, "Campo data está vazio"},
-                { CEPValue, "Campo CEP está vazio"},
                 { CityValue, "Campo Cidade está vazio"},
                 { DistrictValue, "Campo Bairro está vazio"},
                 { StreetValue, "Campo logradouro está vazio"},
@@ -136,7 +134,7 @@ namespace Vendas.View
             {
                 if (ValidateFields()) {
                     var password = Security.Encrypt("TEXTO", Validations.DbFormatCPF(cpfValue.Text));
-                    if ( _userEdited == null && (Communication.Service.UserController.Filter((User c) => c.Email == EmailValue.Text.Trim() || c.Cpf == cpfValue.Text.Trim()).Count != 0))
+                    if ( _userEdited == null && (Communication.Service.UserController.Filter((User c) => c.Email == EmailValue.Text.Trim() || c.Cpf == cpfValue.Text.Trim()).ToList<User>().Count != 0))
                         throw new Exception("Usuário já cadastrado no sistema. Certifique-se que seus dados estão certos e tente novamente.");
 
                     var user = new User
@@ -165,21 +163,21 @@ namespace Vendas.View
                         Street = StreetValue.Text.Trim(),
                         Number = int.Parse(numberValue.Text),
                     };
-                    var adressRegistered = Communication.Service.AddressController.Filter(
-                        c => c.CEP == address.CEP &&
-                        c.State == address.State &&
-                        c.City == address.City &&
-                        c.District == address.District &&
-                        c.Number == address.Number &&
-                        c.Street == address.Street
-                    )[0];
+                    //var adressRegistered = Communication.Service.AddressController.Filter(
+                    //    c => c.CEP == address.CEP &&
+                    //    c.State == address.State &&
+                    //    c.City == address.City &&
+                    //    c.District == address.District &&
+                    //    c.Number == address.Number &&
+                    //    c.Street == address.Street
+                    //)[0];
 
                     if(_userEdited != null && !_userEdited.Address.Equals(address))
                     { 
                         var message = Communication.Service.AddressController.Save(address);
                         if (message != "") throw new Exception(message);
 
-                        user.AddressId = Communication.Service.AddressController.Filter(c => c.Id == address.Id)[0].Id;
+                        user.AddressId = Communication.Service.AddressController.Filter(c => c.Id == address.Id).FirstOrDefault().Id;
                     }
 
                     //if (adressRegistered != null) 
@@ -258,7 +256,7 @@ namespace Vendas.View
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

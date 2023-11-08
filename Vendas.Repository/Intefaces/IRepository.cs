@@ -15,7 +15,7 @@ namespace Vendas.Repository.Intefaces
         string Delete(int id);
         //IQueryable<T> Filter(Expression<System.Func<T, bool>> condition, params Expression<Func<T, object>>[] includes);
         IQueryable<T> Filter(Expression<System.Func<T, bool>> condition);
-        List<T> GetAll();
+        IQueryable<T> GetAll();
         T GetById(int id);
         string SaveChanges();
     }

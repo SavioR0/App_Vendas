@@ -2,6 +2,7 @@
 using FastReport;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using vendas.Reports;
 using Vendas.Communication;
@@ -80,12 +81,12 @@ namespace vendas.MenuForms
         }
 
         private void LoadGridProduct(TypeUser typeUser) {
-            if (GetTypeUserFunctions<Product>.typeUserFunctions.TryGetValue((typeUser, typeof(Product)), out Func<List<Product>> loadProducts))
+            if (GetTypeUserFunctions<Product>.typeUserFunctions.TryGetValue((typeUser, typeof(Product)), out Func<IQueryable< Product>> loadProducts))
             {
-                var products = loadProducts();
+                var products = loadProducts().ToList<Product>();
                 foreach (var product in products)
                 {
-                    product.Seller = Service.UserController.Filter(c => c.Id == product.SellerId)[0];
+                    product.Seller = Service.UserController.Filter(c => c.Id == product.SellerId).FirstOrDefault();
                 }
                 gridProduct.DataSource = products;
                 LoadNumLabel();

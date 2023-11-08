@@ -48,9 +48,9 @@ namespace Vendas.Repository
             return DbSet.Where(condition);
         }
 
-        public List<T> GetAll()
+        public IQueryable<T> GetAll()
         {
-            return DbSet.ToList<T>();
+            return DbSet;
         }
 
         public T GetById(int id)

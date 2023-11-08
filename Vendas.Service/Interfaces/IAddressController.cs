@@ -11,8 +11,8 @@ namespace Vendas.Service.Interfaces
     {
         string Save(Address entity);
         string Exclude(Address entity);
-        List<Address> Filter(Expression<Func<Address, bool>> condition);
+        IQueryable<Address> Filter(Expression<Func<Address, bool>> condition);
 
-        List<Address> GetAll();
+        IQueryable<Address> GetAll();
     }
 }

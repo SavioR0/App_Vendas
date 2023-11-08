@@ -1,6 +1,7 @@
 ﻿using DevExpress.XtraGrid.Views.Grid;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using Vendas.Communication;
 using Vendas.Entity.Entities;
@@ -37,13 +38,13 @@ namespace vendas.MenuForms
                 MessageBox.Show("Selecione um produto válido e tente novamente", "Produto Inválido", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            var prod = Service.ProductController.Filter(c => c.Name == ComboBoxProduct.Text)[0];
+            var prod = Service.ProductController.Filter(c => c.Name == ComboBoxProduct.Text).FirstOrDefault();
             if (prod == null) 
             {
                 MessageBox.Show("O produto especificado não existe.","Produto Inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            prod.Seller = Service.UserController.Filter(c => (c.TypeUser == (int)TypeUser.Seller || c.TypeUser ==(int)TypeUser.Admin) && prod.SellerId == c.Id)[0];
+            prod.Seller = Service.UserController.Filter(c => (c.TypeUser == (int)TypeUser.Seller || c.TypeUser ==(int)TypeUser.Admin) && prod.SellerId == c.Id).FirstOrDefault();
 
             for (int i = 0; i <int.Parse(numValueEdit.Text); i++)
             {

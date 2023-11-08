@@ -1,6 +1,7 @@
 ﻿using FastReport;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using Vendas.Communication;
 using Vendas.Entity.Enums;
@@ -43,7 +44,7 @@ namespace vendas
                     if (txtObject.Text != null && int.TryParse(txtObject.Text, out int userType))
                     {
 
-                        txtObject.Text = Service.TypeUserController.Filter(c => c.Id == userType)[0].Name;
+                        txtObject.Text = Service.TypeUserController.Filter(c => c.Id == userType).FirstOrDefault().Name;
                     }
                 };
             }
@@ -64,7 +65,7 @@ namespace vendas
                 {
                     if (txtObject.Text != null && int.TryParse(txtObject.Text, out int userID))
                     {
-                        txtObject.Text = Service.UserController.Filter(c => c.Id == userID)[0].Name;
+                        txtObject.Text = Service.UserController.Filter(c => c.Id == userID).FirstOrDefault().Name;
                     }
                 };
             }
@@ -85,7 +86,7 @@ namespace vendas
                 {
                     if (txtObject1.Text != null && int.TryParse(txtObject1.Text, out int productID))
                     {
-                        txtObject1.Text = Service.ProductController.Filter(c => c.Id == productID)[0].Name;
+                        txtObject1.Text = Service.ProductController.Filter(c => c.Id == productID).FirstOrDefault().Name;
                     }
                 };
             }
@@ -96,7 +97,7 @@ namespace vendas
                 {
                     if (txtObject2.Text != null && int.TryParse(txtObject2.Text, out int sellerID))
                     {
-                        txtObject2.Text = Service.UserController.Filter(c => c.Id == sellerID)[0].Name;
+                        txtObject2.Text = Service.UserController.Filter(c => c.Id == sellerID).FirstOrDefault().Name;
                     }
                 };
             }
@@ -107,7 +108,7 @@ namespace vendas
                 {
                     if (txtObject3.Text != null && int.TryParse(txtObject3.Text, out int clientID))
                     {
-                        txtObject3.Text = Service.UserController.Filter(c => c.Id == clientID)[0].Name;
+                        txtObject3.Text = Service.UserController.Filter(c => c.Id == clientID).FirstOrDefault().Name;
                     }
                 };
             }
@@ -118,7 +119,7 @@ namespace vendas
                 {
                     if (txtObject4.Text != null && int.TryParse(txtObject4.Text, out int productID))
                     {
-                        txtObject4.Text = Service.ProductController.Filter(c => c.Id == productID)[0].Value.ToString();
+                        txtObject4.Text = Service.ProductController.Filter(c => c.Id == productID).FirstOrDefault().Value.ToString();
                     }
                 };
             }

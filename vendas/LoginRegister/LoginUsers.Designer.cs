@@ -37,7 +37,6 @@ namespace Vendas.View
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.UserNameValue = new DevExpress.XtraEditors.TextEdit();
             this.UserName = new DevExpress.XtraEditors.LabelControl();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -85,7 +84,7 @@ namespace Vendas.View
             // 
             // UserNameValue
             // 
-            this.UserNameValue.EditValue = "saviorodrigues14";
+            this.UserNameValue.EditValue = "sáviorodrigues14";
             this.UserNameValue.Location = new System.Drawing.Point(113, 109);
             this.UserNameValue.MaximumSize = new System.Drawing.Size(1000, 0);
             this.UserNameValue.Name = "UserNameValue";
@@ -105,17 +104,6 @@ namespace Vendas.View
             this.UserName.TabIndex = 41;
             this.UserName.Text = "Usuário";
             // 
-            // simpleButton1
-            // 
-            this.simpleButton1.Location = new System.Drawing.Point(387, 298);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(70, 30);
-            this.simpleButton1.TabIndex = 44;
-            this.simpleButton1.Text = "&Biometria";
-            this.simpleButton1.ToolTip = "Login por Biometria";
-            this.simpleButton1.Visible = false;
-            this.simpleButton1.Click += new System.EventHandler(this.SimpleButton1_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -133,7 +121,6 @@ namespace Vendas.View
             this.panel1.Controls.Add(this.labelControl4);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.checkEdit1);
-            this.panel1.Controls.Add(this.simpleButton1);
             this.panel1.Controls.Add(this.UserName);
             this.panel1.Controls.Add(this.PasswordValue);
             this.panel1.Controls.Add(this.btn_login);
@@ -193,7 +180,6 @@ namespace Vendas.View
         private DevExpress.XtraEditors.LabelControl labelControl4;
         public DevExpress.XtraEditors.TextEdit UserNameValue;
         private DevExpress.XtraEditors.LabelControl UserName;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private Label label1;
         private Panel panel1;
         private Label label2;

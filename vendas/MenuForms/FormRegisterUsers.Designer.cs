@@ -39,7 +39,6 @@ namespace Vendas.View
             this.DistrictValue = new DevExpress.XtraEditors.TextEdit();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
-            this.CEPValue = new DevExpress.XtraEditors.TextEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.CityValue = new DevExpress.XtraEditors.TextEdit();
@@ -48,8 +47,6 @@ namespace Vendas.View
             this.dateValue = new DevExpress.XtraEditors.DateEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.nameValue = new DevExpress.XtraEditors.TextEdit();
-            this.cpfValue = new DevExpress.XtraEditors.TextEdit();
-            this.telValue = new DevExpress.XtraEditors.TextEdit();
             this.nameLabel = new DevExpress.XtraEditors.LabelControl();
             this.valorLabel = new DevExpress.XtraEditors.LabelControl();
             this.descricaoLabel = new DevExpress.XtraEditors.LabelControl();
@@ -59,20 +56,20 @@ namespace Vendas.View
             this.labelBiomerticAlert = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
+            this.CEPValue = new System.Windows.Forms.MaskedTextBox();
+            this.cpfValue = new System.Windows.Forms.MaskedTextBox();
+            this.telValue = new System.Windows.Forms.MaskedTextBox();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.StateValue = new DevExpress.XtraEditors.ComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.LastNameValue.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numberValue.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StreetValue.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DistrictValue.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CEPValue.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CityValue.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EmailValue.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateValue.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateValue.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nameValue.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cpfValue.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.telValue.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditTypeUser.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
@@ -102,12 +99,12 @@ namespace Vendas.View
             // numberValue
             // 
             this.numberValue.EditValue = "";
-            this.numberValue.Location = new System.Drawing.Point(107, 356);
+            this.numberValue.Location = new System.Drawing.Point(107, 357);
             this.numberValue.MaximumSize = new System.Drawing.Size(1000, 0);
             this.numberValue.Name = "numberValue";
             this.numberValue.Properties.BeepOnError = false;
             this.numberValue.Properties.UseMaskAsDisplayFormat = true;
-            this.numberValue.Size = new System.Drawing.Size(150, 20);
+            this.numberValue.Size = new System.Drawing.Size(89, 20);
             this.numberValue.TabIndex = 11;
             this.numberValue.ToolTip = "Informe o número da residência";
             // 
@@ -115,7 +112,7 @@ namespace Vendas.View
             // 
             this.Numero.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Numero.Location = new System.Drawing.Point(107, 339);
+            this.Numero.Location = new System.Drawing.Point(107, 340);
             this.Numero.Name = "Numero";
             this.Numero.Size = new System.Drawing.Size(40, 13);
             this.Numero.TabIndex = 104;
@@ -134,7 +131,7 @@ namespace Vendas.View
             // StreetValue
             // 
             this.StreetValue.EditValue = "";
-            this.StreetValue.Location = new System.Drawing.Point(107, 313);
+            this.StreetValue.Location = new System.Drawing.Point(107, 316);
             this.StreetValue.Name = "StreetValue";
             this.StreetValue.Properties.BeepOnError = false;
             this.StreetValue.Properties.UseMaskAsDisplayFormat = true;
@@ -145,7 +142,7 @@ namespace Vendas.View
             // DistrictValue
             // 
             this.DistrictValue.EditValue = "";
-            this.DistrictValue.Location = new System.Drawing.Point(107, 274);
+            this.DistrictValue.Location = new System.Drawing.Point(107, 275);
             this.DistrictValue.MaximumSize = new System.Drawing.Size(1000, 0);
             this.DistrictValue.Name = "DistrictValue";
             this.DistrictValue.Properties.BeepOnError = false;
@@ -158,7 +155,7 @@ namespace Vendas.View
             // 
             this.labelControl9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelControl9.Location = new System.Drawing.Point(107, 296);
+            this.labelControl9.Location = new System.Drawing.Point(107, 299);
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(58, 13);
             this.labelControl9.TabIndex = 102;
@@ -168,33 +165,17 @@ namespace Vendas.View
             // 
             this.labelControl8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelControl8.Location = new System.Drawing.Point(277, 216);
+            this.labelControl8.Location = new System.Drawing.Point(227, 216);
             this.labelControl8.Name = "labelControl8";
             this.labelControl8.Size = new System.Drawing.Size(39, 13);
             this.labelControl8.TabIndex = 101;
             this.labelControl8.Text = "Cidade  ";
             // 
-            // CEPValue
-            // 
-            this.CEPValue.EditValue = "";
-            this.CEPValue.Location = new System.Drawing.Point(107, 192);
-            this.CEPValue.MaximumSize = new System.Drawing.Size(1000, 0);
-            this.CEPValue.Name = "CEPValue";
-            this.CEPValue.Properties.BeepOnError = false;
-            this.CEPValue.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
-            this.CEPValue.Properties.MaskSettings.Set("MaskManagerSignature", "allowNull=False");
-            this.CEPValue.Properties.MaskSettings.Set("mask", "#####-###");
-            this.CEPValue.Properties.UseMaskAsDisplayFormat = true;
-            this.CEPValue.Size = new System.Drawing.Size(150, 20);
-            this.CEPValue.TabIndex = 6;
-            this.CEPValue.ToolTip = "\"Exemplo: 12345-678\"";
-            this.CEPValue.Leave += new System.EventHandler(this.CEPValue_Leave);
-            // 
             // labelControl7
             // 
             this.labelControl7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelControl7.Location = new System.Drawing.Point(107, 257);
+            this.labelControl7.Location = new System.Drawing.Point(107, 258);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(28, 13);
             this.labelControl7.TabIndex = 100;
@@ -213,18 +194,18 @@ namespace Vendas.View
             // CityValue
             // 
             this.CityValue.EditValue = "";
-            this.CityValue.Location = new System.Drawing.Point(276, 233);
+            this.CityValue.Location = new System.Drawing.Point(226, 233);
             this.CityValue.Name = "CityValue";
             this.CityValue.Properties.BeepOnError = false;
             this.CityValue.Properties.UseMaskAsDisplayFormat = true;
-            this.CityValue.Size = new System.Drawing.Size(228, 20);
+            this.CityValue.Size = new System.Drawing.Size(398, 20);
             this.CityValue.TabIndex = 8;
             this.CityValue.ToolTip = "Digite o nome da cidade";
             // 
             // EmailValue
             // 
             this.EmailValue.EditValue = "";
-            this.EmailValue.Location = new System.Drawing.Point(107, 397);
+            this.EmailValue.Location = new System.Drawing.Point(107, 398);
             this.EmailValue.Name = "EmailValue";
             this.EmailValue.Properties.BeepOnError = false;
             this.EmailValue.Properties.UseMaskAsDisplayFormat = true;
@@ -236,7 +217,7 @@ namespace Vendas.View
             // 
             this.labelControl3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelControl3.Location = new System.Drawing.Point(107, 380);
+            this.labelControl3.Location = new System.Drawing.Point(107, 381);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(27, 13);
             this.labelControl3.TabIndex = 98;
@@ -245,20 +226,20 @@ namespace Vendas.View
             // dateValue
             // 
             this.dateValue.EditValue = new System.DateTime(((long)(0)));
-            this.dateValue.Location = new System.Drawing.Point(277, 151);
+            this.dateValue.Location = new System.Drawing.Point(107, 110);
             this.dateValue.MaximumSize = new System.Drawing.Size(1000, 0);
             this.dateValue.Name = "dateValue";
             this.dateValue.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateValue.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateValue.Size = new System.Drawing.Size(138, 20);
-            this.dateValue.TabIndex = 5;
+            this.dateValue.Size = new System.Drawing.Size(89, 20);
+            this.dateValue.TabIndex = 3;
             this.dateValue.ToolTip = "Informe  a data de Nascimento do Usuário";
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(277, 134);
+            this.labelControl1.Location = new System.Drawing.Point(107, 93);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(101, 13);
             this.labelControl1.TabIndex = 97;
@@ -272,36 +253,6 @@ namespace Vendas.View
             this.nameValue.Size = new System.Drawing.Size(517, 20);
             this.nameValue.TabIndex = 1;
             this.nameValue.ToolTip = "Informe o primeiro nome";
-            // 
-            // cpfValue
-            // 
-            this.cpfValue.EditValue = "";
-            this.cpfValue.Location = new System.Drawing.Point(107, 110);
-            this.cpfValue.Name = "cpfValue";
-            this.cpfValue.Properties.BeepOnError = false;
-            this.cpfValue.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
-            this.cpfValue.Properties.MaskSettings.Set("MaskManagerSignature", "allowNull=False");
-            this.cpfValue.Properties.MaskSettings.Set("mask", "000\\.000\\.000-00");
-            this.cpfValue.Properties.MaskSettings.Set("hideInsignificantZeros", false);
-            this.cpfValue.Properties.UseMaskAsDisplayFormat = true;
-            this.cpfValue.Size = new System.Drawing.Size(517, 20);
-            this.cpfValue.TabIndex = 3;
-            this.cpfValue.ToolTip = "Informe seu CPF (apenas números)\"";
-            // 
-            // telValue
-            // 
-            this.telValue.EditValue = "";
-            this.telValue.Location = new System.Drawing.Point(107, 151);
-            this.telValue.MaximumSize = new System.Drawing.Size(1000, 0);
-            this.telValue.Name = "telValue";
-            this.telValue.Properties.BeepOnError = false;
-            this.telValue.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
-            this.telValue.Properties.MaskSettings.Set("MaskManagerSignature", "allowNull=False");
-            this.telValue.Properties.MaskSettings.Set("mask", "(##) # ########");
-            this.telValue.Properties.UseMaskAsDisplayFormat = true;
-            this.telValue.Size = new System.Drawing.Size(150, 20);
-            this.telValue.TabIndex = 4;
-            this.telValue.ToolTip = "Informe o telefone do usuário";
             // 
             // nameLabel
             // 
@@ -317,7 +268,7 @@ namespace Vendas.View
             // 
             this.valorLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.valorLabel.Location = new System.Drawing.Point(107, 134);
+            this.valorLabel.Location = new System.Drawing.Point(226, 93);
             this.valorLabel.Name = "valorLabel";
             this.valorLabel.Size = new System.Drawing.Size(45, 13);
             this.valorLabel.TabIndex = 96;
@@ -327,7 +278,7 @@ namespace Vendas.View
             // 
             this.descricaoLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.descricaoLabel.Location = new System.Drawing.Point(107, 93);
+            this.descricaoLabel.Location = new System.Drawing.Point(107, 134);
             this.descricaoLabel.Name = "descricaoLabel";
             this.descricaoLabel.Size = new System.Drawing.Size(22, 13);
             this.descricaoLabel.TabIndex = 95;
@@ -355,7 +306,7 @@ namespace Vendas.View
             "Administrador",
             "Vendedor",
             "Cliente"});
-            this.comboBoxEditTypeUser.Size = new System.Drawing.Size(150, 20);
+            this.comboBoxEditTypeUser.Size = new System.Drawing.Size(89, 20);
             this.comboBoxEditTypeUser.TabIndex = 13;
             this.comboBoxEditTypeUser.ToolTip = "Selecione de tipo de usuário";
             // 
@@ -392,6 +343,9 @@ namespace Vendas.View
             // 
             // xtraTabPage1
             // 
+            this.xtraTabPage1.Controls.Add(this.CEPValue);
+            this.xtraTabPage1.Controls.Add(this.cpfValue);
+            this.xtraTabPage1.Controls.Add(this.telValue);
             this.xtraTabPage1.Controls.Add(this.labelControl4);
             this.xtraTabPage1.Controls.Add(this.nameLabel);
             this.xtraTabPage1.Controls.Add(this.labelBiomerticAlert);
@@ -402,9 +356,7 @@ namespace Vendas.View
             this.xtraTabPage1.Controls.Add(this.comboBoxEditTypeUser);
             this.xtraTabPage1.Controls.Add(this.valorLabel);
             this.xtraTabPage1.Controls.Add(this.LastNameValue);
-            this.xtraTabPage1.Controls.Add(this.telValue);
             this.xtraTabPage1.Controls.Add(this.labelControl10);
-            this.xtraTabPage1.Controls.Add(this.cpfValue);
             this.xtraTabPage1.Controls.Add(this.numberValue);
             this.xtraTabPage1.Controls.Add(this.nameValue);
             this.xtraTabPage1.Controls.Add(this.Numero);
@@ -418,18 +370,45 @@ namespace Vendas.View
             this.xtraTabPage1.Controls.Add(this.CityValue);
             this.xtraTabPage1.Controls.Add(this.labelControl8);
             this.xtraTabPage1.Controls.Add(this.labelControl6);
-            this.xtraTabPage1.Controls.Add(this.CEPValue);
             this.xtraTabPage1.Controls.Add(this.labelControl7);
             this.xtraTabPage1.Controls.Add(this.StateValue);
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Size = new System.Drawing.Size(1006, 512);
             this.xtraTabPage1.Text = "Registro de Usuários";
             // 
+            // CEPValue
+            // 
+            this.CEPValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CEPValue.Location = new System.Drawing.Point(107, 192);
+            this.CEPValue.Mask = "00000-999";
+            this.CEPValue.Name = "CEPValue";
+            this.CEPValue.Size = new System.Drawing.Size(89, 21);
+            this.CEPValue.TabIndex = 114;
+            this.CEPValue.Leave += new System.EventHandler(this.CEPValue_Leave);
+            // 
+            // cpfValue
+            // 
+            this.cpfValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cpfValue.Location = new System.Drawing.Point(107, 150);
+            this.cpfValue.Mask = "000\\.000\\.000-00";
+            this.cpfValue.Name = "cpfValue";
+            this.cpfValue.Size = new System.Drawing.Size(89, 21);
+            this.cpfValue.TabIndex = 113;
+            // 
+            // telValue
+            // 
+            this.telValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.telValue.Location = new System.Drawing.Point(227, 110);
+            this.telValue.Mask = "(99) 00000-0000";
+            this.telValue.Name = "telValue";
+            this.telValue.Size = new System.Drawing.Size(86, 21);
+            this.telValue.TabIndex = 112;
+            // 
             // labelControl4
             // 
             this.labelControl4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelControl4.Location = new System.Drawing.Point(108, 216);
+            this.labelControl4.Location = new System.Drawing.Point(108, 217);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(33, 13);
             this.labelControl4.TabIndex = 111;
@@ -438,7 +417,7 @@ namespace Vendas.View
             // StateValue
             // 
             this.StateValue.EditValue = "";
-            this.StateValue.Location = new System.Drawing.Point(107, 233);
+            this.StateValue.Location = new System.Drawing.Point(107, 234);
             this.StateValue.Name = "StateValue";
             this.StateValue.Properties.BeepOnError = false;
             this.StateValue.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -471,7 +450,7 @@ namespace Vendas.View
             "SP",
             "SE",
             "TO"});
-            this.StateValue.Size = new System.Drawing.Size(150, 20);
+            this.StateValue.Size = new System.Drawing.Size(89, 20);
             this.StateValue.TabIndex = 7;
             this.StateValue.ToolTip = "Digite o nome da cidade";
             // 
@@ -490,14 +469,11 @@ namespace Vendas.View
             ((System.ComponentModel.ISupportInitialize)(this.numberValue.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StreetValue.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DistrictValue.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CEPValue.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CityValue.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EmailValue.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateValue.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateValue.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nameValue.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cpfValue.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.telValue.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditTypeUser.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
@@ -519,7 +495,6 @@ namespace Vendas.View
         public DevExpress.XtraEditors.TextEdit DistrictValue;
         private DevExpress.XtraEditors.LabelControl labelControl9;
         private DevExpress.XtraEditors.LabelControl labelControl8;
-        public DevExpress.XtraEditors.TextEdit CEPValue;
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.LabelControl labelControl6;
         public DevExpress.XtraEditors.TextEdit CityValue;
@@ -528,8 +503,6 @@ namespace Vendas.View
         private DevExpress.XtraEditors.DateEdit dateValue;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.TextEdit nameValue;
-        private DevExpress.XtraEditors.TextEdit cpfValue;
-        public DevExpress.XtraEditors.TextEdit telValue;
         private DevExpress.XtraEditors.LabelControl nameLabel;
         private DevExpress.XtraEditors.LabelControl valorLabel;
         private DevExpress.XtraEditors.LabelControl descricaoLabel;
@@ -541,5 +514,8 @@ namespace Vendas.View
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.ComboBoxEdit StateValue;
+        private System.Windows.Forms.MaskedTextBox telValue;
+        private System.Windows.Forms.MaskedTextBox cpfValue;
+        private System.Windows.Forms.MaskedTextBox CEPValue;
     }
 }
