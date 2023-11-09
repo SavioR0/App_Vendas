@@ -53,6 +53,16 @@ namespace vendas.MenuForms
             this.btnEdit = new DevExpress.XtraEditors.SimpleButton();
             this.Usuários = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.Pedidos = new DevExpress.XtraTab.XtraTabControl();
+            this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            this.gridSale = new DevExpress.XtraGrid.GridControl();
+            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.Cliente = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Vendedor = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Produto = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Valor = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Estoque = new DevExpress.XtraGrid.Columns.GridColumn();
             this.LabelNumUser = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
@@ -65,6 +75,12 @@ namespace vendas.MenuForms
             ((System.ComponentModel.ISupportInitialize)(this.Usuários)).BeginInit();
             this.Usuários.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Pedidos)).BeginInit();
+            this.Pedidos.SuspendLayout();
+            this.xtraTabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridSale)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             this.SuspendLayout();
             // 
             // Tipo
@@ -83,12 +99,12 @@ namespace vendas.MenuForms
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridUsers.DataSource = typeof(Vendas.Entity.Entities.User);
-            this.gridUsers.Location = new System.Drawing.Point(12, 33);
+            this.gridUsers.Location = new System.Drawing.Point(3, 3);
             this.gridUsers.MainView = this.gridView1;
             this.gridUsers.Name = "gridUsers";
             this.gridUsers.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1});
-            this.gridUsers.Size = new System.Drawing.Size(983, 432);
+            this.gridUsers.Size = new System.Drawing.Size(986, 258);
             this.gridUsers.TabIndex = 9;
             this.gridUsers.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -120,6 +136,8 @@ namespace vendas.MenuForms
             this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.OptionsView.ShowIndicator = false;
+            this.gridView1.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView1_FocusedRowChanged);
+            this.gridView1.DataSourceChanged += new System.EventHandler(this.gridView1_FocusedRowChanged);
             // 
             // Id
             // 
@@ -301,13 +319,13 @@ namespace vendas.MenuForms
             // 
             // xtraTabPage1
             // 
+            this.xtraTabPage1.Controls.Add(this.tableLayoutPanel1);
             this.xtraTabPage1.Controls.Add(this.LabelNumUser);
             this.xtraTabPage1.Controls.Add(this.label1);
             this.xtraTabPage1.Controls.Add(this.simpleButton2);
             this.xtraTabPage1.Controls.Add(this.GenerateReport);
             this.xtraTabPage1.Controls.Add(this.label6);
             this.xtraTabPage1.Controls.Add(this.simpleButton1);
-            this.xtraTabPage1.Controls.Add(this.gridUsers);
             this.xtraTabPage1.Controls.Add(this.btnEdit);
             this.xtraTabPage1.Controls.Add(this.textEditSearch);
             this.xtraTabPage1.Controls.Add(this.btnExclude);
@@ -317,6 +335,111 @@ namespace vendas.MenuForms
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Size = new System.Drawing.Size(1006, 512);
             this.xtraTabPage1.Text = "Usuários";
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.gridUsers, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.Pedidos, 0, 2);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(7, 33);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 66.66666F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(992, 432);
+            this.tableLayoutPanel1.TabIndex = 125;
+            // 
+            // Pedidos
+            // 
+            this.Pedidos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Pedidos.Location = new System.Drawing.Point(3, 302);
+            this.Pedidos.Name = "Pedidos";
+            this.Pedidos.SelectedTabPage = this.xtraTabPage2;
+            this.Pedidos.Size = new System.Drawing.Size(986, 127);
+            this.Pedidos.TabIndex = 10;
+            this.Pedidos.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
+            this.xtraTabPage2});
+            // 
+            // xtraTabPage2
+            // 
+            this.xtraTabPage2.Controls.Add(this.gridSale);
+            this.xtraTabPage2.Name = "xtraTabPage2";
+            this.xtraTabPage2.Size = new System.Drawing.Size(984, 102);
+            this.xtraTabPage2.Text = "Pedidos";
+            // 
+            // gridSale
+            // 
+            this.gridSale.DataSource = typeof(Vendas.Entity.Entities.Sale);
+            this.gridSale.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridSale.Location = new System.Drawing.Point(0, 0);
+            this.gridSale.MainView = this.gridView3;
+            this.gridSale.Name = "gridSale";
+            this.gridSale.Size = new System.Drawing.Size(984, 102);
+            this.gridSale.TabIndex = 11;
+            this.gridSale.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView3});
+            // 
+            // gridView3
+            // 
+            this.gridView3.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.Cliente,
+            this.Vendedor,
+            this.Produto,
+            this.Valor,
+            this.Estoque});
+            this.gridView3.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView3.GridControl = this.gridSale;
+            this.gridView3.Name = "gridView3";
+            this.gridView3.OptionsBehavior.Editable = false;
+            this.gridView3.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView3.OptionsSelection.UseIndicatorForSelection = false;
+            this.gridView3.OptionsView.ShowGroupPanel = false;
+            this.gridView3.OptionsView.ShowIndicator = false;
+            // 
+            // Cliente
+            // 
+            this.Cliente.Caption = "Cliente";
+            this.Cliente.FieldName = "Client.Name";
+            this.Cliente.Name = "Cliente";
+            this.Cliente.Visible = true;
+            this.Cliente.VisibleIndex = 0;
+            // 
+            // Vendedor
+            // 
+            this.Vendedor.Caption = "Vendedor";
+            this.Vendedor.FieldName = "Seller.Name";
+            this.Vendedor.Name = "Vendedor";
+            this.Vendedor.Visible = true;
+            this.Vendedor.VisibleIndex = 1;
+            // 
+            // Produto
+            // 
+            this.Produto.Caption = "Produto";
+            this.Produto.FieldName = "Product.Name";
+            this.Produto.Name = "Produto";
+            this.Produto.Visible = true;
+            this.Produto.VisibleIndex = 2;
+            // 
+            // Valor
+            // 
+            this.Valor.Caption = "Valor";
+            this.Valor.FieldName = "Product.Value";
+            this.Valor.Name = "Valor";
+            this.Valor.Visible = true;
+            this.Valor.VisibleIndex = 3;
+            // 
+            // Estoque
+            // 
+            this.Estoque.Caption = "Estoque";
+            this.Estoque.FieldName = "Product.Stock";
+            this.Estoque.Name = "Estoque";
+            this.Estoque.Visible = true;
+            this.Estoque.VisibleIndex = 4;
             // 
             // LabelNumUser
             // 
@@ -379,6 +502,12 @@ namespace vendas.MenuForms
             this.Usuários.ResumeLayout(false);
             this.xtraTabPage1.ResumeLayout(false);
             this.xtraTabPage1.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Pedidos)).EndInit();
+            this.Pedidos.ResumeLayout(false);
+            this.xtraTabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridSale)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -410,5 +539,15 @@ namespace vendas.MenuForms
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
         private System.Windows.Forms.Label LabelNumUser;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private DevExpress.XtraTab.XtraTabControl Pedidos;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
+        private DevExpress.XtraGrid.GridControl gridSale;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
+        private DevExpress.XtraGrid.Columns.GridColumn Cliente;
+        private DevExpress.XtraGrid.Columns.GridColumn Vendedor;
+        private DevExpress.XtraGrid.Columns.GridColumn Produto;
+        private DevExpress.XtraGrid.Columns.GridColumn Valor;
+        private DevExpress.XtraGrid.Columns.GridColumn Estoque;
     }
 }

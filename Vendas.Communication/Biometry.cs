@@ -10,15 +10,19 @@ namespace Vendas.Communication
     public static class Biometry
     { 
 
-        public static void Identify(out User user, NBioAPI.Type.HFIR hCapturedFIR = null, bool login = false )
+        public static void Identify(out User user , NBioAPI.Type.HFIR hCapturedFIR = null, bool login = false, bool confirmLogin= false )
         {
             //listResult.ItemHs.Clear();
             // Get FIR data
+
             NBioAPI m_NBioAPI = new NBioAPI();
             user = null;
-
+            if (confirmLogin)
+            {
+                m_NBioAPI.CloseDevice(NBioAPI.Type.DEVICE_ID.AUTO);
+                return;
+            }             
             uint ret;
-
             if (hCapturedFIR == null) 
             {
                 NBioAPI.Type.WINDOW_OPTION window_option = new NBioAPI.Type.WINDOW_OPTION
@@ -28,9 +32,10 @@ namespace Vendas.Communication
                 m_NBioAPI.OpenDevice(NBioAPI.Type.DEVICE_ID.AUTO);
                 ret = m_NBioAPI.Capture(out hCapturedFIR,10000, window_option);
 
-                if (ret == NBioAPI.Error.CAPTURE_TIMEOUT)
+                if (ret == NBioAPI.Error.CAPTURE_FAKE_SUSPICIOUS)
                 {
-                    throw new ApplicationException("Usuário não utilizou da digital");
+                    throw new ArgumentException("Usuário não utilizou da digital");
+                    m_NBioAPI.CloseDevice(NBioAPI.Type.DEVICE_ID.AUTO);
                     //Identify(out user);
                 }
 
@@ -38,10 +43,10 @@ namespace Vendas.Communication
                 {
                     throw new Exception("Certifique-se que o leitor digital está conectado.");
                 }
-                
+
                 m_NBioAPI.CloseDevice(NBioAPI.Type.DEVICE_ID.AUTO);
             }
-
+           
             var users = Service.UserController.GetAll().ToList<User>();
             foreach (User use in users)
             {
@@ -60,6 +65,7 @@ namespace Vendas.Communication
             if (login) {
                 throw new ApplicationException("Usuário não cadastrado no sistema!");
             }
+            m_NBioAPI.CloseDevice(NBioAPI.Type.DEVICE_ID.AUTO);
             return;
         }
 

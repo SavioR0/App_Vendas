@@ -200,5 +200,25 @@ namespace vendas.MenuForms
         {
             LoadGridUsers((TypeUser)Global.Instance.User.TypeUser);
         }
+
+        private void gridView1_FocusedRowChanged(object sender, EventArgs ex = null)
+        {
+            GridView gridView = gridUsers.FocusedView as GridView;
+            var user = (gridView.GetRow(gridView.FocusedRowHandle) as User);
+            if (user == null) return;
+
+            if (GetTypeUserFunctions<Sale>.typeUserFunctions.TryGetValue(((TypeUser)Global.Instance.User.TypeUser, typeof(Sale)), out Func<IQueryable<Sale>> loadSales))
+            {
+                var sales = loadSales().ToList<Sale>();
+                foreach (var sale in sales)
+                {
+                    sale.Seller = Service.UserController.Filter(c => c.Id == sale.SellerId).FirstOrDefault();
+                    sale.Client = Service.UserController.Filter(c => c.Id == sale.ClientId).FirstOrDefault();
+                    sale.Product = Service.ProductController.Filter(c => c.Id == sale.ProductId).FirstOrDefault();
+                }
+                sales = sales.FindAll(c => c.Client.Name == user.Name || c.Seller.Name == user.Name);
+                gridSale.DataSource = sales.ToList<Sale>();
+            }
+        }
     }
 }

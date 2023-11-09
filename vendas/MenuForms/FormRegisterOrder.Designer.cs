@@ -254,7 +254,6 @@ namespace vendas.MenuForms
             this.ComboBoxProduct.Size = new System.Drawing.Size(100, 20);
             this.ComboBoxProduct.TabIndex = 1;
             this.ComboBoxProduct.ToolTip = "Selecione o produto";
-            this.ComboBoxProduct.SelectedIndexChanged += new System.EventHandler(this.ComboBoxProduct_SelectedIndexChanged);
             // 
             // xtraTabControl1
             // 

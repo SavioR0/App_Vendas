@@ -63,10 +63,6 @@ namespace vendas.MenuForms
             ValueTextEdit.Text = "R$ " + valueOrder.ToString("0.00");
         }
 
-        private void ComboBoxProduct_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void RemoveOrderList(object sender, EventArgs e)
         {
@@ -103,7 +99,7 @@ namespace vendas.MenuForms
                         Name = prod.Name,
                         Value = prod.Value,
                         Description = prod.Description,
-                        Stock = prod.Stock - 1,
+                        Stock =Service.ProductController.Filter(c=> c.Id == prod.Id).FirstOrDefault().Stock- 1,
                         Flag = "U",
                         SellerId = prod.SellerId,
                     });

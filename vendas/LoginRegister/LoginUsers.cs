@@ -16,6 +16,7 @@ namespace Vendas.View
     {
         private readonly NBioAPI m_NBioAPI;
         private readonly string _version;
+        public bool ConfirmLogin = false;
         public LoginUser(string version)
         {
             _version = version;
@@ -62,8 +63,13 @@ namespace Vendas.View
 
         private void Btn_login_Click(object sender, EventArgs e)
         {
+
             var teste = Communication.Service.UserController.Login(UserNameValue.Text.Trim(), PasswordValue.Text.Trim());
-            if (teste) ChooseOpenForm(Global.Instance.User);
+            if (teste)
+            {
+                ConfirmLogin = true;
+                ChooseOpenForm(Global.Instance.User);
+            }
             else MessageBox.Show("Usuário ou senha estão incorretos!");
 
         }
@@ -83,7 +89,7 @@ namespace Vendas.View
         {
             try
             {
-                Biometry.Identify(out User user, login: true);
+                Biometry.Identify(out User user, login: true, confirmLogin: ConfirmLogin);
                 if (user != null)
                 {
                     Global.Instance.User = user;
@@ -100,8 +106,12 @@ namespace Vendas.View
                 MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 SimpleButton1_Click();
             }
+            catch (ArgumentException)
+            {
+                SimpleButton1_Click();
+            }
             catch (Exception)
-            {}
+            { }
         }
 
     }

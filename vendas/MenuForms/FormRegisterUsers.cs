@@ -22,6 +22,11 @@ namespace Vendas.View
         private readonly NBioAPI m_NBioAPI;
 
 
+        //Método da API
+        [System.Runtime.InteropServices.DllImport("wininet.dll")]
+        private extern static Boolean InternetGetConnectedState(out int Description, int ReservedValue);
+
+
         public FormRegisterUser(User user=null) {
             InitializeComponent();
             _userEdited = user;
@@ -245,6 +250,8 @@ namespace Vendas.View
         {
             try
             {
+                StateValue.Focus();
+                if (!IsConnected()) return;
                 Address address = SearchCEP.LocalizeCEP(CEPValue.Text.Replace("-", ""));
                 if (address != null)
                 {
@@ -258,6 +265,11 @@ namespace Vendas.View
             {
                 MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        public static Boolean IsConnected()
+        {
+            return InternetGetConnectedState(out int Description, 0);
         }
     }
 }
