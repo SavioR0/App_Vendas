@@ -10,14 +10,15 @@ namespace teste.ca
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            List<int> lista = new List<int>();
-
-            lista.Add(3);
-            lista.Add(-3);
-            lista.Add(6);
-            lista.Add(7);
+            List<int> lista = new List<int>
+            {
+                3,
+                -3,
+                6,
+                7
+            };
 
             Queue<int> queue = new Queue<int>();
 
@@ -44,7 +45,6 @@ namespace teste.ca
             stack.Pop();
 
 
-            Dictionary<string, int> dic = new Dictionary<string, int>();
 
             foreach (int i in lista)
             {

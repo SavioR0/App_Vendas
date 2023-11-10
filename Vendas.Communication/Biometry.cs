@@ -52,8 +52,10 @@ namespace Vendas.Communication
                 if (use.BiometryDataText == null) continue;
                 NBioAPI.Type.FIR_PAYLOAD myPayload = new NBioAPI.Type.FIR_PAYLOAD();
 
-                NBioAPI.Type.FIR_TEXTENCODE m_textFIR = new NBioAPI.Type.FIR_TEXTENCODE();
-                m_textFIR.TextFIR = use.BiometryDataText;
+                NBioAPI.Type.FIR_TEXTENCODE m_textFIR = new NBioAPI.Type.FIR_TEXTENCODE
+                {
+                    TextFIR = use.BiometryDataText
+                };
                 ret = m_NBioAPI.VerifyMatch(hCapturedFIR, m_textFIR, out bool result, myPayload);
                 if (result == true)
                 {
@@ -72,11 +74,10 @@ namespace Vendas.Communication
         {
             //AppManager.Instance.Load<LoaderController, User>(new Biometric(this));
             NBioAPI m_NBioAPI = new NBioAPI();
-            NBioAPI.Type.HFIR hNewFIR;
 
             // Get FIR data
             m_NBioAPI.OpenDevice(NBioAPI.Type.DEVICE_ID.AUTO);
-            uint ret = m_NBioAPI.Enroll(out hNewFIR, null);
+            uint ret = m_NBioAPI.Enroll(out NBioAPI.Type.HFIR hNewFIR, null);
             if (ret != NBioAPI.Error.NONE)
             {
                 //MessageBox.Show("Certifique-se que o leitor digital está conectado.\n " + NBioAPI.Error.GetErrorDescription(ret) + " [" + ret.ToString() + "]", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -86,14 +87,12 @@ namespace Vendas.Communication
             m_NBioAPI.CloseDevice(NBioAPI.Type.DEVICE_ID.AUTO);
 
             // Transformando um Text
-            NBioAPI.Type.FIR_TEXTENCODE textFIR;
-            m_NBioAPI.GetTextFIRFromHandle(hNewFIR, out textFIR, true);
+            m_NBioAPI.GetTextFIRFromHandle(hNewFIR, out NBioAPI.Type.FIR_TEXTENCODE textFIR, true);
             Identify(out User user, hCapturedFIR: hNewFIR);
             if (user  != null) return "Digital já cadastrada no sistema.";
 
             // Trasnformando em Binario
-            NBioAPI.Type.FIR biFIR;
-            m_NBioAPI.GetFIRFromHandle(hNewFIR, out biFIR);
+            m_NBioAPI.GetFIRFromHandle(hNewFIR, out NBioAPI.Type.FIR biFIR);
 
             biometryDataText = textFIR.TextFIR;
             biometryDataBinary = biFIR.Data;

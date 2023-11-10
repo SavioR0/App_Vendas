@@ -41,13 +41,11 @@ namespace vendas.Reports
             this.pdfViewer1.IgnoreCase = false;
             this.pdfViewer1.IsToolBarVisible = true;
             this.pdfViewer1.Location = new System.Drawing.Point(0, 0);
-            this.pdfViewer1.MultiPagesThreshold = 60;
             this.pdfViewer1.Name = "pdfViewer1";
             this.pdfViewer1.OnRenderPageExceptionEvent = null;
             this.pdfViewer1.Size = new System.Drawing.Size(800, 450);
             this.pdfViewer1.TabIndex = 0;
             this.pdfViewer1.Text = "pdfViewer1";
-            this.pdfViewer1.Threshold = 60;
             this.pdfViewer1.ViewerBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             // 
             // FormPreviewPDFReport

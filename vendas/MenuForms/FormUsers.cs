@@ -130,7 +130,7 @@ namespace vendas.MenuForms
                     if (message != "") throw new InvalidOperationException(message);
                         LoadGridUsers((TypeUser)Global.Instance.User.TypeUser);
                 }
-                catch (InvalidOperationException ex) 
+                catch (InvalidOperationException) 
                 {
                     MessageBox.Show("Ocorreu uma exceção! \nCertiique-se de que o Usuário não está vinculado em algum relacionamento. Não é possível a exclusão caso o usuário tenha algum produto ou alguma venda vinculada ao seu nome. ", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -160,7 +160,7 @@ namespace vendas.MenuForms
             else textEditSearch.Enabled = false;
         }
 
-        private void comboBoxFilterSale_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBoxFilterSale_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBoxFilterSale.Text != "") TextEditSearchSale.Enabled = true;
             else TextEditSearchSale.Enabled = false;
@@ -271,7 +271,7 @@ namespace vendas.MenuForms
             LoadGridUsers((TypeUser)Global.Instance.User.TypeUser);
         }
 
-        private void gridView1_FocusedRowChanged(object sender, EventArgs ex = null)
+        private void GridViewUsers_FocusedRowChanged(object sender, EventArgs ex = null)
         {
             LoadGrid();
         }
@@ -298,7 +298,7 @@ namespace vendas.MenuForms
             }
         }
 
-        private void simpleButton4_Click(object sender, EventArgs e)
+        private void FilterButtomClick_Click(object sender, EventArgs e)
         {
             try
             {

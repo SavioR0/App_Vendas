@@ -148,8 +148,8 @@ namespace vendas.MenuForms
             this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.OptionsView.ShowIndicator = false;
-            this.gridView1.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView1_FocusedRowChanged);
-            this.gridView1.DataSourceChanged += new System.EventHandler(this.gridView1_FocusedRowChanged);
+            this.gridView1.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.GridViewUsers_FocusedRowChanged);
+            this.gridView1.DataSourceChanged += new System.EventHandler(this.GridViewUsers_FocusedRowChanged);
             // 
             // Id
             // 
@@ -487,7 +487,7 @@ namespace vendas.MenuForms
             this.comboBoxFilterSale.Size = new System.Drawing.Size(75, 20);
             this.comboBoxFilterSale.TabIndex = 125;
             this.comboBoxFilterSale.ToolTip = "Informe o atributo para o filtro";
-            this.comboBoxFilterSale.SelectedIndexChanged += new System.EventHandler(this.comboBoxFilterSale_SelectedIndexChanged);
+            this.comboBoxFilterSale.SelectedIndexChanged += new System.EventHandler(this.ComboBoxFilterSale_SelectedIndexChanged);
             // 
             // LabelNumOrder
             // 
@@ -537,7 +537,7 @@ namespace vendas.MenuForms
             this.simpleButton4.TabIndex = 127;
             this.simpleButton4.Text = "&Filtrar";
             this.simpleButton4.ToolTip = "F - Aplicar filtro";
-            this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
+            this.simpleButton4.Click += new System.EventHandler(this.FilterButtomClick_Click);
             // 
             // label4
             // 

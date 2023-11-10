@@ -24,7 +24,7 @@ namespace Vendas.View
 
         //Método da API
         [System.Runtime.InteropServices.DllImport("wininet.dll")]
-        private extern static Boolean InternetGetConnectedState(out int Description, int ReservedValue);
+        private extern static Boolean InternetGetConnectedState(int ReservedValue);
 
 
         public FormRegisterUser(User user=null) {
@@ -168,14 +168,7 @@ namespace Vendas.View
                         Street = StreetValue.Text.Trim(),
                         Number = int.Parse(numberValue.Text),
                     };
-                    //var adressRegistered = Communication.Service.AddressController.Filter(
-                    //    c => c.CEP == address.CEP &&
-                    //    c.State == address.State &&
-                    //    c.City == address.City &&
-                    //    c.District == address.District &&
-                    //    c.Number == address.Number &&
-                    //    c.Street == address.Street
-                    //)[0];
+
 
                     if(_userEdited != null && !_userEdited.Address.Equals(address))
                     { 
@@ -184,14 +177,6 @@ namespace Vendas.View
 
                         user.AddressId = Communication.Service.AddressController.Filter(c => c.Id == address.Id).FirstOrDefault().Id;
                     }
-
-                    //if (adressRegistered != null) 
-                    //{
-                    //    user.AddressId = adressRegistered.Id;
-                    //    user.Address = adressRegistered;
-
-                    //}
-                    //else
                     user.Address = address;
 
                     var messageSave = Communication.Service.UserController.Save(user);
@@ -218,32 +203,7 @@ namespace Vendas.View
 
             labelBiomerticAlert.Text = "Biometria cadastrada com sucesso!";
 
-            ////AppManager.Instance.Load<LoaderController, User>(new Biometric(this));
-            //NBioAPI.Type.HFIR hNewFIR;
 
-            //// Get FIR data
-            //m_NBioAPI.OpenDevice(NBioAPI.Type.DEVICE_ID.AUTO);
-            //uint ret = m_NBioAPI.Enroll(out hNewFIR, null);
-            //if (ret != NBioAPI.Error.NONE)
-            //{
-            //    MessageBox.Show("Certifique-se que o leitor digital está conectado.\n " + NBioAPI.Error.GetErrorDescription(ret) + " [" + ret.ToString() + "]", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            //    m_NBioAPI.CloseDevice(NBioAPI.Type.DEVICE_ID.AUTO);
-            //    return;
-            //}
-            //m_NBioAPI.CloseDevice(NBioAPI.Type.DEVICE_ID.AUTO);
-
-            //// Trasnformando em Binario
-            //NBioAPI.Type.FIR biFIR;
-            //m_NBioAPI.GetFIRFromHandle(hNewFIR, out biFIR);
-            //BiometryDataBinary = biFIR.Data;
-
-            //// Transformando um Text
-            //NBioAPI.Type.FIR_TEXTENCODE textFIR;
-            //m_NBioAPI.GetTextFIRFromHandle(hNewFIR, out textFIR, true);
-            //BiometryDataText = textFIR.TextFIR;
-
-            //labelBiomerticAlert.Text = "Biometria cadastrada com sucesso!";
         }
 
         private void CEPValue_Leave(object sender, EventArgs e)
@@ -269,7 +229,7 @@ namespace Vendas.View
 
         public static Boolean IsConnected()
         {
-            return InternetGetConnectedState(out int Description, 0);
+            return InternetGetConnectedState(0);
         }
     }
 }
