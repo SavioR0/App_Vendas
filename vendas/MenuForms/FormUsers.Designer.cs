@@ -29,8 +29,8 @@ namespace vendas.MenuForms
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue1 = new DevExpress.XtraEditors.FormatConditionRuleValue();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue2 = new DevExpress.XtraEditors.FormatConditionRuleValue();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormUsers));
             this.Tipo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridUsers = new DevExpress.XtraGrid.GridControl();
@@ -63,6 +63,14 @@ namespace vendas.MenuForms
             this.Produto = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Valor = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Estoque = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.comboBoxFilterSale = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.LabelNumOrder = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.TextEditSearchSale = new DevExpress.XtraEditors.TextEdit();
+            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
+            this.label4 = new System.Windows.Forms.Label();
             this.LabelNumUser = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
@@ -81,6 +89,10 @@ namespace vendas.MenuForms
             this.xtraTabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridSale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxFilterSale.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextEditSearchSale.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // Tipo
@@ -104,7 +116,7 @@ namespace vendas.MenuForms
             this.gridUsers.Name = "gridUsers";
             this.gridUsers.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1});
-            this.gridUsers.Size = new System.Drawing.Size(986, 258);
+            this.gridUsers.Size = new System.Drawing.Size(986, 256);
             this.gridUsers.TabIndex = 9;
             this.gridUsers.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -122,13 +134,13 @@ namespace vendas.MenuForms
             this.UserName,
             this.Tipo});
             this.gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            gridFormatRule1.Column = this.Tipo;
-            gridFormatRule1.ColumnApplyTo = this.Tipo;
-            gridFormatRule1.Name = "Format0";
-            formatConditionRuleValue1.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
-            formatConditionRuleValue1.Expression = "[TypeUser] = 1";
-            gridFormatRule1.Rule = formatConditionRuleValue1;
-            this.gridView1.FormatRules.Add(gridFormatRule1);
+            gridFormatRule2.Column = this.Tipo;
+            gridFormatRule2.ColumnApplyTo = this.Tipo;
+            gridFormatRule2.Name = "Format0";
+            formatConditionRuleValue2.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
+            formatConditionRuleValue2.Expression = "[TypeUser] = 1";
+            gridFormatRule2.Rule = formatConditionRuleValue2;
+            this.gridView1.FormatRules.Add(gridFormatRule2);
             this.gridView1.GridControl = this.gridUsers;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
@@ -228,9 +240,9 @@ namespace vendas.MenuForms
             // 
             this.btnSearchProd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSearchProd.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSearchProd.ImageOptions.Image")));
-            this.btnSearchProd.Location = new System.Drawing.Point(789, 7);
+            this.btnSearchProd.Location = new System.Drawing.Point(789, 2);
             this.btnSearchProd.Name = "btnSearchProd";
-            this.btnSearchProd.Size = new System.Drawing.Size(100, 20);
+            this.btnSearchProd.Size = new System.Drawing.Size(100, 30);
             this.btnSearchProd.TabIndex = 3;
             this.btnSearchProd.Text = "&Filtrar";
             this.btnSearchProd.ToolTip = "F - Aplicar filtro";
@@ -275,7 +287,7 @@ namespace vendas.MenuForms
             this.btnExclude.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnExclude.ImageOptions.Image")));
             this.btnExclude.Location = new System.Drawing.Point(118, 471);
             this.btnExclude.Name = "btnExclude";
-            this.btnExclude.Size = new System.Drawing.Size(100, 30);
+            this.btnExclude.Size = new System.Drawing.Size(100, 35);
             this.btnExclude.TabIndex = 6;
             this.btnExclude.Text = "&Excluir";
             this.btnExclude.ToolTip = "E - Excluir usuário";
@@ -287,7 +299,7 @@ namespace vendas.MenuForms
             this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
             this.simpleButton1.Location = new System.Drawing.Point(12, 471);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(100, 30);
+            this.simpleButton1.Size = new System.Drawing.Size(100, 35);
             this.simpleButton1.TabIndex = 5;
             this.simpleButton1.Text = "&Cadastrar";
             this.simpleButton1.ToolTip = "C - Cadastrar usuário";
@@ -299,7 +311,7 @@ namespace vendas.MenuForms
             this.btnEdit.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.ImageOptions.Image")));
             this.btnEdit.Location = new System.Drawing.Point(224, 471);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(100, 30);
+            this.btnEdit.Size = new System.Drawing.Size(100, 35);
             this.btnEdit.TabIndex = 7;
             this.btnEdit.Text = "E&ditar";
             this.btnEdit.ToolTip = "D - Editar usuário";
@@ -345,11 +357,12 @@ namespace vendas.MenuForms
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.gridUsers, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.Pedidos, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.panelControl1, 0, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(7, 33);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 66.66666F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(992, 432);
             this.tableLayoutPanel1.TabIndex = 125;
@@ -357,10 +370,10 @@ namespace vendas.MenuForms
             // Pedidos
             // 
             this.Pedidos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Pedidos.Location = new System.Drawing.Point(3, 302);
+            this.Pedidos.Location = new System.Drawing.Point(3, 303);
             this.Pedidos.Name = "Pedidos";
             this.Pedidos.SelectedTabPage = this.xtraTabPage2;
-            this.Pedidos.Size = new System.Drawing.Size(986, 127);
+            this.Pedidos.Size = new System.Drawing.Size(986, 126);
             this.Pedidos.TabIndex = 10;
             this.Pedidos.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage2});
@@ -369,7 +382,7 @@ namespace vendas.MenuForms
             // 
             this.xtraTabPage2.Controls.Add(this.gridSale);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(984, 102);
+            this.xtraTabPage2.Size = new System.Drawing.Size(984, 101);
             this.xtraTabPage2.Text = "Pedidos";
             // 
             // gridSale
@@ -379,7 +392,7 @@ namespace vendas.MenuForms
             this.gridSale.Location = new System.Drawing.Point(0, 0);
             this.gridSale.MainView = this.gridView3;
             this.gridSale.Name = "gridSale";
-            this.gridSale.Size = new System.Drawing.Size(984, 102);
+            this.gridSale.Size = new System.Drawing.Size(984, 101);
             this.gridSale.TabIndex = 11;
             this.gridSale.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
@@ -441,6 +454,100 @@ namespace vendas.MenuForms
             this.Estoque.Visible = true;
             this.Estoque.VisibleIndex = 4;
             // 
+            // panelControl1
+            // 
+            this.panelControl1.Controls.Add(this.comboBoxFilterSale);
+            this.panelControl1.Controls.Add(this.LabelNumOrder);
+            this.panelControl1.Controls.Add(this.label2);
+            this.panelControl1.Controls.Add(this.label3);
+            this.panelControl1.Controls.Add(this.TextEditSearchSale);
+            this.panelControl1.Controls.Add(this.simpleButton4);
+            this.panelControl1.Controls.Add(this.label4);
+            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl1.Location = new System.Drawing.Point(3, 265);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(986, 32);
+            this.panelControl1.TabIndex = 11;
+            // 
+            // comboBoxFilterSale
+            // 
+            this.comboBoxFilterSale.EditValue = "";
+            this.comboBoxFilterSale.Location = new System.Drawing.Point(38, 6);
+            this.comboBoxFilterSale.Name = "comboBoxFilterSale";
+            this.comboBoxFilterSale.Properties.BeepOnError = false;
+            this.comboBoxFilterSale.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.comboBoxFilterSale.Properties.Items.AddRange(new object[] {
+            "Id",
+            "Cliente",
+            "Vendedor",
+            "Produto",
+            "Valor",
+            "Estoque"});
+            this.comboBoxFilterSale.Size = new System.Drawing.Size(75, 20);
+            this.comboBoxFilterSale.TabIndex = 125;
+            this.comboBoxFilterSale.ToolTip = "Informe o atributo para o filtro";
+            this.comboBoxFilterSale.SelectedIndexChanged += new System.EventHandler(this.comboBoxFilterSale_SelectedIndexChanged);
+            // 
+            // LabelNumOrder
+            // 
+            this.LabelNumOrder.AutoSize = true;
+            this.LabelNumOrder.Location = new System.Drawing.Point(427, 9);
+            this.LabelNumOrder.Name = "LabelNumOrder";
+            this.LabelNumOrder.Size = new System.Drawing.Size(13, 13);
+            this.LabelNumOrder.TabIndex = 132;
+            this.LabelNumOrder.Text = "0";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(370, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(51, 13);
+            this.label2.TabIndex = 131;
+            this.label2.Text = "Pedidos :";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(1, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(31, 13);
+            this.label3.TabIndex = 130;
+            this.label3.Text = "Filtro";
+            // 
+            // TextEditSearchSale
+            // 
+            this.TextEditSearchSale.EditValue = "";
+            this.TextEditSearchSale.Enabled = false;
+            this.TextEditSearchSale.Location = new System.Drawing.Point(173, 6);
+            this.TextEditSearchSale.Name = "TextEditSearchSale";
+            this.TextEditSearchSale.Properties.BeepOnError = false;
+            this.TextEditSearchSale.Size = new System.Drawing.Size(191, 20);
+            this.TextEditSearchSale.TabIndex = 126;
+            this.TextEditSearchSale.ToolTip = "Informe o que deseja filtrar";
+            // 
+            // simpleButton4
+            // 
+            this.simpleButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton4.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton4.ImageOptions.Image")));
+            this.simpleButton4.Location = new System.Drawing.Point(885, 1);
+            this.simpleButton4.Name = "simpleButton4";
+            this.simpleButton4.Size = new System.Drawing.Size(100, 30);
+            this.simpleButton4.TabIndex = 127;
+            this.simpleButton4.Text = "&Filtrar";
+            this.simpleButton4.ToolTip = "F - Aplicar filtro";
+            this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(119, 9);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(49, 13);
+            this.label4.TabIndex = 129;
+            this.label4.Text = "Pesquisa";
+            // 
             // LabelNumUser
             // 
             this.LabelNumUser.AutoSize = true;
@@ -463,9 +570,9 @@ namespace vendas.MenuForms
             // 
             this.simpleButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
-            this.simpleButton2.Location = new System.Drawing.Point(895, 7);
+            this.simpleButton2.Location = new System.Drawing.Point(895, 2);
             this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(100, 20);
+            this.simpleButton2.Size = new System.Drawing.Size(100, 30);
             this.simpleButton2.TabIndex = 4;
             this.simpleButton2.Text = "&Atualizar";
             this.simpleButton2.ToolTip = "F - Aplicar filtro";
@@ -477,7 +584,7 @@ namespace vendas.MenuForms
             this.GenerateReport.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("GenerateReport.ImageOptions.Image")));
             this.GenerateReport.Location = new System.Drawing.Point(895, 471);
             this.GenerateReport.Name = "GenerateReport";
-            this.GenerateReport.Size = new System.Drawing.Size(100, 30);
+            this.GenerateReport.Size = new System.Drawing.Size(100, 35);
             this.GenerateReport.TabIndex = 8;
             this.GenerateReport.Text = "&Relatório";
             this.GenerateReport.ToolTip = "R - Gerar Relatório de Usuários";
@@ -508,6 +615,11 @@ namespace vendas.MenuForms
             this.xtraTabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridSale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
+            this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxFilterSale.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextEditSearchSale.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -549,5 +661,13 @@ namespace vendas.MenuForms
         private DevExpress.XtraGrid.Columns.GridColumn Produto;
         private DevExpress.XtraGrid.Columns.GridColumn Valor;
         private DevExpress.XtraGrid.Columns.GridColumn Estoque;
+        private DevExpress.XtraEditors.PanelControl panelControl1;
+        private DevExpress.XtraEditors.ComboBoxEdit comboBoxFilterSale;
+        private System.Windows.Forms.Label LabelNumOrder;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private DevExpress.XtraEditors.TextEdit TextEditSearchSale;
+        private DevExpress.XtraEditors.SimpleButton simpleButton4;
+        private System.Windows.Forms.Label label4;
     }
 }

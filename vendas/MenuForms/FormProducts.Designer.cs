@@ -166,9 +166,9 @@ namespace vendas.MenuForms
             // 
             this.btnSearchProd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSearchProd.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSearchProd.ImageOptions.Image")));
-            this.btnSearchProd.Location = new System.Drawing.Point(789, 7);
+            this.btnSearchProd.Location = new System.Drawing.Point(789, 2);
             this.btnSearchProd.Name = "btnSearchProd";
-            this.btnSearchProd.Size = new System.Drawing.Size(100, 20);
+            this.btnSearchProd.Size = new System.Drawing.Size(100, 30);
             this.btnSearchProd.TabIndex = 3;
             this.btnSearchProd.Text = "&Filtrar";
             this.btnSearchProd.ToolTip = "F - Aplicar filtro";
@@ -211,7 +211,7 @@ namespace vendas.MenuForms
             this.btnEdit.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.ImageOptions.Image")));
             this.btnEdit.Location = new System.Drawing.Point(118, 471);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(100, 30);
+            this.btnEdit.Size = new System.Drawing.Size(100, 35);
             this.btnEdit.TabIndex = 7;
             this.btnEdit.Text = "E&ditar";
             this.btnEdit.ToolTip = "D - Editar produto";
@@ -223,7 +223,7 @@ namespace vendas.MenuForms
             this.btnExclude.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnExclude.ImageOptions.Image")));
             this.btnExclude.Location = new System.Drawing.Point(224, 471);
             this.btnExclude.Name = "btnExclude";
-            this.btnExclude.Size = new System.Drawing.Size(100, 30);
+            this.btnExclude.Size = new System.Drawing.Size(100, 35);
             this.btnExclude.TabIndex = 8;
             this.btnExclude.Text = "&Excluir";
             this.btnExclude.ToolTip = "E - Excluir produto";
@@ -235,7 +235,7 @@ namespace vendas.MenuForms
             this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
             this.simpleButton1.Location = new System.Drawing.Point(12, 471);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(100, 30);
+            this.simpleButton1.Size = new System.Drawing.Size(100, 35);
             this.simpleButton1.TabIndex = 6;
             this.simpleButton1.Text = "&Cadastrar";
             this.simpleButton1.ToolTip = "C - Cadastrar produto";
@@ -293,9 +293,9 @@ namespace vendas.MenuForms
             // 
             this.simpleButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
-            this.simpleButton2.Location = new System.Drawing.Point(895, 7);
+            this.simpleButton2.Location = new System.Drawing.Point(895, 2);
             this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(100, 20);
+            this.simpleButton2.Size = new System.Drawing.Size(100, 30);
             this.simpleButton2.TabIndex = 4;
             this.simpleButton2.Text = "&Atualizar";
             this.simpleButton2.ToolTip = "F - Aplicar filtro";
@@ -307,7 +307,7 @@ namespace vendas.MenuForms
             this.GenerateReport.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("GenerateReport.ImageOptions.Image")));
             this.GenerateReport.Location = new System.Drawing.Point(895, 471);
             this.GenerateReport.Name = "GenerateReport";
-            this.GenerateReport.Size = new System.Drawing.Size(100, 30);
+            this.GenerateReport.Size = new System.Drawing.Size(100, 35);
             this.GenerateReport.TabIndex = 9;
             this.GenerateReport.Text = "&Relatório";
             this.GenerateReport.ToolTip = "R - Gerar Relatório de Produtos";

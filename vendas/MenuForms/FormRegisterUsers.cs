@@ -251,7 +251,7 @@ namespace Vendas.View
             try
             {
                 StateValue.Focus();
-                if (!IsConnected()) return;
+                if (!IsConnected()) { MessageBox.Show("Sem conexão com a Internet. Certifique-se de uma conexão segura e tente novamente.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error); };
                 Address address = SearchCEP.LocalizeCEP(CEPValue.Text.Replace("-", ""));
                 if (address != null)
                 {

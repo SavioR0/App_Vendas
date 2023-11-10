@@ -15,14 +15,16 @@ namespace vendas.MenuForms
     public partial class FormUsers : Form
     {
         private readonly FormHomePage _formHomePage;
-        readonly Dictionary<string, Action> FilterSelected;
+        readonly Dictionary<string, Action> FilterSelectedUser  ;
+        readonly Dictionary<string, Action> FilterSelectedSale;
+
         public FormUsers(FormHomePage form = null)
         {
             InitializeComponent();
             LoadGridUsers((TypeUser)Global.Instance.User.TypeUser);
             _formHomePage = form;
 
-            FilterSelected = new Dictionary<string, Action> {
+            FilterSelectedUser = new Dictionary<string, Action> {
                     { "Id", FilterByID},
                     { "Nome", FilterByName},
                     { "Email", FilterByEmail},
@@ -32,7 +34,69 @@ namespace vendas.MenuForms
                     { "Usuário", FilterByUserName},
                     { "Tipo Usuário", FilterByTypeUser}
             };
+
+            FilterSelectedSale = new Dictionary<string, Action> {
+                { "Id", FilterByIdSale},
+                { "Cliente", FilterByClient},
+                { "Vendedor", FilterBySeller},
+                { "Produto", FilterByProduct},
+                { "Valor", FilterByValue},
+                { "Estoque", FilterByStock},
+            };
         }
+
+        private void FilterByStock()
+        {
+            if (!int.TryParse(TextEditSearchSale.Text, out int value)) throw new ApplicationException("Coloque um Estoque válido!");
+
+            var allSales = gridSale.DataSource as List<Sale>;
+            List<Sale> sale = allSales.FindAll(c => c.Product.Stock == value);
+            gridSale.DataSource = sale;
+        }
+
+        private void FilterByValue()
+        {
+            if (!double.TryParse(TextEditSearchSale.Text, out double value)) throw new ApplicationException("Coloque um Id válido!");
+
+            var allSales = gridSale.DataSource as List<Sale>;
+            List<Sale> sale = allSales.FindAll(c => c.Product.Value == value);
+            gridSale.DataSource = sale;
+        }
+
+        private void FilterByProduct()
+        {
+            var sales = gridSale.DataSource as List<Sale>;
+            List<Sale> teste = sales.FindAll(c => c.Product.Name.IndexOf(TextEditSearchSale.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+            gridSale.DataSource = teste;
+        }
+
+        private void FilterBySeller()
+        {
+            var sales = gridSale.DataSource as List<Sale>;
+            List<Sale> teste = sales.FindAll(c => c.Seller.Name.IndexOf(TextEditSearchSale.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+            gridSale.DataSource = teste;
+        }
+
+        private void FilterByClient()
+        {
+            var sales = gridSale.DataSource as List<Sale>;
+            List<Sale> teste = sales.FindAll(c => c.Client.Name.IndexOf(TextEditSearchSale.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+            gridSale.DataSource = teste;
+        }
+
+        private void FilterByIdSale()
+        {
+            if (!int.TryParse(TextEditSearchSale.Text, out int id)) throw new ApplicationException("Coloque um Id válido!");
+
+            var allSales = gridSale.DataSource as List<Sale>;
+            List<Sale> sale = allSales.FindAll(c => c.Id == id);
+            gridSale.DataSource = sale;
+        }
+
+
+
+
+
 
         private void LoadNumLabel()
         {
@@ -96,6 +160,12 @@ namespace vendas.MenuForms
             else textEditSearch.Enabled = false;
         }
 
+        private void comboBoxFilterSale_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxFilterSale.Text != "") TextEditSearchSale.Enabled = true;
+            else TextEditSearchSale.Enabled = false;
+        }
+
         private void BtnSearchProd_Click(object sender, EventArgs e)
         {
             try
@@ -103,7 +173,7 @@ namespace vendas.MenuForms
                 LoadGridUsers((TypeUser)Global.Instance.User.TypeUser);
                 if (string.IsNullOrWhiteSpace(textEditSearch.Text)) return;
 
-                if (FilterSelected.TryGetValue(comboBoxFilterUsers.Text, out Action LoadFilter))
+                if (FilterSelectedUser.TryGetValue(comboBoxFilterUsers.Text, out Action LoadFilter))
                 {
                     LoadFilter();  
                 }
@@ -203,6 +273,12 @@ namespace vendas.MenuForms
 
         private void gridView1_FocusedRowChanged(object sender, EventArgs ex = null)
         {
+            LoadGrid();
+        }
+
+        private void LoadGrid()
+        {
+            
             GridView gridView = gridUsers.FocusedView as GridView;
             var user = (gridView.GetRow(gridView.FocusedRowHandle) as User);
             if (user == null) return;
@@ -218,7 +294,27 @@ namespace vendas.MenuForms
                 }
                 sales = sales.FindAll(c => c.Client.Name == user.Name || c.Seller.Name == user.Name);
                 gridSale.DataSource = sales.ToList<Sale>();
+                LabelNumOrder.Text = sales.Count.ToString();
             }
+        }
+
+        private void simpleButton4_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                LoadGrid();
+                if (string.IsNullOrWhiteSpace(TextEditSearchSale.Text)) return;
+
+                if (FilterSelectedSale.TryGetValue(comboBoxFilterSale.Text, out Action LoadFilter))
+                {
+                    LoadFilter();
+                }
+            }
+            catch (ApplicationException ex)
+            {
+                MessageBox.Show(ex.Message, "Erro ao filtrar!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            TextEditSearchSale.Text = "";
         }
     }
 }

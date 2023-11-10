@@ -51,7 +51,7 @@ namespace Vendas.View
             // 
             this.btn_login.Location = new System.Drawing.Point(245, 207);
             this.btn_login.Name = "btn_login";
-            this.btn_login.Size = new System.Drawing.Size(100, 30);
+            this.btn_login.Size = new System.Drawing.Size(100, 35);
             this.btn_login.TabIndex = 0;
             this.btn_login.Text = "&Login";
             this.btn_login.ToolTip = "L - Relizar login";
@@ -163,7 +163,7 @@ namespace Vendas.View
             this.MaximumSize = new System.Drawing.Size(1024, 600);
             this.MinimumSize = new System.Drawing.Size(607, 391);
             this.Name = "LoginUser";
-            this.Text = "Login";
+            this.Text = "Savio\'s Vendas";
             ((System.ComponentModel.ISupportInitialize)(this.PasswordValue.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserNameValue.Properties)).EndInit();
             this.panel1.ResumeLayout(false);

@@ -34,9 +34,8 @@ namespace Vendas.Communication
 
                 if (ret == NBioAPI.Error.CAPTURE_FAKE_SUSPICIOUS)
                 {
-                    throw new ArgumentException("Usuário não utilizou da digital");
                     m_NBioAPI.CloseDevice(NBioAPI.Type.DEVICE_ID.AUTO);
-                    //Identify(out user);
+                    throw new ArgumentException("Usuário não utilizou da digital");
                 }
 
                 if (ret != NBioAPI.Error.NONE)

@@ -36,29 +36,11 @@ namespace Vendas.View
 
         public void ChooseOpenForm(User user)
         {
-            //MessageBox.Show(((TypeUser)user.TypeUser == TypeUser.Admin).ToString() + "  " + user.TypeUser + " " + TypeUser.Admin);
             if (user.EditLogin == 1) { AppManager.Instance.Load<LoaderController, User>(new FormEditLogin()); AppManager.Instance.CloseForm(1); }
             else {
-                //if ((TypeUser)user.TypeUser == TypeUser.Admin)
-                //{
-                //    AppManager.Instance.Load<LoaderController, User>(new FormHomePageAdminUser());
-                //    AppManager.Instance.CloseForm(view: this);
-                //    return;
-                //}
-                //if((TypeUser)user.TypeUser == TypeUser.Seller) 
-                //{
-                //    AppManager.Instance.Load<LoaderController, User>(new FormHomePageDefaultUser());
-                //    AppManager.Instance.CloseForm(view: this);
-                //}
-
                 AppManager.Instance.Load<LoaderController, User>(new FormHomePage());
                 AppManager.Instance.CloseForm(view: this);
             }
-        }
-
-        public void ChooseOpenForm(TypeUser typeUser)
-        {
-            throw new NotImplementedException();
         }
 
         private void Btn_login_Click(object sender, EventArgs e)
@@ -73,12 +55,6 @@ namespace Vendas.View
             else MessageBox.Show("Usuário ou senha estão incorretos!");
 
         }
-
-        //private void lbResgisterUser_Click(object sender, EventArgs e)
-        //{
-        //    AppManager.Instance.Load<LoaderController, User>(new FormRegisterUser());
-
-        //}
 
         private void CheckEdit1_CheckedChanged(object sender, EventArgs e)
         {
@@ -108,7 +84,7 @@ namespace Vendas.View
             }
             catch (ArgumentException)
             {
-                SimpleButton1_Click();
+                AppManager.Instance.CloseForm();
             }
             catch (Exception)
             { }
