@@ -3,14 +3,12 @@ using NITGEN.SDK.NBioBSP;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Windows.Forms;
-using vendas;
 using Vendas.Communication;
 using Vendas.Entity.Entities;
 using Vendas.Entity.Enums;
 using Vendas.Library;
-using Vendas.Management;
-using Vendas.View.Loader;
 
 namespace Vendas.View
 {
@@ -139,7 +137,7 @@ namespace Vendas.View
             {
                 if (ValidateFields()) {
                     var password = Security.Encrypt("TEXTO", Validations.DbFormatCPF(cpfValue.Text));
-                    if ( _userEdited == null && (Communication.Service.UserController.Filter((User c) => c.Email == EmailValue.Text.Trim() || c.Cpf == cpfValue.Text.Trim()).ToList<User>().Count != 0))
+                    if ( _userEdited == null && (Communication.Service.UserController.Filter((User c) => c.Email == EmailValue.Text.Trim() || c.Cpf == cpfValue.Text.Trim().Replace("-","").Replace(".", "")).ToList<User>().Count != 0))
                         throw new Exception("Usuário já cadastrado no sistema. Certifique-se que seus dados estão certos e tente novamente.");
 
                     var user = new User
@@ -210,8 +208,10 @@ namespace Vendas.View
         {
             try
             {
+                var teste = IsConnected();
+                if (!IsConnected()) { MessageBox.Show("Sem conexão com a Internet. Certifique-se de uma conexão segura e tente novamente.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error); return; };
                 StateValue.Focus();
-                if (!IsConnected()) { MessageBox.Show("Sem conexão com a Internet. Certifique-se de uma conexão segura e tente novamente.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error); };
+
                 Address address = SearchCEP.LocalizeCEP(CEPValue.Text.Replace("-", ""));
                 if (address != null)
                 {
@@ -229,7 +229,7 @@ namespace Vendas.View
 
         public static Boolean IsConnected()
         {
-            return InternetGetConnectedState(0);
+            return new Ping().Send("www.google.com").Status == IPStatus.Success ? true : false;
         }
     }
 }
