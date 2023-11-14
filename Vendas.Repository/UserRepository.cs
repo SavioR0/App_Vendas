@@ -21,9 +21,10 @@ namespace Vendas.Repository
 
         public string Add(User entity)
         {
-            string message = _repository.Insert(entity);
+            if (_repository.GetAll().Any((User c) => c.Email == entity.Email.Trim() || c.Cpf == entity.Cpf))
+                throw new Exception("Usuário já cadastrado no sistema. Certifique-se que seus dados estão certos e tente novamente.");
 
-            return message;
+            return _repository.Insert(entity);
         }
 
         public IQueryable<User> Filter(Expression<Func<User, bool>> condition)

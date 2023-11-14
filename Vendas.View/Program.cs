@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using vendas;
 using Vendas.Management;
 using Vendas.View.Loader;
 

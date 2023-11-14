@@ -5,7 +5,6 @@ using System.Windows.Forms;
 using Vendas.Communication;
 using Vendas.Entity.Entities;
 using Vendas.Library;
-using Vendas.Management;
 
 namespace vendas.MenuForms
 {
@@ -45,20 +44,27 @@ namespace vendas.MenuForms
         }
         private void UpdateProduct()
         {
-            _editedProduct.Flag = "U";
-            var message = Service.ProductController.Save(new Product()
+            try
             {
-                Id = _editedProduct.Id,
-                Name = nameValue.Text,
-                Description = descriptionValue.Text,
-                Value = float.Parse(valueValue.Text.Replace("R$", "")),
-                Stock = int.Parse(stockValue.Text),
-                Flag = "U",
-                SellerId = Global.Instance.User.Id,
-            });
-            if (!string.IsNullOrWhiteSpace(message)) { throw new Exception(message); }
-            ClearFields();
-            MessageBox.Show("Produto Editado com sucesso. Consulte a aba de \"Produtos\" para consultar os produtos editados.", "Produto Editado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                _editedProduct.Flag = "U";
+                var message = Service.ProductController.Save(new Product()
+                {
+                    Id = _editedProduct.Id,
+                    Name = nameValue.Text,
+                    Description = descriptionValue.Text,
+                    Value = float.Parse(valueValue.Text.Replace("R$", "")),
+                    Stock = int.Parse(stockValue.Text),
+                    Flag = "U",
+                    SellerId = Global.Instance.User.Id,
+                });
+                if (!string.IsNullOrWhiteSpace(message)) { throw new Exception(message); }
+                ClearFields();
+                MessageBox.Show("Produto Editado com sucesso. Consulte a aba de \"Produtos\" para consultar os produtos editados.", "Produto Editado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void RegisterProduct()
         {
@@ -73,10 +79,10 @@ namespace vendas.MenuForms
                     Flag = "I",
                     SellerId = Global.Instance.User.Id,
                 });
+
                 if (!string.IsNullOrWhiteSpace(message)) { throw new Exception(message); }
                 ClearFields();
                 MessageBox.Show("Produto cadastrado com sucesso. Consulte a aba de \"Produtos\" para consultar os produtos cadastrados.", "Produto Cadastrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                
             }
             catch (Exception ex)
             {

@@ -1,5 +1,4 @@
 ﻿using DevExpress.XtraEditors;
-using System;
 
 namespace Vendas.View
 {
@@ -14,7 +13,7 @@ namespace Vendas.View
         }
         internal static string DbFormatTel(string tel)
         {
-            return tel.Replace("(", "").Replace(")", "").Replace(" ", "");
+            return tel.Replace("(", "").Replace(")", "").Replace(" ", "").Replace("-", "");
         }
 
         private bool IsvalidEmail(string email)

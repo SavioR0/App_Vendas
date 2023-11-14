@@ -19,6 +19,8 @@ namespace Vendas.Repository
         }
         public string Add(Product entity)
         {
+            if (_repository.GetAll().Any(c => entity.Name == c.Name))
+                throw new Exception("Produto já cadastrado no sistema.");
             return _repository.Insert(entity);
         }
 
@@ -49,6 +51,8 @@ namespace Vendas.Repository
 
         public string Update(Product entity)
         {
+            if (_repository.GetAll().Any(c => entity.Name.Trim() == c.Name.Trim()))
+                throw new Exception("Produto já cadastrado no sistema.");
             return _repository.Update(entity);
         }
     }

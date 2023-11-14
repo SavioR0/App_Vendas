@@ -1,6 +1,4 @@
-﻿using System;
-using System.ServiceModel;
-using System.Windows.Forms;
+﻿using System.ServiceModel;
 using Vendas.Entity.Entities;
 
 namespace Vendas.Communication
@@ -26,7 +24,6 @@ namespace Vendas.Communication
                         };
                     }
                 } 
-
             }
             return null;
         } 

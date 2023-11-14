@@ -5,7 +5,6 @@ using System.Windows.Forms;
 using vendas;
 using Vendas.Communication;
 using Vendas.Entity.Entities;
-using Vendas.Entity.Enums;
 using Vendas.Library;
 using Vendas.Management;
 using Vendas.View.Loader;
@@ -52,7 +51,7 @@ namespace Vendas.View
                 ConfirmLogin = true;
                 ChooseOpenForm(Global.Instance.User);
             }
-            else MessageBox.Show("Usuário ou senha estão incorretos!");
+            else MessageBox.Show("Usuário ou senha estão incorretos!", "Dados Incorretos", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
 

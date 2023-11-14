@@ -3,7 +3,6 @@ using NITGEN.SDK.NBioBSP;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.NetworkInformation;
 using System.Windows.Forms;
 using Vendas.Communication;
 using Vendas.Entity.Entities;
@@ -20,9 +19,8 @@ namespace Vendas.View
         private readonly NBioAPI m_NBioAPI;
 
 
-        //Método da API
         [System.Runtime.InteropServices.DllImport("wininet.dll")]
-        private extern static Boolean InternetGetConnectedState(int ReservedValue);
+        private extern static Boolean InternetGetConnectedState(out int Description, int ReservedValue);
 
 
         public FormRegisterUser(User user=null) {
@@ -136,10 +134,6 @@ namespace Vendas.View
             try
             {
                 if (ValidateFields()) {
-                    var password = Security.Encrypt("TEXTO", Validations.DbFormatCPF(cpfValue.Text));
-                    if ( _userEdited == null && (Communication.Service.UserController.Filter((User c) => c.Email == EmailValue.Text.Trim() || c.Cpf == cpfValue.Text.Trim().Replace("-","").Replace(".", "")).ToList<User>().Count != 0))
-                        throw new Exception("Usuário já cadastrado no sistema. Certifique-se que seus dados estão certos e tente novamente.");
-
                     var user = new User
                     {
                         Name = nameValue.Text.Trim(),
@@ -148,7 +142,7 @@ namespace Vendas.View
                         Tel = Validations.DbFormatTel(telValue.Text),
                         DateOfBirth = DateTime.Parse(dateValue.Text),
                         Email = EmailValue.Text.Trim(),
-                        Password = password,
+                        Password = Security.Encrypt("TEXTO", Validations.DbFormatCPF(cpfValue.Text)),
                         TypeUser = ReturnTypeUser(comboBoxEditTypeUser.Text),
                         UserName = _userEdited == null ? nameValue.Text.Trim().ToLower() + LastNameValue.Text.Trim().ToLower() + cpfValue.Text.Substring(0, 2) : _userEdited.UserName,
                         BiometryDataText = BiometryDataText,
@@ -161,33 +155,40 @@ namespace Vendas.View
                     {
                         CEP = CEPValue.Text,
                         State = StateValue.Text,
-                        City = CityValue.Text.Trim(),
-                        District = DistrictValue.Text.Trim(),
-                        Street = StreetValue.Text.Trim(),
+                        City = CityValue.Text,
+                        District = DistrictValue.Text,
+                        Street = StreetValue.Text,
                         Number = int.Parse(numberValue.Text),
                     };
 
+                    Address validation = Communication.Service.AddressController.Filter(c=>
+                        c.CEP == address.CEP && c.State == address.State & c.City == address.City &&
+                        c.District == address.District &&
+                        c.Number == address.Number &&
+                        c.Street == address.Street).FirstOrDefault();
+                    //if (_userEdited != null && !_userEdited.Address.Equals(address))
+                    //{ 
+                    //    var message = Communication.Service.AddressController.Save(address);
+                    //    if (message != "") throw new Exception(message);
 
-                    if(_userEdited != null && !_userEdited.Address.Equals(address))
-                    { 
-                        var message = Communication.Service.AddressController.Save(address);
-                        if (message != "") throw new Exception(message);
+                    //    user.AddressId = Communication.Service.AddressController.Filter(c => c.Id == address.Id).FirstOrDefault().Id;
+                    //}
 
-                        user.AddressId = Communication.Service.AddressController.Filter(c => c.Id == address.Id).FirstOrDefault().Id;
-                    }
-                    user.Address = address;
-
+                    if (validation != null)
+                        user.AddressId = validation.Id;
+                    else
+                        user.Address = address;
                     var messageSave = Communication.Service.UserController.Save(user);
-                    if (messageSave != "") throw new Exception("Certifique que os dados do usuário foram editados e tente novamente.\n ERRO: " + messageSave);
 
-                    var messageBox = _userEdited == null ? "Usuário cadastrado com sucesso! Para realizar o login a primeira vez verifique em seu e-mail seu username e senha" :
-                        "Usuário Atualizado com sucesso!";
-                    MessageBox.Show(messageBox, "Usuário cadastrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(_userEdited == null ? "Usuário cadastrado com sucesso! Para realizar o login a primeira vez verifique em seu e-mail seu username e senha" :
+                        "Usuário Atualizado com sucesso!", "Usuário cadastrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ClearFields();
                 }
             }
-            catch (NullReferenceException x) { MessageBox.Show(x.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-            catch (Exception x) { MessageBox.Show(x.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch 
+                (NullReferenceException x) { MessageBox.Show(x.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch 
+                (Exception x) { MessageBox.Show(x.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
 
         private void BtnRegisterBiometricPrint_Click(object sender, EventArgs e)
@@ -198,20 +199,16 @@ namespace Vendas.View
                 MessageBox.Show(message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
             labelBiomerticAlert.Text = "Biometria cadastrada com sucesso!";
-
-
         }
 
         private void CEPValue_Leave(object sender, EventArgs e)
         {
             try
             {
-                var teste = IsConnected();
-                if (!IsConnected()) { MessageBox.Show("Sem conexão com a Internet. Certifique-se de uma conexão segura e tente novamente.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error); return; };
-                StateValue.Focus();
-
+                if (!IsConnected()) { MessageBox.Show("Verifique sua conexão com a internet", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information); return; };
+                //StateValue.Focus();
+            
                 Address address = SearchCEP.LocalizeCEP(CEPValue.Text.Replace("-", ""));
                 if (address != null)
                 {
@@ -229,7 +226,7 @@ namespace Vendas.View
 
         public static Boolean IsConnected()
         {
-            return new Ping().Send("www.google.com").Status == IPStatus.Success ? true : false;
+            return InternetGetConnectedState(out int Description, 0);
         }
     }
 }

@@ -19,7 +19,16 @@ namespace Vendas.Repository
         }
         public string Add(Address entity)
         {
+            if (!ValidateEntity(entity))
+                return "Já cadastrado";
             return _repository.Insert(entity);
+        }
+
+        private bool ValidateEntity(Address entity)
+        {
+            if(_repository.GetAll().Any(c => c.Equals(entity)))
+                return false;
+            return true;
         }
 
         public IQueryable<Address> Filter(Expression<Func<Address, bool>> condition)

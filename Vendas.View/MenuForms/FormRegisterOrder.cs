@@ -92,7 +92,7 @@ namespace vendas.MenuForms
                         Flag = "I",
                     });
                     if (message != "") throw new Exception(message);
-                    // Cadastro da Venda
+                    // Update estoque produto
                     message = Service.ProductController.Save(new Product
                     {
                         Id = prod.Id,
