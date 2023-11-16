@@ -1,8 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Web.Http;
+using Vendas.DTO;
 using Vendas.Entity.Entities;
+using Vendas.Entity.Enums;
+using Vendas.Infrastructure;
 using Vendas.Library;
 using Vendas.Repository;
 using Vendas.Service.Interfaces;
@@ -17,34 +22,56 @@ namespace Vendas.Service.Controllers
         [Route("salvar")]
         public string Save(User entity)
         {
-            if (entity.Flag == "U") _message = new UserRepository().Update(entity);
-            else if (entity.Flag == "I")
-            {
-                _message = new UserRepository().Add(entity);
-                //SendEmail.SendEmailClient(
-                //    entity.Email,
-                //    "compras_vendass@outlook.com",
-                //    entity.UserName,
-                //    entity.Cpf,
-                //    "Login sistema de Compra e Venda"
-                 //);
+            SalesContext context = new SalesContext();
+            using (DbContextTransaction transaction = SalesTransaction.CreateDbContextTransaction(context)) {
+                if (entity.Flag == "U") _message = new UserRepository(context).Update(entity);
+                else if (entity.Flag == "I")
+                {
+                    _message = new UserRepository().Add(entity);
+                    //SendEmail.SendEmailClient(
+                    //    entity.Email,
+                    //    "compras_vendass@outlook.com",
+                    //    entity.UserName,
+                    //    entity.Cpf,
+                    //    "Login sistema de Compra e Venda"
+                    //);
+                }
+                if (_message == "")
+                    transaction.Commit();
+                else
+                    transaction.Rollback();
+                return _message;
             }
-            return _message;
+                
         }
 
         [HttpPost]
         [Route("excluir")]
         public string Exclude(User entity)
         {
-
-            _message = new UserRepository().Remove(entity);
-
-            return _message;
+            SalesContext context = new SalesContext();
+            using (DbContextTransaction transaction = SalesTransaction.CreateDbContextTransaction(context))
+            {
+                _message = new UserRepository().Remove(entity);
+                if (_message == "")
+                    transaction.Commit();
+                else
+                    transaction.Rollback();
+                return _message;
+            }
         }
         public string Exclude(int id)
         {
-            _message = new UserRepository().Remove(id);
-            return _message;
+            SalesContext context = new SalesContext();
+            using (DbContextTransaction transaction = SalesTransaction.CreateDbContextTransaction(context))
+            {
+                _message = new UserRepository().Remove(id);
+                if (_message == "")
+                    transaction.Commit();
+                else
+                    transaction.Rollback();
+                return _message;
+            }
         }
 
         [HttpPost]
@@ -73,5 +100,13 @@ namespace Vendas.Service.Controllers
             Global.Instance.User = user;
             return true;
         }
+
+        [HttpGet]
+        [Route("selecionartodosdto")]
+        public List<UserDTO> SelectAllDTO(TypeUser typeUser)
+        {
+            return new UserRepository().SelectAllDTO(typeUser).ToList();
+        }
+
     }
 }

@@ -105,6 +105,7 @@ namespace vendas.MenuForms
 
         private void LoadGridUsers(TypeUser typeUser)
         {
+            /*
             if (GetTypeUserFunctions<User>.typeUserFunctions.TryGetValue((typeUser, typeof(User)), out Func<IQueryable<User>> loadUsers))
             {
                 var users = loadUsers();
@@ -116,6 +117,9 @@ namespace vendas.MenuForms
                 gridUsers.DataSource = users.ToList<User>();
                 LoadNumLabel();
             }
+            */
+
+            bindingSourceUsuarios.DataSource = Service.UserController.GetAll().ToList();
         }
 
         private void BtnExclude_Click(object sender, EventArgs e)

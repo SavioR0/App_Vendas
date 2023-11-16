@@ -26,9 +26,16 @@ namespace Vendas.View
         public FormRegisterUser(User user=null) {
             InitializeComponent();
             _userEdited = user;
+
+            if (user != null)
+            {
+                //bindingSourceUser.DataSource = new List<User> { user };
+                //bindingSourceUser.DataSource = new List<Address> { user.Address };
+            }
+
             LoadEdit();
             m_NBioAPI = new NBioAPI();
-            ClearFields();
+            //ClearFields();
         }
 
         private void LoadEdit()
@@ -228,5 +235,6 @@ namespace Vendas.View
         {
             return InternetGetConnectedState(out int Description, 0);
         }
+
     }
 }

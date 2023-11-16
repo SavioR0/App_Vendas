@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Web;
 using System.Web.Http;
 using Vendas.Entity.Entities;
+using Vendas.Infrastructure;
 using Vendas.Repository;
 using Vendas.Service.Interfaces;
 
@@ -12,11 +14,21 @@ namespace Vendas.Service.Controllers
 {
     public class AddressController : ApiController, IAddressController
     {
+        private string _message = "";
         [HttpPost]
         [Route("excluir")]
         public string Exclude(Address entity)
         {
-            return new AddressRepository().Remove(entity);
+            SalesContext context = new SalesContext();
+            using (DbContextTransaction transaction = SalesTransaction.CreateDbContextTransaction(context))
+            {
+                _message =  new AddressRepository().Remove(entity);
+                if (_message == "")
+                    transaction.Commit();
+                else
+                    transaction.Rollback();
+                return _message;
+            }
         }
             
         [HttpPost]
@@ -35,8 +47,17 @@ namespace Vendas.Service.Controllers
         [Route("salvar")]
         public string Save(Address entity)
         {
+            SalesContext context = new SalesContext();
+            using (DbContextTransaction transaction = SalesTransaction.CreateDbContextTransaction(context))
+            {
+                _message = new AddressRepository().Add(entity);
 
-            return new AddressRepository().Add(entity);
+                if (_message == "")
+                    transaction.Commit();
+                else
+                    transaction.Rollback();
+                return _message;
+            }
         }
     }
 }

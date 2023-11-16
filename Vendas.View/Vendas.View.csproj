@@ -7,7 +7,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{C3A623AB-BD75-437B-AF8F-E67186210458}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>vendas</RootNamespace>
     <AssemblyName>vendas</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -409,6 +409,26 @@
       <DependentUpon>FormPreviewPDFReport.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\FormHomePage.datasource" />
+    <None Include="Properties\DataSources\GetReportTypes`1[].datasource" />
+    <None Include="Properties\DataSources\Vendas.Entity.Entities.Address.datasource" />
+    <None Include="Properties\DataSources\Vendas.Entity.Entities.User.datasource" />
+    <None Include="Properties\DataSources\vendas.MenuForms.FormAbout.datasource" />
+    <None Include="Properties\DataSources\vendas.MenuForms.FormHome.datasource" />
+    <None Include="Properties\DataSources\vendas.MenuForms.FormOrderSale.datasource" />
+    <None Include="Properties\DataSources\vendas.MenuForms.FormProducts.datasource" />
+    <None Include="Properties\DataSources\vendas.MenuForms.FormRegisterOrder.datasource" />
+    <None Include="Properties\DataSources\vendas.MenuForms.FormRegisterProduct.datasource" />
+    <None Include="Properties\DataSources\vendas.MenuForms.FormUsers.datasource" />
+    <None Include="Properties\DataSources\vendas.Properties.Resources.datasource" />
+    <None Include="Properties\DataSources\vendas.Properties.Settings.datasource" />
+    <None Include="Properties\DataSources\vendas.Reports.FormPreviewPDFReport.datasource" />
+    <None Include="Properties\DataSources\Vendas.View.FormEditLogin.datasource" />
+    <None Include="Properties\DataSources\Vendas.View.FormRegisterUser.datasource" />
+    <None Include="Properties\DataSources\Vendas.View.Loader.LoaderController.datasource" />
+    <None Include="Properties\DataSources\Vendas.View.LoginUser.datasource" />
+    <None Include="Properties\DataSources\Vendas.View.Program.datasource" />
+    <None Include="Properties\DataSources\Vendas.View.Validations.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

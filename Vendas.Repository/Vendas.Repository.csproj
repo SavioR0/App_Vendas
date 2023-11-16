@@ -62,6 +62,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Vendas.DTO\Vendas.DTO.csproj">
+      <Project>{93E0D152-56A9-428C-8C9E-FD0339020EA5}</Project>
+      <Name>Vendas.DTO</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Vendas.Entity\Vendas.Entity.csproj">
       <Project>{CF6270D3-DFA5-4AB3-8860-6FDB53948373}</Project>
       <Name>Vendas.Entity</Name>

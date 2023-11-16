@@ -51,9 +51,25 @@ namespace Vendas.Repository
 
         public string Update(Product entity)
         {
-            if (_repository.GetAll().Any(c => entity.Name.Trim() == c.Name.Trim()))
+            if (_repository.Filter(c => entity.Name.Trim() == c.Name.Trim() && c.Id != entity.Id).Any())
                 throw new Exception("Produto já cadastrado no sistema.");
             return _repository.Update(entity);
+        }
+
+        private void Validate(Product entity)
+        {
+            if (string.IsNullOrEmpty(entity.Name))
+                throw new Exception("Nome não preenchido. ");
+
+            if (string.IsNullOrEmpty(entity.Description))
+                throw new Exception("Descrição não preenchido. ");
+
+            if (entity.Stock == 0)
+                throw new Exception("Estoque não preenchida. ");
+
+            //if (entity.)
+            //    throw new Exception("CPF não preenchido. ");            //if (entity.)
+            //    throw new Exception("CPF não preenchido. ");
         }
     }
 }

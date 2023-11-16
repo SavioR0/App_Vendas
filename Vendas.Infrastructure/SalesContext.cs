@@ -1,4 +1,5 @@
 ﻿
+using System.Configuration;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Reflection;
@@ -12,14 +13,20 @@ namespace Vendas.Infrastructure
         public DbSet<Product> Product { get; set; }
         public DbSet<User> Client { get; set; }
         public DbSet<Sale> Sale { get; set; }
+        public DbSet<TypeUsers> TypeUsers { get; set; }
+        public DbSet<Address> Addresses { get; set; }
 
 
-        public SalesContext() : base(@"Data Source=PROGRAMACAO51\SQLEXPRESS;Initial Catalog=vendas;User Id=sa;Password=senh@123;Integrated Security=False;Persist Security Info=True;Multipleactiveresultsets=True;")
+        public SalesContext() : base(GetConnectionString("conectionString"))
         {
             Configuration.LazyLoadingEnabled = true;
             Configuration.ProxyCreationEnabled = false;
         }
-
+        public static string GetConnectionString(string connectionstringname)
+        {
+            var connectionstring = ConfigurationManager.ConnectionStrings[connectionstringname].ToString();
+            return connectionstring;
+        }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.AddFromAssembly(Assembly.GetExecutingAssembly());

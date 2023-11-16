@@ -29,11 +29,13 @@ namespace vendas.MenuForms
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue2 = new DevExpress.XtraEditors.FormatConditionRuleValue();
+            this.components = new System.ComponentModel.Container();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue1 = new DevExpress.XtraEditors.FormatConditionRuleValue();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormUsers));
             this.Tipo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridUsers = new DevExpress.XtraGrid.GridControl();
+            this.bindingSourceUsuarios = new System.Windows.Forms.BindingSource(this.components);
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.Id = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Nome = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -76,6 +78,7 @@ namespace vendas.MenuForms
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.GenerateReport = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.gridUsers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceUsuarios)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxFilterUsers.Properties)).BeginInit();
@@ -110,7 +113,7 @@ namespace vendas.MenuForms
             this.gridUsers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridUsers.DataSource = typeof(Vendas.Entity.Entities.User);
+            this.gridUsers.DataSource = this.bindingSourceUsuarios;
             this.gridUsers.Location = new System.Drawing.Point(3, 3);
             this.gridUsers.MainView = this.gridView1;
             this.gridUsers.Name = "gridUsers";
@@ -120,6 +123,10 @@ namespace vendas.MenuForms
             this.gridUsers.TabIndex = 9;
             this.gridUsers.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
+            // 
+            // bindingSourceUsuarios
+            // 
+            this.bindingSourceUsuarios.DataSource = typeof(Vendas.Entity.Entities.User);
             // 
             // gridView1
             // 
@@ -134,13 +141,13 @@ namespace vendas.MenuForms
             this.UserName,
             this.Tipo});
             this.gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            gridFormatRule2.Column = this.Tipo;
-            gridFormatRule2.ColumnApplyTo = this.Tipo;
-            gridFormatRule2.Name = "Format0";
-            formatConditionRuleValue2.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
-            formatConditionRuleValue2.Expression = "[TypeUser] = 1";
-            gridFormatRule2.Rule = formatConditionRuleValue2;
-            this.gridView1.FormatRules.Add(gridFormatRule2);
+            gridFormatRule1.Column = this.Tipo;
+            gridFormatRule1.ColumnApplyTo = this.Tipo;
+            gridFormatRule1.Name = "Format0";
+            formatConditionRuleValue1.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
+            formatConditionRuleValue1.Expression = "[TypeUser] = 1";
+            gridFormatRule1.Rule = formatConditionRuleValue1;
+            this.gridView1.FormatRules.Add(gridFormatRule1);
             this.gridView1.GridControl = this.gridUsers;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
@@ -601,6 +608,7 @@ namespace vendas.MenuForms
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FormUsers";
             ((System.ComponentModel.ISupportInitialize)(this.gridUsers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceUsuarios)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxFilterUsers.Properties)).EndInit();
@@ -669,5 +677,6 @@ namespace vendas.MenuForms
         private DevExpress.XtraEditors.TextEdit TextEditSearchSale;
         private DevExpress.XtraEditors.SimpleButton simpleButton4;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.BindingSource bindingSourceUsuarios;
     }
 }

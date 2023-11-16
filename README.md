@@ -1,6 +1,6 @@
 # Savio's Vendas
 
-A aplicação Savio's Vendas, desenvolvida em Linguagem C# no .NET Framework 4.7.2, adota o padrão de projeto MVC (Model-View-Controller) com camadas bem definidas e desacopladas, permitindo uma manutenção mais simples e a implementação de novos recursos de maneira organizada e eficiente. Além disso, utilizou-se o SQLServer com EntityFramework para lidar com o banco de dados relacional. 
+A aplicação Savio's Vendas, desenvolvida em Linguagem C# no .NET Framework 4.7.2, adota o padrão de projeto FluentAPI com camadas bem definidas e desacopladas, permitindo uma manutenção mais simples e a implementação de novos recursos de maneira organizada e eficiente. Além disso, utilizou-se o SQLServer com EntityFramework para lidar com o banco de dados relacional. 
 
 ## Organização
 A seguir, têm-se a organização do projeto:

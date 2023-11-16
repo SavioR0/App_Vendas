@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Web.Http;
 using Vendas.Entity.Entities;
+using Vendas.Infrastructure;
 using Vendas.Repository;
 using Vendas.Service.Interfaces;
 
@@ -17,26 +19,53 @@ namespace Vendas.Service.Controllers
             [Route("salvar")]
             public string Save(Sale entity)
             {
-                if (entity.Flag == "U") 
-                    _message = new SaleRepository().Update(entity);
-                else if (entity.Flag == "I")
-                    _message = new SaleRepository().Add(entity);
-                else
-                    _message = "Flag necessária";
-                return _message;
+                SalesContext context = new SalesContext();
+                using (DbContextTransaction transaction = SalesTransaction.CreateDbContextTransaction(context))
+                {
+                    if (entity.Flag == "U")
+                        _message = new SaleRepository().Update(entity);
+                    else if (entity.Flag == "I")
+                        _message = new SaleRepository().Add(entity);
+                    else
+                        _message = "Flag necessária";
+
+                    if (_message == "")
+                        transaction.Commit();
+                    else
+                        transaction.Rollback();
+                    return _message;
+                }
+            
+
             }
 
             [HttpPost]
             [Route("excluir")]
             public string Exclude(Sale entity)
             {
-                _message = new SaleRepository().Remove(entity);
-                return _message;
+                SalesContext context = new SalesContext();
+                using (DbContextTransaction transaction = SalesTransaction.CreateDbContextTransaction(context))
+                {
+                    _message = new SaleRepository().Remove(entity);
+                    if (_message == "")
+                        transaction.Commit();
+                    else
+                        transaction.Rollback();
+                    return _message;
+                }
             }
             public string Exclude(int id)
             {
-                _message = new SaleRepository().Remove(id);
-                return _message;
+                SalesContext context = new SalesContext();
+                using (DbContextTransaction transaction = SalesTransaction.CreateDbContextTransaction(context))
+                {
+                    _message = new SaleRepository().Remove(id);
+                    if (_message == "")
+                        transaction.Commit();
+                    else
+                        transaction.Rollback();
+                    return _message;
+                }
             }
 
             [HttpPost]
@@ -51,7 +80,7 @@ namespace Vendas.Service.Controllers
             public IQueryable<Sale> GetAll()
             {
                 return new SaleRepository().GetAll();
-        }
+            }
 
         }
 }

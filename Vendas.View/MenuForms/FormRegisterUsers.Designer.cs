@@ -29,10 +29,13 @@ namespace Vendas.View
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRegisterUser));
             this.LastNameValue = new DevExpress.XtraEditors.TextEdit();
+            this.bindingSourceUser = new System.Windows.Forms.BindingSource(this.components);
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.numberValue = new DevExpress.XtraEditors.TextEdit();
+            this.bindingSourceAddress = new System.Windows.Forms.BindingSource(this.components);
             this.Numero = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.StreetValue = new DevExpress.XtraEditors.TextEdit();
@@ -62,7 +65,9 @@ namespace Vendas.View
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.StateValue = new DevExpress.XtraEditors.ComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.LastNameValue.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numberValue.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceAddress)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StreetValue.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DistrictValue.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CityValue.Properties)).BeginInit();
@@ -86,6 +91,10 @@ namespace Vendas.View
             this.LastNameValue.TabIndex = 2;
             this.LastNameValue.ToolTip = "Informe o sobrenome do usuário";
             // 
+            // bindingSourceUser
+            // 
+            this.bindingSourceUser.DataSource = typeof(Vendas.Entity.Entities.User);
+            // 
             // labelControl10
             // 
             this.labelControl10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -107,6 +116,10 @@ namespace Vendas.View
             this.numberValue.Size = new System.Drawing.Size(89, 20);
             this.numberValue.TabIndex = 11;
             this.numberValue.ToolTip = "Informe o número da residência";
+            // 
+            // bindingSourceAddress
+            // 
+            this.bindingSourceAddress.DataSource = typeof(Vendas.Entity.Entities.Address);
             // 
             // Numero
             // 
@@ -383,7 +396,7 @@ namespace Vendas.View
             this.CEPValue.Mask = "00000-999";
             this.CEPValue.Name = "CEPValue";
             this.CEPValue.Size = new System.Drawing.Size(89, 21);
-            this.CEPValue.TabIndex = 114;
+            this.CEPValue.TabIndex = 6;
             this.CEPValue.Leave += new System.EventHandler(this.CEPValue_Leave);
             // 
             // cpfValue
@@ -393,7 +406,7 @@ namespace Vendas.View
             this.cpfValue.Mask = "000\\.000\\.000-00";
             this.cpfValue.Name = "cpfValue";
             this.cpfValue.Size = new System.Drawing.Size(89, 21);
-            this.cpfValue.TabIndex = 113;
+            this.cpfValue.TabIndex = 5;
             // 
             // telValue
             // 
@@ -402,7 +415,7 @@ namespace Vendas.View
             this.telValue.Mask = "(99) 00000-0000";
             this.telValue.Name = "telValue";
             this.telValue.Size = new System.Drawing.Size(86, 21);
-            this.telValue.TabIndex = 112;
+            this.telValue.TabIndex = 4;
             // 
             // labelControl4
             // 
@@ -466,7 +479,9 @@ namespace Vendas.View
             this.Name = "FormRegisterUser";
             this.Text = "Cadastro de usuário";
             ((System.ComponentModel.ISupportInitialize)(this.LastNameValue.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceUser)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numberValue.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceAddress)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StreetValue.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DistrictValue.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CityValue.Properties)).EndInit();
@@ -517,5 +532,7 @@ namespace Vendas.View
         private System.Windows.Forms.MaskedTextBox telValue;
         private System.Windows.Forms.MaskedTextBox cpfValue;
         private System.Windows.Forms.MaskedTextBox CEPValue;
+        private System.Windows.Forms.BindingSource bindingSourceUser;
+        private System.Windows.Forms.BindingSource bindingSourceAddress;
     }
 }
