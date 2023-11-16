@@ -29,6 +29,7 @@ namespace vendas.MenuForms
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRegisterProduct));
             this.nameValue = new DevExpress.XtraEditors.TextEdit();
             this.stockValue = new DevExpress.XtraEditors.TextEdit();
@@ -41,6 +42,7 @@ namespace vendas.MenuForms
             this.descricaoLabel = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
+            this.bindingSourceProduct = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.nameValue.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stockValue.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.descriptionValue.Properties)).BeginInit();
@@ -48,10 +50,12 @@ namespace vendas.MenuForms
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceProduct)).BeginInit();
             this.SuspendLayout();
             // 
             // nameValue
             // 
+            this.nameValue.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceProduct, "Name", true));
             this.nameValue.EditValue = "";
             this.nameValue.Location = new System.Drawing.Point(107, 34);
             this.nameValue.Name = "nameValue";
@@ -61,6 +65,7 @@ namespace vendas.MenuForms
             // 
             // stockValue
             // 
+            this.stockValue.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceProduct, "Stock", true));
             this.stockValue.EditValue = "";
             this.stockValue.Location = new System.Drawing.Point(286, 116);
             this.stockValue.Name = "stockValue";
@@ -86,6 +91,7 @@ namespace vendas.MenuForms
             // 
             // descriptionValue
             // 
+            this.descriptionValue.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceProduct, "Description", true));
             this.descriptionValue.EditValue = "";
             this.descriptionValue.Location = new System.Drawing.Point(107, 75);
             this.descriptionValue.Name = "descriptionValue";
@@ -106,6 +112,7 @@ namespace vendas.MenuForms
             // 
             // valueValue
             // 
+            this.valueValue.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceProduct, "Value", true));
             this.valueValue.EditValue = " ";
             this.valueValue.Location = new System.Drawing.Point(107, 116);
             this.valueValue.Name = "valueValue";
@@ -177,6 +184,10 @@ namespace vendas.MenuForms
             this.xtraTabPage1.Size = new System.Drawing.Size(1006, 512);
             this.xtraTabPage1.Text = "Registro de Produto";
             // 
+            // bindingSourceProduct
+            // 
+            this.bindingSourceProduct.DataSource = typeof(Vendas.Entity.Entities.Product);
+            // 
             // FormRegisterProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -195,6 +206,7 @@ namespace vendas.MenuForms
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPage1.ResumeLayout(false);
             this.xtraTabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceProduct)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -212,5 +224,6 @@ namespace vendas.MenuForms
         private DevExpress.XtraEditors.LabelControl descricaoLabel;
         private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
+        private System.Windows.Forms.BindingSource bindingSourceProduct;
     }
 }

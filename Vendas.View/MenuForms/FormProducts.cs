@@ -19,6 +19,8 @@ namespace vendas.MenuForms
         public FormProducts(FormHomePage formHomePage)
         {
             InitializeComponent();
+            if ((TypeUser)Global.Instance.User.TypeUser == TypeUser.Client)
+                panelControl1.Visible = false;
             LoadGridProduct((TypeUser)Global.Instance.User.TypeUser);
             _formHomePage = formHomePage;
 

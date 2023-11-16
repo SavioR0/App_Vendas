@@ -14,8 +14,12 @@ namespace vendas.MenuForms
         private Product _editedProduct;
         public FormRegisterProduct(Product product = null)
         {
+            
             InitializeComponent();
-            ClearFields();
+
+            if (product != null)
+                bindingSourceProduct.DataSource = new List<Product> { product };
+            //ClearFields();
             SetFields(product);
             
         }
@@ -24,10 +28,6 @@ namespace vendas.MenuForms
         {
             if (product == null) return;
             _editedProduct = product;
-            nameValue.Text = _editedProduct.Name;
-            descriptionValue.Text = _editedProduct.Description;
-            stockValue.Text = _editedProduct.Stock.ToString();
-            valueValue.Text = _editedProduct.Value.ToString();
             btnRegisterEditProduct.Text = "Editar Produto";
         }
         private void RegisterButton_Click(object sender, System.EventArgs e)

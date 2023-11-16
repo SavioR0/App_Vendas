@@ -49,6 +49,8 @@ namespace vendas.MenuForms
             this.ComboBoxProduct = new DevExpress.XtraEditors.ComboBoxEdit();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            this.ValueEdit = new System.Windows.Forms.Label();
+            this.Label = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ValueTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
@@ -175,9 +177,9 @@ namespace vendas.MenuForms
             this.btnExclude.AccessibleName = "btnExclude";
             this.btnExclude.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExclude.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnExclude.ImageOptions.Image")));
-            this.btnExclude.Location = new System.Drawing.Point(789, 7);
+            this.btnExclude.Location = new System.Drawing.Point(789, 2);
             this.btnExclude.Name = "btnExclude";
-            this.btnExclude.Size = new System.Drawing.Size(100, 20);
+            this.btnExclude.Size = new System.Drawing.Size(100, 30);
             this.btnExclude.TabIndex = 3;
             this.btnExclude.Text = "&Remover";
             this.btnExclude.ToolTip = "R - Remover produto selecionado";
@@ -201,9 +203,9 @@ namespace vendas.MenuForms
             this.btnUpdate.AccessibleName = "btnUpdate";
             this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnUpdate.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.ImageOptions.Image")));
-            this.btnUpdate.Location = new System.Drawing.Point(895, 7);
+            this.btnUpdate.Location = new System.Drawing.Point(895, 2);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(100, 20);
+            this.btnUpdate.Size = new System.Drawing.Size(100, 30);
             this.btnUpdate.TabIndex = 4;
             this.btnUpdate.Text = "&Adicionar";
             this.btnUpdate.ToolTip = "A - Adicionar o produto no carrinho";
@@ -268,6 +270,8 @@ namespace vendas.MenuForms
             // 
             // xtraTabPage2
             // 
+            this.xtraTabPage2.Controls.Add(this.ValueEdit);
+            this.xtraTabPage2.Controls.Add(this.Label);
             this.xtraTabPage2.Controls.Add(this.label1);
             this.xtraTabPage2.Controls.Add(this.ValueTextEdit);
             this.xtraTabPage2.Controls.Add(this.label2);
@@ -281,6 +285,28 @@ namespace vendas.MenuForms
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.Size = new System.Drawing.Size(1006, 512);
             this.xtraTabPage2.Text = "Registro de Pedidos";
+            // 
+            // ValueEdit
+            // 
+            this.ValueEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ValueEdit.AutoSize = true;
+            this.ValueEdit.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ValueEdit.Location = new System.Drawing.Point(867, 475);
+            this.ValueEdit.Name = "ValueEdit";
+            this.ValueEdit.Size = new System.Drawing.Size(13, 18);
+            this.ValueEdit.TabIndex = 69;
+            this.ValueEdit.Text = " ";
+            // 
+            // Label
+            // 
+            this.Label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.Label.AutoSize = true;
+            this.Label.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label.Location = new System.Drawing.Point(762, 475);
+            this.Label.Name = "Label";
+            this.Label.Size = new System.Drawing.Size(99, 18);
+            this.Label.TabIndex = 68;
+            this.Label.Text = "Valor Total :";
             // 
             // FormRegisterOrder
             // 
@@ -324,5 +350,7 @@ namespace vendas.MenuForms
         private DevExpress.XtraEditors.ComboBoxEdit ComboBoxProduct;
         private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
+        private System.Windows.Forms.Label ValueEdit;
+        private System.Windows.Forms.Label Label;
     }
 }

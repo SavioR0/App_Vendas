@@ -412,6 +412,7 @@
     <None Include="Properties\DataSources\FormHomePage.datasource" />
     <None Include="Properties\DataSources\GetReportTypes`1[].datasource" />
     <None Include="Properties\DataSources\Vendas.Entity.Entities.Address.datasource" />
+    <None Include="Properties\DataSources\Vendas.Entity.Entities.Product.datasource" />
     <None Include="Properties\DataSources\Vendas.Entity.Entities.User.datasource" />
     <None Include="Properties\DataSources\vendas.MenuForms.FormAbout.datasource" />
     <None Include="Properties\DataSources\vendas.MenuForms.FormHome.datasource" />

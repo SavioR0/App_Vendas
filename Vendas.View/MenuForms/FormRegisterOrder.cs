@@ -60,7 +60,7 @@ namespace vendas.MenuForms
             double valueOrder = 0.0;
             foreach (var prod in _listProduct)
                 valueOrder += prod.Value;
-            ValueTextEdit.Text = "R$ " + valueOrder.ToString("0.00");
+            ValueEdit.Text = "R$ " + valueOrder.ToString("0.00");
         }
 
 
@@ -120,6 +120,5 @@ namespace vendas.MenuForms
             ComboBoxProduct.Text = "";
             numValueEdit.Text = "";
         }
-
     }
 }
