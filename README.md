@@ -16,16 +16,25 @@ A seguir, têm-se a organização do projeto:
     - Vendas.Service
     - Vendas.View
 
-### Vendas.Communication
+### Communication
 Projeto responsável por realizar a comunicação para a camada dos Controladores. Além de classes de envio de email e comunicação do o leitor biométrico.
-### Vendas DTO
+### DTO
 Proojeto responsáveis por implementar as classes DTOs do sistema, as quais auxiliam no preenchimento dos dados nas grids do sistema.
-### Vendas Entity
+### Entity
 Projeto responsável por implementar todas as entidades do sistema de vendas. As principais são: Usuários, produtos e pedidos.
-### Vendas Infrastructure
+### Infrastructure
 Projeto responsável pela configuração do Entity FrameWork, migrações e mapeamento das tabelas no banco de dados.
-### Vendas Library
+### Library
 Projeto que contém classes auxiliares e estáticas. 
+### Management
+Projeto responsável por manupular as janelas na aplicação.
+### Repository
+Projeto responsável por implementar todos os repositórios do sistema, que implementam um interface genérica para lidar com o banco.
+### Service
+Projeto responsável por implementar todos os controladores e suas respectivas interfaces.
+### View
+Responsável por implementar todas as telas do sistema de vendas.
+
 ## Objetivo
 Seu propósito principal é gerenciar de forma eficiente usuários, produtos e pedidos. A tarefa é facilitada com a geração imediata de Relatórios das infomações relavantes de cada tela. Tudo com o intuito de aprimorar a experiência do usuário.
 
@@ -42,4 +51,8 @@ O sistema implementa o Diagrama de relacionamento ilustrado na figura a seguir:
     - Administrador - Possui todas as funcionalidades do sistema, inclusive àquelas exclusivas para cliente e vendedores. O usuário Administrador, é capaz de cadastrar novos usuários, assim como listá-los e excluí-los.
 
     Os tipo de usuário são identificados como Admin = 1, Client = 2, Seller = 3. 
+
+    Ao executar o programa pela primeira vez, o sistema cria um usuário master para que seja possivel a inserção de novos usuários. O login inicial desse usuário é :
+        - UserName : master
+        - Senha : 123456
 
