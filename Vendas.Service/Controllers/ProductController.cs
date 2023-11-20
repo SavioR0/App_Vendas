@@ -4,7 +4,9 @@ using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Web.Http;
+using Vendas.DTO;
 using Vendas.Entity.Entities;
+using Vendas.Entity.Enums;
 using Vendas.Infrastructure;
 using Vendas.Repository;
 using Vendas.Service.Interfaces;
@@ -81,6 +83,12 @@ namespace Vendas.Service.Controllers.Interfaces
         public IQueryable<Product> GetAll()
         {
             return new ProductRepository().GetAll();
+        }
+
+        [HttpPost]
+        [Route("selecionartodosDTO")]
+        public List<ProductDTO> SelectAllDTO(TypeUser typeUser) {
+            return new ProductRepository().SelectAllDTO(typeUser).ToList();
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Vendas.Communication;
+using Vendas.DTO;
 using Vendas.Entity.Entities;
 using Vendas.Entity.Enums;
 using Vendas.Library;
@@ -11,39 +12,37 @@ namespace vendas
 
     public class GetTypeUserFunctions<T> where T : class
     {
-
-        public static Dictionary<(TypeUser, Type), Func<IQueryable<T>>> typeUserFunctions = new Dictionary<(TypeUser, Type), Func<IQueryable<T>>>()  {
+        public static Dictionary<(TypeUser, Type), Func<List<T>>> typeUserFunctions = new Dictionary<(TypeUser, Type), Func<List<T>>>()  {
                 {(TypeUser.Admin , typeof(T)), () =>  LoadGridAdmin() },
                 {(TypeUser.Seller, typeof(T)) , () => LoadGridSeller() },
                 {(TypeUser.Client , typeof(T)), () => LoadGridClient() }
         };
-        private static IQueryable<T> LoadGridAdmin()
+        private static List<T> LoadGridAdmin()
         {
-            if (typeof(T) == typeof(User))
-                return Service.UserController.GetAll() as IQueryable<T>;
-            if (typeof(T) == typeof(Product))
-                return Service.ProductController.GetAll() as IQueryable<T>;
-            if (typeof(T) == typeof(Sale))
-                return Service.SaleController.GetAll() as IQueryable<T>;
+            if (typeof(T) == typeof(UserDTO))
+                return Service.UserController.SelectAllDTO(TypeUser.Admin).ToList() as List<T>;
+            if (typeof(T) == typeof(ProductDTO))
+                return Service.ProductController.SelectAllDTO(TypeUser.Admin).ToList() as List<T>;
+            if (typeof(T) == typeof(SaleDTO))
+                return Service.SaleController.SelectAllDTO(TypeUser.Admin).ToList() as List<T>;
             return null;
         }
-
-        private static IQueryable<T> LoadGridSeller()
+        private static List<T> LoadGridSeller()
         {
-            if (typeof(T) == typeof(User))
-                return Service.UserController.Filter(c => (TypeUser)c.TypeUser == TypeUser.Client) as IQueryable<T>;
-            if (typeof(T) == typeof(Product))
-                return Service.ProductController.Filter(c => c.SellerId == Global.Instance.User.Id) as IQueryable<T>;
-            if (typeof(T) == typeof(Sale))
-                return Service.SaleController.Filter(c => c.SellerId == Global.Instance.User.Id) as IQueryable<T>;
+            if (typeof(T) == typeof(UserDTO))
+                return Service.UserController.SelectAllDTO(TypeUser.Seller).ToList() as List<T>;
+            if (typeof(T) == typeof(ProductDTO))
+                return Service.ProductController.SelectAllDTO(TypeUser.Seller).ToList() as List<T>;
+            if (typeof(T) == typeof(SaleDTO))
+                return Service.SaleController.SelectAllDTO(TypeUser.Seller).ToList() as List<T>;
             return null;
         }
-        private static IQueryable<T> LoadGridClient()
+        private static List<T> LoadGridClient()
         {
-            if (typeof(T) == typeof(Product))
-                return Service.ProductController.GetAll() as IQueryable<T>;
-            if (typeof(T) == typeof(Sale))
-                return Service.SaleController.Filter(c => c.ClientId == Global.Instance.User.Id) as IQueryable<T>;
+            if (typeof(T) == typeof(ProductDTO))
+                return Service.ProductController.SelectAllDTO(TypeUser.Client).ToList() as List<T>;
+            if (typeof(T) == typeof(SaleDTO))
+                return Service.SaleController.SelectAllDTO(TypeUser.Client).ToList() as List<T>;
             return null;
         }
     }

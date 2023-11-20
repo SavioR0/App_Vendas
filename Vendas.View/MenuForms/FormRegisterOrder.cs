@@ -120,5 +120,6 @@ namespace vendas.MenuForms
             ComboBoxProduct.Text = "";
             numValueEdit.Text = "";
         }
+
     }
 }

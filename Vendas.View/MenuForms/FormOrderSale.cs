@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows.Forms;
 using vendas.Reports;
 using Vendas.Communication;
+using Vendas.DTO;
 using Vendas.Entity.Entities;
 using Vendas.Entity.Enums;
 using Vendas.Library;
@@ -83,22 +84,16 @@ namespace vendas.MenuForms
 
         private void LoadNumLabel()
         {
-            LabelNumOrder.Text = ((List<Sale>)gridSale.DataSource).Count.ToString();
+            LabelNumOrder.Text = ((List<SaleDTO>)bindingSourceSales.DataSource).Count.ToString();
         }
 
         private void LoadGridSale(TypeUser typeUser)
         {
-            if (GetTypeUserFunctions<Sale>.typeUserFunctions.TryGetValue((typeUser, typeof(Sale)), out Func<IQueryable<Sale>> loadSales)) 
+            if (GetTypeUserFunctions<SaleDTO>.typeUserFunctions.TryGetValue((typeUser, typeof(SaleDTO)), out Func<List<SaleDTO>> loadSales)) 
             {
-                var sales = loadSales().ToList<Sale>();
-                foreach (var sale in sales)
-                {
-                    sale.Seller = Service.UserController.Filter(c => c.Id == sale.SellerId).FirstOrDefault();
-                    sale.Client = Service.UserController.Filter(c => c.Id == sale.ClientId).FirstOrDefault();
-                    sale.Product = Service.ProductController.Filter(c => c.Id == sale.ProductId).FirstOrDefault();
-                }
-                gridSale.DataSource = sales;
-                gridSale.RefreshDataSource();
+                var sales = loadSales().ToList<SaleDTO>();
+
+                bindingSourceSales.DataSource = sales;
                 LoadNumLabel();
             }
         }

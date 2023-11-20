@@ -29,8 +29,10 @@ namespace vendas.MenuForms
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormOrderSale));
             this.gridSale = new DevExpress.XtraGrid.GridControl();
+            this.bindingSourceSales = new System.Windows.Forms.BindingSource(this.components);
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.Cliente = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Vendedor = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -52,6 +54,7 @@ namespace vendas.MenuForms
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.GenerateReport = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.gridSale)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceSales)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditSearch.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
@@ -65,7 +68,7 @@ namespace vendas.MenuForms
             this.gridSale.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridSale.DataSource = typeof(Vendas.Entity.Entities.Sale);
+            this.gridSale.DataSource = this.bindingSourceSales;
             this.gridSale.Location = new System.Drawing.Point(12, 33);
             this.gridSale.MainView = this.gridView3;
             this.gridSale.Name = "gridSale";
@@ -73,6 +76,10 @@ namespace vendas.MenuForms
             this.gridSale.TabIndex = 10;
             this.gridSale.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
+            // 
+            // bindingSourceSales
+            // 
+            this.bindingSourceSales.DataSource = typeof(Vendas.DTO.SaleDTO);
             // 
             // gridView3
             // 
@@ -94,7 +101,7 @@ namespace vendas.MenuForms
             // Cliente
             // 
             this.Cliente.Caption = "Cliente";
-            this.Cliente.FieldName = "Client.Name";
+            this.Cliente.FieldName = "NameClient";
             this.Cliente.Name = "Cliente";
             this.Cliente.Visible = true;
             this.Cliente.VisibleIndex = 0;
@@ -102,7 +109,7 @@ namespace vendas.MenuForms
             // Vendedor
             // 
             this.Vendedor.Caption = "Vendedor";
-            this.Vendedor.FieldName = "Seller.Name";
+            this.Vendedor.FieldName = "NameSeller";
             this.Vendedor.Name = "Vendedor";
             this.Vendedor.Visible = true;
             this.Vendedor.VisibleIndex = 1;
@@ -110,7 +117,7 @@ namespace vendas.MenuForms
             // Produto
             // 
             this.Produto.Caption = "Produto";
-            this.Produto.FieldName = "Product.Name";
+            this.Produto.FieldName = "NameProduct";
             this.Produto.Name = "Produto";
             this.Produto.Visible = true;
             this.Produto.VisibleIndex = 2;
@@ -118,7 +125,7 @@ namespace vendas.MenuForms
             // Valor
             // 
             this.Valor.Caption = "Valor";
-            this.Valor.FieldName = "Product.Value";
+            this.Valor.FieldName = "ValueProduct";
             this.Valor.Name = "Valor";
             this.Valor.Visible = true;
             this.Valor.VisibleIndex = 3;
@@ -126,7 +133,7 @@ namespace vendas.MenuForms
             // Estoque
             // 
             this.Estoque.Caption = "Estoque";
-            this.Estoque.FieldName = "Product.Stock";
+            this.Estoque.FieldName = "stockProduct";
             this.Estoque.Name = "Estoque";
             this.Estoque.Visible = true;
             this.Estoque.VisibleIndex = 4;
@@ -310,6 +317,7 @@ namespace vendas.MenuForms
             this.Name = "FormOrderSale";
             this.Text = "FormPurcharse";
             ((System.ComponentModel.ISupportInitialize)(this.gridSale)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceSales)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditSearch.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
@@ -344,5 +352,6 @@ namespace vendas.MenuForms
         private DevExpress.XtraGrid.Columns.GridColumn Produto;
         private DevExpress.XtraGrid.Columns.GridColumn Valor;
         private DevExpress.XtraGrid.Columns.GridColumn Estoque;
+        private System.Windows.Forms.BindingSource bindingSourceSales;
     }
 }

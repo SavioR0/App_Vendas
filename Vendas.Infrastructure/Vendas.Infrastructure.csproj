@@ -69,6 +69,22 @@
     <Compile Include="Migrations\202311061234507_add_state_Address.designer.cs">
       <DependentUpon>202311061234507_add_state_Address.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202311201331378_users_requiredFieds.cs" />
+    <Compile Include="Migrations\202311201331378_users_requiredFieds.designer.cs">
+      <DependentUpon>202311201331378_users_requiredFieds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202311201356411_adjust_user_fields.cs" />
+    <Compile Include="Migrations\202311201356411_adjust_user_fields.designer.cs">
+      <DependentUpon>202311201356411_adjust_user_fields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202311201401389_adjust_user_fields_optionals.cs" />
+    <Compile Include="Migrations\202311201401389_adjust_user_fields_optionals.designer.cs">
+      <DependentUpon>202311201401389_adjust_user_fields_optionals.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202311201403036_adjust_user_typeUser_optionals.cs" />
+    <Compile Include="Migrations\202311201403036_adjust_user_typeUser_optionals.designer.cs">
+      <DependentUpon>202311201403036_adjust_user_typeUser_optionals.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SalesContext.cs" />
@@ -93,6 +109,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202311061234507_add_state_Address.resx">
       <DependentUpon>202311061234507_add_state_Address.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202311201331378_users_requiredFieds.resx">
+      <DependentUpon>202311201331378_users_requiredFieds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202311201356411_adjust_user_fields.resx">
+      <DependentUpon>202311201356411_adjust_user_fields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202311201401389_adjust_user_fields_optionals.resx">
+      <DependentUpon>202311201401389_adjust_user_fields_optionals.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202311201403036_adjust_user_typeUser_optionals.resx">
+      <DependentUpon>202311201403036_adjust_user_typeUser_optionals.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

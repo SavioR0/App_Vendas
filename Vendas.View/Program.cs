@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using Vendas.Infrastructure;
 using Vendas.Management;
 using Vendas.View.Loader;
 
@@ -10,9 +11,13 @@ namespace Vendas.View
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
+            using (var context = new SalesContext())
+            {
+                context.Initialization();
+            }
+
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new teste());
+            
             AppManager.Start<LoaderController>(new LoginUser(Library.Version.Instance.version));
         }
     }

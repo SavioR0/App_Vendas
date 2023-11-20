@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using Vendas.DTO;
@@ -76,9 +77,8 @@ namespace Vendas.Repository
                 throw new Exception("CPF não preenchido. ");
         }
 
-        public IQueryable<UserDTO> SelectAllDTO(TypeUser typeUser)
-        {
-            return (from u in _db.Client
+        private IQueryable<UserDTO> LoadAdminGrid() {
+            return (from u in _db.Users
                     join t in _db.TypeUsers on u.TypeUser equals t.Id
                     join a in _db.Addresses on u.AddressId equals a.Id
                     select new UserDTO
@@ -86,13 +86,53 @@ namespace Vendas.Repository
                         Id = u.Id,
                         Name = u.Name,
                         LastName = u.LastName,
+                        Cpf = u.Cpf,
+                        DateOfBirth = u.DateOfBirth,
+                        TypeUserName = t.Name,
                         Email = u.Email,
                         TypeUser = u.TypeUser,
                         AddressId = u.AddressId,
                         Address = a,
-                        
+                        Tel = u.Tel,
+                    }
+             );
+        }
+        private IQueryable<UserDTO> LoadSellerGrid() {
+            return (from u in _db.Users
+                    where (TypeUser)u.TypeUser == TypeUser.Client
+                    join t in _db.TypeUsers on u.TypeUser equals t.Id
+                    join a in _db.Addresses on u.AddressId equals a.Id
+                    select new UserDTO
+                    {
+                        Id = u.Id,
+                        Name = u.Name,
+                        LastName = u.LastName,
+                        Cpf = u.Cpf,
+                        DateOfBirth = u.DateOfBirth,
+                        TypeUserName = t.Name,
+                        Email = u.Email,
+                        TypeUser = u.TypeUser,
+                        AddressId = u.AddressId,
+                        Address = a,
+                        Tel = u.Tel,
+                    }
+             );
+        }
 
-                    });
+        public IQueryable<UserDTO> SelectAllDTO(TypeUser typeUser)
+        {
+            var LoadReturnGrid = new Dictionary<TypeUser, Func<IQueryable<UserDTO>>>{
+                { TypeUser.Admin,() => LoadAdminGrid() },
+                { TypeUser.Seller,() => LoadSellerGrid() },
+            };
+
+            if (LoadReturnGrid.TryGetValue(typeUser, out Func<IQueryable<UserDTO>> loadGrid)) {
+                var data = loadGrid();
+                return data;
+            }
+            return null;
+
+
         }
     }
 }

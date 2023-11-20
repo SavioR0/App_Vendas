@@ -74,6 +74,10 @@
       <Project>{C4BEA73E-2747-4B0E-A43A-5417C4AC1C4B}</Project>
       <Name>Vendas.Infrastructure</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Vendas.Library\Vendas.Library.csproj">
+      <Project>{6FF38654-2341-44BC-9F60-98B979A780C2}</Project>
+      <Name>Vendas.Library</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

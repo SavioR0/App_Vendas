@@ -14,8 +14,8 @@ namespace Vendas.Entity.Entities
         public string LastName { get; set; }
         public string Cpf { get; set; }
         public string Tel { get; set; }
-        public DateTime DateOfBirth { get; set; }
-        public int AddressId{ get; set; }
+        public DateTime? DateOfBirth { get; set; }
+        public int? AddressId{ get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
         public int TypeUser { get; set; }

@@ -59,7 +59,7 @@ namespace Vendas.View
             LastNameValue.Text = _userEdited.LastName;
             cpfValue.Text = _userEdited.Cpf;
             telValue.Text = _userEdited.Tel;
-            dateValue.Text = _userEdited.DateOfBirth.ToString("d");
+            dateValue.Text = _userEdited.DateOfBirth?.ToString("d");
             CEPValue.Text = _userEdited.Address.CEP;
             CityValue.Text = _userEdited.Address.City;
             DistrictValue.Text = _userEdited.Address.District;

@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using Vendas.DTO;
 using Vendas.Entity.Entities;
+using Vendas.Entity.Enums;
 using Vendas.Infrastructure;
 using Vendas.Repository.Intefaces;
 using Vendas.Repository.Interfaces;
@@ -12,6 +14,7 @@ namespace Vendas.Repository
     public class ProductRepository : IDefaultRepository<Product>
     {
         private readonly IRepository<Product> _repository;
+        private SalesContext _db = new SalesContext();
 
         public ProductRepository(SalesContext context = null)
         {
@@ -19,6 +22,8 @@ namespace Vendas.Repository
         }
         public string Add(Product entity)
         {
+
+            Validate(entity);
             if (_repository.GetAll().Any(c => entity.Name == c.Name))
                 throw new Exception("Produto já cadastrado no sistema.");
             return _repository.Insert(entity);
@@ -70,6 +75,53 @@ namespace Vendas.Repository
             //if (entity.)
             //    throw new Exception("CPF não preenchido. ");            //if (entity.)
             //    throw new Exception("CPF não preenchido. ");
+        }
+
+        private IQueryable<ProductDTO> LoadAllGrid()
+        {
+            return (from p in _db.Product
+                    join u in _db.Users on p.SellerId equals u.Id
+                    select new ProductDTO
+                    {
+                        Id = p.Id,
+                        Name = p.Name,
+                        Description = p.Description,
+                        Value = p.Value,
+                        Stock = p.Stock,
+                        SellerName = u.Name
+                    }
+             );
+        }
+        private IQueryable<ProductDTO> LoadSellerGrid()
+        {
+            return (from p in _db.Product
+                    join u in _db.Users on p.SellerId equals u.Id where (TypeUser)u.TypeUser == TypeUser.Seller
+                    select new ProductDTO
+                    {
+                        Id = p.Id,
+                        Name = p.Name,
+                        Description = p.Description,
+                        Value = p.Value,
+                        Stock = p.Stock,
+                        SellerName = u.Name
+                    }
+             );
+        }
+
+        public IQueryable<ProductDTO> SelectAllDTO(TypeUser typeUser)
+        {
+            var LoadReturnGrid = new Dictionary<TypeUser, Func<IQueryable<ProductDTO>>>{
+                { TypeUser.Admin,() => LoadAllGrid() },
+                { TypeUser.Client,() => LoadAllGrid() },
+                { TypeUser.Seller,() => LoadSellerGrid() },
+            };
+
+            if (LoadReturnGrid.TryGetValue(typeUser, out Func<IQueryable<ProductDTO>> loadGrid))
+            {
+                var data = loadGrid();
+                return data;
+            }
+            return null;
         }
     }
 }

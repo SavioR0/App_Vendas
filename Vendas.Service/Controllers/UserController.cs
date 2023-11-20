@@ -28,13 +28,13 @@ namespace Vendas.Service.Controllers
                 else if (entity.Flag == "I")
                 {
                     _message = new UserRepository().Add(entity);
-                    //SendEmail.SendEmailClient(
-                    //    entity.Email,
-                    //    "compras_vendass@outlook.com",
-                    //    entity.UserName,
-                    //    entity.Cpf,
-                    //    "Login sistema de Compra e Venda"
-                    //);
+                    SendEmail.SendEmailClient(
+                        entity.Email,
+                        "compras_vendass@outlook.com",
+                        entity.UserName,
+                        entity.Cpf,
+                        "Login sistema de Compra e Venda"
+                    );
                 }
                 if (_message == "")
                     transaction.Commit();

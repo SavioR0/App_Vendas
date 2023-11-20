@@ -4,7 +4,9 @@ using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Web.Http;
+using Vendas.DTO;
 using Vendas.Entity.Entities;
+using Vendas.Entity.Enums;
 using Vendas.Infrastructure;
 using Vendas.Repository;
 using Vendas.Service.Interfaces;
@@ -81,6 +83,12 @@ namespace Vendas.Service.Controllers
             {
                 return new SaleRepository().GetAll();
             }
+
+            [HttpPost]
+            [Route("selecionarTodosDTO")]
+            public List<SaleDTO> SelectAllDTO(TypeUser typeUser) {
+                    return new SaleRepository().SelectAllDTO(typeUser).ToList();
+                }
 
         }
 }

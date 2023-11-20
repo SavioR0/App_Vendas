@@ -29,6 +29,7 @@ namespace vendas.MenuForms
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormProducts));
             this.gridProduct = new DevExpress.XtraGrid.GridControl();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -48,11 +49,13 @@ namespace vendas.MenuForms
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.LabelNumProd = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.GenerateReport = new DevExpress.XtraEditors.SimpleButton();
-            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.bindingSourceProducts = new System.Windows.Forms.BindingSource(this.components);
+            this.productDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.gridProduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxFilterProd.Properties)).BeginInit();
@@ -62,6 +65,8 @@ namespace vendas.MenuForms
             this.xtraTabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceProducts)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productDTOBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // gridProduct
@@ -69,7 +74,7 @@ namespace vendas.MenuForms
             this.gridProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridProduct.DataSource = typeof(Vendas.Entity.Entities.Product);
+            this.gridProduct.DataSource = this.productDTOBindingSource;
             this.gridProduct.Location = new System.Drawing.Point(12, 33);
             this.gridProduct.MainView = this.gridView2;
             this.gridProduct.Name = "gridProduct";
@@ -142,7 +147,7 @@ namespace vendas.MenuForms
             // Vendedor
             // 
             this.Vendedor.Caption = "Vendedor";
-            this.Vendedor.FieldName = "Seller.Name";
+            this.Vendedor.FieldName = "SellerName";
             this.Vendedor.Name = "Vendedor";
             this.Vendedor.Visible = true;
             this.Vendedor.VisibleIndex = 4;
@@ -272,6 +277,18 @@ namespace vendas.MenuForms
             this.xtraTabPage2.Size = new System.Drawing.Size(1006, 512);
             this.xtraTabPage2.Text = "Produtos";
             // 
+            // panelControl1
+            // 
+            this.panelControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl1.Controls.Add(this.btnExclude);
+            this.panelControl1.Controls.Add(this.btnEdit);
+            this.panelControl1.Controls.Add(this.simpleButton1);
+            this.panelControl1.Location = new System.Drawing.Point(12, 471);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(315, 38);
+            this.panelControl1.TabIndex = 123;
+            // 
             // LabelNumProd
             // 
             this.LabelNumProd.AutoSize = true;
@@ -314,17 +331,13 @@ namespace vendas.MenuForms
             this.GenerateReport.ToolTip = "R - Gerar Relatório de Produtos";
             this.GenerateReport.Click += new System.EventHandler(this.GenerateReport_Click);
             // 
-            // panelControl1
+            // bindingSourceProducts
             // 
-            this.panelControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelControl1.Controls.Add(this.btnExclude);
-            this.panelControl1.Controls.Add(this.btnEdit);
-            this.panelControl1.Controls.Add(this.simpleButton1);
-            this.panelControl1.Location = new System.Drawing.Point(12, 471);
-            this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(315, 38);
-            this.panelControl1.TabIndex = 123;
+            this.bindingSourceProducts.DataSource = typeof(Vendas.DTO.ProductDTO);
+            // 
+            // productDTOBindingSource
+            // 
+            this.productDTOBindingSource.DataSource = typeof(Vendas.DTO.ProductDTO);
             // 
             // FormProducts
             // 
@@ -345,6 +358,8 @@ namespace vendas.MenuForms
             this.xtraTabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceProducts)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productDTOBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -374,5 +389,7 @@ namespace vendas.MenuForms
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label LabelNumProd;
         private DevExpress.XtraEditors.PanelControl panelControl1;
+        private System.Windows.Forms.BindingSource bindingSourceProducts;
+        private System.Windows.Forms.BindingSource productDTOBindingSource;
     }
 }

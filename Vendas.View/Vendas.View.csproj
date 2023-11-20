@@ -411,6 +411,9 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\FormHomePage.datasource" />
     <None Include="Properties\DataSources\GetReportTypes`1[].datasource" />
+    <None Include="Properties\DataSources\Vendas.DTO.ProductDTO.datasource" />
+    <None Include="Properties\DataSources\Vendas.DTO.SaleDTO.datasource" />
+    <None Include="Properties\DataSources\Vendas.DTO.UserDTO.datasource" />
     <None Include="Properties\DataSources\Vendas.Entity.Entities.Address.datasource" />
     <None Include="Properties\DataSources\Vendas.Entity.Entities.Product.datasource" />
     <None Include="Properties\DataSources\Vendas.Entity.Entities.User.datasource" />
@@ -452,6 +455,10 @@
     <ProjectReference Include="..\Vendas.Communication\Vendas.Communication.csproj">
       <Project>{331C1344-7252-4418-B572-56217FA9EC26}</Project>
       <Name>Vendas.Communication</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Vendas.DTO\Vendas.DTO.csproj">
+      <Project>{93E0D152-56A9-428C-8C9E-FD0339020EA5}</Project>
+      <Name>Vendas.DTO</Name>
     </ProjectReference>
     <ProjectReference Include="..\Vendas.Entity\Vendas.Entity.csproj">
       <Project>{CF6270D3-DFA5-4AB3-8860-6FDB53948373}</Project>

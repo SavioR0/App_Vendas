@@ -9,20 +9,21 @@ namespace vendas.model.mapping
             ToTable("Usuarios");
             HasKey(p => p.Id);
             Property(p => p.Name).IsRequired().HasMaxLength(100);
-            Property(p => p.Email).IsRequired().HasMaxLength(100);
+            Property(p => p.LastName).HasMaxLength(100).IsOptional();
+            Property(p => p.Email).HasMaxLength(100).IsOptional();
             Property(p => p.Password).IsRequired().HasMaxLength(50);
-            Property(p => p.Cpf).IsRequired().HasMaxLength(11);
-            Property(p => p.Tel).IsRequired().HasMaxLength(20);
-            Property(p => p.DateOfBirth);
-            Property(p => p.EditLogin);
-            Property(p => p.TypeUser);
-            Property(p => p.AddressId);
-            Property(p => p.BiometryDataBinary).HasColumnType("varbinary(max)");
-            Property(p => p.BiometryDataText);
+            Property(p => p.Cpf).HasMaxLength(11);
+            Property(p => p.Tel).HasMaxLength(20);
+            Property(p => p.DateOfBirth).IsOptional(); 
+            Property(p => p.EditLogin).IsOptional(); 
+            Property(p => p.TypeUser).IsOptional(); 
+            Property(p => p.AddressId).IsOptional();
+            Property(p => p.BiometryDataBinary).HasColumnType("varbinary(max)").IsOptional();
+            Property(p => p.BiometryDataText).IsOptional();
             Property(p => p.Flag).IsRequired();
 
-            HasRequired(p => p.Address).WithMany(p=>p.Users).HasForeignKey(v => v.AddressId);
-            HasRequired(p => p.TypeUsers).WithMany(p => p.Users).HasForeignKey(v => v.TypeUser);
+            HasOptional(p => p.Address).WithMany(p=>p.Users).HasForeignKey(v => v.AddressId);
+            HasOptional(p => p.TypeUsers).WithMany(p => p.Users).HasForeignKey(v => v.TypeUser);
 
 
         }

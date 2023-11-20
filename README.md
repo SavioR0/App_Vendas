@@ -1,12 +1,13 @@
 # Savio's Vendas
 
-A aplicação Savio's Vendas, desenvolvida em Linguagem C# no .NET Framework 4.7.2, adota o padrão de projeto FluentAPI com camadas bem definidas e desacopladas, permitindo uma manutenção mais simples e a implementação de novos recursos de maneira organizada e eficiente. Além disso, utilizou-se o SQLServer com EntityFramework para lidar com o banco de dados relacional. 
+A aplicação Savio's Vendas, desenvolvida em Linguagem C# no .NET Framework 4.7.2, adota o padrão FluentAPI com camadas bem definidas e desacopladas, permitindo uma manutenção mais simples e a implementação de novos recursos de maneira organizada e eficiente. Além disso, utilizou-se o SQLServer com EntityFramework para lidar com o banco de dados relacional. 
 
 ## Organização
 A seguir, têm-se a organização do projeto:
 
 - Vendas
     - Vendas.Communication
+    - Vendas.DTO
     - Vendas.Entity
     - Vendas.Infrastructure
     - Vendas.Library
@@ -14,10 +15,21 @@ A seguir, têm-se a organização do projeto:
     - Vendas.Repository
     - Vendas.Service
     - Vendas.View
+
+### Vendas.Communication
+Projeto responsável por realizar a comunicação para a camada dos Controladores. Além de classes de envio de email e comunicação do o leitor biométrico.
+### Vendas DTO
+Proojeto responsáveis por implementar as classes DTOs do sistema, as quais auxiliam no preenchimento dos dados nas grids do sistema.
+### Vendas Entity
+Projeto responsável por implementar todas as entidades do sistema de vendas. As principais são: Usuários, produtos e pedidos.
+### Vendas Infrastructure
+Projeto responsável pela configuração do Entity FrameWork, migrações e mapeamento das tabelas no banco de dados.
+### Vendas Library
+Projeto que contém classes auxiliares e estáticas. 
 ## Objetivo
 Seu propósito principal é gerenciar de forma eficiente usuários, produtos e pedidos. A tarefa é facilitada com a geração imediata de Relatórios das infomações relavantes de cada tela. Tudo com o intuito de aprimorar a experiência do usuário.
 
-Foi implementado o Login por biometria por meio do leitor modelo finKey Hamster DX Nitgen. Essa abordagem proporciona um nível elevado de segurança e comodidade, simplificando o acesso dos usuários de maneira confiável. Além disso, o autopreenchimento dos dados do endereço através do CEP, integrando o WebService dos Correios. Essa característica agiliza e aprimora o processo de inserção de informações, simplificando o preenchimento de dados de forma automática a partir do CEP inserido, melhorando a experiência do usuário e minimizando possíveis erros.
+Foi implementado o Login por biometria por meio do leitor modelo finKey Hamster DX Nitgen. Essa abordagem proporciona um nível elevado de segurança e comodidade, simplificando o acesso dos usuários de maneira confiável. Ainda no login, ao realizar o cadastro de um novo usuário, é enviado um email com o nome de usuário e senha, e ao realizar o primeiro login é solicitado a troca dessa senha. As senhas são criptografadas para garantir maior segurança no sistema. Além disso, está implementado o autopreenchimento dos dados do endereço através do CEP, integrado ao WebService dos Correios. Essa característica agiliza e aprimora o processo de inserção de informações, simplificando o preenchimento de dados de forma automática a partir do CEP inserido, melhorando a experiência do usuário e minimizando possíveis erros.
 
 ## Diagrama
 O sistema implementa o Diagrama de relacionamento ilustrado na figura a seguir:

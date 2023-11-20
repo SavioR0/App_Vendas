@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows.Forms;
 using vendas.Reports;
 using Vendas.Communication;
+using Vendas.DTO;
 using Vendas.Entity.Entities;
 using Vendas.Entity.Enums;
 using Vendas.Library;
@@ -15,7 +16,7 @@ namespace vendas.MenuForms
     public partial class FormUsers : Form
     {
         private readonly FormHomePage _formHomePage;
-        readonly Dictionary<string, Action> FilterSelectedUser  ;
+        readonly Dictionary<string, Action> FilterSelectedUser;
         readonly Dictionary<string, Action> FilterSelectedSale;
 
         public FormUsers(FormHomePage form = null)
@@ -49,48 +50,48 @@ namespace vendas.MenuForms
         {
             if (!int.TryParse(TextEditSearchSale.Text, out int value)) throw new ApplicationException("Coloque um Estoque válido!");
 
-            var allSales = gridSale.DataSource as List<Sale>;
-            List<Sale> sale = allSales.FindAll(c => c.Product.Stock == value);
-            gridSale.DataSource = sale;
+            var allSales = bindingSourceSales.DataSource as List<SaleDTO>;
+            List<SaleDTO> sale = allSales.FindAll(c => c.StockProduct == value);
+            bindingSourceSales.DataSource = sale;
         }
 
         private void FilterByValue()
         {
             if (!double.TryParse(TextEditSearchSale.Text, out double value)) throw new ApplicationException("Coloque um Id válido!");
 
-            var allSales = gridSale.DataSource as List<Sale>;
-            List<Sale> sale = allSales.FindAll(c => c.Product.Value == value);
-            gridSale.DataSource = sale;
+            var allSales = bindingSourceSales.DataSource as List<SaleDTO>;
+            List<SaleDTO> sales = allSales.FindAll(c => c.ValueProduct == value);
+            bindingSourceSales.DataSource = sales;
         }
 
         private void FilterByProduct()
         {
-            var sales = gridSale.DataSource as List<Sale>;
-            List<Sale> teste = sales.FindAll(c => c.Product.Name.IndexOf(TextEditSearchSale.Text, StringComparison.OrdinalIgnoreCase) >= 0);
-            gridSale.DataSource = teste;
+            var allSales = bindingSourceSales.DataSource as List<SaleDTO>;
+            List<SaleDTO> sales = allSales.FindAll(c => c.NameProduct.IndexOf(TextEditSearchSale.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+            bindingSourceSales.DataSource = sales;
         }
 
         private void FilterBySeller()
         {
-            var sales = gridSale.DataSource as List<Sale>;
-            List<Sale> teste = sales.FindAll(c => c.Seller.Name.IndexOf(TextEditSearchSale.Text, StringComparison.OrdinalIgnoreCase) >= 0);
-            gridSale.DataSource = teste;
+            var allSales = bindingSourceSales.DataSource as List<SaleDTO>;
+            List<SaleDTO> sales = allSales.FindAll(c => c.NameSeller.IndexOf(TextEditSearchSale.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+            bindingSourceSales.DataSource = sales;
         }
 
         private void FilterByClient()
         {
-            var sales = gridSale.DataSource as List<Sale>;
-            List<Sale> teste = sales.FindAll(c => c.Client.Name.IndexOf(TextEditSearchSale.Text, StringComparison.OrdinalIgnoreCase) >= 0);
-            gridSale.DataSource = teste;
+            var allSales = bindingSourceSales.DataSource as List<SaleDTO>;
+            List<SaleDTO> sales = allSales.FindAll(c => c.NameClient.IndexOf(TextEditSearchSale.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+            bindingSourceSales.DataSource = sales;
         }
 
         private void FilterByIdSale()
         {
             if (!int.TryParse(TextEditSearchSale.Text, out int id)) throw new ApplicationException("Coloque um Id válido!");
 
-            var allSales = gridSale.DataSource as List<Sale>;
-            List<Sale> sale = allSales.FindAll(c => c.Id == id);
-            gridSale.DataSource = sale;
+            var allSales = bindingSourceSales.DataSource as List<SaleDTO>;
+            List<SaleDTO> sale = allSales.FindAll(c => c.Id == id);
+            bindingSourceSales.DataSource = sale;
         }
 
 
@@ -100,26 +101,26 @@ namespace vendas.MenuForms
 
         private void LoadNumLabel()
         {
-            LabelNumUser.Text = ((List<User>)gridUsers.DataSource).Count.ToString();
+            LabelNumUser.Text = ((List<UserDTO>)gridUsers.DataSource).Count.ToString();
         }
 
         private void LoadGridUsers(TypeUser typeUser)
         {
-            /*
-            if (GetTypeUserFunctions<User>.typeUserFunctions.TryGetValue((typeUser, typeof(User)), out Func<IQueryable<User>> loadUsers))
+            try
             {
-                var users = loadUsers();
-                foreach (var user in users)
+                if (GetTypeUserFunctions<UserDTO>.typeUserFunctions.TryGetValue((typeUser, typeof(UserDTO)), out Func<List<UserDTO>> loadUsers))
                 {
-                    user.Address = Service.AddressController.Filter(c => c.Id == user.AddressId).FirstOrDefault();
-                    user.TypeUsers = Service.TypeUserController.Filter(c => c.Id == user.TypeUser).FirstOrDefault();
+                    var users = loadUsers();
+                    gridUsers.DataSource = users.ToList();
+                    LoadNumLabel();
                 }
-                gridUsers.DataSource = users.ToList<User>();
-                LoadNumLabel();
             }
-            */
+            catch (Exception)
+            {
+                MessageBox.Show("Erro ao carregar os dados ", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            
 
-            bindingSourceUsuarios.DataSource = Service.UserController.GetAll().ToList();
         }
 
         private void BtnExclude_Click(object sender, EventArgs e)
@@ -193,68 +194,62 @@ namespace vendas.MenuForms
         {
             if (!int.TryParse(textEditSearch.Text, out int id)) throw new ApplicationException("Coloque um Id válido!");
             
-            var allUsers = gridUsers.DataSource as List<User>;
-            List<User> users = allUsers.FindAll(c => c.Id == id);
-            gridUsers.DataSource = users;   
+            var allUsers = bindingSourceUsuarios.DataSource as List<UserDTO>;
+            List<UserDTO> users = allUsers.FindAll(c => c.Id == id);
+            bindingSourceUsuarios.DataSource = users;   
         }
 
         private void FilterByTypeUser()
         {
             string value = CultureInfo.CurrentCulture.TextInfo.ToTitleCase((textEditSearch.Text).ToLower());
-            var allUsers = gridUsers.DataSource as List<User>;
-            try
-            {
-                var type = Service.TypeUserController.Filter(c1 => c1.Name == value).FirstOrDefault();
-                gridUsers.DataSource = allUsers.FindAll(c => c.TypeUsers.Name == type.Name);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Certifique se digitou corretamente o tipo de usuário e tente novamente", "Erro ao filtrar!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            var allUsers = bindingSourceUsuarios.DataSource as List<UserDTO>;
+
+            bindingSourceUsuarios.DataSource = allUsers.FindAll(c => c.TypeUserName.IndexOf(TextEditSearchSale.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+
         }
 
         private void FilterByUserName()
         {
-            var allUsers = gridUsers.DataSource as List<User>;
-            List<User> users = allUsers.FindAll(c => c.UserName.IndexOf(textEditSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
-            gridUsers.DataSource = users;
+            var allUsers = bindingSourceUsuarios.DataSource as List<UserDTO>;
+            List<UserDTO> users = allUsers.FindAll(c => c.UserName.IndexOf(textEditSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+            bindingSourceUsuarios.DataSource = users;
         }
 
         private void FilterByCPF()
         {
-            var allUsers = gridUsers.DataSource as List<User>;
-            List<User> users = allUsers.FindAll(c => c.Cpf.IndexOf(textEditSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
-            gridUsers.DataSource = users;
+            var allUsers = bindingSourceUsuarios.DataSource as List<UserDTO>;
+            List<UserDTO> users = allUsers.FindAll(c => c.Cpf.IndexOf(textEditSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+            bindingSourceUsuarios.DataSource = users;
         }
 
         private void FilterByDate()
         {
             if (!DateTime.TryParse(textEditSearch.Text, out DateTime date)) throw new ApplicationException("Coloque uma data válida!");
-            var allUsers = gridUsers.DataSource as List<User>;
-            List<User> users = allUsers.FindAll(c => c.DateOfBirth == date);
-            gridUsers.DataSource = users;
+            var allUsers = bindingSourceUsuarios.DataSource as List<UserDTO>;
+            List<UserDTO> users = allUsers.FindAll(c => c.DateOfBirth == date);
+            bindingSourceUsuarios.DataSource = users;
         }
 
         private void FilterByTel()
         {
             if (!long.TryParse(textEditSearch.Text, out long tel)) throw new ApplicationException("Coloque um Telefone válido!");
-            var allUsers = gridUsers.DataSource as List<User>;
-            List<User> users = allUsers.FindAll(c => c.Tel.IndexOf(textEditSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
-            gridUsers.DataSource = users;
+            var allUsers = bindingSourceUsuarios.DataSource as List<UserDTO>;
+            List<UserDTO> users = allUsers.FindAll(c => c.Tel.IndexOf(textEditSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+            bindingSourceUsuarios.DataSource = users;
         }
 
         private void FilterByEmail()
         {
-            var allUsers = gridUsers.DataSource as List<User>;
-            List<User> users = allUsers.FindAll(c => c.Email.IndexOf(textEditSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
-            gridUsers.DataSource = users;
+            var allUsers = bindingSourceUsuarios.DataSource as List<UserDTO>;
+            List<UserDTO> users = allUsers.FindAll(c => c.Email.IndexOf(textEditSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+            bindingSourceUsuarios.DataSource = users;
         }
 
         private void FilterByName()
         {
-            var allUsers = gridUsers.DataSource as List<User>;
-            List<User> users = allUsers.FindAll(c => c.Name.IndexOf(textEditSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
-            gridUsers.DataSource = users;
+            var allUsers = bindingSourceUsuarios.DataSource as List<UserDTO>;
+            List<UserDTO> users = allUsers.FindAll(c => c.Name.IndexOf(textEditSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+            bindingSourceUsuarios.DataSource = users;
         }
 
         private void GenerateReport_Click(object sender, EventArgs e)
@@ -284,20 +279,15 @@ namespace vendas.MenuForms
         {
             
             GridView gridView = gridUsers.FocusedView as GridView;
-            var user = (gridView.GetRow(gridView.FocusedRowHandle) as User);
+            var user = (gridView.GetRow(gridView.FocusedRowHandle) as UserDTO);
             if (user == null) return;
 
-            if (GetTypeUserFunctions<Sale>.typeUserFunctions.TryGetValue(((TypeUser)Global.Instance.User.TypeUser, typeof(Sale)), out Func<IQueryable<Sale>> loadSales))
+            if (GetTypeUserFunctions<SaleDTO>.typeUserFunctions.TryGetValue(((TypeUser)Global.Instance.User.TypeUser, typeof(SaleDTO)), out Func<List<SaleDTO>> loadSales))
             {
-                var sales = loadSales().ToList<Sale>();
-                foreach (var sale in sales)
-                {
-                    sale.Seller = Service.UserController.Filter(c => c.Id == sale.SellerId).FirstOrDefault();
-                    sale.Client = Service.UserController.Filter(c => c.Id == sale.ClientId).FirstOrDefault();
-                    sale.Product = Service.ProductController.Filter(c => c.Id == sale.ProductId).FirstOrDefault();
-                }
-                sales = sales.FindAll(c => c.Client.Name == user.Name || c.Seller.Name == user.Name);
-                gridSale.DataSource = sales.ToList<Sale>();
+                var sales = loadSales().ToList<SaleDTO>();
+                sales = sales.FindAll(c => c.NameClient == user.Name || c.NameSeller == user.Name);
+
+                bindingSourceSales.DataSource = sales;
                 LabelNumOrder.Text = sales.Count.ToString();
             }
         }
@@ -320,5 +310,6 @@ namespace vendas.MenuForms
             }
             TextEditSearchSale.Text = "";
         }
+
     }
 }

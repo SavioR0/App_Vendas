@@ -1,8 +1,6 @@
 ﻿using NITGEN.SDK.NBioBSP;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Forms;
 using Vendas.Entity.Entities;
 
 namespace Vendas.Communication
@@ -91,7 +89,7 @@ namespace Vendas.Communication
             Identify(out User user, hCapturedFIR: hNewFIR);
             if (user  != null) return "Digital já cadastrada no sistema.";
 
-            // Trasnformando em Binario
+            // Transformando em Binario
             m_NBioAPI.GetFIRFromHandle(hNewFIR, out NBioAPI.Type.FIR biFIR);
 
             biometryDataText = textFIR.TextFIR;

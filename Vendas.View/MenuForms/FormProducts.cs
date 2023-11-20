@@ -1,11 +1,11 @@
 ﻿using DevExpress.XtraGrid.Views.Grid;
-using FastReport;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using vendas.Reports;
 using Vendas.Communication;
+using Vendas.DTO;
 using Vendas.Entity.Entities;
 using Vendas.Entity.Enums;
 using Vendas.Library;
@@ -83,13 +83,14 @@ namespace vendas.MenuForms
         }
 
         private void LoadGridProduct(TypeUser typeUser) {
-            if (GetTypeUserFunctions<Product>.typeUserFunctions.TryGetValue((typeUser, typeof(Product)), out Func<IQueryable< Product>> loadProducts))
+
+            if (GetTypeUserFunctions<ProductDTO>.typeUserFunctions.TryGetValue((typeUser, typeof(ProductDTO)), out Func<List< ProductDTO>> loadProducts))
             {
-                var products = loadProducts().ToList<Product>();
-                foreach (var product in products)
-                {
-                    product.Seller = Service.UserController.Filter(c => c.Id == product.SellerId).FirstOrDefault();
-                }
+                var products = loadProducts().ToList();
+                //foreach (var product in products)
+                //{
+                //    product.Seller = Service.UserController.Filter(c => c.Id == product.SellerId).FirstOrDefault();
+                //}
                 gridProduct.DataSource = products;
                 LoadNumLabel();
             }
@@ -97,7 +98,7 @@ namespace vendas.MenuForms
 
         private void LoadNumLabel()
         {
-            LabelNumProd.Text = ((List<Product>)gridProduct.DataSource).Count.ToString();
+            LabelNumProd.Text = ((List<ProductDTO>)gridProduct.DataSource).Count.ToString();
         }
 
         private void BtnExclude_Click(object sender, System.EventArgs e)
