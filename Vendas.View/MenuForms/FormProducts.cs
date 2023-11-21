@@ -146,15 +146,20 @@ namespace vendas.MenuForms
 
         private void GenerateReport_Click(object sender, EventArgs e)
         {
-            gridProduct.Refresh();
-            GridView gridView = gridProduct.FocusedView as GridView;
-            var productList = new List<Product>();
-            for (int i = 0; i < gridView.RowCount; i++)
+            try
             {
-                productList.Add((gridView.GetRow(i)) as Product);
+                gridProduct.Refresh();
+                GridView gridView = gridProduct.FocusedView as GridView;
+                var productList = new List<ProductDTO>();
+                for (int i = 0; i < gridView.RowCount; i++)
+                    productList.Add((gridView.GetRow(i)) as ProductDTO);
+                var fReport = GetReportTypes<ProductDTO>.GeneratePDF(TypeReport.Product, productList);
+                (new FormPreviewPDFReport(fReport)).ShowDialog();
             }
-            var fReport = GetReportTypes<Product>.GeneratePDF(TypeReport.Product, productList);
-            (new FormPreviewPDFReport(fReport)).ShowDialog();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Operação Inválido", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         private void SimpleButton1_Click(object sender, EventArgs e)

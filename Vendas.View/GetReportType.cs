@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Vendas.Communication;
+using Vendas.DTO;
 using Vendas.Entity.Enums;
 using Vendas.Library;
 
@@ -53,78 +54,75 @@ namespace vendas
         }
         private static void ConfigureProductReport( Report fReport, List<T> productList)
         {
-            var pathReport = @"../../Reports/ProductReports.frx";
-
-            fReport.Load(pathReport);
-            fReport.Dictionary.RegisterBusinessObject(productList, "productList", 10, true);
-            LoadStaticUserData(fReport);
+                var pathReport = @"../../Reports/ProductReports.frx";
+                
+                fReport.Load(pathReport);
+                fReport.Dictionary.RegisterBusinessObject(productList, "productList", 10, true);
+                LoadStaticUserData(fReport);
 
             if (fReport.FindObject("Text12") is TextObject txtObject)
             {
                 txtObject.AfterData += (sendere, ex) =>
                 {
-                    if (txtObject.Text != null && int.TryParse(txtObject.Text, out int userID))
-                    {
-                        txtObject.Text = Service.UserController.Filter(c => c.Id == userID).FirstOrDefault().Name;
-                    }
+                    var list = productList as List<ProductDTO>;
+                    if (fReport.FindObject("Text1") is TextObject txtObject2)
+                        txtObject.Text = list.Find( c => c.Id == int.Parse(txtObject2.Text)).SellerName;
                 };
             }
-            //fReport.Report.Save(pathReport);
+            fReport.Report.Save(pathReport);
         }
         private static void ConfigureOrderReport( Report fReport, List<T> orderList)
         {
             var pathReport = @"../../Reports/OrderReports.frx";
 
             fReport.Load(pathReport);
-            fReport.Dictionary.RegisterBusinessObject(orderList, "orderList", 10, true);
+            fReport.Dictionary.RegisterBusinessObject(orderList as List<SaleDTO>, "orderList", 10, true);
             LoadStaticUserData(fReport);
 
-
-            if (fReport.FindObject("Text1") is TextObject txtObject1)
+            var list = orderList as List<SaleDTO>;
+            SaleDTO order;
+            if (fReport.FindObject("Text4") is TextObject txtObject)
             {
-                txtObject1.AfterData += (sendere, ex) =>
+                txtObject.AfterData += (send, e) =>
                 {
-                    if (txtObject1.Text != null && int.TryParse(txtObject1.Text, out int productID))
+                    if (!int.TryParse(txtObject.Text, out int idSale)) throw new Exception("Id de pedidos Inválido para a geração do relatório.");
+                    order = list.Find(c => c.Id == idSale);
+
+                    if (fReport.FindObject("Text1") is TextObject txtObject1)
                     {
-                        txtObject1.Text = Service.ProductController.Filter(c => c.Id == productID).FirstOrDefault().Name;
+                        txtObject1.AfterData += (sendere, ex) =>
+                        {
+                            txtObject1.Text = order.NameProduct;
+                        };
+                    }
+                    if (fReport.FindObject("Text5") is TextObject txtObject2)
+                    {
+                        txtObject2.AfterData += (sendere, ex) =>
+                        {
+                            txtObject2.Text = order.NameSeller;
+                        };
+                    }
+
+                    if (fReport.FindObject("Text8") is TextObject txtObject3)
+                    {
+                        txtObject3.AfterData += (sendere, ex) =>
+                        {
+                            txtObject3.Text = order.NameClient;
+                        };
+                    }
+
+                    if (fReport.FindObject("Text10") is TextObject textObject4)
+                    {
+                        textObject4.AfterData += (sendere, ex) =>
+                        {
+                            textObject4.Text = order.ValueProduct.ToString();
+                        };
                     }
                 };
+
             }
 
-            if (fReport.FindObject("Text5") is TextObject txtObject2)
-            {
-                txtObject2.AfterData += (sendere, ex) =>
-                {
-                    if (txtObject2.Text != null && int.TryParse(txtObject2.Text, out int sellerID))
-                    {
-                        txtObject2.Text = Service.UserController.Filter(c => c.Id == sellerID).FirstOrDefault().Name;
-                    }
-                };
-            }
-
-            if (fReport.FindObject("Text8") is TextObject txtObject3)
-            {
-                txtObject3.AfterData += (sendere, ex) =>
-                {
-                    if (txtObject3.Text != null && int.TryParse(txtObject3.Text, out int clientID))
-                    {
-                        txtObject3.Text = Service.UserController.Filter(c => c.Id == clientID).FirstOrDefault().Name;
-                    }
-                };
-            }
-
-            if (fReport.FindObject("Text10") is TextObject txtObject4)
-            {
-                txtObject4.AfterData += (sendere, ex) =>
-                {
-                    if (txtObject4.Text != null && int.TryParse(txtObject4.Text, out int productID))
-                    {
-                        txtObject4.Text = Service.ProductController.Filter(c => c.Id == productID).FirstOrDefault().Value.ToString();
-                    }
-                };
-            }
-
-            fReport.Dictionary.RegisterBusinessObject(orderList, "orderList", 10, true);
+            //fReport.Dictionary.RegisterBusinessObject(orderList, "orderList", 10, true);
 
             //LoadStaticUserData(fReport);
         }

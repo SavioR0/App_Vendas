@@ -133,7 +133,7 @@ namespace vendas.MenuForms
             // Estoque
             // 
             this.Estoque.Caption = "Estoque";
-            this.Estoque.FieldName = "stockProduct";
+            this.Estoque.FieldName = "StockProduct";
             this.Estoque.Name = "Estoque";
             this.Estoque.Visible = true;
             this.Estoque.VisibleIndex = 4;

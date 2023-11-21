@@ -149,10 +149,10 @@ namespace vendas.MenuForms
         private void GenerateReport_Click(object sender, EventArgs e)
         {
             GridView gridView = gridSale.FocusedView as GridView;
-            var saleList = new List<Sale>();
+            var saleList = new List<SaleDTO>();
             for (int i = 0; i < gridView.RowCount; i++)
             {
-                if (gridView.GetRow(i) is Sale sale)
+                if (gridView.GetRow(i) is SaleDTO sale)
                 {
                     saleList.Add(sale);
                 }
@@ -165,7 +165,7 @@ namespace vendas.MenuForms
             //fReport.Dictionary.RegisterBusinessObject(saleList, "orderList", 10, true);
             //fReport.Report.Save(@"../../Reports/OrderReports.frx");
 
-            var fReport = GetReportTypes<Sale>.GeneratePDF(TypeReport.Order, saleList);
+            var fReport = GetReportTypes<SaleDTO>.GeneratePDF(TypeReport.Order, saleList);
             (new FormPreviewPDFReport(fReport)).ShowDialog();
         }
 
