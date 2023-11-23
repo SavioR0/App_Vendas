@@ -10,7 +10,7 @@ namespace Vendas.Service.Interfaces
 {
     public interface IUserController
     {
-        string Save(User entity);
+        string Save(UserCompleteDTO entity);
         string Exclude(User entity);
         string Exclude(int id);
         IQueryable<User> Filter(Expression<Func<User, bool>> condition);

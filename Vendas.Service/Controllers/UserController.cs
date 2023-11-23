@@ -20,19 +20,36 @@ namespace Vendas.Service.Controllers
 
         [HttpPost]
         [Route("salvar")]
-        public string Save(User entity)
+        public string Save(UserCompleteDTO entity)
         {
             SalesContext context = new SalesContext();
             using (DbContextTransaction transaction = SalesTransaction.CreateDbContextTransaction(context)) {
-                if (entity.Flag == "U") _message = new UserRepository(context).Update(entity);
-                else if (entity.Flag == "I")
+                Address address;
+                if (entity.Address != null)
                 {
-                    _message = new UserRepository().Add(entity);
+                    address = new AddressRepository().GetByProps(entity.Address);
+                    if (address != null)
+                        entity.User.AddressId = address.Id;
+                    else
+                    {
+                        _message = new AddressRepository(context).Add(entity.Address);
+
+                        if (_message == "")
+                        {
+                            entity.User.AddressId = entity.Address.Id;
+                        }
+                    }
+                }   
+
+                if (entity.User.Id != 0) _message = new UserRepository(context).Update(entity.User);
+                else 
+                {
+                    _message = new UserRepository(context).Add(entity.User);
                     SendEmail.SendEmailClient(
-                        entity.Email,
+                        entity.User.Email,
                         "compras_vendass@outlook.com",
-                        entity.UserName,
-                        entity.Cpf,
+                        entity.User.UserName,
+                        entity.User.Cpf,
                         "Login sistema de Compra e Venda"
                     );
                 }

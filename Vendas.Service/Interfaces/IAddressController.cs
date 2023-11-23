@@ -13,5 +13,7 @@ namespace Vendas.Service.Interfaces
         string Exclude(Address entity);
         IQueryable<Address> Filter(Expression<Func<Address, bool>> condition);
         IQueryable<Address> GetAll();
+        Address GetById(int id);
+        Address GetByProps(Address address);
     }
 }

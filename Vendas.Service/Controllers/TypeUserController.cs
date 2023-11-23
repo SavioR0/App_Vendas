@@ -20,6 +20,13 @@ namespace Vendas.Service.Controllers
         }
 
         [HttpPost]
+        [Route("PegarPorId")]
+        public TypeUsers GetById(int id)
+        {
+            return new TypeUserRepository().GetById(id);
+        }
+
+        [HttpPost]
         [Route("filtrarTodos")]
 
         IQueryable<TypeUsers> ITypeUsersController.GetAll()

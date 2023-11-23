@@ -19,17 +19,32 @@ namespace Vendas.Repository
         }
         public string Add(Address entity)
         {
-            if (!ValidateEntity(entity))
-                return "Já cadastrado";
+            if (ValidateEntity(entity))
+                return "Endereço já cadastrado";
             return _repository.Insert(entity);
         }
 
-        private bool ValidateEntity(Address entity)
+        private bool ValidateEntity(Address address)
         {
-            if(_repository.GetAll().Any(c => c.Equals(entity)))
-                return false;
-            return true;
+            return _repository.GetAll().Any(c => c.CEP == address.CEP &&
+                c.State == address.State &&
+                c.City == address.City &&
+                c.District == address.District &&
+                c.Number == address.Number &&
+                c.Street == address.Street);
         }
+
+        public Address GetByProps(Address address)
+        {
+            return _repository.GetAll().FirstOrDefault(c => c.CEP == address.CEP &&
+                c.State == address.State &&
+                c.City == address.City &&
+                c.District == address.District &&
+                c.Number == address.Number &&
+                c.Street == address.Street);
+        }
+
+
 
         public IQueryable<Address> Filter(Expression<Func<Address, bool>> condition)
         {

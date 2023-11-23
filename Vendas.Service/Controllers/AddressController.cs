@@ -37,6 +37,21 @@ namespace Vendas.Service.Controllers
         {
             return new AddressRepository().Filter(condition);
         }
+
+        [HttpPost]
+        [Route("PegarPorId")]
+        public Address GetById(int id)
+        {
+            return new AddressRepository().GetById(id);
+        }
+
+        [HttpPost]
+        [Route("PegarPorProps")]
+        public Address GetByProps(Address address)
+        {
+            return new AddressRepository().GetByProps(address);
+        }
+
         [HttpPost]
         [Route("filtrarTodos")]
         public IQueryable<Address> GetAll()

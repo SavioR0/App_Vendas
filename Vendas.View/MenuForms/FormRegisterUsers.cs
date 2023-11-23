@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Vendas.Communication;
+using Vendas.DTO;
 using Vendas.Entity.Entities;
 using Vendas.Entity.Enums;
 using Vendas.Library;
@@ -141,21 +142,26 @@ namespace Vendas.View
             try
             {
                 if (ValidateFields()) {
-                    var user = new User
+
+                    var newUser = new UserCompleteDTO
                     {
-                        Name = nameValue.Text.Trim(),
-                        LastName = LastNameValue.Text.Trim(),
-                        Cpf = Validations.DbFormatCPF(cpfValue.Text),
-                        Tel = Validations.DbFormatTel(telValue.Text),
-                        DateOfBirth = DateTime.Parse(dateValue.Text),
-                        Email = EmailValue.Text.Trim(),
-                        Password = Security.Encrypt("TEXTO", Validations.DbFormatCPF(cpfValue.Text)),
-                        TypeUser = ReturnTypeUser(comboBoxEditTypeUser.Text),
-                        UserName = _userEdited == null ? nameValue.Text.Trim().ToLower() + LastNameValue.Text.Trim().ToLower() + cpfValue.Text.Substring(0, 2) : _userEdited.UserName,
-                        BiometryDataText = BiometryDataText,
-                        BiometryDataBinary = BiometryDataBinary,
-                        Flag = _userEdited == null ? "I" : "U",
-                        EditLogin = _userEdited == null ? 1 : 0,
+                        User = new User
+                        {
+                            Name = nameValue.Text.Trim(),
+                            LastName = LastNameValue.Text.Trim(),
+                            Cpf = Validations.DbFormatCPF(cpfValue.Text),
+                            Tel = Validations.DbFormatTel(telValue.Text),
+                            DateOfBirth = DateTime.Parse(dateValue.Text),
+                            Email = EmailValue.Text.Trim(),
+                            Password = Security.Encrypt("TEXTO", Validations.DbFormatCPF(cpfValue.Text)),
+                            TypeUser = ReturnTypeUser(comboBoxEditTypeUser.Text),
+                            UserName = _userEdited == null ? nameValue.Text.Trim().ToLower() + LastNameValue.Text.Trim().ToLower() + cpfValue.Text.Substring(0, 2) : _userEdited.UserName,
+                            BiometryDataText = BiometryDataText,
+                            BiometryDataBinary = BiometryDataBinary,
+                            Flag = _userEdited == null ? "I" : "U",
+                            EditLogin = _userEdited == null ? 1 : 0,
+                        },
+
                     };
 
                     var address = new Address
@@ -168,11 +174,12 @@ namespace Vendas.View
                         Number = int.Parse(numberValue.Text),
                     };
 
-                    Address validation = Communication.Service.AddressController.Filter(c=>
-                        c.CEP == address.CEP && c.State == address.State & c.City == address.City &&
-                        c.District == address.District &&
-                        c.Number == address.Number &&
-                        c.Street == address.Street).FirstOrDefault();
+                    Address validation = Communication.Service.AddressController.GetByProps(address);
+                    //Filter(c=>
+                    //    c.CEP == address.CEP && c.State == address.State & c.City == address.City &&
+                    //    c.District == address.District &&
+                    //    c.Number == address.Number &&
+                    //    c.Street == address.Street).FirstOrDefault();
                     //if (_userEdited != null && !_userEdited.Address.Equals(address))
                     //{ 
                     //    var message = Communication.Service.AddressController.Save(address);
@@ -182,10 +189,10 @@ namespace Vendas.View
                     //}
 
                     if (validation != null)
-                        user.AddressId = validation.Id;
+                        newUser.User.AddressId = validation.Id;
                     else
-                        user.Address = address;
-                    var messageSave = Communication.Service.UserController.Save(user);
+                        newUser.Address = address;
+                    var messageSave = Communication.Service.UserController.Save(newUser);
 
                     MessageBox.Show(_userEdited == null ? "Usuário cadastrado com sucesso! Para realizar o login a primeira vez verifique em seu e-mail seu username e senha" :
                         "Usuário Atualizado com sucesso!", "Usuário cadastrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);

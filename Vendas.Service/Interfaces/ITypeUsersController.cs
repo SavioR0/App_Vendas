@@ -10,5 +10,6 @@ namespace Vendas.Service.Interfaces
     {
         IQueryable<TypeUsers> Filter(Expression<Func<TypeUsers, bool>> condition);
         IQueryable<TypeUsers> GetAll();
+        TypeUsers GetById(int typeUser);
     }
 }

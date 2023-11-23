@@ -36,7 +36,7 @@ namespace Vendas.Repository
 
         public TypeUsers GetById(int id)
         {
-            throw new NotImplementedException();
+            return _repository.GetById(id);
         }
 
         public string Remove(TypeUsers entity)

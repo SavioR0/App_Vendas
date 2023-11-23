@@ -96,12 +96,9 @@ namespace vendas.MenuForms
 
 
 
-
-
-
         private void LoadNumLabel()
         {
-            LabelNumUser.Text = ((List<UserDTO>)gridUsers.DataSource).Count.ToString();
+            LabelNumUser.Text = ((List<UserDTO>)bindingSourceUsuarios.DataSource).Count.ToString();
         }
 
         private void LoadGridUsers(TypeUser typeUser)
@@ -111,7 +108,7 @@ namespace vendas.MenuForms
                 if (GetTypeUserFunctions<UserDTO>.typeUserFunctions.TryGetValue((typeUser, typeof(UserDTO)), out Func<List<UserDTO>> loadUsers))
                 {
                     var users = loadUsers();
-                    gridUsers.DataSource = users.ToList();
+                    bindingSourceUsuarios.DataSource = users.ToList();
                     LoadNumLabel();
                 }
             }
