@@ -10,7 +10,7 @@ namespace Vendas.Service.Interfaces
 {
     public interface ISaleController
     {
-        string Save(Sale entity);
+        string Save(SaleOrderCompleteDTO entity);
         string Exclude(Sale entity);
         string Exclude(int id);
         IQueryable<Sale> Filter(Expression<Func<Sale, bool>> condition);

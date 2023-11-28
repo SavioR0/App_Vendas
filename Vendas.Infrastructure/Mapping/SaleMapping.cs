@@ -8,11 +8,14 @@ namespace Vendas.Infrastructure.Mapping
         public SaleMapping() {
             ToTable("Vendas");
             HasKey(p => p.Id);
-            Property(p => p.Flag).IsRequired();
+            Property(p => p.ClientId).IsRequired();
+            Property(p => p.DateSale).IsRequired();
 
-            HasRequired(p => p.Product).WithMany().HasForeignKey(v => v.ProductId).WillCascadeOnDelete(false);
-            HasRequired(p => p.Client).WithMany().HasForeignKey(v => v.ClientId).WillCascadeOnDelete(false);
-            HasRequired(p => p.Seller).WithMany().HasForeignKey(v => v.SellerId).WillCascadeOnDelete(false);
+            HasRequired(p => p.Client)
+                .WithMany()
+                .HasForeignKey(v => v.ClientId)
+                .WillCascadeOnDelete(false);
+
         }
     }
 }

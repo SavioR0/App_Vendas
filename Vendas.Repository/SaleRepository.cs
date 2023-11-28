@@ -58,76 +58,66 @@ namespace Vendas.Repository
             return message;
         }
 
-        public IQueryable<SaleDTO> SelectAllDTO(TypeUser typeUser)
-        {
-            var LoadReturnGrid = new Dictionary<TypeUser, Func<IQueryable<SaleDTO>>>{
-                { TypeUser.Admin,() => LoadAdminGrid() },
-                { TypeUser.Client,() => LoadClientGrid() },
-                { TypeUser.Seller,() => LoadSellerGrid() },
-            };
+		public IQueryable<SaleDTO> SelectAllDTO(TypeUser typeUser)
+		{
+			var LoadReturnGrid = new Dictionary<TypeUser, Func<IQueryable<SaleDTO>>>{
+				{ TypeUser.Admin,() => LoadAdminGrid() },
+				{ TypeUser.Client,() => LoadClientGrid() },
+				{ TypeUser.Seller,() => LoadSellerGrid() },
+			};
 
-            if (LoadReturnGrid.TryGetValue(typeUser, out Func<IQueryable<SaleDTO>> loadGrid))
-            {
-                var data = loadGrid();
-                return data;
-            }
-            return null;
-        }
+			if (LoadReturnGrid.TryGetValue(typeUser, out Func<IQueryable<SaleDTO>> loadGrid))
+			{
+				var data = loadGrid();
+				return data;
+			}
+			return null;
+		}
 
-        private IQueryable<SaleDTO> LoadSellerGrid()
-        {
-            return (from s in _db.Sale
-                    join u in _db.Users on s.SellerId equals u.Id
+		private IQueryable<SaleDTO> LoadSellerGrid()
+		{
+            return (from o in _db.Order
+                    join s in _db.Sale on o.SaleId equals s.Id
+                    where (s.ClientId == Global.Instance.User.Id || o.Product.SellerId == Global.Instance.User.Id)
                     join c in _db.Users on s.ClientId equals c.Id
-                    join p in _db.Product on s.ProductId equals p.Id
-                    where u.Id == Global.Instance.User.Id || c.Id == Global.Instance.User.Id
                     select new SaleDTO
                     {
                         Id = s.Id,
                         NameClient = c.Name,
-                        NameProduct = p.Name,
-                        NameSeller = u.Name,
-                        ValueProduct = p.Value,
-                        StockProduct = p.Stock
-                    }
-             );
+                        DateSale = s.DateSale,
+                        Value = s.Value,
+                    });
+
         }
 
-        private IQueryable<SaleDTO> LoadAdminGrid()
-        {
-            return (from s in _db.Sale
-                    join u in _db.Users on s.SellerId equals u.Id
+		private IQueryable<SaleDTO> LoadAdminGrid()
+		{
+            return (from o in _db.Order
+                    join s in _db.Sale on o.SaleId equals s.Id
                     join c in _db.Users on s.ClientId equals c.Id
-                    join p in _db.Product on s.ProductId equals p.Id
                     select new SaleDTO
                     {
                         Id = s.Id,
                         NameClient = c.Name,
-                        NameProduct = p.Name,
-                        NameSeller = u.Name,
-                        ValueProduct = p.Value,
-                        StockProduct = p.Stock
-                    }
-             );
+                        DateSale = s.DateSale,
+                        Value = s.Value,
+                    });
         }
 
-        private IQueryable<SaleDTO> LoadClientGrid()
-        {
-            return (from s in _db.Sale
-                    join u in _db.Users on s.SellerId equals u.Id
+		private IQueryable<SaleDTO> LoadClientGrid()
+		{
+            return (from o in _db.Order
+                    join s in _db.Sale on o.SaleId equals s.Id
+                    where (s.ClientId == Global.Instance.User.Id)
                     join c in _db.Users on s.ClientId equals c.Id
-                    join p in _db.Product on s.ProductId equals p.Id
-                    where c.Id == Global.Instance.User.Id
                     select new SaleDTO
                     {
                         Id = s.Id,
                         NameClient = c.Name,
-                        NameProduct = p.Name,
-                        NameSeller = u.Name,
-                        ValueProduct = p.Value,
-                        StockProduct = p.Stock
+                        DateSale = s.DateSale,
+                        Value = s.Value,
                     }
-             );
-        }
-    }
+			 );
+		}
+	}
 }

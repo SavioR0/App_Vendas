@@ -411,10 +411,14 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\FormHomePage.datasource" />
     <None Include="Properties\DataSources\GetReportTypes`1[].datasource" />
+    <None Include="Properties\DataSources\Vendas.DTO.OrderDTO.datasource" />
     <None Include="Properties\DataSources\Vendas.DTO.ProductDTO.datasource" />
     <None Include="Properties\DataSources\Vendas.DTO.SaleDTO.datasource" />
+    <None Include="Properties\DataSources\Vendas.DTO.SaleOrderCompleteDTO.datasource" />
+    <None Include="Properties\DataSources\Vendas.DTO.UserCompleteDTO.datasource" />
     <None Include="Properties\DataSources\Vendas.DTO.UserDTO.datasource" />
     <None Include="Properties\DataSources\Vendas.Entity.Entities.Address.datasource" />
+    <None Include="Properties\DataSources\Vendas.Entity.Entities.Order.datasource" />
     <None Include="Properties\DataSources\Vendas.Entity.Entities.Product.datasource" />
     <None Include="Properties\DataSources\Vendas.Entity.Entities.User.datasource" />
     <None Include="Properties\DataSources\vendas.MenuForms.FormAbout.datasource" />

@@ -39,44 +39,26 @@ namespace vendas.MenuForms
             FilterSelectedSale = new Dictionary<string, Action> {
                 { "Id", FilterByIdSale},
                 { "Cliente", FilterByClient},
-                { "Vendedor", FilterBySeller},
-                { "Produto", FilterByProduct},
-                { "Valor", FilterByValue},
-                { "Estoque", FilterByStock},
+                { "Data", FilterByDate},
             };
         }
 
-        private void FilterByStock()
-        {
-            if (!int.TryParse(TextEditSearchSale.Text, out int value)) throw new ApplicationException("Coloque um Estoque válido!");
+        //private void FilterByStock()
+        //{
+        //    if (!int.TryParse(TextEditSearchSale.Text, out int value)) throw new ApplicationException("Coloque um Estoque válido!");
 
-            var allSales = bindingSourceSales.DataSource as List<SaleDTO>;
-            List<SaleDTO> sale = allSales.FindAll(c => c.StockProduct == value);
-            bindingSourceSales.DataSource = sale;
-        }
+        //    var allSales = bindingSourceSales.DataSource as List<SaleDTO>;
+        //    List<SaleDTO> sale = allSales.FindAll(c => c.StockProduct == value);
+        //    bindingSourceSales.DataSource = sale;
+        //}
 
-        private void FilterByValue()
-        {
-            if (!double.TryParse(TextEditSearchSale.Text, out double value)) throw new ApplicationException("Coloque um Id válido!");
 
-            var allSales = bindingSourceSales.DataSource as List<SaleDTO>;
-            List<SaleDTO> sales = allSales.FindAll(c => c.ValueProduct == value);
-            bindingSourceSales.DataSource = sales;
-        }
-
-        private void FilterByProduct()
-        {
-            var allSales = bindingSourceSales.DataSource as List<SaleDTO>;
-            List<SaleDTO> sales = allSales.FindAll(c => c.NameProduct.IndexOf(TextEditSearchSale.Text, StringComparison.OrdinalIgnoreCase) >= 0);
-            bindingSourceSales.DataSource = sales;
-        }
-
-        private void FilterBySeller()
-        {
-            var allSales = bindingSourceSales.DataSource as List<SaleDTO>;
-            List<SaleDTO> sales = allSales.FindAll(c => c.NameSeller.IndexOf(TextEditSearchSale.Text, StringComparison.OrdinalIgnoreCase) >= 0);
-            bindingSourceSales.DataSource = sales;
-        }
+        //private void FilterBySeller()
+        //{
+        //    var allSales = bindingSourceSales.DataSource as List<SaleDTO>;
+        //    List<SaleDTO> sales = allSales.FindAll(c => c.NameSeller.IndexOf(TextEditSearchSale.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+        //    bindingSourceSales.DataSource = sales;
+        //}
 
         private void FilterByClient()
         {
@@ -282,7 +264,7 @@ namespace vendas.MenuForms
             if (GetTypeUserFunctions<SaleDTO>.typeUserFunctions.TryGetValue(((TypeUser)Global.Instance.User.TypeUser, typeof(SaleDTO)), out Func<List<SaleDTO>> loadSales))
             {
                 var sales = loadSales().ToList<SaleDTO>();
-                sales = sales.FindAll(c => c.NameClient == user.Name || c.NameSeller == user.Name);
+                sales = sales.FindAll(c => c.NameClient == user.Name);
 
                 bindingSourceSales.DataSource = sales;
                 LabelNumOrder.Text = sales.Count.ToString();
@@ -308,5 +290,5 @@ namespace vendas.MenuForms
             TextEditSearchSale.Text = "";
         }
 
-    }
+	}
 }

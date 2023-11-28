@@ -88,20 +88,20 @@ namespace vendas
                     if (!int.TryParse(txtObject.Text, out int idSale)) throw new Exception("Id de pedidos Inválido para a geração do relatório.");
                     order = list.Find(c => c.Id == idSale);
 
-                    if (fReport.FindObject("Text1") is TextObject txtObject1)
-                    {
-                        txtObject1.AfterData += (sendere, ex) =>
-                        {
-                            txtObject1.Text = order.NameProduct;
-                        };
-                    }
-                    if (fReport.FindObject("Text5") is TextObject txtObject2)
-                    {
-                        txtObject2.AfterData += (sendere, ex) =>
-                        {
-                            txtObject2.Text = order.NameSeller;
-                        };
-                    }
+                    //if (fReport.FindObject("Text1") is TextObject txtObject1)
+                    //{
+                    //    txtObject1.AfterData += (sendere, ex) =>
+                    //    {
+                    //        txtObject1.Text = order.NameProduct;
+                    //    };
+                    //}
+                    //if (fReport.FindObject("Text5") is TextObject txtObject2)
+                    //{
+                    //    txtObject2.AfterData += (sendere, ex) =>
+                    //    {
+                    //        txtObject2.Text = order.NameSeller;
+                    //    };
+                    //}
 
                     if (fReport.FindObject("Text8") is TextObject txtObject3)
                     {
@@ -111,13 +111,13 @@ namespace vendas
                         };
                     }
 
-                    if (fReport.FindObject("Text10") is TextObject textObject4)
-                    {
-                        textObject4.AfterData += (sendere, ex) =>
-                        {
-                            textObject4.Text = order.ValueProduct.ToString();
-                        };
-                    }
+                    //if (fReport.FindObject("Text10") is TextObject textObject4)
+                    //{
+                    //    textObject4.AfterData += (sendere, ex) =>
+                    //    {
+                    //        textObject4.Text = order.ValueProduct.ToString();
+                    //    };
+                    //}
                 };
 
             }

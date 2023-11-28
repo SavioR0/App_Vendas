@@ -14,6 +14,8 @@ namespace Vendas.Service.Interfaces
         string Exclude(Product entity);
         string Exclude(int id);
         IQueryable<Product> Filter(Expression<Func<Product, bool>> condition);
+        IQueryable<ProductDTO> FilterDTO(TypeUser typeUser,Expression<Func<ProductDTO, bool>> condition);
+
         List<ProductDTO> SelectAllDTO(TypeUser typeUSer);
         IQueryable<Product> GetAll();
 

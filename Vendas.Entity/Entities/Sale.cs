@@ -1,22 +1,21 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 namespace Vendas.Entity.Entities
 {
-    public class Sale : BaseEntity
+	public class Sale : BaseEntity
     {
-        public int ProductId { get; set; }
-        public int SellerId { get; set; }
-        public int ClientId { get; set; }
-        public string Flag { get; set; }
 
-        [IgnoreDataMember]
-        public virtual Product Product { get; set; }
+        public int ClientId { get; set; }
+        public double Value { get; set; }
+        public DateTime DateSale { get; set; }
 
         [IgnoreDataMember]
         public virtual User Client { get; set; }
 
         [IgnoreDataMember]
-        public virtual User Seller { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
+
     }
 }

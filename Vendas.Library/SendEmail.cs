@@ -49,8 +49,7 @@ namespace Vendas.Library
             }
             catch (Exception ex)
             {
-                string erro = ex.InnerException.ToString();
-                return ex.Message.ToString() + erro;
+                return ex.Message.ToString();
             }
         
         }

@@ -186,7 +186,6 @@ namespace vendas.MenuForms
             // 
             // bindingSourceProduct
             // 
-            this.bindingSourceProduct.DataSource = typeof(Vendas.Entity.Entities.Product);
             // 
             // FormRegisterProduct
             // 

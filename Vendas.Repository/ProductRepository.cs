@@ -34,6 +34,21 @@ namespace Vendas.Repository
             return _repository.Filter(condition);
         }
 
+        public IQueryable<ProductDTO> FilterDTO()
+        {
+            return (from p in _db.Product
+                    join u in _db.Users on p.SellerId equals u.Id
+                    select new ProductDTO
+                    {
+                        Id = p.Id,
+                        Name = p.Name,
+                        Description = p.Description,
+                        Stock = p.Stock,
+                        SellerName = u.Name,
+                        Value = p.Value
+                    }); 
+        }
+
         public IQueryable<Product> GetAll()
         {
             return _repository.GetAll();

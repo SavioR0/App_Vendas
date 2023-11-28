@@ -90,5 +90,13 @@ namespace Vendas.Service.Controllers.Interfaces
         public List<ProductDTO> SelectAllDTO(TypeUser typeUser) {
             return new ProductRepository().SelectAllDTO(typeUser).ToList();
         }
-    }
+
+        [HttpPost]
+        [Route("filtrarDTO")]
+        public IQueryable<ProductDTO> FilterDTO(TypeUser typeUser, Expression<Func<ProductDTO, bool>> condition)
+        {
+            return new ProductRepository().SelectAllDTO(typeUser).Where(condition);
+        }
+
+	}
 }

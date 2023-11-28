@@ -24,47 +24,47 @@ namespace vendas.MenuForms
 
             LoadGridSale((TypeUser)Global.Instance.User.TypeUser);
 
-            FilterSelected = new Dictionary<string, Action> {
-                { "Id", FilterById},
-                { "Cliente", FilterByClient},
-                { "Vendedor", FilterBySeller},
-                { "Produto", FilterByProduct},
-                { "Valor", FilterByValue},
-                { "Estoque", FilterByStock},
-            };
+            //FilterSelected = new Dictionary<string, Action> {
+            //    { "Id", FilterById},
+            //    { "Cliente", FilterByClient},
+            //    { "Vendedor", FilterBySeller},
+            //    { "Produto", FilterByProduct},
+            //    { "Valor", FilterByValue},
+            //    { "Estoque", FilterByStock},
+            //};
         }
 
-        private void FilterByStock()
-        {
-            if (!int.TryParse(textEditSearch.Text, out int value)) throw new ApplicationException("Coloque um Estoque válido!");
+        //private void FilterByStock()
+        //{
+        //    if (!int.TryParse(textEditSearch.Text, out int value)) throw new ApplicationException("Coloque um Estoque válido!");
 
-            var allSales = gridSale.DataSource as List<Sale>;
-            List<Sale> sale = allSales.FindAll(c => c.Product.Stock == value);
-            gridSale.DataSource = sale;
-        }
+        //    var allSales = gridSale.DataSource as List<Sale>;
+        //    List<Sale> sale = allSales.FindAll(c => c.Product.Stock == value);
+        //    gridSale.DataSource = sale;
+        //}
 
-        private void FilterByValue()
-        {
-            if (!double.TryParse(textEditSearch.Text, out double value)) throw new ApplicationException("Coloque um Id válido!");
+        //private void FilterByValue()
+        //{
+        //    if (!double.TryParse(textEditSearch.Text, out double value)) throw new ApplicationException("Coloque um Id válido!");
 
-            var allSales = gridSale.DataSource as List<Sale>;
-            List<Sale> sale = allSales.FindAll(c => c.Product.Value == value);
-            gridSale.DataSource = sale;
-        }
+        //    var allSales = gridSale.DataSource as List<Sale>;
+        //    List<Sale> sale = allSales.FindAll(c => c.Product.Value == value);
+        //    gridSale.DataSource = sale;
+        //}
 
-        private void FilterByProduct()
-        {
-            var sales = gridSale.DataSource as List<Sale>;
-            List<Sale> teste = sales.FindAll(c => c.Product.Name.IndexOf(textEditSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
-            gridSale.DataSource = teste;
-        }
+        //private void FilterByProduct()
+        //{
+        //    var sales = gridSale.DataSource as List<Sale>;
+        //    List<Sale> teste = sales.FindAll(c => c.Product.Name.IndexOf(textEditSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+        //    gridSale.DataSource = teste;
+        //}
 
-        private void FilterBySeller()
-        {
-            var sales = gridSale.DataSource as List<Sale>;
-            List<Sale> teste = sales.FindAll(c => c.Seller.Name.IndexOf(textEditSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
-            gridSale.DataSource = teste;
-        }
+        //private void FilterBySeller()
+        //{
+        //    var sales = gridSale.DataSource as List<Sale>;
+        //    List<Sale> teste = sales.FindAll(c => c.Seller.Name.IndexOf(textEditSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+        //    gridSale.DataSource = teste;
+        //}
 
         private void FilterByClient()
         {
@@ -91,7 +91,7 @@ namespace vendas.MenuForms
         {
             if (GetTypeUserFunctions<SaleDTO>.typeUserFunctions.TryGetValue((typeUser, typeof(SaleDTO)), out Func<List<SaleDTO>> loadSales)) 
             {
-                var sales = loadSales().ToList<SaleDTO>();
+                var sales = loadSales().ToList();
 
                 bindingSourceSales.DataSource = sales;
                 LoadNumLabel();
@@ -99,7 +99,10 @@ namespace vendas.MenuForms
         }
         private void BtnExclude_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Tem certeza que deseja remover o pedido do sistema?", "Remover pedido!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("Tem certeza que deseja remover o pedido do sistema?",
+                "Remover pedido!",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 try
                 {

@@ -194,9 +194,14 @@ namespace Vendas.View
                         newUser.Address = address;
                     var messageSave = Communication.Service.UserController.Save(newUser);
 
-                    MessageBox.Show(_userEdited == null ? "Usuário cadastrado com sucesso! Para realizar o login a primeira vez verifique em seu e-mail seu username e senha" :
+                    if (messageSave != "")
+                        MessageBox.Show("Erro ao cadastrar Usuário! " + messageSave, "Erro ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    else {
+                        MessageBox.Show(_userEdited == null ? "Usuário cadastrado com sucesso! Para realizar o login a primeira vez verifique em seu e-mail seu username e senha" :
                         "Usuário Atualizado com sucesso!", "Usuário cadastrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ClearFields();
+                        ClearFields();
+                    }
+                    
                 }
             }
             catch 

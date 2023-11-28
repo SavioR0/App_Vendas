@@ -61,5 +61,16 @@ namespace Vendas.Communication
                     return new TypeUserController();
             }
         }
+
+        public static IOrderController OrderController
+        {
+            get
+            {
+                if (Global.Instance.Distribuida)
+                    return null;
+                else
+                    return new OrderController();
+            }
+        }
     }
 }

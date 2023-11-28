@@ -19,26 +19,27 @@ namespace Vendas.Service.Controllers
 
             [HttpPost]
             [Route("salvar")]
-            public string Save(Sale entity)
+            public string Save(SaleOrderCompleteDTO entity)
             {
-                SalesContext context = new SalesContext();
-                using (DbContextTransaction transaction = SalesTransaction.CreateDbContextTransaction(context))
+
+                if (entity.Sale.Id != 0)
                 {
-                    if (entity.Flag == "U")
-                        _message = new SaleRepository().Update(entity);
-                    else if (entity.Flag == "I")
-                        _message = new SaleRepository().Add(entity);
-                    else
-                        _message = "Flag necessária";
-
-                    if (_message == "")
-                        transaction.Commit();
-                    else
-                        transaction.Rollback();
-                    return _message;
+                    _message = new SaleRepository().Update(entity.Sale);
                 }
-            
+                else
+                {
+                    _message = new SaleRepository().Add(entity.Sale);
+                    var dateSale = entity.Sale.DateSale.Date;
+                    Sale saleId = new SaleRepository().GetAll().OrderByDescending(d => d.DateSale).FirstOrDefault();
 
+                    foreach (Order order in entity.Orders)
+                    {
+                        order.SaleId = saleId.Id;
+                        _message = new OrderRepository().Add(order);
+                    }
+                }
+
+                return _message;
             }
 
             [HttpPost]
@@ -87,8 +88,8 @@ namespace Vendas.Service.Controllers
             [HttpPost]
             [Route("selecionarTodosDTO")]
             public List<SaleDTO> SelectAllDTO(TypeUser typeUser) {
-                    return new SaleRepository().SelectAllDTO(typeUser).ToList();
-                }
+                return new SaleRepository().SelectAllDTO(typeUser).ToList();
+               }
 
         }
 }

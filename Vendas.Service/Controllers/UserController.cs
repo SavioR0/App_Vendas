@@ -45,13 +45,13 @@ namespace Vendas.Service.Controllers
                 else 
                 {
                     _message = new UserRepository(context).Add(entity.User);
-                    SendEmail.SendEmailClient(
-                        entity.User.Email,
-                        "compras_vendass@outlook.com",
-                        entity.User.UserName,
-                        entity.User.Cpf,
-                        "Login sistema de Compra e Venda"
-                    );
+                    //_message = SendEmail.SendEmailClient(
+                    //    entity.User.Email,
+                    //    "compras_vendass@outlook.com",
+                    //    entity.User.UserName,
+                    //    entity.User.Cpf,
+                    //    "Login sistema de Compra e Venda"
+                    //);
                 }
                 if (_message == "")
                     transaction.Commit();

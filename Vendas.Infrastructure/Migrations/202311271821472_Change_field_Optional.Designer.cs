@@ -7,13 +7,13 @@ namespace Vendas.Infrastructure.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class add_state_Address : IMigrationMetadata
+    public sealed partial class Change_field_Optional : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(add_state_Address));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Change_field_Optional));
         
         string IMigrationMetadata.Id
         {
-            get { return "202311061234507_add_state_Address"; }
+            get { return "202311271821472_Change_field_Optional"; }
         }
         
         string IMigrationMetadata.Source

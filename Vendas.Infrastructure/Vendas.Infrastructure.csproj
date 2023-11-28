@@ -53,37 +53,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Mapping\AddressMapping.cs" />
+    <Compile Include="Mapping\OrderMapping.cs" />
     <Compile Include="Mapping\ProductMapping.cs" />
     <Compile Include="Mapping\SaleMapping.cs" />
     <Compile Include="Mapping\TypeUserMapping.cs" />
     <Compile Include="Mapping\UserMapping.cs" />
-    <Compile Include="Migrations\202311011253120_Init_Migration.cs" />
-    <Compile Include="Migrations\202311011253120_Init_Migration.designer.cs">
-      <DependentUpon>202311011253120_Init_Migration.cs</DependentUpon>
+    <Compile Include="Migrations\202311231721499_InitialCreate.cs" />
+    <Compile Include="Migrations\202311231721499_InitialCreate.designer.cs">
+      <DependentUpon>202311231721499_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202311011335136_Flag_update.cs" />
-    <Compile Include="Migrations\202311011335136_Flag_update.designer.cs">
-      <DependentUpon>202311011335136_Flag_update.cs</DependentUpon>
+    <Compile Include="Migrations\202311271821472_Change_field_Optional.cs" />
+    <Compile Include="Migrations\202311271821472_Change_field_Optional.designer.cs">
+      <DependentUpon>202311271821472_Change_field_Optional.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202311061234507_add_state_Address.cs" />
-    <Compile Include="Migrations\202311061234507_add_state_Address.designer.cs">
-      <DependentUpon>202311061234507_add_state_Address.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202311201331378_users_requiredFieds.cs" />
-    <Compile Include="Migrations\202311201331378_users_requiredFieds.designer.cs">
-      <DependentUpon>202311201331378_users_requiredFieds.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202311201356411_adjust_user_fields.cs" />
-    <Compile Include="Migrations\202311201356411_adjust_user_fields.designer.cs">
-      <DependentUpon>202311201356411_adjust_user_fields.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202311201401389_adjust_user_fields_optionals.cs" />
-    <Compile Include="Migrations\202311201401389_adjust_user_fields_optionals.designer.cs">
-      <DependentUpon>202311201401389_adjust_user_fields_optionals.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202311201403036_adjust_user_typeUser_optionals.cs" />
-    <Compile Include="Migrations\202311201403036_adjust_user_typeUser_optionals.designer.cs">
-      <DependentUpon>202311201403036_adjust_user_typeUser_optionals.cs</DependentUpon>
+    <Compile Include="Migrations\202311271831574_Change_field.Optiona.cs" />
+    <Compile Include="Migrations\202311271831574_Change_field.Optiona.designer.cs">
+      <DependentUpon>202311271831574_Change_field.Optiona.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -101,26 +86,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202311011253120_Init_Migration.resx">
-      <DependentUpon>202311011253120_Init_Migration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202311231721499_InitialCreate.resx">
+      <DependentUpon>202311231721499_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202311011335136_Flag_update.resx">
-      <DependentUpon>202311011335136_Flag_update.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202311271821472_Change_field_Optional.resx">
+      <DependentUpon>202311271821472_Change_field_Optional.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202311061234507_add_state_Address.resx">
-      <DependentUpon>202311061234507_add_state_Address.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202311201331378_users_requiredFieds.resx">
-      <DependentUpon>202311201331378_users_requiredFieds.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202311201356411_adjust_user_fields.resx">
-      <DependentUpon>202311201356411_adjust_user_fields.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202311201401389_adjust_user_fields_optionals.resx">
-      <DependentUpon>202311201401389_adjust_user_fields_optionals.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202311201403036_adjust_user_typeUser_optionals.resx">
-      <DependentUpon>202311201403036_adjust_user_typeUser_optionals.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202311271831574_Change_field.Optiona.resx">
+      <DependentUpon>202311271831574_Change_field.Optiona.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

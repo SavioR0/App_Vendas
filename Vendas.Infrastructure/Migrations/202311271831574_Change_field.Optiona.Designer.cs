@@ -7,13 +7,13 @@ namespace Vendas.Infrastructure.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class adjust_user_fields_optionals : IMigrationMetadata
+    public sealed partial class Change_fieldOptiona : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(adjust_user_fields_optionals));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Change_fieldOptiona));
         
         string IMigrationMetadata.Id
         {
-            get { return "202311201401389_adjust_user_fields_optionals"; }
+            get { return "202311271831574_Change_field.Optiona"; }
         }
         
         string IMigrationMetadata.Source

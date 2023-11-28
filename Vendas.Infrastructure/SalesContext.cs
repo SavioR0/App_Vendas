@@ -14,6 +14,7 @@ namespace Vendas.Infrastructure
         public DbSet<Product> Product { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Sale> Sale { get; set; }
+        public DbSet<Order> Order { get; set; }
         public DbSet<TypeUsers> TypeUsers { get; set; }
         public DbSet<Address> Addresses { get; set; }
 

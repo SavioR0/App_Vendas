@@ -1,15 +1,13 @@
 ﻿namespace Vendas.Infrastructure.Migrations
 {
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
+	using System.Data.Entity.Migrations;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Vendas.Infrastructure.SalesContext>
+	internal sealed class Configuration : DbMigrationsConfiguration<Vendas.Infrastructure.SalesContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            ContextKey = "Vendas.Infrastructure.SalesContext";
         }
 
         protected override void Seed(Vendas.Infrastructure.SalesContext context)

@@ -4,19 +4,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Vendas.Communication;
+using Vendas.DTO;
 using Vendas.Entity.Entities;
 using Vendas.Entity.Enums;
 using Vendas.Library;
 
 namespace vendas.MenuForms
 {
-    public partial class FormRegisterOrder : Form
+	public partial class FormRegisterOrder : Form
     {
-        private List<Product> _listProduct = new List<Product>();
+        private List<OrderDTO> _listProduct = new List<OrderDTO>();
         public FormRegisterOrder()
         {
             InitializeComponent();
-            gridOrders.DataSource = _listProduct;
+            OrderDTOBindingSource .DataSource = _listProduct;
             btnExclude.Enabled = false;
             LoadNameProducts();
         }
@@ -33,33 +34,37 @@ namespace vendas.MenuForms
 
         private void BtnUpdate_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(ComboBoxProduct.Text))
+            if (numValueEdit.Text == "0")
+            { 
+                MessageBox.Show("Selecione uma quantidade Válida", "Quantidade Inválida", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            var productDTO = Service.ProductController.FilterDTO((TypeUser)Global.Instance.User.TypeUser, c => c.Name == ComboBoxProduct.Text).FirstOrDefault();
+            if(string.IsNullOrWhiteSpace(ComboBoxProduct.Text) && productDTO == null)
             {
                 MessageBox.Show("Selecione um produto válido e tente novamente", "Produto Inválido", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            var prod = Service.ProductController.Filter(c => c.Name == ComboBoxProduct.Text).FirstOrDefault();
-            if (prod == null) 
+            //if(int.TryParse())
+            int quantity = int.Parse(numValueEdit.Text);
+            OrderDTO order = new OrderDTO
             {
-                MessageBox.Show("O produto especificado não existe.","Produto Inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            prod.Seller = Service.UserController.Filter(c => (c.TypeUser == (int)TypeUser.Seller || c.TypeUser ==(int)TypeUser.Admin) && prod.SellerId == c.Id).FirstOrDefault();
+                ProductDTO = productDTO,
+                ValueOrder = productDTO.Value * quantity,
+                Quantity = quantity,
+            };
+            _listProduct.Add(order);
 
-            for (int i = 0; i <int.Parse(numValueEdit.Text); i++)
-            {
-                _listProduct.Add(prod);
-            }
+            OrderDTOBindingSource.DataSource = _listProduct;
             gridOrders.RefreshDataSource();
-
             UpdateValueText();
-        }
+		}
 
-        private void UpdateValueText()
+		private void UpdateValueText()
         {
             double valueOrder = 0.0;
             foreach (var prod in _listProduct)
-                valueOrder += prod.Value;
+                valueOrder += prod.ValueOrder;
             ValueEdit.Text = "R$ " + valueOrder.ToString("0.00");
         }
 
@@ -67,51 +72,74 @@ namespace vendas.MenuForms
         private void RemoveOrderList(object sender, EventArgs e)
         {
             GridView gridView = gridOrders.FocusedView as GridView;
-            var prod = (gridView.GetRow(gridView.FocusedRowHandle) as Product);
-            _listProduct.Remove(_listProduct.Find(c => c.Id == prod.Id));
+            var prod = (gridView.GetRow(gridView.FocusedRowHandle) as OrderDTO);
+            _listProduct.Remove(_listProduct.Find(c => c.ProductDTO.Id == prod.ProductDTO.Id));
             gridOrders.RefreshDataSource();
             UpdateValueText();
         }
 
+        private List<Order> LoadListOrders() {
+            var list = new List<Order>();
+            foreach (var prod in _listProduct)
+            {
+                list.Add(new Order
+                {
+                    Quantity = prod.Quantity,
+                    ProductId = prod.ProductDTO.Id
+                }) ;
+            }
+            return list;
+                // Cadastro da Venda
+                //string message = Service.SaleController.Save(new Sale
+                //{
+                //    ProductId = prod.Id,
+                //    ClientId = Global.Instance.User.Id,
+                //    SellerId = prod.SellerId,
+                //    Flag = "I",
+                //});
+                //if (message != "") throw new Exception(message);
+                // Update estoque produto
+                //message = Service.ProductController.Save(new Product
+                //{
+                //    Id = prod.Id,
+                //    Name = prod.Name,
+                //    Value = prod.Value,
+                //    Description = prod.Description,
+                //    Stock = Service.ProductController.Filter(c => c.Id == prod.Id).FirstOrDefault().Stock - 1,
+                //    Flag = "U",
+                //    SellerId = prod.SellerId,
+                //});
+                //if (message != "") throw new Exception(message);
+            //}
+        }
+
         private void RegisterOrders(object sender, EventArgs e)
         {
-            if (_listProduct.Count == 0) 
-            {
-                MessageBox.Show("Cadastre novos produtos no carrinho e tente novamente.", "Carrinho vazio!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
+			if (_listProduct.Count == 0)
+			{
+				MessageBox.Show("Cadastre novos produtos no carrinho e tente novamente.", "Carrinho vazio!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+			}
             try
             {
-                foreach (var prod in _listProduct)
+                var NewOrderSale = new SaleOrderCompleteDTO
                 {
-                    // Cadastro da Venda
-                    string message = Service.SaleController.Save(new Sale
+                    Sale = new Sale
                     {
-                        ProductId = prod.Id,
                         ClientId = Global.Instance.User.Id,
-                        SellerId = prod.SellerId,
-                        Flag = "I",
-                    });
-                    if (message != "") throw new Exception(message);
-                    // Update estoque produto
-                    message = Service.ProductController.Save(new Product
-                    {
-                        Id = prod.Id,
-                        Name = prod.Name,
-                        Value = prod.Value,
-                        Description = prod.Description,
-                        Stock =Service.ProductController.Filter(c=> c.Id == prod.Id).FirstOrDefault().Stock- 1,
-                        Flag = "U",
-                        SellerId = prod.SellerId,
-                    });
-                    if (message != "") throw new Exception(message);
-                }
-                ClearFields();
-                MessageBox.Show("Todos os pedidos foram cadastrados com sucesso. Consulte a aba de pedidos e consulte todos os pedidos cadastrados", "Pedidos Cadastrados com sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex) {
-                MessageBox.Show("Erro ao cadastrar Pedido. " + ex, "Cadastro de Pedido inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+                        DateSale = DateTime.Now,
+                        Value = double.Parse(ValueEdit.Text.Replace("R$", ""))
+                    },
+                    Orders = LoadListOrders(),
+				};
+                Service.SaleController.Save(NewOrderSale);
+				ClearFields();
+				MessageBox.Show("Todos os pedidos foram cadastrados com sucesso. Consulte a aba de pedidos e consulte todos os pedidos cadastrados", "Pedidos Cadastrados com sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Erro ao cadastrar Pedido. " + ex, "Cadastro de Pedido inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
 
         private void ClearFields()
         {
@@ -121,5 +149,5 @@ namespace vendas.MenuForms
             numValueEdit.Text = "";
         }
 
-    }
+	}
 }

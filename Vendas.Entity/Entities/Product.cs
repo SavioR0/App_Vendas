@@ -32,5 +32,8 @@ namespace Vendas.Entity.Entities
         [IgnoreDataMember]
         public virtual User Seller { get; set; }
 
+        [IgnoreDataMember]
+        public virtual Order Order { get; set; }
+
     }
 }
