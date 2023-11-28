@@ -43,7 +43,7 @@ Foi implementado o Login por biometria por meio do leitor modelo finKey Hamster 
 ## Diagrama
 O sistema implementa o Diagrama de relacionamento ilustrado na figura a seguir:
 
-![Diagrama de Entidade Ralacionamento](https://user-images.githubusercontent.com/61707707/282452920-ee0f41ed-326d-4d32-a4b8-4a6f9059808b.png)
+![Diagrama de Entidade Ralacionamento](https://private-user-images.githubusercontent.com/61707707/286343269-53e08f2f-2703-402a-b43a-c805b16ff4a4.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTEiLCJleHAiOjE3MDExOTE5NDEsIm5iZiI6MTcwMTE5MTY0MSwicGF0aCI6Ii82MTcwNzcwNy8yODYzNDMyNjktNTNlMDhmMmYtMjcwMy00MDJhLWI0M2EtYzgwNWIxNmZmNGE0LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFJV05KWUFYNENTVkVINTNBJTJGMjAyMzExMjglMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjMxMTI4VDE3MTQwMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTgyMzNhZmM5YjFlMDUzMTQxNjM4NjFiZTFkN2RlM2JkZWFhMDNhMGUxMTBlMzJkNjdmNDk0M2YzOGE3ZWZjZjEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.n3_yrB63TNIY1R-y3bTtrV6eGHCm0FWeLz2kkm9K3do)
 
 - Existem três tipos de usuários no sistema:
     - Cliente - Possui funcionalidades limitadas dentro da aplicação. Sua principal permissão, é a de realizar pedidos a partir dos produtos cadastrados no sistema.
