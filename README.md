@@ -19,9 +19,9 @@ A seguir, têm-se a organização do projeto:
 ### Communication
 Projeto responsável por realizar a comunicação para a camada dos Controladores. Além de classes de envio de email e comunicação do o leitor biométrico.
 ### DTO
-Projeto responsável por implementar as classes DTOs do sistema, as quais auxiliam no preenchimento dos dados nas grids e relatórios do sistema.
+Projeto responsável por implementar as classes DTOs do sistema, as quais auxiliam com a manipulação dos dados dentro do sistema.
 ### Entity
-Projeto responsável por todas as entidades do sistema de vendas. As principais são: Usuários, produtos e pedidos.
+Projeto responsável por implementar as entidades do sistema de vendas. As principais são: Usuários, produtos, vendas e pedidos.
 ### Infrastructure
 Projeto responsável pela configuração do Entity FrameWork, migrações e mapeamento das tabelas no banco de dados.
 ### Library
@@ -57,4 +57,4 @@ O sistema implementa o Diagrama de relacionamento ilustrado na figura a seguir:
         - UserName : master
         - Senha : 123456
 
-As configurações de conexão com o banco, são encontradas do arquivo Vendas.View\App.config na tag connectionString. Nessária a alteração para os dados da máquina do usuário para que funcione corretamente o sistema.
+As configurações de conexão com o banco, são encontradas do arquivo Vendas.View\App.config na tag connectionString. Necessária a alteração para os dados da máquina do usuário para que funcione corretamente o sistema.

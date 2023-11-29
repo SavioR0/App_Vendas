@@ -45,6 +45,8 @@ namespace vendas.MenuForms
         {
             if (!int.TryParse(textEditSearch.Text, out int id)) throw new ApplicationException("Coloque um Id válido!");
             var allSales = gridSale.DataSource as List<SaleDTO>;
+            if (allSales == null)
+                return;
             List<SaleDTO> sale = allSales.FindAll(c => c.Id == id);
             bindingSourceSales.DataSource = sale;
         }
@@ -61,6 +63,8 @@ namespace vendas.MenuForms
         {
             if (!double.TryParse(textEditSearch.Text, out double id)) throw new ApplicationException("Coloque um valor válido!");
             var allSales = gridSale.DataSource as List<SaleDTO>;
+            if (allSales == null)
+                return;
             List<SaleDTO> sale = allSales.FindAll(c => c.Id == id);
             bindingSourceSales.DataSource = sale;
         }
