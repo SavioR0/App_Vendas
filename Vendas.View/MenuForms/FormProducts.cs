@@ -45,8 +45,8 @@ namespace vendas.MenuForms
         {
             if (!double.TryParse(textEditSearch.Text, out double value)) throw new ApplicationException("Coloque um Valor válido!");
 
-            var allProds = gridProduct.DataSource as List<Product>;
-            List<Product> prods = allProds.FindAll(c => c.Value == value);
+            var allProds = gridProduct.DataSource as List<ProductDTO>;
+            List<ProductDTO> prods = allProds.FindAll(c => c.Value == value);
             gridProduct.DataSource = prods;
         }
 
@@ -54,22 +54,22 @@ namespace vendas.MenuForms
         {
             if (!int.TryParse(textEditSearch.Text, out int stock)) throw new ApplicationException("Coloque um Estoque válido!");
 
-            var allProds = gridProduct.DataSource as List<Product>;
-            List<Product> prods = allProds.FindAll(c => c.Stock == stock);
+            var allProds = gridProduct.DataSource as List<ProductDTO>;
+            List<ProductDTO> prods = allProds.FindAll(c => c.Stock == stock);
             gridProduct.DataSource = prods;
         }
 
         private void FilterByDescription()
         {
-            var allProds = gridProduct.DataSource as List<Product>;
-            List<Product> prods = allProds.FindAll(c => c.Description.IndexOf(textEditSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+            var allProds = gridProduct.DataSource as List<ProductDTO>;
+            List<ProductDTO> prods = allProds.FindAll(c => c.Description.IndexOf(textEditSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
             gridProduct.DataSource = prods;
         }
 
         private void FilterByName()
         {
-            var allProds = gridProduct.DataSource as List<Product>;
-            List<Product> prods = allProds.FindAll(c => c.Name.IndexOf(textEditSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+            var allProds = gridProduct.DataSource as List<ProductDTO>;
+            List<ProductDTO> prods = allProds.FindAll(c => c.Name.IndexOf(textEditSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
             gridProduct.DataSource = prods;
         }
 
@@ -77,8 +77,8 @@ namespace vendas.MenuForms
         {
             if (!int.TryParse(textEditSearch.Text, out int id)) throw new ApplicationException("Coloque um Id válido!");
 
-            var allProds = gridProduct.DataSource as List<Product>;
-            List<Product> prods= allProds.FindAll(c => c.Id == id);
+            var allProds = gridProduct.DataSource as List<ProductDTO>;
+            List<ProductDTO> prods= allProds.FindAll(c => c.Id == id);
             gridProduct.DataSource = prods;
         }
 

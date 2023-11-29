@@ -48,6 +48,8 @@ namespace vendas.MenuForms
 			this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
 			this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+			this.xtraTabControl2 = new DevExpress.XtraTab.XtraTabControl();
+			this.Pedidos = new DevExpress.XtraTab.XtraTabPage();
 			this.gridControl1 = new DevExpress.XtraGrid.GridControl();
 			this.orderDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -64,8 +66,6 @@ namespace vendas.MenuForms
 			this.LabelNumOrder = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.GenerateReport = new DevExpress.XtraEditors.SimpleButton();
-			this.xtraTabControl2 = new DevExpress.XtraTab.XtraTabControl();
-			this.Pedidos = new DevExpress.XtraTab.XtraTabPage();
 			((System.ComponentModel.ISupportInitialize)(this.gridSale)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSourceSales)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
@@ -74,14 +74,14 @@ namespace vendas.MenuForms
 			this.xtraTabControl1.SuspendLayout();
 			this.xtraTabPage2.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.xtraTabControl2)).BeginInit();
+			this.xtraTabControl2.SuspendLayout();
+			this.Pedidos.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.orderDTOBindingSource)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.comboBoxFilterSale.Properties)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.xtraTabControl2)).BeginInit();
-			this.xtraTabControl2.SuspendLayout();
-			this.Pedidos.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// gridSale
@@ -265,6 +265,25 @@ namespace vendas.MenuForms
 			this.tableLayoutPanel1.Size = new System.Drawing.Size(991, 465);
 			this.tableLayoutPanel1.TabIndex = 125;
 			// 
+			// xtraTabControl2
+			// 
+			this.xtraTabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.xtraTabControl2.Location = new System.Drawing.Point(3, 293);
+			this.xtraTabControl2.Name = "xtraTabControl2";
+			this.xtraTabControl2.SelectedTabPage = this.Pedidos;
+			this.xtraTabControl2.Size = new System.Drawing.Size(985, 169);
+			this.xtraTabControl2.TabIndex = 126;
+			this.xtraTabControl2.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
+            this.Pedidos});
+			// 
+			// Pedidos
+			// 
+			this.Pedidos.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
+			this.Pedidos.Controls.Add(this.gridControl1);
+			this.Pedidos.Name = "Pedidos";
+			this.Pedidos.Size = new System.Drawing.Size(983, 144);
+			this.Pedidos.Text = "Itens";
+			// 
 			// gridControl1
 			// 
 			this.gridControl1.DataSource = this.orderDTOBindingSource;
@@ -393,10 +412,8 @@ namespace vendas.MenuForms
 			this.comboBoxFilterSale.Properties.Items.AddRange(new object[] {
             "Id",
             "Cliente",
-            "Vendedor",
-            "Produto",
-            "Valor",
-            "Estoque"});
+            "Data",
+            "Valor"});
 			this.comboBoxFilterSale.Size = new System.Drawing.Size(75, 20);
 			this.comboBoxFilterSale.TabIndex = 1;
 			this.comboBoxFilterSale.ToolTip = "Informe o atributo para o filtro";
@@ -432,25 +449,6 @@ namespace vendas.MenuForms
 			this.GenerateReport.ToolTip = "R - Gerar relatório de Pedidos";
 			this.GenerateReport.Click += new System.EventHandler(this.GenerateReport_Click);
 			// 
-			// xtraTabControl2
-			// 
-			this.xtraTabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.xtraTabControl2.Location = new System.Drawing.Point(3, 293);
-			this.xtraTabControl2.Name = "xtraTabControl2";
-			this.xtraTabControl2.SelectedTabPage = this.Pedidos;
-			this.xtraTabControl2.Size = new System.Drawing.Size(985, 169);
-			this.xtraTabControl2.TabIndex = 126;
-			this.xtraTabControl2.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
-            this.Pedidos});
-			// 
-			// Pedidos
-			// 
-			this.Pedidos.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
-			this.Pedidos.Controls.Add(this.gridControl1);
-			this.Pedidos.Name = "Pedidos";
-			this.Pedidos.Size = new System.Drawing.Size(983, 144);
-			this.Pedidos.Text = "Pedidos";
-			// 
 			// FormOrderSale
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -468,15 +466,15 @@ namespace vendas.MenuForms
 			this.xtraTabControl1.ResumeLayout(false);
 			this.xtraTabPage2.ResumeLayout(false);
 			this.tableLayoutPanel1.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.xtraTabControl2)).EndInit();
+			this.xtraTabControl2.ResumeLayout(false);
+			this.Pedidos.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.orderDTOBindingSource)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.comboBoxFilterSale.Properties)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.xtraTabControl2)).EndInit();
-			this.xtraTabControl2.ResumeLayout(false);
-			this.Pedidos.ResumeLayout(false);
 			this.ResumeLayout(false);
 
         }

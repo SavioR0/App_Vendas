@@ -1,7 +1,6 @@
 ﻿using DevExpress.XtraGrid.Views.Grid;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using vendas.Reports;
@@ -13,7 +12,7 @@ using Vendas.Library;
 
 namespace vendas.MenuForms
 {
-    public partial class FormUsers : Form
+	public partial class FormUsers : Form
     {
         private readonly FormHomePage _formHomePage;
         readonly Dictionary<string, Action> FilterSelectedUser;
@@ -36,12 +35,10 @@ namespace vendas.MenuForms
 
         }
 
-
 		private void LoadNumLabel()
         {
             LabelNumUser.Text = ((List<UserDTO>)bindingSourceUsuarios.DataSource).Count.ToString();
         }
-
         private void LoadGridUsers(TypeUser typeUser)
         {
             try
@@ -57,8 +54,6 @@ namespace vendas.MenuForms
             {
                 MessageBox.Show("Erro ao carregar os dados ", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            
-
         }
 
         private void BtnExclude_Click(object sender, EventArgs e)
@@ -168,14 +163,12 @@ namespace vendas.MenuForms
             List<UserDTO> users = allUsers.FindAll(c => c.Email.IndexOf(textEditSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
             bindingSourceUsuarios.DataSource = users;
         }
-
         private void FilterByName()
         {
             var allUsers = bindingSourceUsuarios.DataSource as List<UserDTO>;
             List<UserDTO> users = allUsers.FindAll(c => c.Name.IndexOf(textEditSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
             bindingSourceUsuarios.DataSource = users;
         }
-
         private void GenerateReport_Click(object sender, EventArgs e)
         {
             gridUsers.Refresh();
@@ -188,48 +181,36 @@ namespace vendas.MenuForms
             var fReport = GetReportTypes<User>.GeneratePDF(TypeReport.User, userList);
             (new FormPreviewPDFReport(fReport)).ShowDialog();
         }
-
         private void UpdateGridButton_Click(object sender, EventArgs e)
         {
             LoadGridUsers((TypeUser)Global.Instance.User.TypeUser);
         }
-
         private void GridViewUsers_FocusedRowChanged(object sender, EventArgs ex = null)
         {
             LoadGridSale();
         }
-
         private void LoadGridSale()
         {
             orderDTOBindingSource.Clear();
             GridView gridView = gridUsers.FocusedView as GridView;
             var user = (gridView.GetRow(gridView.FocusedRowHandle) as UserDTO);
             if (user == null) return;
-
-
             var sales = Service.SaleController.FilterDTO(c => c.NameClient == user.Name, (TypeUser)Global.Instance.User.TypeUser).ToList();
 
             bindingSourceSales.DataSource = sales;
             LoadGridOrder();
-
-
         }
-
-		private void gridView3_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+		private void GridView3_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
 		{
             LoadGridOrder();
         }
-
         private void LoadGridOrder()
         {
-
             GridView gridView = gridSale.FocusedView as GridView;
             var sale = (gridView.GetRow(gridView.FocusedRowHandle) as SaleDTO);
             if (sale == null) return;
 
-
             var orders = Service.OrderController.FilterDTO(c=> c.SaleId == sale.Id).ToList();
-
             orderDTOBindingSource.DataSource = orders;
 
         }

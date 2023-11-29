@@ -13,7 +13,7 @@ namespace vendas.MenuForms
 {
 	public partial class FormRegisterOrder : Form
     {
-        private List<OrderDTO> _listProduct = new List<OrderDTO>();
+        private readonly List<OrderDTO> _listProduct = new List<OrderDTO>();
         public FormRegisterOrder()
         {
             InitializeComponent();

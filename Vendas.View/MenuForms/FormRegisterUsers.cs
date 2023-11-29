@@ -23,7 +23,6 @@ namespace Vendas.View
         [System.Runtime.InteropServices.DllImport("wininet.dll")]
         private extern static Boolean InternetGetConnectedState(out int Description, int ReservedValue);
 
-
         public FormRegisterUser(User user=null) {
             InitializeComponent();
             _userEdited = user;
@@ -44,16 +43,13 @@ namespace Vendas.View
             if (_userEdited == null) return;
             LoadFieldsValues();
             LoadPermissionsEdited();
-            
         }
 
         private void LoadPermissionsEdited()
         {
             EmailValue.ReadOnly = true;
             cpfValue.ReadOnly = true;
-
         }
-
         private void LoadFieldsValues()
         {
             nameValue.Text = _userEdited.Name;
@@ -68,7 +64,6 @@ namespace Vendas.View
             EmailValue.Text = _userEdited.Email;
             comboBoxEditTypeUser.Text = ReturnTextTypeUser((TypeUser)_userEdited.TypeUser);
         }
-
         private string ReturnTextTypeUser(TypeUser typeUser)
         {
             var selectedText = new Dictionary<TypeUser, string>
@@ -78,7 +73,6 @@ namespace Vendas.View
             };
             return selectedText[typeUser];
         }
-
         private bool ValidateFields()
         {
             Dictionary<TextEdit, string> fields = new Dictionary<TextEdit, string> {
@@ -175,18 +169,7 @@ namespace Vendas.View
                     };
 
                     Address validation = Communication.Service.AddressController.GetByProps(address);
-                    //Filter(c=>
-                    //    c.CEP == address.CEP && c.State == address.State & c.City == address.City &&
-                    //    c.District == address.District &&
-                    //    c.Number == address.Number &&
-                    //    c.Street == address.Street).FirstOrDefault();
-                    //if (_userEdited != null && !_userEdited.Address.Equals(address))
-                    //{ 
-                    //    var message = Communication.Service.AddressController.Save(address);
-                    //    if (message != "") throw new Exception(message);
 
-                    //    user.AddressId = Communication.Service.AddressController.Filter(c => c.Id == address.Id).FirstOrDefault().Id;
-                    //}
 
                     if (validation != null)
                         newUser.User.AddressId = validation.Id;
@@ -201,7 +184,6 @@ namespace Vendas.View
                         "Usuário Atualizado com sucesso!", "Usuário cadastrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         ClearFields();
                     }
-                    
                 }
             }
             catch 
@@ -227,7 +209,6 @@ namespace Vendas.View
             {
                 if (!IsConnected()) { MessageBox.Show("Verifique sua conexão com a internet", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information); return; };
                 //StateValue.Focus();
-            
                 Address address = SearchCEP.LocalizeCEP(CEPValue.Text.Replace("-", ""));
                 if (address != null)
                 {
@@ -242,10 +223,9 @@ namespace Vendas.View
                 MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         public static Boolean IsConnected()
         {
-            return InternetGetConnectedState(out int Description, 0);
+            return InternetGetConnectedState(out int description, 0);
         }
 
     }

@@ -429,7 +429,7 @@ namespace vendas.MenuForms
 			this.gridView3.OptionsSelection.UseIndicatorForSelection = false;
 			this.gridView3.OptionsView.ShowGroupPanel = false;
 			this.gridView3.OptionsView.ShowIndicator = false;
-			this.gridView3.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView3_FocusedRowChanged);
+			this.gridView3.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.GridView3_FocusedRowChanged);
 			// 
 			// gridColumn1
 			// 
