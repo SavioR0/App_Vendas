@@ -17,7 +17,6 @@ namespace vendas.MenuForms
     {
         private readonly FormHomePage _formHomePage;
         readonly Dictionary<string, Action> FilterSelectedUser;
-        readonly Dictionary<string, Action> FilterSelectedSale;
 
         public FormUsers(FormHomePage form = null)
         {
@@ -33,52 +32,12 @@ namespace vendas.MenuForms
                     { "Data Nasc.", FilterByDate},
                     { "CPF", FilterByCPF},
                     { "Usuário", FilterByUserName},
-                    { "Tipo Usuário", FilterByTypeUser}
             };
 
-            FilterSelectedSale = new Dictionary<string, Action> {
-                { "Id", FilterByIdSale},
-                { "Cliente", FilterByClient},
-                { "Data", FilterByDate},
-            };
-        }
-
-        //private void FilterByStock()
-        //{
-        //    if (!int.TryParse(TextEditSearchSale.Text, out int value)) throw new ApplicationException("Coloque um Estoque válido!");
-
-        //    var allSales = bindingSourceSales.DataSource as List<SaleDTO>;
-        //    List<SaleDTO> sale = allSales.FindAll(c => c.StockProduct == value);
-        //    bindingSourceSales.DataSource = sale;
-        //}
-
-
-        //private void FilterBySeller()
-        //{
-        //    var allSales = bindingSourceSales.DataSource as List<SaleDTO>;
-        //    List<SaleDTO> sales = allSales.FindAll(c => c.NameSeller.IndexOf(TextEditSearchSale.Text, StringComparison.OrdinalIgnoreCase) >= 0);
-        //    bindingSourceSales.DataSource = sales;
-        //}
-
-        private void FilterByClient()
-        {
-            var allSales = bindingSourceSales.DataSource as List<SaleDTO>;
-            List<SaleDTO> sales = allSales.FindAll(c => c.NameClient.IndexOf(TextEditSearchSale.Text, StringComparison.OrdinalIgnoreCase) >= 0);
-            bindingSourceSales.DataSource = sales;
-        }
-
-        private void FilterByIdSale()
-        {
-            if (!int.TryParse(TextEditSearchSale.Text, out int id)) throw new ApplicationException("Coloque um Id válido!");
-
-            var allSales = bindingSourceSales.DataSource as List<SaleDTO>;
-            List<SaleDTO> sale = allSales.FindAll(c => c.Id == id);
-            bindingSourceSales.DataSource = sale;
         }
 
 
-
-        private void LoadNumLabel()
+		private void LoadNumLabel()
         {
             LabelNumUser.Text = ((List<UserDTO>)bindingSourceUsuarios.DataSource).Count.ToString();
         }
@@ -144,11 +103,6 @@ namespace vendas.MenuForms
             else textEditSearch.Enabled = false;
         }
 
-        private void ComboBoxFilterSale_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (comboBoxFilterSale.Text != "") TextEditSearchSale.Enabled = true;
-            else TextEditSearchSale.Enabled = false;
-        }
 
         private void BtnSearchProd_Click(object sender, EventArgs e)
         {
@@ -176,15 +130,6 @@ namespace vendas.MenuForms
             var allUsers = bindingSourceUsuarios.DataSource as List<UserDTO>;
             List<UserDTO> users = allUsers.FindAll(c => c.Id == id);
             bindingSourceUsuarios.DataSource = users;   
-        }
-
-        private void FilterByTypeUser()
-        {
-            string value = CultureInfo.CurrentCulture.TextInfo.ToTitleCase((textEditSearch.Text).ToLower());
-            var allUsers = bindingSourceUsuarios.DataSource as List<UserDTO>;
-
-            bindingSourceUsuarios.DataSource = allUsers.FindAll(c => c.TypeUserName.IndexOf(TextEditSearchSale.Text, StringComparison.OrdinalIgnoreCase) >= 0);
-
         }
 
         private void FilterByUserName()
@@ -251,44 +196,42 @@ namespace vendas.MenuForms
 
         private void GridViewUsers_FocusedRowChanged(object sender, EventArgs ex = null)
         {
-            LoadGrid();
+            LoadGridSale();
         }
 
-        private void LoadGrid()
+        private void LoadGridSale()
         {
-            
+            orderDTOBindingSource.Clear();
             GridView gridView = gridUsers.FocusedView as GridView;
             var user = (gridView.GetRow(gridView.FocusedRowHandle) as UserDTO);
             if (user == null) return;
 
-            if (GetTypeUserFunctions<SaleDTO>.typeUserFunctions.TryGetValue(((TypeUser)Global.Instance.User.TypeUser, typeof(SaleDTO)), out Func<List<SaleDTO>> loadSales))
-            {
-                var sales = loadSales().ToList<SaleDTO>();
-                sales = sales.FindAll(c => c.NameClient == user.Name);
 
-                bindingSourceSales.DataSource = sales;
-                LabelNumOrder.Text = sales.Count.ToString();
-            }
+            var sales = Service.SaleController.FilterDTO(c => c.NameClient == user.Name, (TypeUser)Global.Instance.User.TypeUser).ToList();
+
+            bindingSourceSales.DataSource = sales;
+            LoadGridOrder();
+
+
         }
 
-        private void FilterButtomClick_Click(object sender, EventArgs e)
+		private void gridView3_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+		{
+            LoadGridOrder();
+        }
+
+        private void LoadGridOrder()
         {
-            try
-            {
-                LoadGrid();
-                if (string.IsNullOrWhiteSpace(TextEditSearchSale.Text)) return;
 
-                if (FilterSelectedSale.TryGetValue(comboBoxFilterSale.Text, out Action LoadFilter))
-                {
-                    LoadFilter();
-                }
-            }
-            catch (ApplicationException ex)
-            {
-                MessageBox.Show(ex.Message, "Erro ao filtrar!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            TextEditSearchSale.Text = "";
+            GridView gridView = gridSale.FocusedView as GridView;
+            var sale = (gridView.GetRow(gridView.FocusedRowHandle) as SaleDTO);
+            if (sale == null) return;
+
+
+            var orders = Service.OrderController.FilterDTO(c=> c.SaleId == sale.Id).ToList();
+
+            orderDTOBindingSource.DataSource = orders;
+
         }
-
-	}
+    }
 }

@@ -34,7 +34,7 @@ namespace vendas.MenuForms
 
         private void BtnUpdate_Click(object sender, EventArgs e)
         {
-            if (numValueEdit.Text == "0")
+            if (int.Parse(numValueEdit.Text) < 1)
             { 
                 MessageBox.Show("Selecione uma quantidade Válida", "Quantidade Inválida", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -118,6 +118,7 @@ namespace vendas.MenuForms
 			if (_listProduct.Count == 0)
 			{
 				MessageBox.Show("Cadastre novos produtos no carrinho e tente novamente.", "Carrinho vazio!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
 			}
             try
             {
@@ -143,8 +144,8 @@ namespace vendas.MenuForms
 
         private void ClearFields()
         {
-            _listProduct = null;
-            gridOrders.DataSource = null;
+            _listProduct.Clear();
+            OrderDTOBindingSource.Clear();
             ComboBoxProduct.Text = "";
             numValueEdit.Text = "";
         }

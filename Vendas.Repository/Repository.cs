@@ -30,7 +30,8 @@ namespace Vendas.Repository
 
         public string Delete(int id)
         {
-            DbSet.Remove(Filter(c => c.Id == id).FirstOrDefault());
+            var entity = Filter(c => c.Id == id).FirstOrDefault();
+            DbSet.Remove(entity);
             return SaveChanges();
         }
 

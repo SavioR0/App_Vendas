@@ -49,6 +49,10 @@ namespace Vendas.Service.Controllers
                 SalesContext context = new SalesContext();
                 using (DbContextTransaction transaction = SalesTransaction.CreateDbContextTransaction(context))
                 {
+                    var orders = new OrderRepository().Filter(c => c.SaleId == entity.Id);
+                    foreach (var order in orders)
+                        _message = new OrderRepository().Remove(order);
+
                     _message = new SaleRepository().Remove(entity);
                     if (_message == "")
                         transaction.Commit();
@@ -62,6 +66,10 @@ namespace Vendas.Service.Controllers
                 SalesContext context = new SalesContext();
                 using (DbContextTransaction transaction = SalesTransaction.CreateDbContextTransaction(context))
                 {
+                    var orders = new OrderRepository().Filter(c => c.SaleId == id);
+                    foreach (var order in orders)
+                        _message = new OrderRepository().Remove(order);
+
                     _message = new SaleRepository().Remove(id);
                     if (_message == "")
                         transaction.Commit();
@@ -78,7 +86,12 @@ namespace Vendas.Service.Controllers
                 return new SaleRepository().Filter(condition);
             }
 
-            [HttpPost]
+            public IQueryable<SaleDTO> FilterDTO(Expression<Func<SaleDTO, bool>> condition, TypeUser typeUser)
+            {
+                return new SaleRepository().FilterDTO(condition, typeUser);
+            }
+
+        [HttpPost]
             [Route("filtrarTodos")]
             public IQueryable<Sale> GetAll()
             {

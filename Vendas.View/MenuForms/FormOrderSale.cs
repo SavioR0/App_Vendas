@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraGrid.Views.Grid;
+using FastReport;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -106,16 +107,19 @@ namespace vendas.MenuForms
             {
                 try
                 {
+                    orderDTOBindingSource.Clear();
                     GridView gridView = gridSale.FocusedView as GridView;
-                    var sale = (gridView.GetRow(gridView.FocusedRowHandle) as Sale);
+                    var sale = (gridView.GetRow(gridView.FocusedRowHandle) as SaleDTO);
+                    if (sale == null) throw new Exception("Selecione uma pedido para que seja excluído.");
+
                     var message = Service.SaleController.Exclude(sale.Id);
                     if (message != "") throw new Exception(message);
                     LoadGridSale((TypeUser)Global.Instance.User.TypeUser);
                     MessageBox.Show("Pedido Excluído com sucesso!", "Exclusão do pedido.", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show("Erro ao excluir pedido. " + ex, "Exclusão de pedido inválido.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Erro ao excluir pedido. ", "Exclusão de pedido inválido.", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -161,10 +165,8 @@ namespace vendas.MenuForms
                 }
             }
             //var fReport = new Report();
-            //report.Load(@"../../Reports/OrderReports.frx");
+            //fReport.Load(@"../../Reports/OrderReports.frx");
 
-            //report.Dictionary.RegisterBusinessObject(Service.UserController.GetAll(), "userList", 10, true);
-            //report.Dictionary.RegisterBusinessObject(Service.ProductController.GetAll(), "productList", 10, true);
             //fReport.Dictionary.RegisterBusinessObject(saleList, "orderList", 10, true);
             //fReport.Report.Save(@"../../Reports/OrderReports.frx");
 
@@ -177,5 +179,28 @@ namespace vendas.MenuForms
             LoadGridSale((TypeUser)Global.Instance.User.TypeUser);
         }
 
-    }
+
+        private void GridViewSales_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            orderDTOBindingSource.Clear();
+            LoadGrid();
+        }
+
+        private void LoadGrid()
+        {
+
+            GridView gridView = gridSale.FocusedView as GridView;
+            var sale = (gridView.GetRow(gridView.FocusedRowHandle) as SaleDTO);
+            if (sale == null) return;
+
+
+            var orders = Service.OrderController.FilterDTO(c=> c.SaleId == sale.Id).ToList();
+            //sales = sales.FindAll(c => c.NameClient == user.Name);
+
+            orderDTOBindingSource.DataSource = orders;
+            LabelNumOrder.Text = orders.Count.ToString();
+
+        }
+
+	}
 }

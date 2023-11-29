@@ -32,6 +32,11 @@ namespace Vendas.Repository
             return _repository.Filter(condition);
         }
 
+        public IQueryable<SaleDTO> FilterDTO(Expression<Func<SaleDTO, bool>> condition, TypeUser typeUser)
+        {
+            return SelectAllDTO(typeUser).Where(condition);
+        }
+
         public IQueryable<Sale> GetAll()
         {
             return _repository.GetAll();
@@ -76,8 +81,8 @@ namespace Vendas.Repository
 
 		private IQueryable<SaleDTO> LoadSellerGrid()
 		{
-            return (from o in _db.Order
-                    join s in _db.Sale on o.SaleId equals s.Id
+            return (from s in _db.Sale 
+                    join o in _db.Order on s.Id equals o.SaleId
                     where (s.ClientId == Global.Instance.User.Id || o.Product.SellerId == Global.Instance.User.Id)
                     join c in _db.Users on s.ClientId equals c.Id
                     select new SaleDTO
@@ -86,14 +91,13 @@ namespace Vendas.Repository
                         NameClient = c.Name,
                         DateSale = s.DateSale,
                         Value = s.Value,
-                    });
-
+                    }).Distinct();
         }
 
 		private IQueryable<SaleDTO> LoadAdminGrid()
 		{
-            return (from o in _db.Order
-                    join s in _db.Sale on o.SaleId equals s.Id
+            return (from s in _db.Sale
+                    join o in _db.Order on s.Id equals o.SaleId
                     join c in _db.Users on s.ClientId equals c.Id
                     select new SaleDTO
                     {
@@ -101,14 +105,14 @@ namespace Vendas.Repository
                         NameClient = c.Name,
                         DateSale = s.DateSale,
                         Value = s.Value,
-                    });
+                    }).Distinct();
         }
 
 		private IQueryable<SaleDTO> LoadClientGrid()
 		{
-            return (from o in _db.Order
-                    join s in _db.Sale on o.SaleId equals s.Id
+            return (from s in _db.Sale
                     where (s.ClientId == Global.Instance.User.Id)
+                    join o in _db.Order on s.Id equals o.SaleId
                     join c in _db.Users on s.ClientId equals c.Id
                     select new SaleDTO
                     {
@@ -117,7 +121,7 @@ namespace Vendas.Repository
                         DateSale = s.DateSale,
                         Value = s.Value,
                     }
-			 );
+			 ).Distinct();
 		}
 	}
 }

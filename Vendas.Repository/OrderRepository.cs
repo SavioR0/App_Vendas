@@ -62,9 +62,11 @@ namespace Vendas.Repository
 							Description = p.Description,
 							SellerName = u.Name,
 							Stock = p.Stock,
+							Value = p.Value
 						},
 						Quantity = o.Quantity,
 						ValueOrder = o.Quantity * p.Value,
+						SaleId = s.Id
 						
 					}) ;
 		}
