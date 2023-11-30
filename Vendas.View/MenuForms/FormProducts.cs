@@ -116,7 +116,7 @@ namespace vendas.MenuForms
         public void BtnEdit_Click(object sender, EventArgs e)
         {
             GridView gridView = gridProduct.FocusedView as GridView;
-            var prod = (gridView.GetRow(gridView.FocusedRowHandle) as Product);
+            var prod = (gridView.GetRow(gridView.FocusedRowHandle) as ProductDTO);
             _formHomePage.EditProductButtonClicked(prod);
         }
 

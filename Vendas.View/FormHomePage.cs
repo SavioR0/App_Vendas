@@ -8,6 +8,7 @@ using Vendas.Entity.Entities;
 using System;
 using System.Collections.Generic;
 using Vendas.Entity.Enums;
+using Vendas.DTO;
 
 namespace vendas
 {
@@ -118,12 +119,12 @@ namespace vendas
         {
             FormShow(new FormProducts(this));
         }
-        public void OpenFormProduct( Product prod = null)
+        public void OpenFormProduct( ProductDTO prod = null)
         {
             FormShow(new FormRegisterProduct(prod));
         }
 
-        public void EditProductButtonClicked(Product prod)
+        public void EditProductButtonClicked(ProductDTO prod)
         {
             OpenFormProduct(prod: prod);
         }

@@ -1,8 +1,10 @@
 ﻿using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using Vendas.Communication;
+using Vendas.DTO;
 using Vendas.Entity.Entities;
 using Vendas.Library;
 
@@ -11,30 +13,29 @@ namespace vendas.MenuForms
     public partial class FormRegisterProduct : Form
     {
         public Form Form { get { return this; } }
-        private Product _editedProduct;
-        public FormRegisterProduct(Product product = null)
+        public FormRegisterProduct(ProductDTO product = null)
         {
             
             InitializeComponent();
 
             if (product != null)
-                bindingSourceProduct.DataSource = new List<Product> { product };
+                bindingSourceProduct.DataSource = new List<ProductDTO> { product };
             //ClearFields();
             SetFields(product);
             
         }
 
-        private void SetFields(Product product)
+        private void SetFields(ProductDTO product)
         {
             if (product == null) return;
-            _editedProduct = product;
+
             btnRegisterEditProduct.Text = "Editar Produto";
         }
         private void RegisterButton_Click(object sender, System.EventArgs e)
         {
             if (ValidateFields())
             {
-                if (_editedProduct != null)
+                if ((bindingSourceProduct.DataSource as List<ProductDTO>) != null)
                 {
                     UpdateProduct();
                     return;
@@ -46,10 +47,10 @@ namespace vendas.MenuForms
         {
             try
             {
-                _editedProduct.Flag = "U";
+                int id = (bindingSourceProduct.DataSource as List<ProductDTO>)[0].Id;
                 var message = Service.ProductController.Save(new Product()
                 {
-                    Id = _editedProduct.Id,
+                    Id = id,
                     Name = nameValue.Text,
                     Description = descriptionValue.Text,
                     Value = float.Parse(valueValue.Text.Replace("R$", "")),
@@ -57,7 +58,8 @@ namespace vendas.MenuForms
                     Flag = "U",
                     SellerId = Global.Instance.User.Id,
                 });
-                if (!string.IsNullOrWhiteSpace(message)) { throw new Exception(message); }
+                if (!string.IsNullOrWhiteSpace(message)) 
+                    throw new Exception(message); 
                 ClearFields();
                 MessageBox.Show("Produto Editado com sucesso. Consulte a aba de \"Produtos\" para consultar os produtos editados.", "Produto Editado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

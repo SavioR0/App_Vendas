@@ -35,37 +35,33 @@ namespace vendas.MenuForms
 
 		private void FilterByClient()
         {
-            var sales = bindingSourceSales.DataSource as List<SaleDTO>;
-            if (sales == null)
-                return;
-            List<SaleDTO> teste = sales.FindAll(c => c.NameClient.IndexOf(textEditSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+			if (!(bindingSourceSales.DataSource is List<SaleDTO> sales))
+				return;
+			List<SaleDTO> teste = sales.FindAll(c => c.NameClient.IndexOf(textEditSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
             bindingSourceSales.DataSource = teste;
         }
         private void FilterById()
         {
             if (!int.TryParse(textEditSearch.Text, out int id)) throw new ApplicationException("Coloque um Id válido!");
-            var allSales = gridSale.DataSource as List<SaleDTO>;
-            if (allSales == null)
-                return;
-            List<SaleDTO> sale = allSales.FindAll(c => c.Id == id);
+			if (!(gridSale.DataSource is List<SaleDTO> allSales))
+				return;
+			List<SaleDTO> sale = allSales.FindAll(c => c.Id == id);
             bindingSourceSales.DataSource = sale;
         }
         private void FilterByDate()
         {
             if (!DateTime.TryParse(textEditSearch.Text, out DateTime date)) throw new ApplicationException("Coloque uma data válida!");
-			List<SaleDTO> allSales = bindingSourceSales.DataSource as List<SaleDTO>;
-            if (allSales == null)
-                return;
-            List<SaleDTO> sales = allSales.FindAll(c => c.DateSale.Date == date.Date);
+			if (!(bindingSourceSales.DataSource is List<SaleDTO> allSales))
+				return;
+			List<SaleDTO> sales = allSales.FindAll(c => c.DateSale.Date == date.Date);
             bindingSourceSales.DataSource = sales;
         }
         private void FilterByValue()
         {
             if (!double.TryParse(textEditSearch.Text, out double id)) throw new ApplicationException("Coloque um valor válido!");
-            var allSales = gridSale.DataSource as List<SaleDTO>;
-            if (allSales == null)
-                return;
-            List<SaleDTO> sale = allSales.FindAll(c => c.Id == id);
+			if (!(gridSale.DataSource is List<SaleDTO> allSales))
+				return;
+			List<SaleDTO> sale = allSales.FindAll(c => c.Id == id);
             bindingSourceSales.DataSource = sale;
         }
 

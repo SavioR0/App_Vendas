@@ -55,6 +55,7 @@ namespace vendas.MenuForms
 			// 
 			// nameValue
 			// 
+			this.nameValue.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceProduct, "Name", true));
 			this.nameValue.EditValue = "";
 			this.nameValue.Location = new System.Drawing.Point(107, 34);
 			this.nameValue.Name = "nameValue";
@@ -64,6 +65,7 @@ namespace vendas.MenuForms
 			// 
 			// stockValue
 			// 
+			this.stockValue.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceProduct, "Stock", true));
 			this.stockValue.EditValue = "";
 			this.stockValue.Location = new System.Drawing.Point(286, 116);
 			this.stockValue.Name = "stockValue";
@@ -89,6 +91,7 @@ namespace vendas.MenuForms
 			// 
 			// descriptionValue
 			// 
+			this.descriptionValue.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceProduct, "Description", true));
 			this.descriptionValue.EditValue = "";
 			this.descriptionValue.Location = new System.Drawing.Point(107, 75);
 			this.descriptionValue.Name = "descriptionValue";
@@ -109,6 +112,7 @@ namespace vendas.MenuForms
 			// 
 			// valueValue
 			// 
+			this.valueValue.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceProduct, "Value", true));
 			this.valueValue.EditValue = " ";
 			this.valueValue.Location = new System.Drawing.Point(107, 116);
 			this.valueValue.Name = "valueValue";
@@ -182,7 +186,7 @@ namespace vendas.MenuForms
 			// 
 			// bindingSourceProduct
 			// 
-			this.bindingSourceProduct.DataSource = typeof(Vendas.Entity.Entities.Product);
+			this.bindingSourceProduct.DataSource = typeof(Vendas.DTO.ProductDTO);
 			// 
 			// FormRegisterProduct
 			// 

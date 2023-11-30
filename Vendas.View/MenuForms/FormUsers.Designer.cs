@@ -30,8 +30,8 @@ namespace vendas.MenuForms
         private void InitializeComponent()
         {
 			this.components = new System.ComponentModel.Container();
-			DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
-			DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue2 = new DevExpress.XtraEditors.FormatConditionRuleValue();
+			DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
+			DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue1 = new DevExpress.XtraEditors.FormatConditionRuleValue();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormUsers));
 			this.Tipo = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.gridUsers = new DevExpress.XtraGrid.GridControl();
@@ -80,6 +80,7 @@ namespace vendas.MenuForms
 			this.label1 = new System.Windows.Forms.Label();
 			this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
 			this.GenerateReport = new DevExpress.XtraEditors.SimpleButton();
+			this.Vendedor = new DevExpress.XtraGrid.Columns.GridColumn();
 			((System.ComponentModel.ISupportInitialize)(this.gridUsers)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.bindingSourceUsuarios)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -147,13 +148,13 @@ namespace vendas.MenuForms
             this.UserName,
             this.Tipo});
 			this.gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-			gridFormatRule2.Column = this.Tipo;
-			gridFormatRule2.ColumnApplyTo = this.Tipo;
-			gridFormatRule2.Name = "Format0";
-			formatConditionRuleValue2.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
-			formatConditionRuleValue2.Expression = "[TypeUser] = 1";
-			gridFormatRule2.Rule = formatConditionRuleValue2;
-			this.gridView1.FormatRules.Add(gridFormatRule2);
+			gridFormatRule1.Column = this.Tipo;
+			gridFormatRule1.ColumnApplyTo = this.Tipo;
+			gridFormatRule1.Name = "Format0";
+			formatConditionRuleValue1.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
+			formatConditionRuleValue1.Expression = "[TypeUser] = 1";
+			gridFormatRule1.Rule = formatConditionRuleValue1;
+			this.gridView1.FormatRules.Add(gridFormatRule1);
 			this.gridView1.GridControl = this.gridUsers;
 			this.gridView1.Name = "gridView1";
 			this.gridView1.OptionsBehavior.Editable = false;
@@ -503,7 +504,8 @@ namespace vendas.MenuForms
             this.valor_unitario,
             this.colValueOrder,
             this.colQuantity,
-            this.colId});
+            this.colId,
+            this.Vendedor});
 			this.gridView2.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
 			this.gridView2.GridControl = this.gridControl1;
 			this.gridView2.Name = "gridView2";
@@ -520,6 +522,7 @@ namespace vendas.MenuForms
 			this.colProductDTO.Name = "colProductDTO";
 			this.colProductDTO.Visible = true;
 			this.colProductDTO.VisibleIndex = 0;
+			this.colProductDTO.Width = 118;
 			// 
 			// Descrição
 			// 
@@ -528,6 +531,7 @@ namespace vendas.MenuForms
 			this.Descrição.Name = "Descrição";
 			this.Descrição.Visible = true;
 			this.Descrição.VisibleIndex = 1;
+			this.Descrição.Width = 216;
 			// 
 			// valor_unitario
 			// 
@@ -536,6 +540,7 @@ namespace vendas.MenuForms
 			this.valor_unitario.Name = "valor_unitario";
 			this.valor_unitario.Visible = true;
 			this.valor_unitario.VisibleIndex = 2;
+			this.valor_unitario.Width = 92;
 			// 
 			// colValueOrder
 			// 
@@ -544,6 +549,7 @@ namespace vendas.MenuForms
 			this.colValueOrder.Name = "colValueOrder";
 			this.colValueOrder.Visible = true;
 			this.colValueOrder.VisibleIndex = 3;
+			this.colValueOrder.Width = 61;
 			// 
 			// colQuantity
 			// 
@@ -552,6 +558,7 @@ namespace vendas.MenuForms
 			this.colQuantity.Name = "colQuantity";
 			this.colQuantity.Visible = true;
 			this.colQuantity.VisibleIndex = 4;
+			this.colQuantity.Width = 73;
 			// 
 			// colId
 			// 
@@ -599,6 +606,15 @@ namespace vendas.MenuForms
 			this.GenerateReport.Text = "&Relatório";
 			this.GenerateReport.ToolTip = "R - Gerar Relatório de Usuários";
 			this.GenerateReport.Click += new System.EventHandler(this.GenerateReport_Click);
+			// 
+			// Vendedor
+			// 
+			this.Vendedor.Caption = "Vendedor";
+			this.Vendedor.FieldName = "ProductDTO.SellerName";
+			this.Vendedor.Name = "Vendedor";
+			this.Vendedor.Visible = true;
+			this.Vendedor.VisibleIndex = 5;
+			this.Vendedor.Width = 148;
 			// 
 			// FormUsers
 			// 
@@ -686,5 +702,6 @@ namespace vendas.MenuForms
 		private DevExpress.XtraGrid.Columns.GridColumn Cliente;
 		private DevExpress.XtraGrid.Columns.GridColumn Data;
 		private DevExpress.XtraGrid.Columns.GridColumn Valor;
+		private DevExpress.XtraGrid.Columns.GridColumn Vendedor;
 	}
 }
