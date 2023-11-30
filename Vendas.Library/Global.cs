@@ -5,7 +5,7 @@ namespace Vendas.Library
     public class Version
     {
         private static Version _instance { get; set; }
-        public string version = "1.0.11.2 em 20/11/2023";
+        public string version = "1.0.11.3 em 30/11/2023";
         public static Version Instance 
         {
             get
